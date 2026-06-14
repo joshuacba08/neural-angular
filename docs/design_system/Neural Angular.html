@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Angular — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="nn-tokens.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px}
+body{font-family:var(--nn-font-b);background:var(--nn-bg-canvas);color:var(--nn-t1);min-height:100vh;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ── Shared gradient utilities ── */
+.g-text{background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.g-text-soft{background:linear-gradient(135deg,#fff 0%,#a5bfff 30%,#c4b0ff 60%,#f0abfc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.g-border{border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box}
+.g-border-2{background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box, var(--nn-border-grad) border-box}
+
+/* ── Layout ── */
+.ds{display:flex;min-height:100vh}
+
+/* ── Sidebar ── */
+.sb{width:256px;flex-shrink:0;position:fixed;inset:0 auto 0 0;background:linear-gradient(180deg,#08081A 0%,#06060E 100%);border-right:1px solid transparent;background-clip:padding-box;display:flex;flex-direction:column;overflow-y:auto;z-index:var(--nn-z-sticky)}
+.sb::after{content:'';position:absolute;inset:0;right:-1px;pointer-events:none;background:linear-gradient(180deg,rgba(66,133,244,0.15) 0%,rgba(123,92,246,0.08) 50%,transparent 100%);mask:linear-gradient(#000,#000) padding-box,linear-gradient(#000,#000);mask-composite:exclude;-webkit-mask-composite:destination-out;border-right:1px solid;border-image:linear-gradient(180deg,rgba(66,133,244,0.25),rgba(123,92,246,0.12),transparent) 1}
+.sb::-webkit-scrollbar{width:3px}.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:3px}
+
+/* Logo */
+.sb-logo{padding:18px 16px 16px;flex-shrink:0}
+.sb-logo-inner{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.sb-mark{width:36px;height:36px;border-radius:10px;background:var(--nn-grad-g);display:flex;align-items:center;justify-content:center;font-family:var(--nn-font-d);font-size:14px;font-weight:800;color:#fff;letter-spacing:-0.05em;flex-shrink:0;position:relative}
+.sb-mark::after{content:'';position:absolute;inset:-3px;border-radius:13px;background:var(--nn-grad-g-soft);filter:blur(10px);opacity:0.5;z-index:-1}
+.sb-name{font-family:var(--nn-font-d);font-size:13px;font-weight:700;letter-spacing:-0.02em;display:block;line-height:1.15}
+.sb-ver{font-family:var(--nn-font-m);font-size:9px;letter-spacing:0.05em;margin-top:1px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Nav */
+.sb-nav{padding:6px 0 28px;flex:1}
+.nav-grp{margin-bottom:4px}
+.nav-lbl{display:block;font-size:9.5px;font-weight:700;color:var(--nn-t4);text-transform:uppercase;letter-spacing:0.12em;padding:12px 18px 4px}
+.nav-a{display:flex;align-items:center;gap:9px;padding:7px 18px;color:var(--nn-t3);font-size:12.5px;font-weight:450;text-decoration:none;cursor:pointer;transition:all var(--nn-t-fast);position:relative;user-select:none;border-radius:0}
+.nav-a::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:2px;border-radius:0 2px 2px 0;background:var(--nn-grad-blue-v);opacity:0;transition:opacity var(--nn-t-fast)}
+.nav-a:hover{color:var(--nn-t2);background:rgba(255,255,255,0.03)}
+.nav-a.on{background:linear-gradient(90deg,rgba(66,133,244,0.10) 0%,rgba(123,92,246,0.06) 60%,transparent 100%);color:transparent;background-clip:text,-webkit-text;-webkit-background-clip:unset}
+.nav-a.on{background:linear-gradient(90deg,rgba(66,133,244,0.10) 0%,rgba(123,92,246,0.05) 100%);color:var(--nn-blue-bright)}
+.nav-a.on::before{opacity:1}
+.nav-ico{width:13px;height:13px;flex-shrink:0;opacity:0.45}
+.nav-a.on .nav-ico{opacity:1}
+.nav-badge{margin-left:auto;font-family:var(--nn-font-m);font-size:8px;padding:1px 6px;border-radius:99px;background:var(--nn-grad-blue-v);color:#fff}
+.nav-ext{margin-left:auto;opacity:0.18;width:9px;height:9px}
+.sb-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);margin:6px 0}
+
+/* Main */
+.ds-main{margin-left:256px;flex:1}
+.pg{display:none;padding:48px 60px 100px;max-width:1060px}
+.pg.on{display:block}
+
+/* Page header */
+.ph{margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--nn-b0)}
+.ph-tag{font-family:var(--nn-font-m);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ph-h1{font-family:var(--nn-font-d);font-size:34px;font-weight:700;letter-spacing:-0.03em;line-height:1.08}
+.ph-p{font-size:14px;color:var(--nn-t2);margin-top:10px;line-height:1.65;max-width:560px;font-weight:400}
+
+/* Section */
+.sec{margin-bottom:56px}
+.sec-h{font-family:var(--nn-font-d);font-size:14.5px;font-weight:600;color:var(--nn-t1);margin-bottom:18px;display:flex;align-items:center;gap:12px;letter-spacing:-0.015em}
+.sec-h::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--nn-b1),transparent)}
+
+/* ── HERO ── */
+.hero{position:relative;height:300px;border-radius:var(--nn-r-2xl);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;margin-bottom:44px;border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+.hero-blob-1{width:400px;height:300px;top:-80px;left:-60px;background:radial-gradient(circle,rgba(66,133,244,0.18) 0%,transparent 70%)}
+.hero-blob-2{width:360px;height:280px;bottom:-60px;right:-40px;background:radial-gradient(circle,rgba(217,70,239,0.15) 0%,transparent 70%)}
+.hero-blob-3{width:280px;height:240px;top:10px;right:30%;background:radial-gradient(circle,rgba(123,92,246,0.12) 0%,transparent 70%)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-inner{position:relative;z-index:2}
+.hero-tag{font-family:var(--nn-font-m);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;padding:4px 14px;border-radius:99px;border:1px solid transparent;background:rgba(255,255,255,0.04) padding-box,var(--nn-border-grad) border-box;display:inline-block;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-family:var(--nn-font-d);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1.0;background:linear-gradient(135deg,#fff 0%,#a5c0ff 28%,#c4b0ff 54%,#f0abfc 78%,#fda4af 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:14px;color:var(--nn-t2);margin-top:12px;line-height:1.6;font-weight:400}
+.hero-chips{display:flex;gap:6px;margin-top:20px;justify-content:center;flex-wrap:wrap}
+.hero-chip{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t3);border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);padding:4px 10px;border-radius:99px;letter-spacing:0.02em}
+
+/* Quick nav cards */
+.qnav{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:12px}
+.qcard{padding:22px 20px;border-radius:var(--nn-r-lg);cursor:pointer;transition:all var(--nn-t-base);text-decoration:none;display:block;border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box;position:relative;overflow:hidden}
+.qcard::before{content:'';position:absolute;inset:0;background:var(--nn-grad-surface);opacity:0;transition:opacity var(--nn-t-base)}
+.qcard:hover::before{opacity:1}
+.qcard:hover{transform:translateY(-2px);box-shadow:var(--nn-elev-3),var(--nn-glow-g-sm)}
+.qcard.b{background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-b) border-box}
+.qcard.v{background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-v) border-box}
+.qcard-ico{width:36px;height:36px;border-radius:10px;background:var(--nn-grad-surface-strong);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:14px;position:relative;z-index:1}
+.qcard-h{font-family:var(--nn-font-d);font-size:14.5px;font-weight:600;color:var(--nn-t1);margin-bottom:5px;letter-spacing:-0.018em;position:relative;z-index:1}
+.qcard-p{font-size:12px;color:var(--nn-t3);line-height:1.55;font-weight:400;position:relative;z-index:1}
+.qcard-c{margin-top:14px;font-family:var(--nn-font-m);font-size:9.5px;letter-spacing:0.02em;position:relative;z-index:1;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Palette swatches */
+.pal{margin-bottom:20px}
+.pal-lbl{font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.swatches{display:flex;gap:4px}
+.sw{flex:1;height:56px;border-radius:10px;display:flex;align-items:flex-end;padding:6px 7px;cursor:default;transition:transform var(--nn-t-fast)}
+.sw:hover{transform:translateY(-4px) scale(1.03)}
+.sw span{font-size:7.5px;font-family:var(--nn-font-m);opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.sw-canvas{background:#06060E;border:1px solid rgba(255,255,255,0.08);color:var(--nn-t2)}
+.sw-base{background:#0A0A15;border:1px solid rgba(255,255,255,0.06);color:var(--nn-t2)}
+.sw-s1{background:#0F0F1C}.sw-s2{background:#141426}.sw-s3{background:#1A1A2E}.sw-s4{background:#202038}
+.sw-g{background:var(--nn-grad-g)}.sw-b{background:var(--nn-blue-primary)}.sw-v{background:var(--nn-violet-primary)}.sw-p{background:var(--nn-pink-primary)}
+.sw-b10{background:var(--nn-blue-10);border:1px solid rgba(66,133,244,0.18);color:var(--nn-blue-primary)}
+.sw-v10{background:var(--nn-violet-10);border:1px solid rgba(123,92,246,0.18);color:var(--nn-violet-primary)}
+.sw-p10{background:var(--nn-pink-10);border:1px solid rgba(217,70,239,0.18);color:var(--nn-pink-primary)}
+.sw-s{background:var(--nn-success-10);border:1px solid rgba(52,168,83,0.2);color:var(--nn-success)}
+.sw-w{background:var(--nn-warning-10);border:1px solid rgba(251,188,5,0.2);color:var(--nn-warning)}
+.sw-e{background:var(--nn-error-10);border:1px solid rgba(234,67,53,0.2);color:var(--nn-error)}
+
+/* Gradient showcase */
+.grad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.grad-card{height:80px;border-radius:var(--nn-r-lg);display:flex;align-items:flex-end;padding:12px 14px;font-family:var(--nn-font-m);font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.04em;position:relative;overflow:hidden}
+.gc-g{background:var(--nn-grad-g)}
+.gc-bv{background:var(--nn-grad-blue-v)}
+.gc-vp{background:var(--nn-grad-v-pink)}
+.gc-bc{background:var(--nn-grad-blue-cyan)}
+.gc-surface{background:var(--nn-grad-surface-strong);border:1px solid transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box, var(--nn-border-grad) border-box}
+.gc-surface span{background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Type spec */
+.type-spec{border:1px solid transparent;border-radius:var(--nn-r-lg);overflow:hidden;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-subtle) border-box}
+.type-row{display:grid;grid-template-columns:100px 1fr 90px;align-items:center;padding:12px 16px;gap:14px;border-bottom:1px solid var(--nn-b0);transition:background var(--nn-t-fast)}
+.type-row:last-child{border-bottom:none}
+.type-row:hover{background:rgba(255,255,255,0.02)}
+.t-tok{font-family:var(--nn-font-m);font-size:9.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.t-spec{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t3);text-align:right}
+
+/* Spacing */
+.sp-row{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.sp-tok{font-family:var(--nn-font-m);font-size:9.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;width:58px;flex-shrink:0}
+.sp-bar-w{flex:1;height:22px;display:flex;align-items:center}
+.sp-bar{height:14px;background:var(--nn-grad-blue-v);border-radius:4px;opacity:0.65;transition:opacity var(--nn-t-fast)}
+.sp-row:hover .sp-bar{opacity:1}
+.sp-val{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t3);width:44px;text-align:right;flex-shrink:0}
+
+/* Radius grid */
+.radius-grid{display:flex;gap:10px;flex-wrap:wrap}
+.radius-card{display:flex;flex-direction:column;align-items:center;gap:9px;padding:16px;border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-subtle) border-box;border-radius:var(--nn-r-lg);min-width:88px}
+.r-box{width:48px;height:48px;background:var(--nn-grad-surface-strong)}
+.r-tok{font-family:var(--nn-font-m);font-size:9px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.r-val{font-size:10px;color:var(--nn-t3)}
+
+/* Elevation */
+.elev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
+.elev-card{padding:20px 16px;border-radius:var(--nn-r-lg);transition:transform var(--nn-t-base)}
+.elev-card:hover{transform:translateY(-3px)}
+.e-lv{font-family:var(--nn-font-m);font-size:9.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:5px}
+.e-name{font-family:var(--nn-font-d);font-size:14px;font-weight:600;color:var(--nn-t1);margin-bottom:6px}
+.e-p{font-size:11.5px;color:var(--nn-t3);line-height:1.5}
+
+/* Glow demos */
+.glow-grid{display:flex;gap:12px;flex-wrap:wrap}
+.glow-chip{display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 16px;border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-subtle) border-box;border-radius:var(--nn-r-lg);min-width:110px}
+.g-dot{width:38px;height:38px;border-radius:50%}
+.g-lbl{font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t3);text-align:center}
+
+/* Principles grid */
+.principles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.principle-card{padding:20px;border-radius:var(--nn-r-lg);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-subtle) border-box;position:relative;overflow:hidden;transition:all var(--nn-t-base)}
+.principle-card:hover{border-color:transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box, var(--nn-border-grad) border-box;transform:translateY(-2px)}
+.principle-ico{font-size:22px;margin-bottom:10px}
+.principle-h{font-family:var(--nn-font-d);font-size:13.5px;font-weight:600;color:var(--nn-t1);margin-bottom:5px;letter-spacing:-0.015em}
+.principle-p{font-size:11.5px;color:var(--nn-t3);line-height:1.55;font-weight:400}
+
+/* Text scale */
+.txt-row{display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:var(--nn-r-sm);background:rgba(255,255,255,0.02);border:1px solid var(--nn-b0);margin-bottom:6px}
+
+@media(max-width:959px){.sb{transform:translateX(-100%)}.ds-main{margin-left:0}.pg{padding:24px 20px 60px}}
+
+/* ── Lucide Icons ── */
+i[data-lucide]{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1}
+i[data-lucide].nav-ico{width:14px;height:14px}
+i[data-lucide].nav-ico svg{width:14px;height:14px;stroke-width:1.75}
+i[data-lucide].nav-ext{margin-left:auto;opacity:0.18}
+i[data-lucide].nav-ext svg{width:10px;height:10px;stroke-width:2}
+i[data-lucide].icon-sm svg{width:12px;height:12px;stroke-width:2}
+i[data-lucide].icon-md svg{width:16px;height:16px;stroke-width:1.75}
+i[data-lucide].icon-lg svg{width:20px;height:20px;stroke-width:1.75}
+i[data-lucide].icon-xl svg{width:24px;height:24px;stroke-width:1.5}
+i[data-lucide].nn-search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--nn-t3)}
+i[data-lucide].nn-search-ico svg{width:15px;height:15px;stroke-width:1.5}
+i[data-lucide].orb-icon{width:36px;height:36px;color:rgba(255,255,255,0.88)}
+i[data-lucide].orb-icon svg{width:36px;height:36px;stroke-width:1.5}
+
+/* ── Icon containers — Lucide ── */
+.principle-ico i[data-lucide] svg,.principle-ico i[data-lucide] svg{width:22px;height:22px;stroke-width:1.75}
+.qcard-ico i[data-lucide] svg{width:18px;height:18px;stroke-width:1.75}
+.stat-icon i[data-lucide] svg,.card-icon i[data-lucide] svg{width:18px;height:18px;stroke-width:1.75}
+.principle-ico{font-size:0}
+.qcard-ico{font-size:0}
+.stat-icon{font-size:0}
+.card-icon{font-size:0}
+</style>
+</head>
+<body>
+<div class="ds">
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sb" id="sb">
+  <div class="sb-logo">
+    <a class="sb-logo-inner" href="#" onclick="go('overview');return false">
+      <div class="sb-mark">N∞</div>
+      <div><span class="sb-name">Neural Angular</span><span class="sb-ver">v1.2 · AM22</span></div>
+    </a>
+  </div>
+  <div class="sb-nav">
+    <div class="nav-grp">
+      <span class="nav-lbl">Sistema</span>
+      <a class="nav-a on" data-p="overview" onclick="go('overview');return false" href="#">
+        <i data-lucide="house" class="nav-ico"></i>
+        Overview <span class="nav-badge">v1.2</span>
+      </a>
+    </div>
+    <div class="nav-grp">
+      <span class="nav-lbl">Foundation</span>
+      <a class="nav-a" data-p="colors" onclick="go('colors');return false" href="#">
+        <i data-lucide="palette" class="nav-ico"></i>
+        Colores & Gradientes
+      </a>
+      <a class="nav-a" data-p="typography" onclick="go('typography');return false" href="#">
+        <i data-lucide="type" class="nav-ico"></i>
+        Tipografía
+      </a>
+      <a class="nav-a" data-p="spacing" onclick="go('spacing');return false" href="#">
+        <i data-lucide="ruler" class="nav-ico"></i>
+        Spacing & Radius
+      </a>
+      <a class="nav-a" data-p="elevation" onclick="go('elevation');return false" href="#">
+        <i data-lucide="layers" class="nav-ico"></i>
+        Elevación & Glow
+      </a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="nav-grp">
+      <span class="nav-lbl">Componentes</span>
+      <a class="nav-a" href="components.html">
+        <i data-lucide="layout-grid" class="nav-ico"></i>
+        Buttons & Forms <i data-lucide="chevron-right" class="nav-ext"></i>
+      </a>
+      <a class="nav-a" href="components.html#cards">
+        <i data-lucide="credit-card" class="nav-ico"></i>
+        Cards & Navigation <i data-lucide="chevron-right" class="nav-ext"></i>
+      </a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-divider"></div>
+    <div class="nav-grp">
+      <span class="nav-lbl">Apps</span>
+      <a class="nav-a" href="Oroya Components.html">
+        <i data-lucide="video" class="nav-ico"></i>
+        Oroya Video Components <i data-lucide="chevron-right" class="nav-ext"></i>
+      </a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="nav-grp">
+      <span class="nav-lbl">AI Patterns</span>
+      <a class="nav-a" href="ai-patterns.html">
+        <i data-lucide="bot" class="nav-ico"></i>
+        Voice, Chat & Canvas <i data-lucide="chevron-right" class="nav-ext"></i>
+      </a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="nav-grp">
+      <span class="nav-lbl">Data</span>
+      <a class="nav-a" href="data-patterns.html">
+        <i data-lucide="trending-up" class="nav-ico"></i>
+        Charts & Tables <i data-lucide="chevron-right" class="nav-ext"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="ds-main" id="main">
+
+<!-- OVERVIEW -->
+<article class="pg on" id="pg-overview">
+  <div class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="hero-blob hero-blob-3"></div>
+      <canvas id="heroCanvas"></canvas>
+    </div>
+    <div class="hero-inner" id="heroInner">
+      <div class="hero-tag">Angular Material v22 · GSAP 3 · CDK · PWA</div>
+      <h1 class="hero-title">Neural Angular</h1>
+      <p class="hero-sub">Sistema de diseño para interfaces multiplataforma de IA.</p>
+      <div class="hero-chips">
+        <span class="hero-chip">Angular 22</span>
+        <span class="hero-chip">Material CDK</span>
+        <span class="hero-chip">GSAP 3.12</span>
+        <span class="hero-chip">Dark-first</span>
+        <span class="hero-chip">PWA-ready</span>
+        <span class="hero-chip">TypeScript</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph">
+    <div class="ph-tag">// Design System v1.2</div>
+    <h2 class="ph-h1 g-text-soft">Guía del Sistema</h2>
+    <p class="ph-p">Tokens, componentes y patrones AI para Angular Material v22 con animaciones GSAP y soporte multiplataforma desktop, tablet y mobile PWA.</p>
+  </div>
+
+  <div class="sec">
+    <h3 class="sec-h">Secciones</h3>
+    <div class="qnav">
+      <a class="qcard" onclick="go('colors');return false" href="#">
+        <div class="qcard-ico"><i data-lucide="palette"></i></div>
+        <div class="qcard-h">Foundation</div>
+        <div class="qcard-p">Colores Gemini, gradientes, tipografía, spacing y elevación.</div>
+        <div class="qcard-c">→ 90+ tokens · 6 gradientes</div>
+      </a>
+      <a class="qcard b" href="components.html">
+        <div class="qcard-ico"><i data-lucide="layout-grid"></i></div>
+        <div class="qcard-h">Componentes</div>
+        <div class="qcard-p">Buttons con gradiente, inputs, cards, chips, nav y dialogs.</div>
+        <div class="qcard-c">→ 40+ componentes · mat-* compat</div>
+      </a>
+      <a class="qcard v" href="ai-patterns.html">
+        <div class="qcard-ico"><i data-lucide="bot"></i></div>
+        <div class="qcard-h">AI Patterns</div>
+        <div class="qcard-p">Voice orb Gemini, waveform, chat, neural canvas, streaming.</div>
+        <div class="qcard-c">→ 7 patrones · GSAP animados</div>
+      </a>
+      <a class="qcard" href="data-patterns.html">
+        <div class="qcard-ico"><i data-lucide="bar-chart-3"></i></div>
+        <div class="qcard-h">Data Patterns</div>
+        <div class="qcard-p">Charts con gradient area, progress, calendario y tablas.</div>
+        <div class="qcard-c">→ 5 patrones · Canvas + CSS</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3 class="sec-h">Principios de Diseño</h3>
+    <div class="principles-grid">
+      <div class="principle-card"><div class="principle-ico"><i data-lucide="zap"></i></div><div class="principle-h">Neural-first</div><div class="principle-p">Cada interacción comunica inteligencia. Feedback inmediato, estados AI visibles.</div></div>
+      <div class="principle-card"><div class="principle-ico"><i data-lucide="moon"></i></div><div class="principle-h">Dark by Default</div><div class="principle-p">Fondos azul-negro Gemini. Reduce fatiga visual en uso prolongado.</div></div>
+      <div class="principle-card"><div class="principle-ico"><i data-lucide="sparkles"></i></div><div class="principle-h">Gradient-driven</div><div class="principle-p">Gradientes multi-stop en bordes, texto, botones y fondos de superficie.</div></div>
+      <div class="principle-card"><div class="principle-ico"><i data-lucide="grid-3x3"></i></div><div class="principle-h">4px Grid</div><div class="principle-p">Espaciado en múltiplos de 4px. Compatible con Material density system.</div></div>
+      <div class="principle-card"><div class="principle-ico"><i data-lucide="refresh-cw"></i></div><div class="principle-h">Motion Meaningful</div><div class="principle-p">GSAP para transiciones con propósito. Nunca decorativo sin contexto semántico.</div></div>
+      <div class="principle-card"><div class="principle-ico"><i data-lucide="monitor-smartphone"></i></div><div class="principle-h">Multiplataforma</div><div class="principle-p">Desktop, tablet y mobile PWA. Material breakpoints. Touch 44px+.</div></div>
+    </div>
+  </div>
+</article>
+
+<!-- COLORS -->
+<article class="pg" id="pg-colors">
+  <div class="ph"><div class="ph-tag">// Foundation · 01</div><h2 class="ph-h1 g-text-soft">Colores & Gradientes</h2><p class="ph-p">Paleta Gemini dark: fondos azul-negro, primario Google Blue, violet y pink como degradados. Mapeo <code style="font-family:var(--nn-font-m);font-size:12px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent">--mat-sys-*</code> completo.</p></div>
+
+  <div class="sec">
+    <h3 class="sec-h">Gemini Gradient System</h3>
+    <div class="grad-grid">
+      <div class="grad-card gc-g"><span>--nn-grad-g<br>Blue → Violet → Pink → Red</span></div>
+      <div class="grad-card gc-bv"><span>--nn-grad-blue-v<br>Google Blue → Gemini Violet</span></div>
+      <div class="grad-card gc-vp"><span>--nn-grad-v-pink<br>Gemini Violet → Pink</span></div>
+      <div class="grad-card gc-bc"><span>--nn-grad-blue-cyan<br>Google Blue → Cyan</span></div>
+      <div class="grad-card gc-surface"><span>--nn-grad-surface<br>Gradient surface tint</span></div>
+      <div class="grad-card" style="background:var(--nn-grad-g-soft)"><span>--nn-grad-g-soft<br>Soft opacity variant</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3 class="sec-h">Backgrounds & Surfaces</h3>
+    <div class="pal"><div class="pal-lbl">6 niveles — azul-negro a surface-4</div>
+      <div class="swatches">
+        <div class="sw sw-canvas"><span style="color:rgba(255,255,255,0.35)">bg-canvas<br>#06060E</span></div>
+        <div class="sw sw-base"><span style="color:rgba(255,255,255,0.3)">bg-base<br>#0A0A15</span></div>
+        <div class="sw sw-s1"><span style="color:rgba(255,255,255,0.4)">surface-1<br>#0F0F1C</span></div>
+        <div class="sw sw-s2"><span style="color:rgba(255,255,255,0.45)">surface-2<br>#141426</span></div>
+        <div class="sw sw-s3"><span style="color:rgba(255,255,255,0.5)">surface-3<br>#1A1A2E</span></div>
+        <div class="sw sw-s4"><span style="color:rgba(255,255,255,0.5)">surface-4<br>#202038</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3 class="sec-h">Paleta de Acento</h3>
+    <div class="pal"><div class="pal-lbl">Gemini 4-stop: Google Blue · Violet · Pink + 10% tints</div>
+      <div class="swatches">
+        <div class="sw sw-g"><span style="color:rgba(0,0,0,0.65)">Gemini Gradient</span></div>
+        <div class="sw sw-b"><span style="color:#fff">Blue<br>#4285F4</span></div>
+        <div class="sw sw-v"><span style="color:#fff">Violet<br>#7B5CF6</span></div>
+        <div class="sw sw-p"><span style="color:#fff">Pink<br>#D946EF</span></div>
+        <div class="sw sw-b10"><span>Blue 10%</span></div>
+        <div class="sw sw-v10"><span>Violet 10%</span></div>
+        <div class="sw sw-p10"><span>Pink 10%</span></div>
+      </div>
+    </div>
+    <div class="pal" style="margin-top:10px"><div class="pal-lbl">Google Status Colors</div>
+      <div class="swatches">
+        <div class="sw sw-s"><span>Success<br>#34A853</span></div>
+        <div class="sw sw-w"><span>Warning<br>#FBBC05</span></div>
+        <div class="sw sw-e"><span>Error<br>#EA4335</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3 class="sec-h">Escala de Texto</h3>
+    <div class="txt-row"><span style="font-family:var(--nn-font-m);font-size:9.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;width:46px">--nn-t1</span><span style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.92)">Primary — rgba(255,255,255, 0.92)</span><span style="font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t3);margin-left:auto">92%</span></div>
+    <div class="txt-row"><span style="font-family:var(--nn-font-m);font-size:9.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;width:46px">--nn-t2</span><span style="font-size:14px;color:rgba(255,255,255,0.58)">Secondary — rgba(255,255,255, 0.58)</span><span style="font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t3);margin-left:auto">58%</span></div>
+    <div class="txt-row"><span style="font-family:var(--nn-font-m);font-size:9.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;width:46px">--nn-t3</span><span style="font-size:14px;color:rgba(255,255,255,0.34)">Tertiary / Placeholder — rgba(255,255,255, 0.34)</span><span style="font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t3);margin-left:auto">34%</span></div>
+    <div class="txt-row"><span style="font-family:var(--nn-font-m);font-size:9.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;width:46px">--nn-t4</span><span style="font-size:14px;color:rgba(255,255,255,0.16)">Disabled — rgba(255,255,255, 0.16)</span><span style="font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t3);margin-left:auto">16%</span></div>
+  </div>
+</article>
+
+<!-- TYPOGRAPHY -->
+<article class="pg" id="pg-typography">
+  <div class="ph"><div class="ph-tag">// Foundation · 02</div><h2 class="ph-h1 g-text-soft">Tipografía</h2><p class="ph-p">Plus Jakarta Sans como única familia sans-serif — display, UI y cuerpo. JetBrains Mono para código y datos. Pesos 300–800.</p></div>
+  <div class="sec">
+    <h3 class="sec-h">Familias Tipográficas</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="padding:24px;border-radius:var(--nn-r-xl);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box">
+        <div style="font-family:var(--nn-font-m);font-size:9px;margin-bottom:14px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent">--nn-font-d / b · Plus Jakarta Sans</div>
+        <div style="font-family:'Plus Jakarta Sans';font-size:32px;font-weight:800;letter-spacing:-0.03em;color:var(--nn-t1);line-height:1.1;margin-bottom:6px">Aa Bb Cc</div>
+        <div style="font-size:22px;font-weight:300;color:var(--nn-t2);margin-bottom:12px">Thin · Light · Regular</div>
+        <div style="font-size:13px;color:var(--nn-t3);line-height:1.55;font-weight:400">Display · Titulares · Body · Labels<br>Weights: 300 400 500 600 700 800</div>
+      </div>
+      <div style="padding:24px;border-radius:var(--nn-r-xl);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-v) border-box">
+        <div style="font-family:var(--nn-font-m);font-size:9px;margin-bottom:14px;background:var(--nn-grad-v-pink);-webkit-background-clip:text;-webkit-text-fill-color:transparent">--nn-font-m · JetBrains Mono</div>
+        <div style="font-family:'JetBrains Mono';font-size:28px;font-weight:600;letter-spacing:-0.02em;color:var(--nn-t1);line-height:1.1;margin-bottom:6px">01 &lt;code&gt;</div>
+        <div style="font-family:'JetBrains Mono';font-size:18px;font-weight:400;color:var(--nn-t2);margin-bottom:12px">3.14 · AI · JSON</div>
+        <div style="font-size:13px;color:var(--nn-t3);line-height:1.55;font-weight:400">Código · Tokens · IDs · Datos<br>Weights: 400 500 600</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <h3 class="sec-h">Escala Tipográfica</h3>
+    <div class="type-spec">
+      <div class="type-row"><span class="t-tok">sz-64</span><span style="font-family:var(--nn-font-d);font-size:52px;font-weight:800;letter-spacing:-0.04em;line-height:1;background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Neural</span><span class="t-spec">64px · 800</span></div>
+      <div class="type-row"><span class="t-tok">sz-48</span><span style="font-family:var(--nn-font-d);font-size:40px;font-weight:700;letter-spacing:-0.035em;color:var(--nn-t1);line-height:1">Display XL</span><span class="t-spec">48px · 700</span></div>
+      <div class="type-row"><span class="t-tok">sz-36</span><span style="font-family:var(--nn-font-d);font-size:32px;font-weight:600;letter-spacing:-0.028em;color:var(--nn-t1)">Heading Display</span><span class="t-spec">36px · 600</span></div>
+      <div class="type-row"><span class="t-tok">sz-28</span><span style="font-family:var(--nn-font-d);font-size:25px;font-weight:600;letter-spacing:-0.022em;color:var(--nn-t1)">Heading 1 — Sección principal</span><span class="t-spec">28px · 600</span></div>
+      <div class="type-row"><span class="t-tok">sz-24</span><span style="font-family:var(--nn-font-d);font-size:21px;font-weight:500;letter-spacing:-0.018em;color:var(--nn-t1)">Heading 2 — Sub-sección</span><span class="t-spec">24px · 500</span></div>
+      <div class="type-row"><span class="t-tok">sz-20</span><span style="font-family:var(--nn-font-d);font-size:18px;font-weight:500;letter-spacing:-0.014em;color:var(--nn-t1)">Heading 3 — Panel o tarjeta</span><span class="t-spec">20px · 500</span></div>
+      <div class="type-row"><span class="t-tok">sz-16</span><span style="font-size:16px;font-weight:400;color:var(--nn-t1)">Body Large — El modelo procesa la solicitud con redes neuronales.</span><span class="t-spec">16px · 400</span></div>
+      <div class="type-row"><span class="t-tok">sz-14</span><span style="font-size:14px;font-weight:400;color:var(--nn-t2)">Body Medium — Descripción secundaria con contexto de soporte adicional.</span><span class="t-spec">14px · 400</span></div>
+      <div class="type-row"><span class="t-tok">sz-13</span><span style="font-size:13px;font-weight:500;color:var(--nn-t2)">Label · Estado del sistema · Etiqueta de componente</span><span class="t-spec">13px · 500</span></div>
+      <div class="type-row"><span class="t-tok">sz-11</span><span style="font-size:11px;font-weight:600;color:var(--nn-t3);letter-spacing:0.06em;text-transform:uppercase">CAPTION · OVERLINE · METADATA</span><span class="t-spec">11px · 600</span></div>
+      <div class="type-row"><span class="t-tok">mono</span><span style="font-family:var(--nn-font-m);font-size:13px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent">const model = await neural.process(input, { stream: true });</span><span class="t-spec">13px · mono</span></div>
+    </div>
+  </div>
+</article>
+
+<!-- SPACING -->
+<article class="pg" id="pg-spacing">
+  <div class="ph"><div class="ph-tag">// Foundation · 03</div><h2 class="ph-h1 g-text-soft">Spacing & Radius</h2><p class="ph-p">Grid de 4px para espaciado consistente. Sistema de radios del sharp al pill. Compatible con Angular CDK layout.</p></div>
+  <div class="sec">
+    <h3 class="sec-h">Escala de Espaciado — 4px grid</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 32px">
+      <div class="sp-row"><span class="sp-tok">--nn-s1</span><div class="sp-bar-w"><div class="sp-bar" style="width:4px"></div></div><span class="sp-val">4px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s10</span><div class="sp-bar-w"><div class="sp-bar" style="width:80px"></div></div><span class="sp-val">40px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s2</span><div class="sp-bar-w"><div class="sp-bar" style="width:8px"></div></div><span class="sp-val">8px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s12</span><div class="sp-bar-w"><div class="sp-bar" style="width:96px"></div></div><span class="sp-val">48px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s3</span><div class="sp-bar-w"><div class="sp-bar" style="width:12px"></div></div><span class="sp-val">12px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s14</span><div class="sp-bar-w"><div class="sp-bar" style="width:112px"></div></div><span class="sp-val">56px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s4</span><div class="sp-bar-w"><div class="sp-bar" style="width:16px"></div></div><span class="sp-val">16px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s16</span><div class="sp-bar-w"><div class="sp-bar" style="width:132px"></div></div><span class="sp-val">64px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s5</span><div class="sp-bar-w"><div class="sp-bar" style="width:20px"></div></div><span class="sp-val">20px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s20</span><div class="sp-bar-w"><div class="sp-bar" style="width:160px"></div></div><span class="sp-val">80px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s6</span><div class="sp-bar-w"><div class="sp-bar" style="width:24px"></div></div><span class="sp-val">24px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s24</span><div class="sp-bar-w"><div class="sp-bar" style="width:192px"></div></div><span class="sp-val">96px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s8</span><div class="sp-bar-w"><div class="sp-bar" style="width:32px"></div></div><span class="sp-val">32px</span></div>
+      <div class="sp-row"><span class="sp-tok">--nn-s32</span><div class="sp-bar-w"><div class="sp-bar" style="width:220px"></div></div><span class="sp-val">128px</span></div>
+    </div>
+  </div>
+  <div class="sec">
+    <h3 class="sec-h">Border Radius</h3>
+    <div class="radius-grid">
+      <div class="radius-card"><div class="r-box" style="border-radius:0"></div><div class="r-tok">r-none</div><div class="r-val">0 · Sharp</div></div>
+      <div class="radius-card"><div class="r-box" style="border-radius:4px"></div><div class="r-tok">r-xs</div><div class="r-val">4px</div></div>
+      <div class="radius-card"><div class="r-box" style="border-radius:8px"></div><div class="r-tok">r-sm</div><div class="r-val">8px</div></div>
+      <div class="radius-card"><div class="r-box" style="border-radius:12px"></div><div class="r-tok">r-md</div><div class="r-val">12px</div></div>
+      <div class="radius-card"><div class="r-box" style="border-radius:16px"></div><div class="r-tok">r-lg</div><div class="r-val">16px</div></div>
+      <div class="radius-card"><div class="r-box" style="border-radius:20px"></div><div class="r-tok">r-xl</div><div class="r-val">20px</div></div>
+      <div class="radius-card"><div class="r-box" style="border-radius:28px"></div><div class="r-tok">r-2xl</div><div class="r-val">28px</div></div>
+      <div class="radius-card"><div class="r-box" style="border-radius:999px;width:48px;height:22px;margin:13px 0"></div><div class="r-tok">r-full</div><div class="r-val">Pill</div></div>
+    </div>
+  </div>
+</article>
+
+<!-- ELEVATION -->
+<article class="pg" id="pg-elevation">
+  <div class="ph"><div class="ph-tag">// Foundation · 04</div><h2 class="ph-h1 g-text-soft">Elevación & Glow</h2><p class="ph-p">5 niveles de sombra oscura. Gradient glow shadows para estados activos y componentes AI.</p></div>
+  <div class="sec">
+    <h3 class="sec-h">Gradient Card Borders — Top Acento</h3>
+    <p style="font-size:12.5px;color:var(--nn-t3);margin-bottom:18px;line-height:1.6">Los bordes de gradiente se implementan con <code style="font-family:var(--nn-font-m)">padding-box / border-box</code>. Los tres acentos del sistema.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+      <div style="padding:20px;border-radius:var(--nn-r-lg);background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box;border:1px solid transparent">
+        <div style="font-family:var(--nn-font-m);font-size:9px;background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">Gemini Gradient</div>
+        <div style="font-family:var(--nn-font-d);font-size:15px;font-weight:600;color:var(--nn-t1);margin-bottom:5px">nn-card</div>
+        <div style="font-size:12px;color:var(--nn-t3)">Default. Componentes principales.</div>
+      </div>
+      <div style="padding:20px;border-radius:var(--nn-r-lg);background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-b) border-box;border:1px solid transparent">
+        <div style="font-family:var(--nn-font-m);font-size:9px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">Blue → Violet</div>
+        <div style="font-family:var(--nn-font-d);font-size:15px;font-weight:600;color:var(--nn-t1);margin-bottom:5px">nn-card--blue</div>
+        <div style="font-size:12px;color:var(--nn-t3)">Información, analytics, secundario.</div>
+      </div>
+      <div style="padding:20px;border-radius:var(--nn-r-lg);background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-v) border-box;border:1px solid transparent">
+        <div style="font-family:var(--nn-font-m);font-size:9px;background:var(--nn-grad-v-pink);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">Violet → Pink</div>
+        <div style="font-family:var(--nn-font-d);font-size:15px;font-weight:600;color:var(--nn-t1);margin-bottom:5px">nn-card--violet</div>
+        <div style="font-size:12px;color:var(--nn-t3)">AI outputs, modelos especiales.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <h3 class="sec-h">Niveles de Elevación</h3>
+    <div class="elev-grid">
+      <div class="elev-card" style="background:var(--nn-surface-1);border:1px solid var(--nn-b0);box-shadow:none"><div class="e-lv">elev-0</div><div class="e-name">Level 0</div><div class="e-p">Sin sombra. Canvas, elementos flat.</div></div>
+      <div class="elev-card" style="background:var(--nn-surface-1);border:1px solid var(--nn-b0);box-shadow:var(--nn-elev-1)"><div class="e-lv">elev-1</div><div class="e-name">Level 1</div><div class="e-p">Chips, badges.</div></div>
+      <div class="elev-card" style="background:var(--nn-surface-2);border:1px solid var(--nn-b0);box-shadow:var(--nn-elev-2)"><div class="e-lv">elev-2</div><div class="e-name">Level 2</div><div class="e-p">Cards, paneles.</div></div>
+      <div class="elev-card" style="background:var(--nn-surface-2);box-shadow:var(--nn-elev-3)"><div class="e-lv">elev-3</div><div class="e-name">Level 3</div><div class="e-p">Dropdowns.</div></div>
+      <div class="elev-card" style="background:var(--nn-surface-3);box-shadow:var(--nn-elev-4)"><div class="e-lv">elev-4</div><div class="e-name">Level 4</div><div class="e-p">Modales, drawers.</div></div>
+      <div class="elev-card" style="background:var(--nn-surface-4);box-shadow:var(--nn-elev-5)"><div class="e-lv">elev-5</div><div class="e-name">Level 5</div><div class="e-p">Toasts, tooltips.</div></div>
+    </div>
+  </div>
+  <div class="sec">
+    <h3 class="sec-h">Gradient Glow — Neural Highlight</h3>
+    <div class="glow-grid">
+      <div class="glow-chip"><div class="g-dot" style="background:var(--nn-blue-primary);box-shadow:var(--nn-glow-teal-md)"></div><div class="g-lbl">glow-blue-md</div></div>
+      <div class="glow-chip"><div class="g-dot" style="background:var(--nn-violet-primary);box-shadow:var(--nn-glow-blue-md)"></div><div class="g-lbl">glow-violet-md</div></div>
+      <div class="glow-chip"><div class="g-dot" style="background:var(--nn-pink-primary);box-shadow:var(--nn-glow-violet-md)"></div><div class="g-lbl">glow-pink-md</div></div>
+      <div class="glow-chip"><div class="g-dot" style="background:var(--nn-grad-g);background:linear-gradient(135deg,#4F8EFF,#D946EF);box-shadow:var(--nn-glow-g-sm)"></div><div class="g-lbl">glow-gemini</div></div>
+      <div class="glow-chip"><div class="g-dot" style="background:var(--nn-success);box-shadow:var(--nn-glow-success-sm)"></div><div class="g-lbl">glow-success</div></div>
+      <div class="glow-chip"><div class="g-dot" style="background:var(--nn-error);box-shadow:var(--nn-glow-error-sm)"></div><div class="g-lbl">glow-error</div></div>
+    </div>
+  </div>
+</article>
+
+</main>
+</div>
+
+<script>
+// ── Neural Canvas ──
+(function(){
+  const cv=document.getElementById('heroCanvas');if(!cv)return;
+  const ctx=cv.getContext('2d');
+  let nodes=[],W,H;
+  const N=60,D=130;
+  const COLS=[[79,142,255],[123,92,246],[217,70,239]];
+  function resize(){const p=cv.parentElement;W=cv.width=p.offsetWidth;H=cv.height=p.offsetHeight}
+  function spawn(){nodes=[];for(let i=0;i<N;i++){const c=COLS[i%COLS.length];nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.32,vy:(Math.random()-.5)*.32,r:Math.random()*1.5+.6,a:Math.random()*.4+.15,c})}}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const n=nodes[i],m=nodes[j],dx=n.x-m.x,dy=n.y-m.y,d=Math.sqrt(dx*dx+dy*dy);if(d<D){const a=(1-d/D)*.18;const mc=n.c;ctx.strokeStyle=`rgba(${mc[0]},${mc[1]},${mc[2]},${a})`;ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(n.x,n.y);ctx.lineTo(m.x,m.y);ctx.stroke()}}}
+    nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0)n.x=W;if(n.x>W)n.x=0;if(n.y<0)n.y=H;if(n.y>H)n.y=0;ctx.fillStyle=`rgba(${n.c[0]},${n.c[1]},${n.c[2]},${n.a})`;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fill()});
+    requestAnimationFrame(draw);
+  }
+  resize();spawn();draw();
+  new ResizeObserver(()=>{resize();spawn()}).observe(cv.parentElement);
+})();
+
+// ── Navigation ──
+const pages={};
+document.querySelectorAll('.pg').forEach(p=>pages[p.id.replace('pg-','')]=p);
+function go(id){
+  Object.values(pages).forEach(p=>p.classList.remove('on'));
+  const t=pages[id];if(!t)return;
+  t.classList.add('on');
+  document.querySelectorAll('.nav-a[data-p]').forEach(a=>a.classList.toggle('on',a.dataset.p===id));
+  if(window.lucide)lucide.createIcons();
+  if(window.gsap){
+    gsap.fromTo(t,{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:'power2.out'});
+    gsap.fromTo(t.querySelectorAll('.sec,.qcard,.grad-card,.type-row,.radius-card,.glow-chip,.pal,.principle-card,.elev-card'),{opacity:0,y:18},{opacity:1,y:0,duration:.45,stagger:.04,ease:'power2.out',delay:.06});
+  }
+  const m=document.getElementById('main');if(m)m.scrollTop=0;window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',()=>go(location.hash.replace('#','')||'overview'));
+go(location.hash.replace('#','')||'overview');
+if(window.gsap){
+  gsap.fromTo('#heroInner > *',{opacity:0,y:20},{opacity:1,y:0,duration:.8,stagger:.1,ease:'power3.out',delay:.2});
+}
+
+// Init Lucide icons
+if(window.lucide)lucide.createIcons();
+</script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Angular — Data Patterns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="nn-tokens.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--nn-font-b);background:var(--nn-bg-canvas);color:var(--nn-t1);min-height:100vh;-webkit-font-smoothing:antialiased}
+.g-text{background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.g-text-soft{background:linear-gradient(135deg,#fff 0%,#a5bfff 30%,#c4b0ff 60%,#f0abfc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ds{display:flex;min-height:100vh}
+.sb{width:256px;flex-shrink:0;position:fixed;inset:0 auto 0 0;background:linear-gradient(180deg,#08081A,#06060E);border-right:1px solid rgba(66,133,244,0.10);display:flex;flex-direction:column;overflow-y:auto;z-index:200}
+.sb::-webkit-scrollbar{width:3px}.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:3px}
+.sb-logo{padding:18px 16px 16px}
+.sb-logo-inner{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.sb-mark{width:36px;height:36px;border-radius:10px;background:var(--nn-grad-g);display:flex;align-items:center;justify-content:center;font-family:var(--nn-font-d);font-size:14px;font-weight:800;color:#fff;flex-shrink:0;position:relative}
+.sb-mark::after{content:'';position:absolute;inset:-3px;border-radius:13px;background:var(--nn-grad-g-soft);filter:blur(10px);opacity:0.45;z-index:-1}
+.sb-name{font-family:var(--nn-font-d);font-size:13px;font-weight:700;letter-spacing:-0.02em;display:block;line-height:1.15}
+.sb-ver{font-family:var(--nn-font-m);font-size:9px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sb-nav{padding:6px 0 28px;flex:1}
+.nav-grp{margin-bottom:4px}
+.nav-lbl{display:block;font-size:9.5px;font-weight:700;color:var(--nn-t4);text-transform:uppercase;letter-spacing:0.12em;padding:12px 18px 4px}
+.nav-a{display:flex;align-items:center;gap:9px;padding:7px 18px;color:var(--nn-t3);font-size:12.5px;font-weight:450;text-decoration:none;cursor:pointer;transition:all 150ms;position:relative;user-select:none}
+.nav-a::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:2px;border-radius:0 2px 2px 0;background:var(--nn-grad-blue-v);opacity:0;transition:opacity 150ms}
+.nav-a:hover{color:var(--nn-t2);background:rgba(255,255,255,0.03)}
+.nav-a.on{background:linear-gradient(90deg,rgba(66,133,244,0.10),rgba(123,92,246,0.05),transparent);color:var(--nn-blue-bright)}
+.nav-a.on::before{opacity:1}
+.nav-ico{width:13px;height:13px;flex-shrink:0;opacity:0.45}.nav-a.on .nav-ico{opacity:1}
+.nav-ext{margin-left:auto;opacity:0.18;width:9px;height:9px}
+.sb-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);margin:6px 0}
+.ds-main{margin-left:256px;flex:1}
+.pg{display:none;padding:48px 60px 100px;max-width:1060px}
+.pg.on{display:block}
+.ph{margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--nn-b0)}
+.ph-tag{font-family:var(--nn-font-m);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ph-h1{font-family:var(--nn-font-d);font-size:34px;font-weight:700;letter-spacing:-0.03em;line-height:1.08}
+.ph-p{font-size:14px;color:var(--nn-t2);margin-top:10px;line-height:1.65;max-width:560px;font-weight:400}
+.sec{margin-bottom:56px}
+.sec-h{font-family:var(--nn-font-d);font-size:14.5px;font-weight:600;color:var(--nn-t1);margin-bottom:18px;display:flex;align-items:center;gap:12px;letter-spacing:-0.015em}
+.sec-h::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--nn-b1),transparent)}
+
+/* Stat cards */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:14px}
+.stat-card{padding:22px 18px;border-radius:var(--nn-r-lg);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box;transition:all 250ms;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;inset:0;background:var(--nn-grad-surface);opacity:0;transition:opacity 250ms}
+.stat-card:hover::before{opacity:1}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--nn-elev-3),var(--nn-glow-g-sm)}
+.stat-icon{width:36px;height:36px;border-radius:10px;background:var(--nn-grad-g);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:14px;position:relative;z-index:1}
+.stat-lbl{font-size:11.5px;color:var(--nn-t3);margin-bottom:6px;position:relative;z-index:1}
+.stat-val{font-family:var(--nn-font-d);font-size:28px;font-weight:700;letter-spacing:-0.04em;line-height:1;background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;z-index:1}
+.stat-trend{font-family:var(--nn-font-m);font-size:10.5px;margin-top:10px;position:relative;z-index:1}
+.trend-up{color:var(--nn-success)}.trend-dn{color:var(--nn-error)}.trend-neu{color:var(--nn-t3)}
+.stat-sub{font-size:10.5px;color:var(--nn-t4);margin-top:3px;position:relative;z-index:1}
+
+/* Mini stats */
+.mini-stat{padding:14px 16px;border-radius:var(--nn-r-md);border:1px solid transparent;position:relative}
+.ms-bv{background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-b) border-box}
+.ms-vp{background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-v) border-box}
+.ms-g{background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box}
+.mini-stat-lbl{font-size:10.5px;color:var(--nn-t3);margin-bottom:5px}
+.mini-stat-val{font-family:var(--nn-font-d);font-size:20px;font-weight:700;letter-spacing:-0.03em;background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* Chart card */
+.chart-card{border-radius:var(--nn-r-xl);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box;padding:24px;box-shadow:var(--nn-glow-g-sm)}
+.chart-val{font-family:var(--nn-font-d);font-size:30px;font-weight:700;letter-spacing:-0.04em;background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.chart-sub{font-size:11.5px;color:var(--nn-t3);margin-top:4px}
+.chart-tabs{display:flex;gap:4px;margin-bottom:16px;margin-top:18px}
+.c-tab{font-family:var(--nn-font-m);font-size:10.5px;padding:5px 12px;border-radius:99px;border:1px solid var(--nn-b1);background:transparent;color:var(--nn-t3);cursor:pointer;transition:all 150ms}
+.c-tab.on{border:1px solid transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box, var(--nn-border-grad-b) border-box;color:var(--nn-blue-primary)}
+.chart-canvas{width:100%;height:180px}
+.chart-footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--nn-b0)}
+.cf-val{font-family:var(--nn-font-d);font-size:15px;font-weight:600;color:var(--nn-t1);letter-spacing:-0.02em}
+.cf-lbl{font-size:11px;color:var(--nn-t3);margin-top:2px}
+.chart-tooltip{position:absolute;background:var(--nn-surface-3);border:1px solid transparent;border-radius:var(--nn-r-lg);padding:10px 14px;pointer-events:none;font-size:12px;box-shadow:var(--nn-elev-4);display:none;background:linear-gradient(var(--nn-surface-3),var(--nn-surface-3)) padding-box, var(--nn-border-grad-b) border-box}
+.chart-tooltip.show{display:block}
+.tt-date{font-family:var(--nn-font-m);font-size:10px;color:var(--nn-t3);margin-bottom:4px}
+.tt-val{font-family:var(--nn-font-d);font-size:17px;font-weight:700;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.03em}
+.tt-trend{font-size:10px;margin-top:2px}
+
+/* Calendar */
+.cal-card{border-radius:var(--nn-r-2xl);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box;overflow:hidden;box-shadow:var(--nn-glow-g-sm);max-width:360px}
+.cal-hdr{padding:20px 20px 12px;background:linear-gradient(180deg,var(--nn-surface-2),var(--nn-surface-1))}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;padding:0 2px}
+.cal-month{font-family:var(--nn-font-d);font-size:16px;font-weight:700;letter-spacing:-0.02em;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cal-nav-btn{width:30px;height:30px;border-radius:50%;border:1px solid transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box, var(--nn-border-subtle) border-box;color:var(--nn-t2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 150ms}
+.cal-nav-btn:hover{background:linear-gradient(var(--nn-surface-3),var(--nn-surface-3)) padding-box, var(--nn-border-grad-b) border-box;color:var(--nn-blue-primary)}
+.cal-body{padding:0 14px 16px}
+.cal-day-names{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px;margin-top:12px}
+.cal-dn{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t4);text-align:center;padding:5px 0;letter-spacing:0.04em}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-day-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.cal-day{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:13px;color:var(--nn-t2);cursor:pointer;transition:all 150ms;user-select:none}
+.cal-day:hover{background:rgba(255,255,255,0.06);color:var(--nn-t1)}
+.cal-day.other{color:var(--nn-t4)}
+.cal-day.today{background:var(--nn-grad-blue-v);color:#fff;font-weight:700;box-shadow:var(--nn-glow-teal-xs)}
+.cal-day.sel{background:var(--nn-grad-v-pink);color:#fff;font-weight:600}
+.cal-event{position:absolute;bottom:2px;width:4px;height:4px;border-radius:50%;background:var(--nn-grad-blue-v)}
+.cal-footer{padding:12px 20px;border-top:1px solid var(--nn-b0);display:flex;gap:10px;align-items:center;font-size:11px;color:var(--nn-t3)}
+.cal-dot{width:8px;height:8px;border-radius:50%;background:var(--nn-grad-blue-v)}
+
+/* Table */
+.tbl-wrap{border-radius:var(--nn-r-xl);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad) border-box;overflow:hidden;box-shadow:var(--nn-glow-g-sm)}
+.tbl-top{padding:16px 20px;border-bottom:1px solid var(--nn-b0);display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,var(--nn-surface-2),var(--nn-surface-1))}
+.tbl-title{font-family:var(--nn-font-d);font-size:15px;font-weight:600;color:var(--nn-t1);letter-spacing:-0.02em}
+.tbl-spacer{flex:1}
+.nn-table{width:100%;border-collapse:collapse;font-size:13px}
+.nn-table thead tr{border-bottom:1px solid var(--nn-b1)}
+.nn-table th{font-family:var(--nn-font-d);font-size:11px;font-weight:700;color:var(--nn-t3);text-transform:uppercase;letter-spacing:0.08em;padding:10px 16px;text-align:left;white-space:nowrap;cursor:pointer;transition:color 150ms;user-select:none}
+.nn-table th:hover{color:var(--nn-t1)}
+.nn-table th.asc::after{content:' ↑';background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nn-table th.desc::after{content:' ↓';background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nn-table tbody tr{border-bottom:1px solid var(--nn-b0);transition:background 150ms;cursor:pointer}
+.nn-table tbody tr:hover{background:rgba(66,133,244,0.04)}
+.nn-table tbody tr:last-child{border-bottom:none}
+.nn-table td{padding:12px 16px;color:var(--nn-t1);vertical-align:middle}
+.td-mono{font-family:var(--nn-font-m);font-size:11.5px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.td-dim{color:var(--nn-t2)}
+.td-r{text-align:right}
+.nn-badge{display:inline-flex;align-items:center;height:20px;padding:0 9px;border-radius:99px;font-family:var(--nn-font-m);font-size:10px;font-weight:600}
+.nb-s{background:var(--nn-success-10);color:var(--nn-success)}
+.nb-w{background:var(--nn-warning-10);color:var(--nn-warning)}
+.nb-e{background:var(--nn-error-10);color:var(--nn-error)}
+.nb-g{background:var(--nn-grad-g);color:#fff}
+.mini-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--nn-r-sm);background:transparent;border:1px solid var(--nn-b1);color:var(--nn-t3);cursor:pointer;transition:all 150ms}
+.mini-btn:hover{border:1px solid transparent;background:linear-gradient(var(--nn-surface-3),var(--nn-surface-3)) padding-box, var(--nn-border-grad-b) border-box;color:var(--nn-blue-primary)}
+.search-sm{position:relative}
+.search-sm input{height:32px;background:var(--nn-surface-2);border:1px solid var(--nn-b1);border-radius:99px;padding:0 12px 0 32px;font-family:var(--nn-font-b);font-size:12.5px;color:var(--nn-t1);outline:none;transition:all 150ms;width:186px}
+.search-sm input:focus{border:1px solid transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box, var(--nn-border-grad-b) border-box}
+.search-sm input::placeholder{color:var(--nn-t4)}
+.search-sm svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none}
+
+@media(max-width:959px){.sb{transform:translateX(-100%)}.ds-main{margin-left:0}.pg{padding:24px 20px 60px}}
+
+/* ── Lucide Icons ── */
+i[data-lucide]{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1}
+i[data-lucide].nav-ico{width:14px;height:14px}
+i[data-lucide].nav-ico svg{width:14px;height:14px;stroke-width:1.75}
+i[data-lucide].nav-ext{margin-left:auto;opacity:0.18}
+i[data-lucide].nav-ext svg{width:10px;height:10px;stroke-width:2}
+i[data-lucide].icon-sm svg{width:12px;height:12px;stroke-width:2}
+i[data-lucide].icon-md svg{width:16px;height:16px;stroke-width:1.75}
+i[data-lucide].icon-lg svg{width:20px;height:20px;stroke-width:1.75}
+i[data-lucide].icon-xl svg{width:24px;height:24px;stroke-width:1.5}
+i[data-lucide].nn-search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--nn-t3)}
+i[data-lucide].nn-search-ico svg{width:15px;height:15px;stroke-width:1.5}
+i[data-lucide].orb-icon{width:36px;height:36px;color:rgba(255,255,255,0.88)}
+i[data-lucide].orb-icon svg{width:36px;height:36px;stroke-width:1.5}
+
+/* ── Icon containers — Lucide ── */
+.principle-ico i[data-lucide] svg,.principle-ico i[data-lucide] svg{width:22px;height:22px;stroke-width:1.75}
+.qcard-ico i[data-lucide] svg{width:18px;height:18px;stroke-width:1.75}
+.stat-icon i[data-lucide] svg,.card-icon i[data-lucide] svg{width:18px;height:18px;stroke-width:1.75}
+.principle-ico{font-size:0}
+.qcard-ico{font-size:0}
+.stat-icon{font-size:0}
+.card-icon{font-size:0}
+</style>
+</head>
+<body>
+<div class="ds">
+<nav class="sb">
+  <div class="sb-logo"><a class="sb-logo-inner" href="Neural Angular.html"><div class="sb-mark">N∞</div><div><span class="sb-name">Neural Angular</span><span class="sb-ver">v1.2 · AM22</span></div></a></div>
+  <div class="sb-nav">
+    <div class="nav-grp"><span class="nav-lbl">Sistema</span>
+      <a class="nav-a" href="Neural Angular.html"><i data-lucide="house" class="nav-ico"></i>Overview</a>
+      <a class="nav-a" href="components.html"><i data-lucide="layout-grid" class="nav-ico"></i>Componentes</a>
+      <a class="nav-a" href="ai-patterns.html"><i data-lucide="mic" class="nav-ico"></i>AI Patterns</a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="nav-grp"><span class="nav-lbl">Data Patterns</span>
+      <a class="nav-a on" data-p="stats" onclick="go('stats');return false" href="#"><i data-lucide="bar-chart-3" class="nav-ico"></i>Stats Cards</a>
+      <a class="nav-a" data-p="chart" onclick="go('chart');return false" href="#"><i data-lucide="trending-up" class="nav-ico"></i>Line Chart</a>
+      <a class="nav-a" data-p="calendar" onclick="go('calendar');return false" href="#"><i data-lucide="calendar" class="nav-ico"></i>Calendar</a>
+      <a class="nav-a" data-p="table" onclick="go('table');return false" href="#"><i data-lucide="table" class="nav-ico"></i>Data Table</a>
+    </div>
+  </div>
+</nav>
+<main class="ds-main" id="main">
+
+<!-- STATS -->
+<article class="pg on" id="pg-stats">
+  <div class="ph"><div class="ph-tag">// Data · 01</div><h2 class="ph-h1 g-text-soft">Stats Cards</h2><p class="ph-p">KPI cards con gradient borders Gemini y valores en gradient text. Animación GSAP de conteo al entrar.</p></div>
+  <div class="sec">
+    <h3 class="sec-h">KPI Grid</h3>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="zap"></i></div><div class="stat-lbl">Tokens / día</div><div class="stat-val" data-count="2400000">0</div><div class="stat-trend trend-up">↑ 18.4% vs. ayer</div><div class="stat-sub">Máx. 4M en el plan Pro</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="timer"></i></div><div class="stat-lbl">Latencia media</div><div class="stat-val" data-count-ms="820">—</div><div class="stat-trend trend-up">↑ 31% mejora</div><div class="stat-sub">P95: 1.4s</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="bot"></i></div><div class="stat-lbl">Agentes activos</div><div class="stat-val" data-count="348">0</div><div class="stat-trend trend-neu">— sin cambio</div><div class="stat-sub">+12 esta semana</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="check-circle-2"></i></div><div class="stat-lbl">Tasa de éxito</div><div class="stat-val" data-count-pct="99.2">0%</div><div class="stat-trend trend-up">↑ 0.3pp</div><div class="stat-sub">Meta: 99.5%</div></div>
+    </div>
+  </div>
+  <div class="sec">
+    <h3 class="sec-h">Mini Stats — Inline</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:10px">
+      <div class="mini-stat ms-bv"><div class="mini-stat-lbl">Req / min</div><div class="mini-stat-val">4,280</div></div>
+      <div class="mini-stat ms-vp"><div class="mini-stat-lbl">Cache hit</div><div class="mini-stat-val">87.3%</div></div>
+      <div class="mini-stat ms-g"><div class="mini-stat-lbl">Memoria</div><div class="mini-stat-val">6.2 GB</div></div>
+      <div class="mini-stat ms-bv"><div class="mini-stat-lbl">Uptime</div><div class="mini-stat-val">99.9%</div></div>
+      <div class="mini-stat ms-vp"><div class="mini-stat-lbl">Colas</div><div class="mini-stat-val">142</div></div>
+      <div class="mini-stat ms-g"><div class="mini-stat-lbl">Errores</div><div class="mini-stat-val">12</div></div>
+    </div>
+  </div>
+</article>
+
+<!-- CHART -->
+<article class="pg" id="pg-chart">
+  <div class="ph"><div class="ph-tag">// Data · 02</div><h2 class="ph-h1 g-text-soft">Line Chart</h2><p class="ph-p">Canvas chart con gradient area fill y stroke de gradiente Gemini. Tooltip con gradient border, tabs de período.</p></div>
+  <div class="sec">
+    <h3 class="sec-h">Revenue Chart</h3>
+    <div class="chart-card" style="position:relative">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div><div class="chart-val">$23,094.57</div><div class="chart-sub">Balance total · Junio 2026</div></div>
+        <div style="text-align:right"><div style="font-family:var(--nn-font-m);font-size:11px;color:var(--nn-error)">−7.16%</div><div style="font-size:10px;color:var(--nn-t3);margin-top:2px">vs. mes anterior</div></div>
+      </div>
+      <div class="chart-tabs">
+        <div class="c-tab" onclick="setChartP('24h',this)">24h</div>
+        <div class="c-tab" onclick="setChartP('week',this)">Semana</div>
+        <div class="c-tab on" onclick="setChartP('month',this)">Mes</div>
+      </div>
+      <div style="position:relative">
+        <canvas class="chart-canvas" id="lineChart" height="180"></canvas>
+        <div class="chart-tooltip" id="chartTooltip">
+          <div class="tt-date" id="ttDate">Mar 29</div>
+          <div class="tt-val" id="ttVal">$17,690</div>
+          <div class="tt-trend" id="ttTrend"></div>
+        </div>
+      </div>
+      <div class="chart-footer">
+        <div><div class="cf-val">$34,502.19</div><div class="cf-lbl">Promedio anual</div></div>
+        <div style="font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t4)">Neural Analytics</div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- CALENDAR -->
+<article class="pg" id="pg-calendar">
+  <div class="ph"><div class="ph-tag">// Data · 03</div><h2 class="ph-h1 g-text-soft">Calendar</h2><p class="ph-p">Calendario con gradient header, today indicator en gradient fill y gradient borders en el wrapper.</p></div>
+  <div class="sec">
+    <h3 class="sec-h">Month Calendar</h3>
+    <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
+      <div class="cal-card">
+        <div class="cal-hdr">
+          <div class="cal-nav">
+            <button class="cal-nav-btn" onclick="prevM()"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.5 2L3.5 6l4 4"/></svg></button>
+            <div class="cal-month" id="calMonth">Junio 2026</div>
+            <button class="cal-nav-btn" onclick="nextM()"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 2L8.5 6l-4 4"/></svg></button>
+          </div>
+        </div>
+        <div class="cal-body">
+          <div class="cal-day-names"><div class="cal-dn">LUN</div><div class="cal-dn">MAR</div><div class="cal-dn">MIÉ</div><div class="cal-dn">JUE</div><div class="cal-dn">VIE</div><div class="cal-dn">SÁB</div><div class="cal-dn">DOM</div></div>
+          <div class="cal-days" id="calDays"></div>
+        </div>
+        <div class="cal-footer"><div class="cal-dot"></div>Eventos<div class="cal-dot" style="background:var(--nn-grad-v-pink);margin-left:8px"></div>Hoy</div>
+      </div>
+      <div style="flex:1;min-width:220px">
+        <div style="padding:20px;border-radius:var(--nn-r-lg);border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box, var(--nn-border-grad-b) border-box">
+          <div style="font-family:var(--nn-font-m);font-size:9.5px;margin-bottom:8px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.08em">DÍA SELECCIONADO</div>
+          <div id="calSelDate" style="font-family:var(--nn-font-d);font-size:22px;font-weight:700;background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.03em">13 Jun 2026</div>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">
+            <div style="padding:10px 12px;background:var(--nn-surface-2);border-radius:var(--nn-r-sm);border-left:2px solid transparent;border-image:var(--nn-grad-blue-v) 1"><div style="font-size:12px;font-weight:500;color:var(--nn-t1)">Neural Review</div><div style="font-size:11px;color:var(--nn-t3);margin-top:2px">09:00 — 10:30</div></div>
+            <div style="padding:10px 12px;background:var(--nn-surface-2);border-radius:var(--nn-r-sm);border-left:2px solid transparent;border-image:var(--nn-grad-v-pink) 1"><div style="font-size:12px;font-weight:500;color:var(--nn-t1)">Deploy v2.4</div><div style="font-size:11px;color:var(--nn-t3);margin-top:2px">15:00 — 16:00</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- TABLE -->
+<article class="pg" id="pg-table">
+  <div class="ph"><div class="ph-tag">// Data · 04</div><h2 class="ph-h1 g-text-soft">Data Table</h2><p class="ph-p">Gradient border wrapper, mono valores en gradient text, gradient header. Compatible con <code style="font-family:var(--nn-font-m);font-size:12px">MatTable</code> + CDK.</p></div>
+  <div class="sec">
+    <h3 class="sec-h">Agents Table</h3>
+    <div class="tbl-wrap">
+      <div class="tbl-top">
+        <div class="tbl-title">Agentes AI</div>
+        <span style="font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t3)">8 registros</span>
+        <div class="tbl-spacer"></div>
+        <div class="search-sm">
+          <i data-lucide="search" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:rgba(255,255,255,0.25)"><svg style="width:12px;height:12px"></svg></i>
+          <input type="search" placeholder="Buscar…" id="tblSearch" oninput="filterTbl()">
+        </div>
+        <button class="mini-btn"><i data-lucide="filter" class="icon-sm"></i></button>
+      </div>
+      <table class="nn-table">
+        <thead>
+          <tr>
+            <th onclick="sortTbl(0,this)">Nombre</th>
+            <th onclick="sortTbl(1,this)">Modelo</th>
+            <th onclick="sortTbl(2,this)">Estado</th>
+            <th onclick="sortTbl(3,this)" class="td-r">Tokens / día</th>
+            <th onclick="sortTbl(4,this)" class="td-r">Latencia</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tblBody">
+          <tr><td><div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:9px;background:var(--nn-grad-blue-v);display:flex;align-items:center;justify-content:center;font-family:var(--nn-font-d);font-size:12px;font-weight:800;color:#fff;flex-shrink:0">A</div><div><div style="font-weight:500">Asesor Financiero</div><div style="font-size:11px;color:var(--nn-t3)">asesor@neural.ai</div></div></div></td><td class="td-mono td-dim">Neural Pro 2.0</td><td><span class="nn-badge nb-s">Activo</span></td><td class="td-r td-mono">482,300</td><td class="td-r td-mono">0.8s</td><td style="text-align:right;padding-right:14px"><div style="display:flex;gap:4px;justify-content:flex-end"><button class="mini-btn"><i data-lucide="arrow-right" class="icon-sm"></i></button><button class="mini-btn"><i data-lucide="ellipsis-vertical" class="icon-sm"></i></button></div></td></tr>
+          <tr><td><div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:9px;background:var(--nn-grad-v-pink);display:flex;align-items:center;justify-content:center;font-family:var(--nn-font-d);font-size:12px;font-weight:800;color:#fff;flex-shrink:0">S</div><div><div style="font-weight:500">Software Engineer</div><div style="font-size:11px;color:var(--nn-t3)">eng@neural.ai</div></div></div></td><td class="td-mono td-dim">Neural Code 2.5</td><td><span class="nn-badge nb-s">Activo</span></td><td class="td-r td-mono">1,230,450</td><td class="td-r td-mono">1.1s</td><td style="text-align:right;padding-right:14px"><div style="display:flex;gap:4px;justify-content:flex-end"><button class="mini-btn"><i data-lucide="arrow-right" class="icon-sm"></i></button><button class="mini-btn"><i data-lucide="ellipsis-vertical" class="icon-sm"></i></button></div></td></tr>
+          <tr><td><div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:9px;background:var(--nn-grad-g);display:flex;align-items:center;justify-content:center;font-family:var(--nn-font-d);font-size:12px;font-weight:800;color:#fff;flex-shrink:0">D</div><div><div style="font-weight:500">Digital Marketing</div><div style="font-size:11px;color:var(--nn-t3)">mktg@neural.ai</div></div></div></td><td class="td-mono td-dim">Neural Pro 2.0</td><td><span class="nn-badge nb-w">Beta</span></td><td class="td-r td-mono">320,180</td><td class="td-r td-mono">1.4s</td><td style="text-align:right;padding-right:14px"><div style="display:flex;gap:4px;justify-content:flex-end"><button class="mini-btn"><i data-lucide="arrow-right" class="icon-sm"></i></button><button class="mini-btn"><i data-lucide="ellipsis-vertical" class="icon-sm"></i></button></div></td></tr>
+          <tr><td><div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#FBBC05,#EA4335);display:flex;align-items:center;justify-content:center;font-family:var(--nn-font-d);font-size:12px;font-weight:800;color:#fff;flex-shrink:0">L</div><div><div style="font-weight:500">Legal Advisor</div><div style="font-size:11px;color:var(--nn-t3)">legal@neural.ai</div></div></div></td><td class="td-mono td-dim">Neural Lite 1.5</td><td><span class="nn-badge nb-e">Inactivo</span></td><td class="td-r" style="color:var(--nn-t3)">0</td><td class="td-r" style="color:var(--nn-t3)">—</td><td style="text-align:right;padding-right:14px"><div style="display:flex;gap:4px;justify-content:flex-end"><button class="mini-btn"><i data-lucide="arrow-right" class="icon-sm"></i></button><button class="mini-btn"><i data-lucide="ellipsis-vertical" class="icon-sm"></i></button></div></td></tr>
+        </tbody>
+      </table>
+      <div style="padding:12px 20px;border-top:1px solid var(--nn-b0);display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:11.5px;color:var(--nn-t3)">Mostrando 4 de 8 agentes</span>
+        <div style="display:flex;gap:6px">
+          <button style="height:28px;padding:0 10px;border-radius:var(--nn-r-sm);font-size:11px;color:var(--nn-t3);background:var(--nn-surface-2);border:1px solid var(--nn-b1);cursor:pointer">← Prev</button>
+          <button style="height:28px;padding:0 10px;border-radius:var(--nn-r-sm);font-size:11px;border:1px solid transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box, var(--nn-border-grad-b) border-box;color:var(--nn-blue-primary);cursor:pointer">1</button>
+          <button style="height:28px;padding:0 10px;border-radius:var(--nn-r-sm);font-size:11px;color:var(--nn-t3);background:var(--nn-surface-2);border:1px solid var(--nn-b1);cursor:pointer">2</button>
+          <button style="height:28px;padding:0 10px;border-radius:var(--nn-r-sm);font-size:11px;color:var(--nn-t3);background:var(--nn-surface-2);border:1px solid var(--nn-b1);cursor:pointer">Sig →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+</main>
+</div>
+<script>
+const pgs={};
+document.querySelectorAll('.pg').forEach(p=>pgs[p.id.replace('pg-','')]=p);
+function go(id){
+  Object.values(pgs).forEach(p=>p.classList.remove('on'));
+  const t=pgs[id];if(!t)return;
+  t.classList.add('on');
+  document.querySelectorAll('.nav-a[data-p]').forEach(a=>a.classList.toggle('on',a.dataset.p===id));
+  if(window.lucide)lucide.createIcons();
+  if(window.gsap)gsap.fromTo(t,{opacity:0,y:10},{opacity:1,y:0,duration:.35,ease:'power2.out'});
+  window.scrollTo(0,0);
+  if(id==='chart')setTimeout(drawChart,60);
+  if(id==='stats')animCounters();
+}
+const hash=location.hash.replace('#','');
+go(hash&&pgs[hash]?hash:'stats');
+
+// Counters
+function animCounters(){
+  if(!window.gsap)return;
+  document.querySelectorAll('[data-count]').forEach(el=>{const end=+el.dataset.count;gsap.from({v:0},{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(this.targets()[0].v).toLocaleString()}})});
+  document.querySelectorAll('[data-count-ms]').forEach(el=>{const end=+el.dataset.countMs;gsap.from({v:2000},{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(this.targets()[0].v)+'ms'}})});
+  document.querySelectorAll('[data-count-pct]').forEach(el=>{const end=+el.dataset.countPct;gsap.from({v:95},{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){el.textContent=this.targets()[0].v.toFixed(1)+'%'}})});
+}
+animCounters();
+
+// Chart
+let chartP='month';
+const periods={
+  '24h':{labels:['00h','04h','08h','12h','16h','20h','24h'],data:[18200,17400,16800,19200,21000,22400,23094]},
+  'week':{labels:['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'],data:[20100,19200,21300,18900,22100,23500,23094]},
+  'month':{labels:['Mar 1','Mar 8','Mar 15','Mar 22','Mar 29','Abr 5','Abr 12'],data:[15200,17800,16400,19800,17690,20100,23094]}
+};
+function setChartP(p,btn){chartP=p;document.querySelectorAll('.c-tab').forEach(t=>t.classList.remove('on'));btn.classList.add('on');drawChart()}
+function drawChart(){
+  const cv=document.getElementById('lineChart');if(!cv)return;
+  cv.width=cv.offsetWidth;cv.height=180;
+  const ctx=cv.getContext('2d');
+  const {labels,data}=periods[chartP];
+  const W=cv.width,H=cv.height,pad={t:20,r:20,b:32,l:16};
+  const iW=W-pad.l-pad.r,iH=H-pad.t-pad.b;
+  const min=Math.min(...data)*0.94,max=Math.max(...data)*1.05;
+  const pts=data.map((v,i)=>[pad.l+i/(data.length-1)*iW,pad.t+iH-(v-min)/(max-min)*iH]);
+  ctx.clearRect(0,0,W,H);
+  // Grid
+  for(let i=0;i<=4;i++){const y=pad.t+i*iH/4;ctx.strokeStyle='rgba(255,255,255,0.035)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke()}
+  // Area gradient (Gemini)
+  const aGrad=ctx.createLinearGradient(0,pad.t,0,pad.t+iH);
+  aGrad.addColorStop(0,'rgba(79,142,255,0.22)');
+  aGrad.addColorStop(0.5,'rgba(123,92,246,0.12)');
+  aGrad.addColorStop(1,'rgba(217,70,239,0.02)');
+  ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);
+  pts.slice(1).forEach(p=>ctx.lineTo(p[0],p[1]));
+  ctx.lineTo(pts[pts.length-1][0],pad.t+iH);ctx.lineTo(pts[0][0],pad.t+iH);ctx.closePath();
+  ctx.fillStyle=aGrad;ctx.fill();
+  // Line gradient
+  const lGrad=ctx.createLinearGradient(0,0,W,0);
+  lGrad.addColorStop(0,'#4F8EFF');lGrad.addColorStop(0.5,'#7B5CF6');lGrad.addColorStop(1,'#D946EF');
+  ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);
+  pts.slice(1).forEach(p=>ctx.lineTo(p[0],p[1]));
+  ctx.strokeStyle=lGrad;ctx.lineWidth=2;ctx.stroke();
+  // Labels
+  ctx.fillStyle='rgba(255,255,255,0.22)';ctx.font='10px JetBrains Mono,monospace';ctx.textAlign='center';
+  labels.forEach((l,i)=>{ctx.fillText(l,pad.l+i/(labels.length-1)*iW,H-6)});
+  // Points
+  pts.forEach((p,i)=>{
+    const gPt=ctx.createRadialGradient(p[0],p[1],0,p[0],p[1],i===pts.length-1?10:6);
+    gPt.addColorStop(0,'rgba(79,142,255,0.9)');gPt.addColorStop(1,'rgba(217,70,239,0.4)');
+    ctx.beginPath();ctx.arc(p[0],p[1],i===pts.length-1?5:3.5,0,Math.PI*2);
+    ctx.fillStyle=gPt;ctx.fill();
+    if(i===pts.length-1){ctx.beginPath();ctx.arc(p[0],p[1],10,0,Math.PI*2);ctx.fillStyle='rgba(79,142,255,0.10)';ctx.fill()}
+  });
+  // Hover
+  cv.onmousemove=e=>{
+    const r=cv.getBoundingClientRect(),mx=(e.clientX-r.left)*(W/r.width);
+    const tt=document.getElementById('chartTooltip');
+    let closest=0,dist=9999;
+    pts.forEach((p,i)=>{const d=Math.abs(p[0]-mx);if(d<dist){dist=d;closest=i}});
+    if(dist<64){
+      const p=pts[closest];
+      tt.style.display='block';tt.style.left=(p[0]+10)+'px';tt.style.top=(p[1]-36)+'px';
+      document.getElementById('ttDate').textContent=labels[closest];
+      document.getElementById('ttVal').textContent='$'+data[closest].toLocaleString();
+      const t=document.getElementById('ttTrend');
+      if(closest>0){const pct=((data[closest]-data[closest-1])/data[closest-1]*100).toFixed(2);t.textContent=(pct>0?'↑ +':'↓ ')+pct+'%';t.style.color=pct>0?'var(--nn-success)':'var(--nn-error)'}else t.textContent='—';
+    }else tt.style.display='none';
+  };
+  cv.onmouseleave=()=>{document.getElementById('chartTooltip').style.display='none'};
+}
+if(pgs['chart']?.classList.contains('on'))setTimeout(drawChart,60);
+window.addEventListener('resize',()=>{if(pgs['chart']?.classList.contains('on'))setTimeout(drawChart,60)});
+
+// Calendar
+let cY=2026,cM=5,selD=13;
+const today={y:2026,m:5,d:13};
+const EVTS={5:[5,12,18,24]};
+const MN=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+function renderCal(){
+  document.getElementById('calMonth').textContent=MN[cM]+' '+cY;
+  const first=new Date(cY,cM,1).getDay();const start=first===0?6:first-1;
+  const dim=new Date(cY,cM+1,0).getDate();const prev=new Date(cY,cM,0).getDate();
+  const cont=document.getElementById('calDays');cont.innerHTML='';
+  const evs=EVTS[cM]||[];
+  for(let i=0;i<start;i++){const w=document.createElement('div');w.className='cal-day-wrap';const d=document.createElement('div');d.className='cal-day other';d.textContent=prev-start+1+i;w.appendChild(d);cont.appendChild(w)}
+  for(let d=1;d<=dim;d++){
+    const w=document.createElement('div');w.className='cal-day-wrap';
+    const day=document.createElement('div');day.textContent=d;
+    const isToday=d===today.d&&cM===today.m&&cY===today.y;
+    const isSel=d===selD&&cM===today.m&&cY===today.y;
+    day.className='cal-day'+(isToday?' today':'')+(isSel&&!isToday?' sel':'');
+    if(evs.includes(d)&&!isToday){const dot=document.createElement('div');dot.className='cal-event';w.style.position='relative';w.appendChild(dot)}
+    day.onclick=()=>{selD=d;renderCal();document.getElementById('calSelDate').textContent=d+' '+MN[cM].slice(0,3)+' '+cY};
+    w.appendChild(day);cont.appendChild(w);
+  }
+  const tot=start+dim;const rem=(7-tot%7)%7;
+  for(let d=1;d<=rem;d++){const w=document.createElement('div');w.className='cal-day-wrap';const day=document.createElement('div');day.className='cal-day other';day.textContent=d;w.appendChild(day);cont.appendChild(w)}
+}
+function prevM(){cM--;if(cM<0){cM=11;cY--}renderCal()}
+function nextM(){cM++;if(cM>11){cM=0;cY++}renderCal()}
+renderCal();
+
+// Table
+function filterTbl(){const q=document.getElementById('tblSearch').value.toLowerCase();document.querySelectorAll('#tblBody tr').forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(q)?'':'none'})}
+function sortTbl(col,th){
+  const tbody=document.getElementById('tblBody');const rows=[...tbody.querySelectorAll('tr')];
+  const asc=!th.classList.contains('asc');
+  document.querySelectorAll('.nn-table th').forEach(t=>{t.classList.remove('asc','desc')});
+  th.classList.add(asc?'asc':'desc');
+  rows.sort((a,b)=>{const av=a.cells[col]?.textContent.trim()||'';const bv=b.cells[col]?.textContent.trim()||'';const an=parseFloat(av.replace(/[$,%\s,]/g,''));const bn=parseFloat(bv.replace(/[$,%\s,]/g,''));if(!isNaN(an)&&!isNaN(bn))return asc?an-bn:bn-an;return asc?av.localeCompare(bv):bv.localeCompare(av)});
+  rows.forEach(r=>tbody.appendChild(r));
+}
+
+// Init Lucide icons
+if(window.lucide)lucide.createIcons();
+</script>
+</body>
+</html>

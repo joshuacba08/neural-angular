@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Oroya Video — Component Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="nn-tokens.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px}
+body{font-family:var(--nn-font-b);background:var(--nn-bg-canvas);color:var(--nn-t1);min-height:100vh;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+*{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent}
+*::-webkit-scrollbar{width:4px;height:4px}
+*::-webkit-scrollbar-thumb{background:rgba(255,255,255,.09);border-radius:4px}
+*::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.16)}
+
+/* ── Utilities ── */
+.gt{background:var(--nn-grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gt-bv{background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gt-soft{background:linear-gradient(135deg,#fff 0%,#a5bfff 30%,#c4b0ff 60%,#f0abfc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mono{font-family:var(--nn-font-m)}
+
+/* ── Layout ── */
+.ds{display:flex;min-height:100vh}
+
+/* ── Sidebar ── */
+.sb{width:252px;flex-shrink:0;position:fixed;inset:0 auto 0 0;background:linear-gradient(180deg,#07071a 0%,#05050e 100%);display:flex;flex-direction:column;overflow-y:auto;z-index:200}
+.sb::after{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(66,133,244,.22),rgba(123,92,246,.1),transparent)}
+.sb::-webkit-scrollbar{width:3px}.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:3px}
+.sb-logo{padding:17px 15px 14px;flex-shrink:0}
+.sb-logo-inner{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.sb-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#4285F4,#7B5CF6);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;letter-spacing:-.05em;flex-shrink:0;position:relative}
+.sb-mark::after{content:'';position:absolute;inset:-4px;border-radius:14px;background:linear-gradient(135deg,rgba(66,133,244,.5),rgba(123,92,246,.4));filter:blur(10px);opacity:.45;z-index:-1}
+.sb-name{font-size:12.5px;font-weight:700;letter-spacing:-.02em;display:block;line-height:1.2}
+.sb-sub{font-family:var(--nn-font-m);font-size:8.5px;letter-spacing:.06em;margin-top:1px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sb-nav{padding:6px 0 24px;flex:1}
+.nav-grp{margin-bottom:4px}
+.nav-lbl{display:block;font-size:9px;font-weight:700;color:var(--nn-t4);text-transform:uppercase;letter-spacing:.14em;padding:11px 16px 4px}
+.nav-a{display:flex;align-items:center;gap:8px;padding:6.5px 16px;color:var(--nn-t3);font-size:12px;font-weight:450;text-decoration:none;cursor:pointer;transition:all 140ms;position:relative;user-select:none}
+.nav-a::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:2px;border-radius:0 2px 2px 0;background:var(--nn-grad-blue-v);opacity:0;transition:opacity 140ms}
+.nav-a:hover{color:var(--nn-t2);background:rgba(255,255,255,.025)}
+.nav-a.on{background:linear-gradient(90deg,rgba(66,133,244,.12),rgba(123,92,246,.06),transparent);color:var(--nn-blue-bright)}
+.nav-a.on::before{opacity:1}
+.nav-a i[data-lucide]{width:13px;height:13px;flex-shrink:0;opacity:.4}
+.nav-a i[data-lucide] svg{width:13px;height:13px;stroke-width:1.75}
+.nav-a.on i[data-lucide]{opacity:1}
+.nav-ext{margin-left:auto;opacity:.15}
+.nav-ext i[data-lucide] svg{width:10px;height:10px;stroke-width:2}
+.sb-div{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);margin:5px 0}
+.nav-chip{margin-left:auto;font-family:var(--nn-font-m);font-size:8px;padding:1px 6px;border-radius:99px;background:rgba(255,255,255,.06);color:var(--nn-t4)}
+
+/* ── Main ── */
+.ds-main{margin-left:252px;flex:1;padding:52px 64px 120px;max-width:1040px}
+
+/* ── Page header ── */
+.ph{margin-bottom:48px;padding-bottom:28px;border-bottom:1px solid var(--nn-b0);position:relative}
+.ph-eyebrow{font-family:var(--nn-font-m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ph-h1{font-size:36px;font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.ph-p{font-size:14px;color:var(--nn-t2);margin-top:12px;line-height:1.7;max-width:560px}
+.ph-chips{display:flex;gap:6px;margin-top:18px;flex-wrap:wrap}
+.ph-chip{font-family:var(--nn-font-m);font-size:9px;padding:3px 10px;border-radius:99px;border:1px solid var(--nn-b1);background:rgba(255,255,255,.025);color:var(--nn-t3);letter-spacing:.02em}
+.ph-chip.hi{border-color:rgba(66,133,244,.25);background:var(--nn-blue-10);color:var(--nn-blue-bright)}
+
+/* ── Section ── */
+.sec{margin-bottom:80px;scroll-margin-top:32px}
+.sec-h{font-size:15px;font-weight:700;color:var(--nn-t1);margin-bottom:6px;display:flex;align-items:center;gap:12px;letter-spacing:-.022em}
+.sec-h::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--nn-b2),transparent)}
+.sec-tag{font-family:var(--nn-font-m);font-size:9px;padding:2px 8px;border-radius:99px;background:var(--nn-blue-10);color:var(--nn-blue-bright);border:1px solid rgba(66,133,244,.18);font-weight:500}
+.sec-meta{font-size:13px;color:var(--nn-t3);margin-bottom:22px;line-height:1.65;margin-top:8px}
+
+/* ── Demo box ── */
+.demo{border-radius:var(--nn-r-xl);padding:26px;margin-bottom:10px;border:1px solid transparent;background:linear-gradient(var(--nn-surface-1),var(--nn-surface-1)) padding-box,linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03)) border-box;position:relative;overflow:hidden}
+.demo::before{content:'';position:absolute;inset:0;background:var(--nn-grad-surface);opacity:.6;pointer-events:none}
+.demo-cap{position:relative;font-family:var(--nn-font-m);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--nn-t4);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.demo-cap::after{content:'';flex:1;height:1px;background:var(--nn-b1)}
+.demo-row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;position:relative}
+
+/* ── API table ── */
+.api{border-radius:var(--nn-r-lg);overflow:hidden;border:1px solid var(--nn-b0);margin-top:14px}
+.api-row{display:grid;grid-template-columns:150px 90px 1fr;padding:8px 14px;border-bottom:1px solid var(--nn-b0);gap:10px;align-items:center;transition:background 120ms}
+.api-row:last-child{border-bottom:none}
+.api-row:hover{background:rgba(255,255,255,.02)}
+.api-head{background:rgba(255,255,255,.018);pointer-events:none}
+.api-head span{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--nn-t3)}
+.api-prop{font-family:var(--nn-font-m);font-size:11px;background:var(--nn-grad-blue-v);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.api-type{font-family:var(--nn-font-m);font-size:10.5px;color:var(--nn-t4)}
+.api-desc{font-size:12px;color:var(--nn-t2)}
+
+/* ══ OVSplitCompare ══ */
+.ov-split{position:relative;overflow:hidden;border-radius:var(--nn-r-lg);aspect-ratio:16/9;user-select:none;cursor:col-resize;border:1px solid var(--nn-b1)}
+.ov-split-scene{position:absolute;inset:0;width:100%;height:100%}
+.ov-split-orig{position:absolute;inset:0;right:50%;backdrop-filter:saturate(.16) contrast(.82) brightness(.56) blur(1.5px);-webkit-backdrop-filter:saturate(.16) contrast(.82) brightness(.56) blur(1.5px);background:rgba(0,0,24,.06);z-index:2;pointer-events:none}
+.ov-split-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.92);transform:translateX(-50%);z-index:4;box-shadow:0 0 14px rgba(255,255,255,.28)}
+.ov-split-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:33px;height:33px;border-radius:50%;background:rgba(255,255,255,.96);box-shadow:0 2px 16px rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+.ov-split-knob i[data-lucide] svg{width:13px;height:13px;stroke-width:2.5;color:rgba(0,0,0,.72)}
+.ov-split-tag{position:absolute;top:11px;z-index:3;font-family:var(--nn-font-m);font-size:9.5px;padding:3px 10px;border-radius:99px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none;display:flex;align-items:center;gap:4px}
+.ov-split-tag-l{left:11px;background:rgba(0,0,0,.58);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65)}
+.ov-split-tag-r{right:11px;background:rgba(66,133,244,.22);border:1px solid rgba(66,133,244,.38);color:rgba(145,198,255,.92)}
+.ov-split-tag-r i[data-lucide] svg{width:9px;height:9px;stroke-width:2}
+.ov-split-badge{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--nn-font-m);font-size:9px;padding:3px 12px;border-radius:99px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.5);pointer-events:none;white-space:nowrap}
+
+/* ══ OVVideoPreview ══ */
+.ov-vp{border-radius:var(--nn-r-lg);overflow:hidden;border:1px solid var(--nn-b1);display:flex;flex-direction:column}
+.ov-vp-view{position:relative;background:#030310;overflow:hidden;cursor:crosshair}
+.ov-vp-scene{position:absolute;inset:0;width:100%;height:100%;transform-origin:center;transition:transform .1s}
+.ov-vp-hud{position:absolute;top:10px;left:10px;font-family:var(--nn-font-m);font-size:9.5px;padding:3px 9px;border-radius:6px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.08);color:rgba(140,190,255,.85);z-index:2;pointer-events:none}
+.ov-vp-bar{display:flex;align-items:center;gap:6px;padding:6px 10px;background:var(--nn-surface-1);border-top:1px solid var(--nn-b0)}
+.ov-ic{width:27px;height:27px;border-radius:var(--nn-r-sm);background:transparent;border:1px solid var(--nn-b1);cursor:pointer;color:var(--nn-t3);display:flex;align-items:center;justify-content:center;transition:all 130ms;flex-shrink:0}
+.ov-ic:hover{background:rgba(255,255,255,.06);color:var(--nn-t1);border-color:var(--nn-b2)}
+.ov-ic i[data-lucide] svg{width:12px;height:12px;stroke-width:2}
+.ov-ic.on{background:var(--nn-blue-10);border-color:rgba(66,133,244,.3);color:var(--nn-blue-bright)}
+.ov-sep{width:1px;height:15px;background:var(--nn-b1);flex-shrink:0}
+.ov-zoom-lbl{font-family:var(--nn-font-m);font-size:10px;color:var(--nn-t4);min-width:36px;text-align:center}
+.ov-tc{font-family:var(--nn-font-m);font-size:10px;color:var(--nn-t3);margin-left:auto}
+/* Timeline */
+.ov-tl{height:50px;background:var(--nn-surface-1);border-top:1px solid var(--nn-b0);display:flex;align-items:center;position:relative;overflow:hidden}
+.ov-tl-t{font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t4);padding:0 9px;flex-shrink:0;width:42px}
+.ov-tl-track{flex:1;height:100%;position:relative;cursor:pointer;display:flex;align-items:center;padding:6px 0;gap:2px;overflow:hidden}
+.ov-tl-frame{flex:1;min-width:40px;max-width:60px;height:36px;border-radius:4px;border:1px solid rgba(255,255,255,.05);transition:border-color 130ms;overflow:hidden;position:relative;cursor:pointer;flex-shrink:0}
+.ov-tl-frame.cur{border-color:rgba(66,133,244,.6);box-shadow:0 0 6px rgba(66,133,244,.28)}
+.ov-tl-frame:hover{border-color:rgba(66,133,244,.35)}
+.ov-tl-frame.enh::after{content:'';position:absolute;inset:0;border-radius:3px;background:rgba(66,133,244,.12)}
+.ov-tl-marker{position:absolute;top:0;bottom:0;width:2px;background:rgba(66,133,244,.9);border-radius:1px;z-index:2;pointer-events:none;box-shadow:0 0 5px rgba(66,133,244,.4)}
+
+/* ══ OVProcessingPipeline ══ */
+/* Horizontal */
+.ov-pipe-h{display:flex;align-items:center}
+.ov-pipe-step{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;position:relative}
+.ov-pipe-step::after{content:'';position:absolute;top:10px;left:calc(50% + 12px);right:calc(-50% + 12px);height:2px;background:var(--nn-b1);z-index:0}
+.ov-pipe-step:last-child::after{display:none}
+.ov-pipe-step.done::after{background:rgba(52,168,83,.35)}
+.ov-pipe-step.active::after{background:linear-gradient(90deg,rgba(66,133,244,.5),rgba(255,255,255,.06))}
+.ov-pipe-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--nn-b2);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02);position:relative;z-index:1;transition:all 300ms;flex-shrink:0}
+.ov-pipe-dot.done{border-color:var(--nn-success);background:var(--nn-success-10)}
+.ov-pipe-dot.active{border-color:var(--nn-blue-primary);background:var(--nn-blue-10);animation:pulse 1.6s ease-in-out infinite}
+.ov-pipe-dot.wait{border-color:var(--nn-b1);opacity:.4}
+.ov-pipe-dot i[data-lucide] svg{width:9px;height:9px;stroke-width:2.5}
+.ov-pipe-dot.done i[data-lucide]{color:var(--nn-success)}
+.ov-pipe-dot.active i[data-lucide]{color:var(--nn-blue-primary)}
+.ov-pipe-dot.wait i[data-lucide]{color:var(--nn-t4)}
+.ov-pipe-lbl{font-family:var(--nn-font-m);font-size:9px;color:var(--nn-t3);text-align:center;white-space:nowrap}
+.ov-pipe-lbl.done{color:var(--nn-success)}
+.ov-pipe-lbl.active{color:var(--nn-blue-bright)}
+/* Vertical */
+.ov-pipe-v{display:flex;flex-direction:column}
+.ov-pipe-vrow{display:flex;align-items:flex-start;gap:10px;min-height:36px}
+.ov-pipe-vconn{width:2px;height:18px;margin-left:10px;border-radius:1px}
+.ov-pipe-vconn.done{background:linear-gradient(180deg,rgba(52,168,83,.5),rgba(52,168,83,.1))}
+.ov-pipe-vconn.other{background:linear-gradient(180deg,var(--nn-b2),var(--nn-b0))}
+.ov-pipe-vtitle{font-size:12px;font-weight:500;color:var(--nn-t1);transition:color 300ms}
+.ov-pipe-vtitle.wait{color:var(--nn-t3)}
+.ov-pipe-vsub{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t4);margin-top:2px}
+
+@keyframes pulse{0%,100%{box-shadow:0 0 6px rgba(66,133,244,.28)}50%{box-shadow:0 0 16px rgba(66,133,244,.55),0 0 28px rgba(66,133,244,.18)}}
+
+/* ══ OVGpuMonitor ══ */
+.ov-gpu{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.ov-gauge-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.ov-gauge-lbl{font-size:11px;color:var(--nn-t2);font-weight:500}
+.ov-gauge-sub{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t4);margin-top:-4px}
+.ov-gpu-list{flex:1;min-width:180px;display:flex;flex-direction:column;gap:6px}
+.ov-gpu-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:var(--nn-r-md);background:rgba(255,255,255,.025);border:1px solid var(--nn-b0)}
+.ov-gpu-lbl{font-size:11.5px;color:var(--nn-t2)}
+.ov-gpu-val{font-family:var(--nn-font-m);font-size:11px;color:var(--nn-t1)}
+
+/* ══ OVModelCard ══ */
+.ov-mcard{border-radius:var(--nn-r-lg);padding:16px;border:1px solid transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box,var(--nn-border-grad) border-box;cursor:pointer;transition:all 200ms;position:relative;overflow:hidden;flex:1;min-width:188px}
+.ov-mcard::before{content:'';position:absolute;inset:0;background:var(--nn-grad-surface);opacity:0;transition:opacity 200ms;pointer-events:none}
+.ov-mcard:hover::before{opacity:1}
+.ov-mcard.on{background:linear-gradient(var(--nn-surface-3),var(--nn-surface-3)) padding-box,var(--nn-border-grad) border-box;box-shadow:var(--nn-glow-g-sm)}
+.ov-mcard.on::before{opacity:1}
+.ov-mc-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;position:relative}
+.ov-mc-name{font-size:13px;font-weight:700;color:var(--nn-t1);letter-spacing:-.02em;margin-bottom:3px}
+.ov-mc-badge{font-family:var(--nn-font-m);font-size:8.5px;padding:2px 7px;border-radius:99px;display:inline-flex;align-items:center;gap:3px}
+.ov-mc-badge.active{background:var(--nn-grad-blue-v);color:#fff}
+.ov-mc-badge.installed{background:rgba(52,168,83,.12);border:1px solid rgba(52,168,83,.22);color:var(--nn-success)}
+.ov-mc-badge.avail{background:rgba(251,188,5,.1);border:1px solid rgba(251,188,5,.18);color:var(--nn-warning)}
+.ov-mc-desc{font-size:11px;color:var(--nn-t3);margin-bottom:12px;line-height:1.55;position:relative}
+.ov-mc-bars{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;position:relative}
+.ov-mc-bar-row{display:flex;align-items:center;gap:7px}
+.ov-mc-bar-lbl{font-size:10px;color:var(--nn-t4);width:46px;flex-shrink:0}
+.ov-mc-bar-bg{flex:1;height:3px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden}
+.ov-mc-bar{height:100%;border-radius:99px}
+.ov-mc-bar-val{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t3);min-width:24px;text-align:right}
+.ov-mc-chips{display:flex;flex-wrap:wrap;gap:4px;position:relative}
+.ov-mc-chip{font-family:var(--nn-font-m);font-size:8.5px;padding:2px 7px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid var(--nn-b1);color:var(--nn-t3)}
+.ov-mc-chip.vram{background:rgba(123,92,246,.1);border-color:rgba(123,92,246,.22);color:var(--nn-violet-primary)}
+.ov-mc-dl{width:26px;height:26px;border-radius:var(--nn-r-sm);background:var(--nn-blue-10);border:1px solid rgba(66,133,244,.2);color:var(--nn-blue-bright);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 140ms;flex-shrink:0}
+.ov-mc-dl:hover{background:var(--nn-blue-20);box-shadow:var(--nn-glow-teal-xs)}
+.ov-mc-dl i[data-lucide] svg{width:11px;height:11px;stroke-width:2}
+
+/* ══ OVJobProgress ══ */
+.ov-job{border-radius:var(--nn-r-lg);border:1px solid transparent;background:linear-gradient(var(--nn-surface-2),var(--nn-surface-2)) padding-box,var(--nn-border-grad) border-box;overflow:hidden;transition:box-shadow 300ms}
+.ov-job:hover{box-shadow:var(--nn-elev-2)}
+.ov-job-header{display:flex;align-items:center;gap:12px;padding:13px 15px 9px}
+.ov-job-thumb{width:62px;height:39px;border-radius:6px;flex-shrink:0;position:relative;overflow:hidden}
+.ov-job-info{flex:1;min-width:0}
+.ov-job-name{font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:2px}
+.ov-job-meta{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t3)}
+.ov-job-badge{font-family:var(--nn-font-m);font-size:10px;padding:2.5px 10px;border-radius:99px;flex-shrink:0}
+.ov-job-badge.proc{background:rgba(66,133,244,.14);color:var(--nn-blue-bright);border:1px solid rgba(66,133,244,.22)}
+.ov-job-badge.done{background:var(--nn-success-10);color:var(--nn-success);border:1px solid rgba(52,168,83,.22)}
+.ov-job-badge.wait{background:rgba(255,255,255,.04);color:var(--nn-t3);border:1px solid var(--nn-b1)}
+.ov-job-badge.fail{background:var(--nn-error-10);color:var(--nn-error);border:1px solid rgba(234,67,53,.22)}
+.ov-job-body{padding:0 15px 12px}
+.ov-job-ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.ov-job-pt{font-size:11px;color:var(--nn-t2)}
+.ov-job-pct{font-family:var(--nn-font-m);font-size:12px;font-weight:600;color:var(--nn-t1)}
+.ov-job-bar-bg{height:5px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;position:relative;margin-bottom:7px}
+.ov-job-bar{height:100%;border-radius:99px;background:var(--nn-grad-g);position:relative;overflow:hidden}
+.ov-job-shim{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);animation:shim 1.6s ease-in-out infinite}
+@keyframes shim{0%{transform:translateX(-100%)}100%{transform:translateX(220%)}
+}
+.ov-job-fr{display:flex;justify-content:space-between;align-items:center}
+.ov-job-frame{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t3)}
+.ov-job-frame strong{color:var(--nn-t1);font-weight:500}
+.ov-job-eta{font-family:var(--nn-font-m);font-size:9.5px;color:var(--nn-t4)}
+.ov-job-pipe-wrap{padding:0 15px 12px}
+.ov-job-pipe-box{padding:9px 12px;border-radius:var(--nn-r-md);background:rgba(255,255,255,.02);border:1px solid var(--nn-b0)}
+
+/* ── Responsive ── */
+@media(max-width:900px){.sb{transform:translateX(-100%)}.ds-main{margin-left:0;padding:28px 20px 60px}}
+</style>
+</head>
+<body>
+
+<!-- ── Shared SVG defs ── -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="sk-g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#03030f"/>
+      <stop offset="62%" stop-color="#07092a"/>
+      <stop offset="100%" stop-color="#0b1038"/>
+    </linearGradient>
+    <radialGradient id="sk-moon" cx="0.77" cy="0.14" r="0.28">
+      <stop offset="0%" stop-color="rgba(185,215,255,0.13)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="sk-glow" cx="0.5" cy="1.15" r="0.65">
+      <stop offset="0%" stop-color="rgba(66,133,244,0.2)"/>
+      <stop offset="55%" stop-color="rgba(123,92,246,0.07)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+<div class="ds">
+
+<!-- ════ SIDEBAR ════ -->
+<nav class="sb">
+  <div class="sb-logo">
+    <a class="sb-logo-inner" href="Oroya Video.html">
+      <div class="sb-mark">OV</div>
+      <div>
+        <span class="sb-name">Oroya Video</span>
+        <span class="sb-sub">Component Library</span>
+      </div>
+    </a>
+  </div>
+  <div class="sb-nav">
+    <div class="nav-grp">
+      <span class="nav-lbl">Design System</span>
+      <a class="nav-a" href="Neural Angular.html"><i data-lucide="arrow-left"></i>Neural Angular DS</a>
+      <a class="nav-a" href="components.html"><i data-lucide="layout-grid"></i>Base Components<span class="nav-ext"><i data-lucide="chevron-right"></i></span></a>
+      <a class="nav-a" href="Oroya Video.html"><i data-lucide="play-circle"></i>Oroya App<span class="nav-ext"><i data-lucide="chevron-right"></i></span></a>
+    </div>
+    <div class="sb-div"></div>
+    <div class="nav-grp">
+      <span class="nav-lbl">OV Components</span>
+      <a class="nav-a on" href="#ov-split"><i data-lucide="split-square-horizontal"></i>OVSplitCompare</a>
+      <a class="nav-a" href="#ov-vp"><i data-lucide="video"></i>OVVideoPreview</a>
+      <a class="nav-a" href="#ov-pipeline"><i data-lucide="git-branch"></i>OVProcessingPipeline</a>
+      <a class="nav-a" href="#ov-gpu"><i data-lucide="cpu"></i>OVGpuMonitor</a>
+      <a class="nav-a" href="#ov-model"><i data-lucide="box"></i>OVModelCard</a>
+      <a class="nav-a" href="#ov-job"><i data-lucide="loader-2"></i>OVJobProgress</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════ MAIN ════ -->
+<main class="ds-main">
+
+  <!-- Page header -->
+  <div class="ph">
+    <div class="ph-eyebrow">// Oroya Video · Exclusive Components</div>
+    <h1 class="ph-h1 gt-soft">OV Component Library</h1>
+    <p class="ph-p">Componentes exclusivos de Oroya Video construidos sobre la base Neural Angular. Diseñados para procesamiento de video IA — from split comparison to GPU telemetry.</p>
+    <div class="ph-chips">
+      <span class="ph-chip hi">6 Components</span>
+      <span class="ph-chip">ov-* prefix</span>
+      <span class="ph-chip">Neural Angular base</span>
+      <span class="ph-chip">GSAP animated</span>
+      <span class="ph-chip">Angular Material v22</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       OVSplitCompare
+       ════════════════════════════════ -->
+  <section class="sec" id="ov-split">
+    <h2 class="sec-h"><span class="sec-tag">ov-split-compare</span> OVSplitCompare</h2>
+    <p class="sec-meta">Slider de comparación Original / Enhanced estilo Topaz. Drag para mover el divider. El overlay usa <code style="font-family:var(--nn-font-m);font-size:11px;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:4px">backdrop-filter</code> — no duplica assets.</p>
+
+    <div class="demo">
+      <div class="demo-cap">Interactive · drag to compare</div>
+      <div class="ov-split" id="sp-main">
+        <svg class="ov-split-scene" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="960" height="540" fill="url(#sk-g)"/>
+          <rect width="960" height="540" fill="url(#sk-moon)"/>
+          <rect width="960" height="540" fill="url(#sk-glow)"/>
+          <g fill="white">
+            <circle cx="48" cy="40" r=".8" opacity=".42"/><circle cx="126" cy="22" r=".6" opacity=".34"/><circle cx="218" cy="55" r=".9" opacity=".38"/><circle cx="312" cy="17" r=".7" opacity=".48"/><circle cx="402" cy="37" r=".6" opacity=".28"/><circle cx="515" cy="26" r=".85" opacity=".44"/><circle cx="628" cy="50" r=".7" opacity=".36"/><circle cx="750" cy="15" r=".6" opacity=".4"/><circle cx="838" cy="42" r=".9" opacity=".32"/><circle cx="914" cy="24" r=".7" opacity=".46"/>
+            <circle cx="78" cy="85" r=".5" opacity=".26"/><circle cx="188" cy="72" r=".55" opacity=".3"/><circle cx="448" cy="66" r=".5" opacity=".28"/><circle cx="705" cy="80" r=".6" opacity=".24"/>
+          </g>
+          <!-- Buildings -->
+          <rect x="0" y="318" width="55" height="222" fill="#040410"/><rect x="58" y="272" width="40" height="268" fill="#050513"/><rect x="102" y="295" width="65" height="245" fill="#040412"/><rect x="170" y="252" width="46" height="288" fill="#060618"/><rect x="220" y="275" width="36" height="265" fill="#050514"/><rect x="260" y="224" width="76" height="316" fill="#08081e"/><rect x="340" y="262" width="50" height="278" fill="#060618"/><rect x="394" y="244" width="58" height="296" fill="#050516"/><rect x="456" y="215" width="68" height="325" fill="#07071e"/><rect x="528" y="252" width="88" height="288" fill="#060618"/><rect x="620" y="232" width="54" height="308" fill="#070720"/><rect x="678" y="272" width="40" height="268" fill="#050514"/><rect x="722" y="238" width="74" height="302" fill="#07071c"/><rect x="800" y="274" width="52" height="266" fill="#060616"/><rect x="856" y="252" width="46" height="288" fill="#050514"/><rect x="906" y="264" width="54" height="276" fill="#060618"/>
+          <!-- Windows warm -->
+          <g fill="#f0c848" opacity=".32"><rect x="268" y="236" width="7" height="4"/><rect x="280" y="236" width="7" height="4"/><rect x="268" y="248" width="7" height="4"/><rect x="280" y="260" width="7" height="4"/><rect x="268" y="272" width="7" height="4"/><rect x="268" y="284" width="7" height="4"/><rect x="280" y="296" width="7" height="4"/><rect x="462" y="224" width="7" height="4"/><rect x="474" y="224" width="7" height="4"/><rect x="462" y="236" width="7" height="4"/><rect x="474" y="248" width="7" height="4"/><rect x="462" y="260" width="7" height="4"/><rect x="728" y="248" width="8" height="4"/><rect x="742" y="248" width="8" height="4"/><rect x="728" y="260" width="8" height="4"/><rect x="742" y="272" width="8" height="4"/><rect x="728" y="284" width="8" height="4"/></g>
+          <!-- Windows cold -->
+          <g fill="#a0c8ff" opacity=".22"><rect x="174" y="262" width="7" height="4"/><rect x="186" y="262" width="7" height="4"/><rect x="174" y="274" width="7" height="4"/><rect x="534" y="264" width="8" height="4"/><rect x="548" y="264" width="8" height="4"/><rect x="534" y="278" width="8" height="4"/><rect x="548" y="290" width="8" height="4"/><rect x="626" y="242" width="7" height="4"/><rect x="626" y="254" width="7" height="4"/><rect x="626" y="266" width="7" height="4"/><rect x="862" y="264" width="8" height="4"/><rect x="876" y="264" width="8" height="4"/><rect x="862" y="276" width="8" height="4"/></g>
+          <!-- Antenna details -->
+          <line x1="298" y1="224" x2="298" y2="210" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/><circle cx="298" cy="208" r="2" fill="rgba(234,67,53,.55)"/>
+          <line x1="490" y1="215" x2="490" y2="200" stroke="rgba(255,255,255,.11)" stroke-width="1.5"/><circle cx="490" cy="198" r="2" fill="rgba(66,133,244,.65)"/>
+          <line x1="759" y1="238" x2="759" y2="222" stroke="rgba(255,255,255,.11)" stroke-width="1.5"/><circle cx="759" cy="220" r="2" fill="rgba(251,188,5,.55)"/>
+          <!-- Ground haze -->
+          <rect x="0" y="525" width="960" height="15" fill="rgba(66,133,244,0.07)"/>
+        </svg>
+        <div class="ov-split-orig" id="sp-main-orig"></div>
+        <div class="ov-split-line" id="sp-main-line">
+          <div class="ov-split-knob"><i data-lucide="arrows-left-right"></i></div>
+        </div>
+        <span class="ov-split-tag ov-split-tag-l">Original</span>
+        <span class="ov-split-tag ov-split-tag-r"><i data-lucide="sparkles"></i>Enhanced</span>
+        <div class="ov-split-badge">1080p → 4K · Real-ESRGAN x4</div>
+      </div>
+    </div>
+
+    <div class="demo" style="padding:18px">
+      <div class="demo-cap">Compact variant</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="ov-split" id="sp-sm" style="max-height:130px;aspect-ratio:auto">
+          <svg class="ov-split-scene" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="960" height="540" fill="url(#sk-g)"/><rect width="960" height="540" fill="url(#sk-glow)"/>
+            <rect x="0" y="318" width="55" height="222" fill="#040410"/><rect x="58" y="272" width="40" height="268" fill="#050513"/><rect x="102" y="295" width="65" height="245" fill="#040412"/><rect x="170" y="252" width="46" height="288" fill="#060618"/><rect x="220" y="275" width="36" height="265" fill="#050514"/><rect x="260" y="224" width="76" height="316" fill="#08081e"/><rect x="340" y="262" width="50" height="278" fill="#060618"/><rect x="394" y="244" width="58" height="296" fill="#050516"/><rect x="456" y="215" width="68" height="325" fill="#07071e"/><rect x="528" y="252" width="88" height="288" fill="#060618"/><rect x="620" y="232" width="54" height="308" fill="#070720"/><rect x="678" y="272" width="40" height="268" fill="#050514"/><rect x="722" y="238" width="74" height="302" fill="#07071c"/><rect x="800" y="274" width="52" height="266" fill="#060616"/>
+            <g fill="#f0c848" opacity=".3"><rect x="268" y="236" width="7" height="4"/><rect x="280" y="236" width="7" height="4"/><rect x="462" y="224" width="7" height="4"/><rect x="462" y="236" width="7" height="4"/><rect x="728" y="248" width="8" height="4"/></g>
+          </svg>
+          <div class="ov-split-orig" id="sp-sm-orig" style="right:40%"></div>
+          <div class="ov-split-line" id="sp-sm-line" style="left:60%">
+            <div class="ov-split-knob" style="width:24px;height:24px;"><i data-lucide="arrows-left-right" style="width:10px;height:10px"></i></div>
+          </div>
+          <span class="ov-split-tag ov-split-tag-l" style="font-size:8px;padding:2px 7px;top:7px;left:7px">Original</span>
+          <span class="ov-split-tag ov-split-tag-r" style="font-size:8px;padding:2px 7px;top:7px;right:7px">Enhanced</span>
+        </div>
+        <div style="font-size:12.5px;color:var(--nn-t3);line-height:1.72;padding:4px 0">
+          <p style="margin-bottom:9px">El divider acepta <strong style="color:var(--nn-t2)">mouse y touch</strong>. Rango configurable (default 5–95%). La posición se emite como output <code style="font-family:var(--nn-font-m);font-size:10.5px;background:rgba(255,255,255,.05);padding:1px 4px;border-radius:3px">positionChange</code>.</p>
+          <p>Compatible con <strong style="color:var(--nn-t2)">video real</strong> via <code style="font-family:var(--nn-font-m);font-size:10.5px;background:rgba(255,255,255,.05);padding:1px 4px;border-radius:3px">&lt;video&gt;</code> o canvas — cualquier elemento HTML funciona como contenido.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="api">
+      <div class="api-row api-head"><span>Property</span><span>Type</span><span>Description</span></div>
+      <div class="api-row"><span class="api-prop">position</span><span class="api-type">number</span><span class="api-desc">Divider position 0–100 (%). Default: 50</span></div>
+      <div class="api-row"><span class="api-prop">beforeLabel</span><span class="api-type">string</span><span class="api-desc">Left half label. Default: "Original"</span></div>
+      <div class="api-row"><span class="api-prop">afterLabel</span><span class="api-type">string</span><span class="api-desc">Right half label. Default: "Enhanced"</span></div>
+      <div class="api-row"><span class="api-prop">filterPreset</span><span class="api-type">'degrade'|'blur'|'bw'</span><span class="api-desc">backdrop-filter style applied to the before mask</span></div>
+      <div class="api-row"><span class="api-prop">(output) positionChange</span><span class="api-type">EventEmitter</span><span class="api-desc">Emits position (0–100) on every drag move</span></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       OVVideoPreview
+       ════════════════════════════════ -->
+  <section class="sec" id="ov-vp">
+    <h2 class="sec-h"><span class="sec-tag">ov-video-preview</span> OVVideoPreview</h2>
+    <p class="sec-meta">Vista previa de frame con zoom, pan y scrubbing de timeline. Muestra el frame actual mientras el enhancer procesa. Frames procesados aparecen highlighted en el timeline.</p>
+
+    <div class="demo">
+      <div class="demo-cap">Play · zoom · scrub timeline</div>
+      <div class="ov-vp">
+        <div class="ov-vp-view" id="vp-view" style="aspect-ratio:16/9">
+          <svg class="ov-vp-scene" id="vp-scene" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="960" height="540" fill="url(#sk-g)"/>
+            <rect width="960" height="540" fill="url(#sk-moon)"/>
+            <rect width="960" height="540" fill="url(#sk-glow)"/>
+            <rect x="0" y="318" width="55" height="222" fill="#040410"/><rect x="58" y="272" width="40" height="268" fill="#050513"/><rect x="102" y="295" width="65" height="245" fill="#040412"/><rect x="170" y="252" width="46" height="288" fill="#060618"/><rect x="220" y="275" width="36" height="265" fill="#050514"/><rect x="260" y="224" width="76" height="316" fill="#08081e"/><rect x="340" y="262" width="50" height="278" fill="#060618"/><rect x="394" y="244" width="58" height="296" fill="#050516"/><rect x="456" y="215" width="68" height="325" fill="#07071e"/><rect x="528" y="252" width="88" height="288" fill="#060618"/><rect x="620" y="232" width="54" height="308" fill="#070720"/><rect x="678" y="272" width="40" height="268" fill="#050514"/><rect x="722" y="238" width="74" height="302" fill="#07071c"/><rect x="800" y="274" width="52" height="266" fill="#060616"/><rect x="856" y="252" width="46" height="288" fill="#050514"/><rect x="906" y="264" width="54" height="276" fill="#060618"/>
+            <g fill="#f0c848" opacity=".34"><rect x="268" y="236" width="7" height="4"/><rect x="280" y="248" width="7" height="4"/><rect x="268" y="272" width="7" height="4"/><rect x="462" y="224" width="7" height="4"/><rect x="474" y="236" width="7" height="4"/><rect x="728" y="260" width="8" height="4"/></g>
+            <g fill="#a0c8ff" opacity=".24"><rect x="534" y="264" width="8" height="4"/><rect x="548" y="278" width="8" height="4"/><rect x="626" y="242" width="7" height="4"/><rect x="626" y="254" width="7" height="4"/></g>
+            <line x1="298" y1="224" x2="298" y2="210" stroke="rgba(255,255,255,.13)" stroke-width="1.5"/><circle cx="298" cy="208" r="2" fill="rgba(234,67,53,.55)"/>
+            <line x1="490" y1="215" x2="490" y2="200" stroke="rgba(255,255,255,.1)" stroke-width="1.5"/><circle cx="490" cy="198" r="2" fill="rgba(66,133,244,.65)"/>
+          </svg>
+          <div class="ov-vp-hud" id="vp-hud">F: 0001 · 00:00:04</div>
+        </div>
+        <!-- Controls bar -->
+        <div class="ov-vp-bar">
+          <button class="ov-ic" id="vp-play" onclick="vpTogglePlay()"><i data-lucide="play"></i></button>
+          <div class="ov-sep"></div>
+          <button class="ov-ic" onclick="vpZoom(0.25)" title="Zoom in"><i data-lucide="zoom-in"></i></button>
+          <span class="ov-zoom-lbl" id="vp-zoom-lbl">1×</span>
+          <button class="ov-ic" onclick="vpZoom(-0.25)" title="Zoom out"><i data-lucide="zoom-out"></i></button>
+          <div class="ov-sep"></div>
+          <button class="ov-ic" onclick="vpStep(-1)"><i data-lucide="skip-back"></i></button>
+          <button class="ov-ic" onclick="vpStep(1)"><i data-lucide="skip-forward"></i></button>
+          <span class="ov-tc" id="vp-tc">F 0001 · 00:00:04</span>
+        </div>
+        <!-- Timeline -->
+        <div class="ov-tl">
+          <div class="ov-tl-t">00:00</div>
+          <div class="ov-tl-track" id="vp-tl" onclick="vpScrub(event)">
+            <div id="vp-tl-inner" style="display:flex;gap:2px;flex:1;height:36px;pointer-events:none"></div>
+            <div class="ov-tl-marker" id="vp-marker" style="left:1%"></div>
+          </div>
+          <div class="ov-tl-t" style="text-align:right">15:21</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="api">
+      <div class="api-row api-head"><span>Feature</span><span>Input</span><span>Description</span></div>
+      <div class="api-row"><span class="api-prop">zoom</span><span class="api-type">+/− buttons</span><span class="api-desc">0.25× steps · Range 0.5×–4× · Centered on viewport</span></div>
+      <div class="api-row"><span class="api-prop">pan</span><span class="api-type">Alt + drag</span><span class="api-desc">Pans the scene when zoom &gt; 1×. Constrained to frame edges.</span></div>
+      <div class="api-row"><span class="api-prop">frameScrub</span><span class="api-type">timeline click/drag</span><span class="api-desc">Jump to any frame. Thumbnail previews generated from video source.</span></div>
+      <div class="api-row"><span class="api-prop">enhancedFrames</span><span class="api-type">Set&lt;number&gt;</span><span class="api-desc">Frame indices already processed. Shown with blue accent in timeline.</span></div>
+      <div class="api-row"><span class="api-prop">frameRate</span><span class="api-type">number</span><span class="api-desc">Source FPS for timecode calculation</span></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       OVProcessingPipeline
+       ════════════════════════════════ -->
+  <section class="sec" id="ov-pipeline">
+    <h2 class="sec-h"><span class="sec-tag">ov-processing-pipeline</span> OVProcessingPipeline</h2>
+    <p class="sec-meta">Pipeline AI en dos variantes — horizontal para job cards y vertical para el inspector. Pulsa <strong style="color:var(--nn-t2)">▶ Run</strong> para animar los estados.</p>
+
+    <div class="demo">
+      <div class="demo-cap">Horizontal · job card variant</div>
+      <div style="background:var(--nn-surface-2);border-radius:var(--nn-r-md);padding:16px 20px;border:1px solid var(--nn-b0)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div>
+            <span style="font-size:12.5px;font-weight:600">Anime Episode 12.mp4</span>
+            <span style="font-family:var(--nn-font-m);font-size:10px;color:var(--nn-t3);margin-left:10px">Real-ESRGAN x4</span>
+          </div>
+          <button onclick="runPipeline()" style="font-family:var(--nn-font-m);font-size:9.5px;padding:4px 12px;border-radius:99px;background:var(--nn-blue-10);border:1px solid rgba(66,133,244,.22);color:var(--nn-blue-bright);cursor:pointer;transition:all 140ms" onmouseover="this.style.background='rgba(66,133,244,.18)'" onmouseout="this.style.background='var(--nn-blue-10)'">▶ Run</button>
+        </div>
+        <div class="ov-pipe-h" id="pipe-h" style="padding:8px 0"></div>
+        <div style="font-family:var(--nn-font-m);font-size:10px;color:var(--nn-t3);margin-top:8px" id="pipe-status">Enhance · Frame 3450 / 22080</div>
+      </div>
+    </div>
+
+    <div class="demo" style="padding:20px">
+      <div class="demo-cap">Vertical · inspector sidebar variant</div>
+      <div style="display:grid;grid-template-columns:260px 1fr;gap:20px">
+        <div style="background:var(--nn-surface-1);border-radius:var(--nn-r-md);padding:14px 14px 10px;border:1px solid var(--nn-b0)">
+          <div style="font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--nn-t3);margin-bottom:12px;display:flex;align-items:center;gap:6px"><i data-lucide="git-branch" style="width:11px;height:11px;opacity:.5"></i>AI Pipeline</div>
+          <div class="ov-pipe-v" id="pipe-v"></div>
+        </div>
+        <div style="font-size:12.5px;color:var(--nn-t3);line-height:1.75;padding-top:2px">
+          <p style="margin-bottom:10px">La variante vertical se usa en el <strong style="color:var(--nn-t2)">Inspector</strong> del workspace. El conector entre nodos refleja el estado del paso anterior.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
+            <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:50%;border:2px solid var(--nn-success);background:var(--nn-success-10);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i data-lucide="check" style="width:9px;height:9px;color:var(--nn-success)"></i></div><span style="font-size:12px;color:var(--nn-t2)">done — paso completado</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:50%;border:2px solid var(--nn-blue-primary);background:var(--nn-blue-10);display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:pulse 1.6s ease-in-out infinite"><i data-lucide="zap" style="width:9px;height:9px;color:var(--nn-blue-primary)"></i></div><span style="font-size:12px;color:var(--nn-t2)">active — procesando ahora</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:50%;border:2px solid var(--nn-b1);opacity:.4;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i data-lucide="clock" style="width:9px;height:9px;color:var(--nn-t4)"></i></div><span style="font-size:12px;color:var(--nn-t2)">wait — pendiente</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="api">
+      <div class="api-row api-head"><span>Property</span><span>Type</span><span>Description</span></div>
+      <div class="api-row"><span class="api-prop">steps</span><span class="api-type">PipeStep[]</span><span class="api-desc">{id, label, icon, state: 'done'|'active'|'wait'}</span></div>
+      <div class="api-row"><span class="api-prop">orientation</span><span class="api-type">'h' | 'v'</span><span class="api-desc">Horizontal (job cards) or vertical (inspector)</span></div>
+      <div class="api-row"><span class="api-prop">activeStep</span><span class="api-type">number</span><span class="api-desc">Active step index. All previous set to done, all next to wait.</span></div>
+      <div class="api-row"><span class="api-prop">showSubtitle</span><span class="api-type">boolean</span><span class="api-desc">Show timecode/description below each step (vertical only)</span></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       OVGpuMonitor
+       ════════════════════════════════ -->
+  <section class="sec" id="ov-gpu">
+    <h2 class="sec-h"><span class="sec-tag">ov-gpu-monitor</span> OVGpuMonitor</h2>
+    <p class="sec-meta">Monitor de GPU con ring gauges SVG para usage, VRAM y temperatura. Actualización cada 2s simulada con jitter natural.</p>
+
+    <div class="demo">
+      <div class="demo-cap">Live simulation · RTX 4070 · updates every 2s</div>
+      <div class="ov-gpu">
+
+        <!-- GPU Usage -->
+        <div class="ov-gauge-wrap">
+          <svg width="108" height="108" viewBox="0 0 108 108" style="overflow:visible">
+            <defs>
+              <linearGradient id="g-bv" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#4285F4"/>
+                <stop offset="100%" stop-color="#7B5CF6"/>
+              </linearGradient>
+            </defs>
+            <circle cx="54" cy="54" r="42" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="8"/>
+            <circle id="g-gpu" cx="54" cy="54" r="42" fill="none" stroke="url(#g-bv)" stroke-width="8" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="47.5" transform="rotate(-90 54 54)" style="transition:stroke-dashoffset .9s cubic-bezier(0,0,.2,1)"/>
+            <text x="54" y="50" font-family="'JetBrains Mono',monospace" font-size="19" font-weight="600" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle" id="g-gpu-txt">82%</text>
+            <text x="54" y="67" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="rgba(255,255,255,.3)" text-anchor="middle">GPU</text>
+          </svg>
+          <div class="ov-gauge-lbl">GPU Usage</div>
+          <div class="ov-gauge-sub" id="g-gpu-sub">RTX 4070 · High</div>
+        </div>
+
+        <!-- VRAM -->
+        <div class="ov-gauge-wrap">
+          <svg width="108" height="108" viewBox="0 0 108 108" style="overflow:visible">
+            <defs>
+              <linearGradient id="g-vp" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#7B5CF6"/>
+                <stop offset="100%" stop-color="#D946EF"/>
+              </linearGradient>
+            </defs>
+            <circle cx="54" cy="54" r="42" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="8"/>
+            <circle id="g-vram" cx="54" cy="54" r="42" fill="none" stroke="url(#g-vp)" stroke-width="8" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="58.1" transform="rotate(-90 54 54)" style="transition:stroke-dashoffset .9s cubic-bezier(0,0,.2,1)"/>
+            <text x="54" y="46" font-family="'JetBrains Mono',monospace" font-size="16" font-weight="600" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle" id="g-vram-txt">9.4</text>
+            <text x="54" y="61" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(255,255,255,.28)" text-anchor="middle">GB / 12</text>
+            <text x="54" y="71" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(255,255,255,.18)" text-anchor="middle">VRAM</text>
+          </svg>
+          <div class="ov-gauge-lbl">VRAM</div>
+          <div class="ov-gauge-sub" id="g-vram-sub">9.4 / 12 GB</div>
+        </div>
+
+        <!-- Temperature -->
+        <div class="ov-gauge-wrap">
+          <svg width="108" height="108" viewBox="0 0 108 108" style="overflow:visible">
+            <defs>
+              <linearGradient id="g-temp-grad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#34A853"/>
+                <stop offset="50%" stop-color="#FBBC05"/>
+                <stop offset="100%" stop-color="#EA4335"/>
+              </linearGradient>
+            </defs>
+            <circle cx="54" cy="54" r="42" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="8"/>
+            <circle id="g-temp" cx="54" cy="54" r="42" fill="none" stroke="url(#g-temp-grad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="92.4" transform="rotate(-90 54 54)" style="transition:stroke-dashoffset .9s cubic-bezier(0,0,.2,1)"/>
+            <text x="54" y="50" font-family="'JetBrains Mono',monospace" font-size="19" font-weight="600" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle" id="g-temp-txt">65°</text>
+            <text x="54" y="67" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="rgba(255,255,255,.3)" text-anchor="middle">°C</text>
+          </svg>
+          <div class="ov-gauge-lbl">Temperature</div>
+          <div class="ov-gauge-sub" id="g-temp-sub">Optimal</div>
+        </div>
+
+        <!-- Stats list -->
+        <div class="ov-gpu-list">
+          <div class="ov-gpu-row"><span class="ov-gpu-lbl">Clock Speed</span><span class="ov-gpu-val" id="g-clock">2505 MHz</span></div>
+          <div class="ov-gpu-row"><span class="ov-gpu-lbl">Memory BW</span><span class="ov-gpu-val">504 GB/s</span></div>
+          <div class="ov-gpu-row"><span class="ov-gpu-lbl">Power Draw</span><span class="ov-gpu-val" id="g-power">198 W</span></div>
+          <div class="ov-gpu-row"><span class="ov-gpu-lbl">Fan Speed</span><span class="ov-gpu-val" id="g-fan">74%</span></div>
+          <div class="ov-gpu-row"><span class="ov-gpu-lbl">Driver</span><span class="ov-gpu-val" style="color:var(--nn-success)">566.7 ✓</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="api">
+      <div class="api-row api-head"><span>Property</span><span>Type</span><span>Description</span></div>
+      <div class="api-row"><span class="api-prop">gpuUsage</span><span class="api-type">number</span><span class="api-desc">GPU usage 0–100%. Ring color shifts green→yellow→red above 80%</span></div>
+      <div class="api-row"><span class="api-prop">vramUsed / vramTotal</span><span class="api-type">number</span><span class="api-desc">VRAM in GB. Ratio drives fill percentage.</span></div>
+      <div class="api-row"><span class="api-prop">temperature</span><span class="api-type">number</span><span class="api-desc">°C. Warning label at 80°. Critical glow at 90°.</span></div>
+      <div class="api-row"><span class="api-prop">metrics</span><span class="api-type">GpuMetric[]</span><span class="api-desc">Additional stat rows: {label, value, unit}. Rendered below gauges.</span></div>
+      <div class="api-row"><span class="api-prop">refreshMs</span><span class="api-type">number</span><span class="api-desc">Polling interval. Default: 2000ms. Set 0 to disable auto-refresh.</span></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       OVModelCard
+       ════════════════════════════════ -->
+  <section class="sec" id="ov-model">
+    <h2 class="sec-h"><span class="sec-tag">ov-model-card</span> OVModelCard</h2>
+    <p class="sec-meta">Tarjeta de modelo AI con specs de calidad, velocidad y VRAM. Cuatro estados: active, installed, available, downloading. Click para seleccionar.</p>
+
+    <div class="demo">
+      <div class="demo-cap">All states · click to select</div>
+      <div class="demo-row">
+
+        <!-- Active -->
+        <div class="ov-mcard on" onclick="selectModel(this)">
+          <div class="ov-mc-head">
+            <div>
+              <div class="ov-mc-name">Real-ESRGAN x4</div>
+              <span class="ov-mc-badge active">● Active</span>
+            </div>
+            <i data-lucide="check-circle-2" style="color:var(--nn-blue-primary);width:16px;height:16px;flex-shrink:0;margin-top:2px"></i>
+          </div>
+          <div class="ov-mc-desc">Maximum upscaling fidelity. Best for final exports and archival quality.</div>
+          <div class="ov-mc-bars">
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">Quality</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:96%;background:linear-gradient(90deg,#4285F4,#D946EF)"></div></div><span class="ov-mc-bar-val">Best</span></div>
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">Speed</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:32%;background:linear-gradient(90deg,#34A853,#FBBC05)"></div></div><span class="ov-mc-bar-val">Slow</span></div>
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">VRAM</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:82%;background:linear-gradient(90deg,#7B5CF6,#D946EF)"></div></div><span class="ov-mc-bar-val">High</span></div>
+          </div>
+          <div class="ov-mc-chips">
+            <span class="ov-mc-chip vram">8 GB VRAM</span>
+            <span class="ov-mc-chip">4× upscale</span>
+            <span class="ov-mc-chip">v1.2</span>
+          </div>
+        </div>
+
+        <!-- Installed -->
+        <div class="ov-mcard" onclick="selectModel(this)">
+          <div class="ov-mc-head">
+            <div>
+              <div class="ov-mc-name">Real-ESRGAN x2</div>
+              <span class="ov-mc-badge installed">Installed</span>
+            </div>
+          </div>
+          <div class="ov-mc-desc">Fast upscaling with good quality. Ideal for previews and batch processing.</div>
+          <div class="ov-mc-bars">
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">Quality</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:72%;background:linear-gradient(90deg,#4285F4,#7B5CF6)"></div></div><span class="ov-mc-bar-val">Good</span></div>
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">Speed</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:68%;background:linear-gradient(90deg,#34A853,#FBBC05)"></div></div><span class="ov-mc-bar-val">Med</span></div>
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">VRAM</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:46%;background:linear-gradient(90deg,#7B5CF6,#D946EF)"></div></div><span class="ov-mc-bar-val">Med</span></div>
+          </div>
+          <div class="ov-mc-chips">
+            <span class="ov-mc-chip vram">4 GB VRAM</span>
+            <span class="ov-mc-chip">2× upscale</span>
+            <span class="ov-mc-chip">v1.2</span>
+          </div>
+        </div>
+
+        <!-- Available (not installed) -->
+        <div class="ov-mcard" onclick="selectModel(this)" style="opacity:.72">
+          <div class="ov-mc-head">
+            <div>
+              <div class="ov-mc-name">GFPGAN v1.3</div>
+              <span class="ov-mc-badge avail">Not installed</span>
+            </div>
+            <button class="ov-mc-dl"><i data-lucide="download"></i></button>
+          </div>
+          <div class="ov-mc-desc">Face restoration specialist. Best for portrait and interview footage.</div>
+          <div class="ov-mc-bars">
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">Quality</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:88%;background:linear-gradient(90deg,#4285F4,#D946EF)"></div></div><span class="ov-mc-bar-val">High</span></div>
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">Speed</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:55%;background:linear-gradient(90deg,#34A853,#FBBC05)"></div></div><span class="ov-mc-bar-val">Med</span></div>
+            <div class="ov-mc-bar-row"><span class="ov-mc-bar-lbl">VRAM</span><div class="ov-mc-bar-bg"><div class="ov-mc-bar" style="width:52%;background:linear-gradient(90deg,#7B5CF6,#D946EF)"></div></div><span class="ov-mc-bar-val">Med</span></div>
+          </div>
+          <div class="ov-mc-chips">
+            <span class="ov-mc-chip vram">5 GB VRAM</span>
+            <span class="ov-mc-chip">Face restore</span>
+            <span class="ov-mc-chip">2.1 GB</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="api">
+      <div class="api-row api-head"><span>Property</span><span>Type</span><span>Description</span></div>
+      <div class="api-row"><span class="api-prop">model</span><span class="api-type">OVModel</span><span class="api-desc">{name, version, desc, quality, speed, vramReq, tags[]}</span></div>
+      <div class="api-row"><span class="api-prop">state</span><span class="api-type">ModelState</span><span class="api-desc">'active' | 'installed' | 'available' | 'downloading'</span></div>
+      <div class="api-row"><span class="api-prop">selected</span><span class="api-type">boolean</span><span class="api-desc">Gradient border + glow. Drives the selection ring.</span></div>
+      <div class="api-row"><span class="api-prop">downloadProgress</span><span class="api-type">number</span><span class="api-desc">0–100. Shown as progress bar when state = 'downloading'</span></div>
+      <div class="api-row"><span class="api-prop">(output) select</span><span class="api-type">EventEmitter</span><span class="api-desc">Emits model id on click</span></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       OVJobProgress
+       ════════════════════════════════ -->
+  <section class="sec" id="ov-job">
+    <h2 class="sec-h"><span class="sec-tag">ov-job-progress</span> OVJobProgress</h2>
+    <p class="sec-meta">Tarjeta de job con barra Gemini, frame counter animado en tiempo real y pipeline embebido. Tres estados: processing, done, queued.</p>
+
+    <div class="demo">
+      <div class="demo-cap">Processing · Done · Queued</div>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:580px">
+
+        <!-- Processing -->
+        <div class="ov-job">
+          <div class="ov-job-header">
+            <div class="ov-job-thumb">
+              <div style="position:absolute;inset:0;background:linear-gradient(135deg,#08082a,#0e1540)"></div>
+              <div style="position:absolute;inset:0;background:radial-gradient(circle at 40% 50%,rgba(123,92,246,.4),transparent 70%)"></div>
+            </div>
+            <div class="ov-job-info">
+              <div class="ov-job-name">Anime Episode 12.mp4</div>
+              <div class="ov-job-meta">Real-ESRGAN x4 · 1080p → 4K · 15:21</div>
+            </div>
+            <span class="ov-job-badge proc">Processing</span>
+          </div>
+          <div class="ov-job-body">
+            <div class="ov-job-ph">
+              <span class="ov-job-pt">Enhance · Frame <strong id="jf">14820</strong> / 22080</span>
+              <span class="ov-job-pct" id="jpct">67%</span>
+            </div>
+            <div class="ov-job-bar-bg">
+              <div class="ov-job-bar" id="jbar" style="width:67%"><div class="ov-job-shim"></div></div>
+            </div>
+            <div class="ov-job-fr">
+              <span class="ov-job-frame"><strong id="jfps">18</strong> fps · GPU 82%</span>
+              <span class="ov-job-eta" id="jeta">ETA 2h 14m</span>
+            </div>
+          </div>
+          <div class="ov-job-pipe-wrap">
+            <div class="ov-job-pipe-box">
+              <div class="ov-pipe-h" id="job-pipe" style="padding:4px 0"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Done -->
+        <div class="ov-job">
+          <div class="ov-job-header">
+            <div class="ov-job-thumb">
+              <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061810,#0a2e18)"></div>
+              <div style="position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(52,168,83,.32),transparent 70%)"></div>
+            </div>
+            <div class="ov-job-info">
+              <div class="ov-job-name">Cinematic Short.mp4</div>
+              <div class="ov-job-meta">Real-ESRGAN x2 · 720p → 4K · 08:44</div>
+            </div>
+            <span class="ov-job-badge done">Done</span>
+          </div>
+          <div class="ov-job-body">
+            <div class="ov-job-ph">
+              <span class="ov-job-pt">Completed · 12,540 frames</span>
+              <span class="ov-job-pct" style="color:var(--nn-success)">100%</span>
+            </div>
+            <div class="ov-job-bar-bg">
+              <div class="ov-job-bar" style="width:100%;background:linear-gradient(90deg,#34A853,#06B6D4)"></div>
+            </div>
+            <div class="ov-job-fr">
+              <span class="ov-job-frame">Processed in <strong>1h 42m</strong></span>
+              <span class="ov-job-eta" style="color:var(--nn-success)">Saved · 4.8 GB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Queued -->
+        <div class="ov-job" style="opacity:.6">
+          <div class="ov-job-header">
+            <div class="ov-job-thumb">
+              <div style="position:absolute;inset:0;background:linear-gradient(135deg,#160810,#220a1c)"></div>
+            </div>
+            <div class="ov-job-info">
+              <div class="ov-job-name">Interview Footage.mp4</div>
+              <div class="ov-job-meta">GFPGAN · 1080p → 4K · 22:08</div>
+            </div>
+            <span class="ov-job-badge wait">Queued</span>
+          </div>
+          <div class="ov-job-body">
+            <div class="ov-job-ph">
+              <span class="ov-job-pt">Waiting for GPU</span>
+              <span class="ov-job-pct" style="color:var(--nn-t3)">0%</span>
+            </div>
+            <div class="ov-job-bar-bg">
+              <div class="ov-job-bar" style="width:0%"></div>
+            </div>
+            <div class="ov-job-fr">
+              <span class="ov-job-frame">32,160 frames total</span>
+              <span class="ov-job-eta">ETA ~4h 20m</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="api">
+      <div class="api-row api-head"><span>Property</span><span>Type</span><span>Description</span></div>
+      <div class="api-row"><span class="api-prop">job</span><span class="api-type">OVJob</span><span class="api-desc">{name, model, resolution, duration, totalFrames}</span></div>
+      <div class="api-row"><span class="api-prop">status</span><span class="api-type">JobStatus</span><span class="api-desc">'processing' | 'done' | 'queued' | 'failed' | 'paused'</span></div>
+      <div class="api-row"><span class="api-prop">progress</span><span class="api-type">number</span><span class="api-desc">0–100. Drives bar fill + percentage label.</span></div>
+      <div class="api-row"><span class="api-prop">currentFrame</span><span class="api-type">number</span><span class="api-desc">Current frame index. Animated in the "Frame N / Total" display.</span></div>
+      <div class="api-row"><span class="api-prop">fpsRate</span><span class="api-type">number</span><span class="api-desc">Processing speed in frames/s. Used to compute ETA.</span></div>
+      <div class="api-row"><span class="api-prop">pipelineSteps</span><span class="api-type">PipeStep[]</span><span class="api-desc">Optional embedded pipeline using OVProcessingPipeline horizontal variant.</span></div>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script>
+// ── Init Lucide ──
+if(window.lucide) lucide.createIcons();
+
+// ══════════════════════════════════════
+// OVSplitCompare
+// ══════════════════════════════════════
+function initSplit(wrapperId, origId, lineId) {
+  const wrap = document.getElementById(wrapperId);
+  const orig = document.getElementById(origId);
+  const line = document.getElementById(lineId);
+  if(!wrap || !orig || !line) return;
+  let dragging = false;
+  function setPos(p) {
+    p = Math.max(4, Math.min(96, p));
+    orig.style.right = (100 - p) + '%';
+    line.style.left = p + '%';
+  }
+  setPos(50);
+  wrap.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const r = wrap.getBoundingClientRect();
+    setPos((e.clientX - r.left) / r.width * 100);
+  });
+  window.addEventListener('mouseup', () => dragging = false);
+  wrap.addEventListener('touchstart', () => dragging = true, { passive: true });
+  window.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    const r = wrap.getBoundingClientRect();
+    setPos((e.touches[0].clientX - r.left) / r.width * 100);
+  }, { passive: true });
+  window.addEventListener('touchend', () => dragging = false);
+}
+initSplit('sp-main', 'sp-main-orig', 'sp-main-line');
+initSplit('sp-sm', 'sp-sm-orig', 'sp-sm-line');
+
+// ══════════════════════════════════════
+// OVVideoPreview
+// ══════════════════════════════════════
+const TOTAL_FRAMES = 22080, SRC_FPS = 24;
+let vpFrame = 1, vpZoomLevel = 1, vpPlaying = false, vpTimer = null;
+
+function vpTimecode(f) {
+  const s = Math.round(f / SRC_FPS);
+  const h = String(Math.floor(s / 3600)).padStart(2,'0');
+  const m = String(Math.floor((s % 3600) / 60)).padStart(2,'0');
+  const ss = String(s % 60).padStart(2,'0');
+  return `${h}:${m}:${ss}`;
+}
+function vpUpdateUI() {
+  const label = `F: ${String(vpFrame).padStart(4,'0')} · ${vpTimecode(vpFrame)}`;
+  const hud = document.getElementById('vp-hud');
+  const tc = document.getElementById('vp-tc');
+  const marker = document.getElementById('vp-marker');
+  if(hud) hud.textContent = label;
+  if(tc) tc.textContent = label;
+  if(marker) marker.style.left = (vpFrame / TOTAL_FRAMES * 97 + 1) + '%';
+}
+function vpTogglePlay() {
+  vpPlaying = !vpPlaying;
+  const btn = document.getElementById('vp-play');
+  if(vpPlaying) {
+    if(btn) btn.innerHTML = '<i data-lucide="pause"></i>';
+    vpTimer = setInterval(() => {
+      vpFrame = Math.min(TOTAL_FRAMES, vpFrame + 10);
+      if(vpFrame >= TOTAL_FRAMES) { vpPlaying = false; clearInterval(vpTimer); if(btn) btn.innerHTML = '<i data-lucide="play"></i>'; }
+      vpUpdateUI();
+      if(window.lucide) lucide.createIcons();
+    }, 80);
+  } else {
+    clearInterval(vpTimer);
+    if(btn) btn.innerHTML = '<i data-lucide="play"></i>';
+  }
+  if(window.lucide) lucide.createIcons();
+}
+function vpZoom(d) {
+  vpZoomLevel = Math.max(0.5, Math.min(4, vpZoomLevel + d));
+  const sc = document.getElementById('vp-scene');
+  if(sc) sc.style.transform = `scale(${vpZoomLevel})`;
+  const lbl = document.getElementById('vp-zoom-lbl');
+  if(lbl) lbl.textContent = (Math.round(vpZoomLevel * 4) / 4) + '×';
+}
+function vpStep(d) { vpFrame = Math.max(1, Math.min(TOTAL_FRAMES, vpFrame + d * 24)); vpUpdateUI(); }
+function vpScrub(e) {
+  const tl = document.getElementById('vp-tl');
+  if(!tl) return;
+  const r = tl.getBoundingClientRect();
+  vpFrame = Math.round((e.clientX - r.left) / r.width * TOTAL_FRAMES);
+  vpFrame = Math.max(1, Math.min(TOTAL_FRAMES, vpFrame));
+  vpUpdateUI();
+}
+// Build timeline thumbnails
+(function() {
+  const c = document.getElementById('vp-tl-inner');
+  if(!c) return;
+  const BG = ['#060814','#07091e','#080a22','#060a1a','#07091c','#050812','#08091e','#060a20','#07081c','#060914','#08091a','#050810','#07091c','#060a1e'];
+  const enhancedSet = new Set([2, 3, 5, 7, 8, 10]);
+  for(let i = 0; i < 14; i++) {
+    const f = document.createElement('div');
+    f.className = 'ov-tl-frame' + (i === 0 ? ' cur' : '') + (enhancedSet.has(i) ? ' enh' : '');
+    f.style.cssText = `background:${BG[i % BG.length]};flex:1;min-width:40px;max-width:60px;height:36px;border-radius:4px;border:1px solid rgba(255,255,255,.05);cursor:pointer`;
+    if(enhancedSet.has(i)) f.style.borderColor = 'rgba(66,133,244,.18)';
+    f.onclick = () => { vpFrame = Math.round((i + .5) / 14 * TOTAL_FRAMES); vpUpdateUI(); };
+    c.appendChild(f);
+  }
+})();
+vpUpdateUI();
+
+// ══════════════════════════════════════
+// OVProcessingPipeline
+// ══════════════════════════════════════
+const STEPS = [
+  { label:'Import',  icon:'upload'    },
+  { label:'Extract', icon:'layers'    },
+  { label:'Enhance', icon:'sparkles'  },
+  { label:'Encode',  icon:'film'      },
+  { label:'Export',  icon:'download'  }
+];
+
+function buildPipeH(id, active) {
+  const c = document.getElementById(id);
+  if(!c) return;
+  c.innerHTML = '';
+  STEPS.forEach((s, i) => {
+    const st = i < active ? 'done' : i === active ? 'active' : 'wait';
+    const el = document.createElement('div');
+    el.className = `ov-pipe-step ${st}`;
+    el.innerHTML = `<div class="ov-pipe-dot ${st}"><i data-lucide="${st==='done'?'check':s.icon}"></i></div><span class="ov-pipe-lbl ${st}">${s.label}</span>`;
+    c.appendChild(el);
+  });
+  if(window.lucide) lucide.createIcons();
+}
+function buildPipeV(id, active) {
+  const c = document.getElementById(id);
+  if(!c) return;
+  c.innerHTML = '';
+  STEPS.forEach((s, i) => {
+    const st = i < active ? 'done' : i === active ? 'active' : 'wait';
+    const wrap = document.createElement('div');
+    const row = document.createElement('div');
+    row.className = 'ov-pipe-vrow';
+    row.innerHTML = `<div class="ov-pipe-dot ${st}" style="flex-shrink:0;margin-top:2px"><i data-lucide="${st==='done'?'check':s.icon}"></i></div><div style="flex:1;min-width:0;padding-top:1px"><div class="ov-pipe-vtitle${st==='wait'?' wait':''}">${s.label}</div><div class="ov-pipe-vsub">${st==='done'?'Complete':st==='active'?'Running…':'Pending'}</div></div>`;
+    wrap.appendChild(row);
+    if(i < STEPS.length - 1) {
+      const conn = document.createElement('div');
+      conn.className = `ov-pipe-vconn ${st==='done'?'done':'other'}`;
+      wrap.appendChild(conn);
+    }
+    c.appendChild(wrap);
+  });
+  if(window.lucide) lucide.createIcons();
+}
+
+let pipeRunning = false;
+function runPipeline() {
+  if(pipeRunning) return;
+  pipeRunning = true;
+  let step = -1;
+  const statusEl = document.getElementById('pipe-status');
+  function advance() {
+    step++;
+    if(step >= STEPS.length) { pipeRunning = false; if(statusEl) statusEl.textContent = '✓ Pipeline complete · 22080 frames'; return; }
+    buildPipeH('pipe-h', step);
+    buildPipeV('pipe-v', step);
+    buildPipeH('job-pipe', step);
+    if(statusEl) statusEl.textContent = STEPS[step].label + ' · running…';
+    setTimeout(advance, step === 2 ? 2200 : 800);
+  }
+  advance();
+}
+buildPipeH('pipe-h', 2);
+buildPipeV('pipe-v', 2);
+buildPipeH('job-pipe', 2);
+
+// ══════════════════════════════════════
+// OVGpuMonitor — live gauges
+// ══════════════════════════════════════
+(function() {
+  const C = 263.9; // 2 * π * 42
+  function setArc(id, pct) {
+    const el = document.getElementById(id);
+    if(el) el.setAttribute('stroke-dashoffset', (C * (1 - pct / 100)).toFixed(1));
+  }
+  function jit(v, d) { return Math.max(0, Math.min(100, v + (Math.random() - .5) * d)); }
+  let gpu = 82, temp = 65, vram = 78, clock = 2505, power = 198, fan = 74;
+  function update() {
+    gpu = jit(gpu, 5); temp = jit(temp, 2.5); vram = jit(vram, 2);
+    clock = Math.round(jit(clock, 90)); power = Math.round(jit(power, 15)); fan = Math.round(jit(fan, 4));
+    setArc('g-gpu', gpu); setArc('g-vram', vram); setArc('g-temp', temp);
+    const gt = document.getElementById('g-gpu-txt'); if(gt) gt.textContent = Math.round(gpu) + '%';
+    const vt = document.getElementById('g-vram-txt'); if(vt) vt.textContent = (vram / 100 * 12).toFixed(1);
+    const tt = document.getElementById('g-temp-txt'); if(tt) tt.textContent = Math.round(temp) + '°';
+    const gs = document.getElementById('g-gpu-sub'); if(gs) gs.textContent = `RTX 4070 · ${gpu>85?'Critical':gpu>70?'High':'Normal'}`;
+    const vs = document.getElementById('g-vram-sub'); if(vs) vs.textContent = `${(vram/100*12).toFixed(1)} / 12 GB`;
+    const ts = document.getElementById('g-temp-sub'); if(ts) ts.textContent = temp < 75 ? 'Optimal' : temp < 85 ? 'Warm' : 'Warning';
+    const cl = document.getElementById('g-clock'); if(cl) cl.textContent = clock + ' MHz';
+    const pw = document.getElementById('g-power'); if(pw) pw.textContent = power + ' W';
+    const fn = document.getElementById('g-fan'); if(fn) fn.textContent = Math.round(fan) + '%';
+  }
+  setInterval(update, 2000);
+})();
+
+// ══════════════════════════════════════
+// OVJobProgress — frame counter
+// ══════════════════════════════════════
+(function() {
+  let f = 14820, total = 22080;
+  const barEl = document.getElementById('jbar');
+  const pctEl = document.getElementById('jpct');
+  const frEl  = document.getElementById('jf');
+  const etaEl = document.getElementById('jeta');
+  setInterval(() => {
+    f = Math.min(total, f + Math.round(14 + Math.random() * 10));
+    const pct = Math.round(f / total * 100);
+    if(barEl) barEl.style.width = pct + '%';
+    if(pctEl) pctEl.textContent = pct + '%';
+    if(frEl)  frEl.textContent = f.toLocaleString();
+    const rem = total - f, fps = 16 + Math.random() * 6;
+    const etaS = Math.round(rem / fps);
+    const eh = Math.floor(etaS / 3600), em = Math.floor((etaS % 3600) / 60);
+    if(etaEl) etaEl.textContent = `ETA ${eh > 0 ? eh + 'h ' : ''}${em}m`;
+  }, 700);
+})();
+
+// OVModelCard — selection
+function selectModel(el) {
+  document.querySelectorAll('.ov-mcard').forEach(c => { c.classList.remove('on'); c.style.opacity = c.dataset.dim || ''; });
+  el.classList.add('on');
+  el.style.opacity = '1';
+}
+
+// Sidebar nav highlight on scroll
+const navLinks = document.querySelectorAll('.nav-a[href^="#"]');
+const sections = document.querySelectorAll('.sec[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if(s.getBoundingClientRect().top < 160) cur = s.id; });
+  navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
+
+// GSAP entrance
+if(window.gsap) {
+  gsap.fromTo('.ph > *', { opacity:0, y:16 }, { opacity:1, y:0, duration:.6, stagger:.08, ease:'power2.out', delay:.1 });
+}
+</script>
+</body>
+</html>
