@@ -1,0 +1,56 @@
+:root {
+  /*
+   * Compatibility-only mappings for imported Claude Design references.
+   * Public Neural Angular UI tokens use the --n-* prefix.
+   */
+  --nn-bg-canvas: var(--n-bg-canvas);
+  --nn-bg-base: var(--n-bg-base);
+  --nn-overlay: var(--n-overlay);
+  --nn-surface-1: var(--n-surface-1);
+  --nn-surface-2: var(--n-surface-2);
+  --nn-surface-3: var(--n-surface-3);
+  --nn-surface-4: var(--n-surface-4);
+
+  --nn-b0: var(--n-border-0);
+  --nn-b1: var(--n-border-1);
+  --nn-b2: var(--n-border-2);
+  --nn-b3: var(--n-border-3);
+
+  --nn-blue-primary: var(--n-color-primary);
+  --nn-blue-bright: var(--n-color-primary-bright);
+  --nn-blue-light: var(--n-color-primary-light);
+  --nn-blue-deep: var(--n-color-primary-deep);
+  --nn-violet-primary: var(--n-color-secondary);
+  --nn-violet-deep: var(--n-color-secondary-deep);
+  --nn-pink-primary: var(--n-color-tertiary);
+  --nn-pink-bright: var(--n-color-tertiary-bright);
+  --nn-pink-deep: var(--n-color-tertiary-deep);
+
+  --nn-success: var(--n-color-success);
+  --nn-warning: var(--n-color-warning);
+  --nn-error: var(--n-color-danger);
+  --nn-info: var(--n-color-info);
+
+  --nn-t1: var(--n-text-1);
+  --nn-t2: var(--n-text-2);
+  --nn-t3: var(--n-text-3);
+  --nn-t4: var(--n-text-4);
+
+  --nn-font-d: var(--n-font-display);
+  --nn-font-b: var(--n-font-body);
+  --nn-font-m: var(--n-font-mono);
+
+  --nn-r-none: var(--n-radius-none);
+  --nn-r-xs: var(--n-radius-xs);
+  --nn-r-sm: var(--n-radius-sm);
+  --nn-r-md: var(--n-radius-md);
+  --nn-r-lg: var(--n-radius-lg);
+  --nn-r-xl: var(--n-radius-xl);
+  --nn-r-full: var(--n-radius-full);
+
+  --nn-grad-g: var(--n-gradient-gemini);
+  --nn-grad-g-90: var(--n-gradient-gemini-90);
+  --nn-grad-surface: var(--n-gradient-surface);
+  --nn-border-grad: var(--n-gradient-border);
+  --nn-border-subtle: var(--n-gradient-border-subtle);
+}

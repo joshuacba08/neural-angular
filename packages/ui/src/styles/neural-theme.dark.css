@@ -1,0 +1,16 @@
+.n-theme-dark,
+[data-n-theme="dark"] {
+  color-scheme: dark;
+
+  --n-bg-canvas: #06060e;
+  --n-bg-base: #0a0a15;
+  --n-surface-1: #0f0f1c;
+  --n-surface-2: #141426;
+  --n-surface-3: #1a1a2e;
+  --n-surface-4: #202038;
+
+  --n-text-1: rgba(255, 255, 255, 0.92);
+  --n-text-2: rgba(255, 255, 255, 0.58);
+  --n-text-3: rgba(255, 255, 255, 0.34);
+  --n-text-4: rgba(255, 255, 255, 0.16);
+}

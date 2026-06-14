@@ -1,0 +1,10 @@
+.n-theme-light,
+[data-n-theme="light"] {
+  color-scheme: light;
+
+  /*
+   * Light theme is intentionally minimal for now.
+   * The imported design system is dark-only.
+   * A complete light palette will be designed later.
+   */
+}

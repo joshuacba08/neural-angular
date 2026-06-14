@@ -10,6 +10,7 @@
 
 ## Phase 1 - Foundation
 
+- Phase 1A complete: create package structure and migrate the curated token foundation.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
@@ -64,4 +65,4 @@
 
 ## Implementation Boundary
 
-The real implementation starts after this documentation phase. The next requirement should create the initial `@neural/angular-ui` package structure and migrate only the token foundation, without implementing all components yet.
+The first implementation step is intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, and token metadata. Angular components, providers, directives, SSR helpers, CLI, schematics, and adapters remain out of scope until later requirements.

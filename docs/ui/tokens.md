@@ -195,3 +195,9 @@ The file includes legacy aliases:
 - Keep imported `--nn-*` tokens as a compatibility or internal source layer during migration.
 - Remove or quarantine legacy aliases before exposing a public API.
 - Add explicit light/dark theme layers before implementing `NThemeProvider`.
+
+## Initial Package Migration
+
+The first token foundation now lives in `packages/ui/src/styles/`. Public tokens use the curated `--n-*` prefix. The package also includes `neural-compat.css`, which maps a small, safe subset of imported `--nn-*` tokens to `--n-*` values for migration support.
+
+Conflict-prone aliases from the original export are not exposed as stable public API. In particular, the redefined blue/violet alias behavior remains documented here as a source issue rather than being preserved as desired package behavior.
