@@ -66,9 +66,13 @@ import {
   NChip,
   NCommandBar,
   NDataCard,
+  NDropzone,
   NEmptyState,
+  NFileCard,
   NIcon,
+  NImageCompare,
   NInput,
+  NMediaPreview,
   NMetricCard,
   NPageHeader,
   NProgress,
@@ -122,7 +126,11 @@ import { NStatCard } from '@neural/angular-ui/stat-card';
 import { NTable } from '@neural/angular-ui/table';
 import { NTimeline, NTimelineItem } from '@neural/angular-ui/timeline';
 import { NDialogService } from '@neural/angular-ui/dialog';
+import { NDropzone } from '@neural/angular-ui/dropzone';
 import { NDrawerService } from '@neural/angular-ui/drawer';
+import { NFileCard } from '@neural/angular-ui/file-card';
+import { NImageCompare } from '@neural/angular-ui/image-compare';
+import { NMediaPreview } from '@neural/angular-ui/media-preview';
 import { NPopoverDirective } from '@neural/angular-ui/popover';
 import { NToastService } from '@neural/angular-ui/toast';
 import { NTooltipDirective } from '@neural/angular-ui/tooltip';
@@ -143,9 +151,13 @@ Use them in standalone components:
     NChip,
     NCommandBar,
     NDataCard,
+    NDropzone,
     NEmptyState,
+    NFileCard,
     NIcon,
+    NImageCompare,
     NInput,
+    NMediaPreview,
     NMetricCard,
     NPageHeader,
     NProgress,
@@ -225,12 +237,16 @@ Use them in standalone components:
     <n-table [columns]="jobColumns" [data]="jobs" />
     <n-button nTooltip="Run enhancement pipeline">Run</n-button>
     <n-button [nPopover]="quickInfo">More actions</n-button>
+    <n-dropzone accept="image/*,video/*" [multiple]="true" />
+    <n-file-card [file]="file" [previewable]="true" />
+    <n-media-preview kind="image" [src]="previewSrc" alt="Preview frame" />
+    <n-image-compare [beforeSrc]="beforeSrc" [afterSrc]="afterSrc" [(value)]="compareValue" />
   `,
 })
 export class ExampleComponent {}
 ```
 
-Core, layout, data display, and overlay components avoid browser globals and fake SSR helpers. Overlay primitives use Angular CDK Overlay and Portal for runtime positioning.
+Core, layout, data display, overlay, and media components avoid browser globals and fake SSR helpers. Overlay primitives use Angular CDK Overlay and Portal for runtime positioning.
 
 Form primitives currently expose `value` and `valueChange` for simple two-way binding. `ControlValueAccessor` integration is intentionally left for a future forms-focused iteration.
 
@@ -239,3 +255,5 @@ Layout primitives currently avoid router integration and advanced mobile drawers
 Data display primitives intentionally avoid advanced data-grid behavior. Sorting, filtering, pagination, virtual scroll, and column templates remain future iterations.
 
 Overlay primitives intentionally avoid advanced menu semantics, nested overlay policies, command palettes, and custom animation APIs in this MVP.
+
+Media primitives intentionally avoid real upload services, object URL creation, thumbnail extraction, Canvas, FFmpeg, WebCodecs, and product-specific `OV*` components in this MVP.

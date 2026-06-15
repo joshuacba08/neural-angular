@@ -131,6 +131,26 @@
       "types": "./dist/popover/index.d.ts",
       "default": "./dist/popover/index.js"
     },
+    "./media": {
+      "types": "./dist/media/index.d.ts",
+      "default": "./dist/media/index.js"
+    },
+    "./dropzone": {
+      "types": "./dist/dropzone/index.d.ts",
+      "default": "./dist/dropzone/index.js"
+    },
+    "./file-card": {
+      "types": "./dist/file-card/index.d.ts",
+      "default": "./dist/file-card/index.js"
+    },
+    "./image-compare": {
+      "types": "./dist/image-compare/index.d.ts",
+      "default": "./dist/image-compare/index.js"
+    },
+    "./media-preview": {
+      "types": "./dist/media-preview/index.d.ts",
+      "default": "./dist/media-preview/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"

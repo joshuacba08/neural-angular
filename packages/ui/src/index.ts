@@ -30,3 +30,8 @@ export * from './drawer/index.js';
 export * from './toast/index.js';
 export * from './tooltip/index.js';
 export * from './popover/index.js';
+export * from './media/index.js';
+export * from './dropzone/index.js';
+export * from './file-card/index.js';
+export * from './image-compare/index.js';
+export * from './media-preview/index.js';

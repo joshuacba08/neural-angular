@@ -537,6 +537,141 @@
     </ng-template>
   </section>
 
+  <section class="preview-section media-demo-section">
+    <div class="section-heading">
+      <h2>Media / Upload MVP</h2>
+      <p>Dropzone, Selected Files, File Cards, Media Preview, Image Compare, and a media workflow composition.</p>
+    </div>
+
+    <div class="media-demo-grid">
+      <n-card variant="gradient">
+        <n-card-header>
+          <n-card-title>
+            <span class="title-with-icon">
+              <n-icon name="upload" size="sm" />
+              Dropzone
+            </span>
+          </n-card-title>
+          <n-card-description>Native file input with drag and drop validation.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-dropzone
+            accept="image/*,video/*"
+            [multiple]="true"
+            [maxFiles]="4"
+            [maxSize]="500 * 1024 * 1024"
+            variant="media"
+            title="Upload media"
+            description="Drop videos or images to start processing."
+            browseLabel="Select media"
+            (filesSelected)="onMediaFilesSelected($event)"
+            (filesRejected)="onMediaFilesRejected($event)"
+          />
+        </n-card-content>
+      </n-card>
+
+      <n-card>
+        <n-card-header>
+          <n-card-title>Media Preview</n-card-title>
+          <n-card-description>Image, video, audio, or file fallback by URL.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-media-preview
+            [src]="mediaPreviewSrc"
+            kind="image"
+            fit="cover"
+            alt="Demo image preview"
+            title="Enhanced frame"
+            description="Preview generated from the selected media."
+          />
+        </n-card-content>
+      </n-card>
+    </div>
+
+    <div class="media-demo-block">
+      <div class="section-heading compact-heading">
+        <h2>Selected Files</h2>
+        <p>File Cards show metadata, status, progress and emitted actions.</p>
+      </div>
+
+      <div class="media-file-grid">
+        @for (file of selectedFiles; track file.id ?? file.name) {
+          <n-file-card
+            [file]="file"
+            [removable]="true"
+            [previewable]="true"
+            [downloadable]="true"
+            (removed)="removeDemoFile(file)"
+            (preview)="previewDemoFile(file)"
+            (download)="downloadDemoFile(file)"
+            (retry)="retryDemoFile(file)"
+          />
+        }
+      </div>
+    </div>
+
+    <div class="media-demo-grid">
+      <n-card>
+        <n-card-header>
+          <n-card-title>Image Compare</n-card-title>
+          <n-card-description>Before/after comparison with a native range slider.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-image-compare
+            [afterSrc]="compareAfterSrc"
+            beforeMode="filter"
+            beforeAlt="Original frame"
+            afterAlt="Enhanced frame"
+            beforeLabel="Original"
+            afterLabel="4K Enhanced"
+            [(value)]="imageCompareValue"
+          />
+        </n-card-content>
+      </n-card>
+
+      <n-card variant="gradient">
+        <n-card-header>
+          <n-card-title>
+            <span class="title-with-icon">
+              <n-icon name="sparkles" size="sm" />
+              Media Workflow Composition
+            </span>
+          </n-card-title>
+          <n-card-description>Upload, preview and compare AI-enhanced media.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <div class="media-workflow-stack">
+            <n-dropzone
+              accept="image/*,video/*"
+              [multiple]="true"
+              variant="compact"
+              title="Drop media"
+              description="Images and videos are supported."
+              browseLabel="Add files"
+              (filesSelected)="onMediaFilesSelected($event)"
+              (filesRejected)="onMediaFilesRejected($event)"
+            />
+
+            <n-progress [value]="68" label="Processing" [showValue]="true" />
+
+            <div class="media-workflow-meta">
+              <n-badge variant="success" [dot]="true">GPU Ready</n-badge>
+              <n-chip variant="primary" [selected]="true">Real-ESRGAN</n-chip>
+              <n-chip variant="secondary" [selected]="true">4x upscale</n-chip>
+            </div>
+          </div>
+        </n-card-content>
+        <n-card-footer>
+          <n-button variant="ghost" (click)="resetMediaDemo()">Reset</n-button>
+          <n-button (click)="startMediaProcessing()">
+            <n-icon name="play" size="sm" />
+            Start processing
+          </n-button>
+        </n-card-footer>
+      </n-card>
+    </div>
+  </section>
+
   <section class="preview-section components-preview">
     <div class="section-heading">
       <h2>Components Preview</h2>

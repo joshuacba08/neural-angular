@@ -86,9 +86,11 @@
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Before / after compare | `NImageCompare` | `components.html` | Experimental | Media | Drag behavior and pointer events |
+| Before / after compare | `NImageCompare` | `components.html` | Complete | Media | Native range-based before/after image comparison |
+| File card | `NFileCard` | `components.html`, `Oroya Video.html` | Complete | Media | File metadata, status, progress, and emitted actions |
+| Media preview | `NMediaPreview` | `components.html`, `Oroya Video.html` | Complete | Media | URL-based image/video/audio/file preview fallback |
 | Carousel / gallery | `NCarousel`, `NGalleria` | `components.html` | Low | Media | Later phase |
-| Dropzone | `NDropzone` | `components.html`, `Oroya Video.html` | Medium | Media | Useful but needs forms/file handling design |
+| Dropzone | `NDropzone` | `components.html`, `Oroya Video.html` | Complete | Media | Native file input and drag/drop selection without upload backend |
 
 ## Oroya Video Specific Components
 

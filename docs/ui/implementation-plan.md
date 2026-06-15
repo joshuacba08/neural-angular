@@ -18,6 +18,7 @@
 - Phase 1F complete: add layout and navigation MVP with `NShell`, `NSidebar`, `NToolbar`, `NTabs`, `NPageHeader`, and `NCommandBar`.
 - Phase 1G complete: add data display MVP with `NStatCard`, `NMetricCard`, `NDataCard`, `NTimeline`, and `NTable`.
 - Phase 1H complete: add overlay/feedback MVP with `NDialog`, `NDrawer`, `NToast`, `NTooltip`, and `NPopover`.
+- Phase 1I complete: add media/upload MVP with `NDropzone`, `NFileCard`, `NImageCompare`, and `NMediaPreview`.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
@@ -33,6 +34,7 @@
 - Create layout primitives: `NShell`, `NSidebar`, `NToolbar`, `NTabs`, `NPageHeader`, and `NCommandBar`.
 - Create data display primitives: `NStatCard`, `NMetricCard`, `NDataCard`, `NTimeline`, and `NTable`.
 - Create overlay primitives: `NDialog`, `NDrawer`, `NToast`, `NTooltip`, and `NPopover`.
+- Create media primitives: `NDropzone`, `NFileCard`, `NImageCompare`, and `NMediaPreview`.
 
 ## Phase 2 - Core UI
 
@@ -68,7 +70,14 @@
 - `NTooltip` - complete MVP
 - `NPopover` - complete MVP
 
-## Phase 6 - AI Patterns
+## Phase 6 - Media & Upload
+
+- `NDropzone` - complete MVP
+- `NFileCard` - complete MVP
+- `NImageCompare` - complete MVP
+- `NMediaPreview` - complete MVP
+
+## Phase 7 - AI Patterns
 
 - `NVoiceOrb`
 - `NPromptInput`
@@ -76,7 +85,7 @@
 - `NNeuralCanvas`
 - `NAIPipeline`
 
-## Phase 7 - Product-specific Packages
+## Phase 8 - Product-specific Packages
 
 - Move Oroya Video components to a separate future package or app layer.
 - Examples:
@@ -89,4 +98,4 @@
 
 ## Implementation Boundary
 
-The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, Core UI primitives, layout/navigation primitives, data display primitives, overlay/feedback primitives, and an Angular playground preview. Advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.
+The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, Core UI primitives, layout/navigation primitives, data display primitives, overlay/feedback primitives, media/upload primitives, and an Angular playground preview. Advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.

@@ -46,6 +46,11 @@
   --n-toast-bg: color-mix(in srgb, var(--n-surface-2) 96%, #000);
   --n-tooltip-bg: color-mix(in srgb, var(--n-surface-4) 96%, #000);
   --n-popover-bg: color-mix(in srgb, var(--n-surface-2) 96%, #000);
+  --n-dropzone-bg: color-mix(in srgb, var(--n-surface-2) 84%, transparent);
+  --n-dropzone-hover-bg: color-mix(in srgb, var(--n-color-primary) 7%, var(--n-surface-2));
+  --n-file-card-bg: color-mix(in srgb, var(--n-surface-2) 88%, transparent);
+  --n-media-preview-bg: color-mix(in srgb, var(--n-surface-1) 92%, #000);
+  --n-image-compare-handle-bg: color-mix(in srgb, var(--n-surface-2) 96%, #000);
 
   /* Text */
   --n-text-1: rgba(255, 255, 255, 0.92);
@@ -64,6 +69,12 @@
   --n-table-border: var(--n-border-1);
   --n-timeline-line: var(--n-border-1);
   --n-overlay-panel-border: var(--n-border-2);
+  --n-dropzone-border: var(--n-border-2);
+  --n-dropzone-border-active: var(--n-color-primary-bright);
+  --n-dropzone-border-error: var(--n-color-danger);
+  --n-file-card-border: var(--n-border-1);
+  --n-media-preview-border: var(--n-border-1);
+  --n-image-compare-handle-border: rgba(255, 255, 255, 0.82);
   --n-field-bg: rgba(255, 255, 255, 0.04);
   --n-field-bg-hover: rgba(255, 255, 255, 0.06);
   --n-field-border: var(--n-border-1);

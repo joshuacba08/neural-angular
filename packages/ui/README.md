@@ -2,7 +2,7 @@
 
 Angular-first UI system for Neural Angular.
 
-Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, layout/navigation, data display primitives, and overlay/feedback primitives.
+Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, layout/navigation, data display primitives, overlay/feedback primitives, and media/upload primitives.
 
 ## Styles
 
@@ -54,9 +54,13 @@ import {
   NChip,
   NCommandBar,
   NDataCard,
+  NDropzone,
   NEmptyState,
+  NFileCard,
   NIcon,
+  NImageCompare,
   NInput,
+  NMediaPreview,
   NMetricCard,
   NPageHeader,
   NProgress,
@@ -111,6 +115,11 @@ import { NDrawerService } from '@neural/angular-ui/drawer';
 import { NToastService } from '@neural/angular-ui/toast';
 import { NTooltipDirective } from '@neural/angular-ui/tooltip';
 import { NPopoverDirective } from '@neural/angular-ui/popover';
+import { NDropzone } from '@neural/angular-ui/dropzone';
+import { NFileCard } from '@neural/angular-ui/file-card';
+import { NImageCompare } from '@neural/angular-ui/image-compare';
+import { NMediaPreview } from '@neural/angular-ui/media-preview';
+import { formatFileSize, type NFileLike } from '@neural/angular-ui/media';
 ```
 
 ```html
@@ -174,6 +183,20 @@ import { NPopoverDirective } from '@neural/angular-ui/popover';
 
 <n-button nTooltip="Run enhancement pipeline">Run</n-button>
 <n-button [nPopover]="popoverTpl">More actions</n-button>
+
+<n-dropzone
+  accept="image/*,video/*"
+  [multiple]="true"
+  title="Upload media"
+  description="Drop videos or images to start processing."
+/>
+<n-file-card [file]="file" [previewable]="true" [removable]="true" />
+<n-media-preview kind="image" src="assets/demo/frame.jpg" alt="Preview frame" />
+<n-image-compare
+  beforeSrc="assets/demo/before.jpg"
+  afterSrc="assets/demo/after.jpg"
+  [(value)]="compareValue"
+/>
 ```
 
 ## Overlays
@@ -203,7 +226,8 @@ Public tokens use the stable `--n-*` prefix. Imported `--nn-*` names are compati
 - Advanced table sorting/filtering
 - Pagination and virtual scroll
 - Advanced menu semantics and command palette
+- Real upload backend, object URL previews, thumbnail extraction, Canvas, FFmpeg, and WebCodecs
 
 ## Next
 
-- Media and upload primitives
+- AI interaction primitives
