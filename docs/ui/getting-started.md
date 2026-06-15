@@ -53,7 +53,21 @@ export const appConfig = {
 Import components from the root package:
 
 ```ts
-import { NBadge, NButton, NCard, NChip, NIcon } from '@neural/angular-ui';
+import {
+  NAvatar,
+  NBadge,
+  NButton,
+  NCard,
+  NChip,
+  NEmptyState,
+  NIcon,
+  NInput,
+  NProgress,
+  NSelect,
+  NSpinner,
+  NStatusDot,
+  NTextarea,
+} from '@neural/angular-ui';
 ```
 
 Or import from secondary entry points:
@@ -63,7 +77,14 @@ import { NBadge } from '@neural/angular-ui/badge';
 import { NButton } from '@neural/angular-ui/button';
 import { NCard } from '@neural/angular-ui/card';
 import { NChip } from '@neural/angular-ui/chip';
+import { NEmptyState } from '@neural/angular-ui/empty-state';
 import { NIcon } from '@neural/angular-ui/icon';
+import { NInput } from '@neural/angular-ui/input';
+import { NProgress } from '@neural/angular-ui/progress';
+import { NSelect } from '@neural/angular-ui/select';
+import { NSpinner } from '@neural/angular-ui/spinner';
+import { NStatusDot } from '@neural/angular-ui/status-dot';
+import { NTextarea } from '@neural/angular-ui/textarea';
 ```
 
 Use them in standalone components:
@@ -79,7 +100,14 @@ Use them in standalone components:
     NCardHeader,
     NCardTitle,
     NChip,
+    NEmptyState,
     NIcon,
+    NInput,
+    NProgress,
+    NSelect,
+    NSpinner,
+    NStatusDot,
+    NTextarea,
   ],
   template: `
     <n-card variant="gradient">
@@ -93,6 +121,7 @@ Use them in standalone components:
       <n-card-content>
         <n-badge variant="success" [dot]="true">Ready</n-badge>
         <n-chip variant="primary" [selected]="true">Angular 22</n-chip>
+        <n-progress [value]="64" label="Progress" [showValue]="true" />
       </n-card-content>
 
       <n-card-footer>
@@ -105,3 +134,5 @@ export class ExampleComponent {}
 ```
 
 Core components are pure Angular template + CSS components, with Lucide integrated through `@lucide/angular`. They do not use browser globals, GSAP, Angular Material, CDK overlays, or fake SSR helpers.
+
+Form primitives currently expose `value` and `valueChange` for simple two-way binding. `ControlValueAccessor` integration is intentionally left for a future forms-focused iteration.

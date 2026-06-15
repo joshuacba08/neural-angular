@@ -2,7 +2,7 @@
 
 Angular-first UI system for Neural Angular.
 
-Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, and the first standalone components: `NButton`, `NCard`, `NIcon`, `NBadge`, and `NChip`.
+Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, and Core UI primitives for buttons, cards, icons, badges, chips, forms, feedback, avatars, status, and empty states.
 
 ## Styles
 
@@ -46,7 +46,21 @@ export const appConfig = {
 ## Components
 
 ```ts
-import { NBadge, NButton, NCard, NChip, NIcon } from '@neural/angular-ui';
+import {
+  NAvatar,
+  NBadge,
+  NButton,
+  NCard,
+  NChip,
+  NEmptyState,
+  NIcon,
+  NInput,
+  NProgress,
+  NSelect,
+  NSpinner,
+  NStatusDot,
+  NTextarea,
+} from '@neural/angular-ui';
 ```
 
 Secondary entry points are available in the workspace:
@@ -57,6 +71,14 @@ import { NCard } from '@neural/angular-ui/card';
 import { NIcon } from '@neural/angular-ui/icon';
 import { NBadge } from '@neural/angular-ui/badge';
 import { NChip } from '@neural/angular-ui/chip';
+import { NInput } from '@neural/angular-ui/input';
+import { NTextarea } from '@neural/angular-ui/textarea';
+import { NSelect } from '@neural/angular-ui/select';
+import { NAvatar } from '@neural/angular-ui/avatar';
+import { NProgress } from '@neural/angular-ui/progress';
+import { NSpinner } from '@neural/angular-ui/spinner';
+import { NEmptyState } from '@neural/angular-ui/empty-state';
+import { NStatusDot } from '@neural/angular-ui/status-dot';
 ```
 
 ```html
@@ -64,6 +86,9 @@ import { NChip } from '@neural/angular-ui/chip';
 <n-icon name="sparkles" />
 <n-badge variant="success" [dot]="true">Ready</n-badge>
 <n-chip variant="primary" [selected]="true">Angular</n-chip>
+<n-input label="Email" placeholder="you@example.com" />
+<n-progress [value]="64" label="Processing" [showValue]="true" />
+<n-avatar name="Neural Angular" status="online" />
 
 <n-card variant="gradient" [interactive]="true">
   <n-card-header>
@@ -92,5 +117,5 @@ Public tokens use the stable `--n-*` prefix. Imported `--nn-*` names are compati
 
 ## Next
 
-- `NInput`
-- `NTextarea`
+- Layout primitives
+- Navigation primitives

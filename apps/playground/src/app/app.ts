@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {
+  NAvatar,
   NBadge,
   NButton,
   NCard,
@@ -9,13 +10,21 @@ import {
   NCardHeader,
   NCardTitle,
   NChip,
+  NEmptyState,
   NIcon,
+  NInput,
+  NProgress,
+  NSelect,
   NeuralThemeService,
+  NSpinner,
+  NStatusDot,
+  NTextarea,
   type NBadgeVariant,
   type NButtonSize,
   type NButtonVariant,
   type NCardVariant,
   type NIconSize,
+  type NSelectOption,
   type NeuralThemeName,
 } from '@neural/angular-ui';
 
@@ -30,7 +39,15 @@ import {
     NCardContent,
     NCardFooter,
     NChip,
+    NEmptyState,
     NIcon,
+    NInput,
+    NSelect,
+    NTextarea,
+    NAvatar,
+    NProgress,
+    NSpinner,
+    NStatusDot,
   ],
   selector: 'app-root',
   templateUrl: './app.html',
@@ -73,6 +90,14 @@ export class App {
     'danger',
     'info',
   ];
+  readonly modelOptions: NSelectOption[] = [
+    { label: 'Neural Enhance', value: 'enhance' },
+    { label: 'Real-ESRGAN', value: 'real-esrgan' },
+    { label: 'Vision Preview', value: 'vision-preview' },
+  ];
+  projectName = 'Neural Playground';
+  selectedModel = 'enhance';
+  prompt = '';
   removedChips = 0;
 
   readonly surfaces = [

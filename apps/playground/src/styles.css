@@ -77,6 +77,40 @@ select {
   gap: var(--n-space-6);
 }
 
+.forms-feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--n-space-6);
+}
+
+.form-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--n-space-4);
+}
+
+.form-demo-grid n-textarea,
+.form-demo-grid n-select {
+  grid-column: 1 / -1;
+}
+
+.feedback-demo-stack {
+  display: grid;
+  gap: var(--n-space-4);
+}
+
+.inline-demo-row,
+.avatar-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--n-space-4);
+  align-items: center;
+}
+
+.composition-demo {
+  max-width: 720px;
+}
+
 .icon-demo-grid,
 .badge-demo-row,
 .chip-demo-row,
@@ -128,7 +162,9 @@ select {
 
 @media (max-width: 760px) {
   .component-layout,
-  .core-preview-grid {
+  .core-preview-grid,
+  .forms-feedback-grid,
+  .form-demo-grid {
     grid-template-columns: 1fr;
   }
 }

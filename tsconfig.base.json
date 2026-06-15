@@ -21,11 +21,19 @@
     "ignoreDeprecations": "6.0",
     "paths": {
       "@neural/angular-ui": ["packages/ui/src/index.ts"],
+      "@neural/angular-ui/avatar": ["packages/ui/src/avatar/index.ts"],
       "@neural/angular-ui/badge": ["packages/ui/src/badge/index.ts"],
       "@neural/angular-ui/button": ["packages/ui/src/button/index.ts"],
       "@neural/angular-ui/card": ["packages/ui/src/card/index.ts"],
       "@neural/angular-ui/chip": ["packages/ui/src/chip/index.ts"],
+      "@neural/angular-ui/empty-state": ["packages/ui/src/empty-state/index.ts"],
       "@neural/angular-ui/icon": ["packages/ui/src/icon/index.ts"],
+      "@neural/angular-ui/input": ["packages/ui/src/input/index.ts"],
+      "@neural/angular-ui/progress": ["packages/ui/src/progress/index.ts"],
+      "@neural/angular-ui/select": ["packages/ui/src/select/index.ts"],
+      "@neural/angular-ui/spinner": ["packages/ui/src/spinner/index.ts"],
+      "@neural/angular-ui/status-dot": ["packages/ui/src/status-dot/index.ts"],
+      "@neural/angular-ui/textarea": ["packages/ui/src/textarea/index.ts"],
       "@neural/angular-ui/theme": ["packages/ui/src/theme/index.ts"],
       "@neural/angular-ui/tokens": ["packages/ui/src/tokens/index.ts"]
     }

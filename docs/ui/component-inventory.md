@@ -16,7 +16,9 @@
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Input | `NInput` or Material input theme | `components.html` | Medium | Forms | Text input, search, textarea, select; should align with Reactive Forms |
+| Input | `NInput` | `components.html` | Complete | Forms | Native input with label, hint, error, and value output |
+| Textarea | `NTextarea` | `components.html` | Complete | Forms | Native textarea with resize control |
+| Select | `NSelect` | `components.html` | Complete | Forms | Native select; custom dropdown remains out of scope |
 | Toggle | `NToggle` | `components.html` | Medium | Forms | Includes switch and toggle button patterns |
 | Checkbox | `NCheckbox` or Material checkbox theme | `components.html` | Medium | Forms | Prefer Material/CDK accessibility |
 | Radio | `NRadio` or Material radio theme | `components.html` | Medium | Forms | Prefer Material/CDK accessibility |
@@ -36,10 +38,10 @@
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Progress | `NProgress` | `components.html`, `ai-patterns.html` | Medium | Feedback | Linear, circular, orbital, indeterminate |
-| Spinner | `NSpinner` | `components.html` | Medium | Feedback | Dot spinner and loading indicators |
+| Progress | `NProgress` | `components.html`, `ai-patterns.html` | Complete | Feedback | Linear determinate and CSS-only indeterminate progress |
+| Spinner | `NSpinner` | `components.html` | Complete | Feedback | CSS-only loading indicator |
 | Skeleton | `NSkeleton` | `components.html` | Medium | Feedback | Loading placeholders |
-| Status dot | `NStatusDot` | `components.html` | Medium | Feedback | Pulse and inline status states |
+| Status dot | `NStatusDot` | `components.html` | Complete | Feedback | Pulse and inline status states |
 | Alert / message | `NMessage` | `components.html` | Low | Feedback | Success, info, warning, error variants |
 | Toast | `NToast` | `components.html`, app prototypes | Low | Feedback | Needs overlay/a11y design |
 
@@ -58,6 +60,8 @@
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
 | Stat card | `NStatCard` | `components.html`, `data-patterns.html` | Medium | Data display | KPI values, trend indicators |
+| Avatar | `NAvatar` | `components.html` | Complete | Data display | Initials/image avatar with optional status |
+| Empty state | `NEmptyState` | `components.html` | Complete | Data display | Icon, title, description, and projected actions |
 | Metric card | `NMetricCard` | `components.html` | Medium | Data display | Dashboard metric pattern |
 | Data card | `NDataCard` | `components.html` | Medium | Data display | Bar/donut/GPU visual patterns |
 | Table | `NTable` or Material table theme | `components.html`, `data-patterns.html` | Medium | Data display | Sortable rows, states, paginator |

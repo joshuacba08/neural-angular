@@ -14,6 +14,7 @@
 - Phase 1B complete: add a minimal Angular theme provider and token playground validation.
 - Phase 1C complete: add `NButton`, `NCard`, public exports, docs, and playground component demos.
 - Phase 1D complete: add Lucide integration, `NIcon`, `NBadge`, `NChip`, docs, and core composition demos.
+- Phase 1E complete: add forms, feedback, avatar, status dot, and empty state primitives.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
@@ -24,6 +25,8 @@
 - Create `NIcon`.
 - Create `NBadge`.
 - Create `NChip`.
+- Create `NInput`, `NTextarea`, and `NSelect`.
+- Create `NAvatar`, `NProgress`, `NSpinner`, `NEmptyState`, and `NStatusDot`.
 
 ## Phase 2 - Core UI
 
@@ -71,4 +74,4 @@
 
 ## Implementation Boundary
 
-The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, `NButton`, `NCard`, `NIcon`, `NBadge`, `NChip`, and an Angular playground preview. Additional UI components, directives, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.
+The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, Core UI primitives, and an Angular playground preview. Layout, navigation, overlays, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.

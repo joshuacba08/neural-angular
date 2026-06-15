@@ -201,6 +201,126 @@
         </n-card>
       </div>
     </div>
+
+    <div class="forms-feedback-grid">
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Forms</h2>
+          <p>Native inputs with labels, hints, errors, and simple value outputs.</p>
+        </div>
+
+        <div class="form-demo-grid">
+          <n-input label="Email" placeholder="you@example.com" />
+          <n-input label="Password" type="password" placeholder="••••••••" />
+          <n-input
+            label="Project"
+            hint="This will be visible in the dashboard"
+            [(value)]="projectName"
+          />
+          <n-input label="API Key" error="Required field" />
+          <n-textarea
+            label="Prompt"
+            placeholder="Write your prompt..."
+            [rows]="5"
+            [(value)]="prompt"
+          />
+          <n-select
+            label="Model"
+            placeholder="Select model"
+            [options]="modelOptions"
+            [(value)]="selectedModel"
+          />
+        </div>
+      </div>
+
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Feedback</h2>
+          <p>Progress, loading and live status primitives.</p>
+        </div>
+
+        <div class="feedback-demo-stack">
+          <n-progress [value]="72" label="Enhancement progress" [showValue]="true" />
+          <n-progress [indeterminate]="true" label="Syncing queue" />
+          <div class="inline-demo-row">
+            <n-spinner label="Loading" />
+            <n-spinner size="sm" variant="neutral" />
+            <n-status-dot status="online" [pulse]="true" label="Online" />
+            <n-status-dot status="danger" label="Error" />
+          </div>
+        </div>
+      </div>
+
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Avatar & Presence</h2>
+          <p>Initials, image-ready avatars, rounded shape, and status dots.</p>
+        </div>
+
+        <div class="avatar-demo-row">
+          <n-avatar name="Anderson Oroya" status="online" />
+          <n-avatar name="Neural Angular" size="lg" />
+          <n-avatar name="Oroya Video" shape="rounded" status="busy" />
+          <n-avatar name="Core UI" size="xl" status="away" />
+        </div>
+      </div>
+
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Empty State</h2>
+          <p>Actionable empty state with projected controls.</p>
+        </div>
+
+        <n-empty-state
+          icon="sparkles"
+          title="No projects yet"
+          description="Create your first AI-enhanced project."
+        >
+          <n-button>
+            <n-icon name="plus" size="sm" />
+            Create project
+          </n-button>
+        </n-empty-state>
+      </div>
+    </div>
+
+    <div class="component-panel composition-demo">
+      <div class="section-heading compact-heading">
+        <h2>Composition Demo</h2>
+        <p>Forms and feedback primitives composed into a realistic workflow card.</p>
+      </div>
+
+      <n-card variant="gradient" [interactive]="true">
+        <n-card-header>
+          <n-card-title>
+            <span class="title-with-icon">
+              <n-icon name="cpu" size="sm" />
+              Processing Job
+            </span>
+          </n-card-title>
+          <n-card-description>
+            Video enhancement pipeline
+          </n-card-description>
+        </n-card-header>
+
+        <n-card-content>
+          <div class="composition-stack">
+            <n-badge variant="success" [dot]="true">Running</n-badge>
+            <n-progress [value]="68" label="Progress" [showValue]="true" />
+            <n-chip variant="primary" [selected]="true">Real-ESRGAN</n-chip>
+            <n-chip variant="secondary">GPU</n-chip>
+          </div>
+        </n-card-content>
+
+        <n-card-footer>
+          <n-button variant="ghost">Cancel</n-button>
+          <n-button>
+            Open
+            <n-icon name="arrow-right" size="sm" />
+          </n-button>
+        </n-card-footer>
+      </n-card>
+    </div>
   </section>
 
   <section class="preview-section">
