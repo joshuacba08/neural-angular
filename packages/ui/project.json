@@ -1,8 +1,9 @@
 {
   "name": "@neural/angular-ui",
-  "root": "packages/ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/ui/src",
   "projectType": "library",
+  "tags": ["scope:neural", "type:ui"],
   "targets": {
     "build": {
       "executor": "nx:run-commands",
@@ -11,7 +12,57 @@
         "command": "tsc -p tsconfig.json"
       },
       "outputs": ["{projectRoot}/dist"]
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "packages/ui/.storybook",
+        "browserTarget": "@neural/angular-ui:build-storybook",
+        "compodoc": false,
+        "styles": [
+          "packages/ui/src/styles/index.css",
+          "packages/ui/src/stories/storybook-theme.css"
+        ]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/@neural/angular-ui",
+        "configDir": "packages/ui/.storybook",
+        "browserTarget": "@neural/angular-ui:build-storybook",
+        "compodoc": false,
+        "styles": [
+          "packages/ui/src/styles/index.css",
+          "packages/ui/src/stories/storybook-theme.css"
+        ]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build-storybook"],
+      "options": {
+        "buildTarget": "@neural/angular-ui:build-storybook",
+        "staticFilePath": "dist/storybook/@neural/angular-ui",
+        "spa": true
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "@neural/angular-ui:build-storybook:ci"
+        }
+      }
     }
-  },
-  "tags": ["scope:neural", "type:ui"]
+  }
 }

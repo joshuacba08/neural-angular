@@ -66,6 +66,15 @@
         "staticFilePath": "dist/apps/playground/browser",
         "spa": true
       }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/playground",
+        "command": "tsc -p tsconfig.app.json --noEmit"
+      },
+      "cache": true,
+      "outputs": []
     }
   }
 }

@@ -1,0 +1,117 @@
+.n-story-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--n-space-3);
+  align-items: center;
+}
+
+.n-story-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: var(--n-space-4);
+  width: min(760px, calc(100vw - 48px));
+}
+
+.n-story-card {
+  width: min(420px, calc(100vw - 48px));
+}
+
+.n-story-title-row,
+.n-story-metric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--n-space-3);
+}
+
+.n-story-title-row {
+  justify-content: flex-start;
+}
+
+.n-story-metric span {
+  font-family: var(--n-font-display);
+  font-size: var(--n-font-size-40);
+  font-weight: var(--n-font-weight-bold);
+}
+
+.n-story-list {
+  display: grid;
+  gap: var(--n-space-2);
+}
+
+.n-story-list span {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--n-space-4);
+}
+
+.n-story-foundation {
+  min-height: 100vh;
+  padding: var(--n-space-8);
+  background: var(--n-bg-canvas);
+  color: var(--n-text-1);
+}
+
+.n-story-foundation header {
+  display: grid;
+  gap: var(--n-space-2);
+  margin-bottom: var(--n-space-8);
+}
+
+.n-story-foundation h1,
+.n-story-foundation h2,
+.n-story-foundation p {
+  margin: 0;
+}
+
+.n-story-foundation h1 {
+  font-family: var(--n-font-display);
+  font-size: var(--n-font-size-40);
+}
+
+.n-story-token-section {
+  display: grid;
+  gap: var(--n-space-4);
+  margin-top: var(--n-space-7);
+}
+
+.n-story-token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--n-space-4);
+}
+
+.n-story-token {
+  display: grid;
+  gap: var(--n-space-3);
+  min-width: 0;
+  padding: var(--n-space-4);
+  border: 1px solid var(--n-border-1);
+  border-radius: var(--n-radius-lg);
+  background: var(--n-surface-2);
+}
+
+.n-story-token span {
+  height: 64px;
+  border: 1px solid var(--n-border-2);
+  border-radius: var(--n-radius-md);
+}
+
+.n-story-token strong {
+  color: var(--n-text-1);
+}
+
+.n-story-token code {
+  overflow: hidden;
+  color: var(--n-text-3);
+  font-size: var(--n-font-size-12);
+  text-overflow: ellipsis;
+}
+
+.n-story-eyebrow {
+  color: var(--n-color-primary-bright);
+  font-size: var(--n-font-size-12);
+  font-weight: var(--n-font-weight-bold);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}

@@ -1,1429 +1,229 @@
 <main class="playground-shell">
-  <section class="hero">
+  <header class="playground-header">
     <div>
       <p class="eyebrow">Neural Angular Playground</p>
-      <h1>Token Preview</h1>
-      <p class="hero-copy">
-        Visual validation for the first `@neural/angular-ui` foundation:
-        curated CSS tokens, theme attributes, Material variable mapping, and
-        compatibility aliases.
+      <h1>Integration cockpit</h1>
+      <p class="header-copy">
+        Compact app surface for checking package imports, providers, themes and
+        layout composition together.
       </p>
     </div>
 
     <div class="theme-switcher" aria-label="Theme selection">
-      <span>Theme</span>
       @for (option of themeOptions; track option) {
-        <button
-          type="button"
-          [class.active]="theme() === option"
-          (click)="setTheme(option)"
-        >
-          {{ option }}
-        </button>
+      <button
+        type="button"
+        [class.active]="theme() === option"
+        (click)="setTheme(option)"
+      >
+        {{ option }}
+      </button>
       }
     </div>
-  </section>
+  </header>
 
-  <section class="preview-section layout-mvp-section">
-    <div class="section-heading">
-      <h2>Layout MVP Demo</h2>
-      <p>A full app surface composed with Sidebar, Toolbar, Page Header, Tabs, Command Bar, Cards, Forms, and Feedback.</p>
-    </div>
-
-    <n-shell contentMaxWidth="none">
-      <n-sidebar ariaLabel="Layout demo navigation">
-        <div nSidebarBrand>
-          <span class="layout-brand-mark">
-            <n-icon name="sparkles" size="sm" />
-          </span>
-          <div class="layout-brand-copy">
-            <strong>Neural Angular</strong>
-            <small>UI Kit</small>
-          </div>
+  <n-shell contentMaxWidth="none">
+    <n-sidebar ariaLabel="Integration navigation">
+      <div nSidebarBrand>
+        <span class="brand-mark">
+          <n-icon name="sparkles" size="sm" />
+        </span>
+        <div class="brand-copy">
+          <strong>Neural Angular</strong>
+          <small>UI Integration</small>
         </div>
-
-        <n-sidebar-section label="Foundation">
-          <n-sidebar-item icon="home" label="Overview" [active]="true" />
-          <n-sidebar-item icon="palette" label="Tokens" />
-          <n-sidebar-item icon="component" label="Components" badge="MVP" />
-        </n-sidebar-section>
-
-        <n-sidebar-section label="Product">
-          <n-sidebar-item icon="cpu" label="AI Jobs" badge="3" />
-          <n-sidebar-item icon="play" label="Video Tools" />
-          <n-sidebar-item icon="settings" label="Settings" />
-        </n-sidebar-section>
-
-        <div nSidebarFooter>
-          <n-avatar name="Anderson Oroya" status="online" size="sm" />
-          <div class="layout-brand-copy">
-            <strong>Anderson Oroya</strong>
-            <small>Online</small>
-          </div>
-        </div>
-      </n-sidebar>
-
-      <div nShellContent>
-        <n-toolbar>
-          <div nToolbarStart>
-            <n-badge variant="success" [dot]="true">System Online</n-badge>
-          </div>
-
-          <div nToolbarCenter>
-            <span class="layout-toolbar-label">Toolbar</span>
-          </div>
-
-          <div nToolbarEnd>
-            <n-button variant="ghost" size="sm">
-              <n-icon name="search" size="sm" />
-              Search
-            </n-button>
-
-            <n-button size="sm">
-              <n-icon name="plus" size="sm" />
-              New
-            </n-button>
-          </div>
-        </n-toolbar>
-
-        <n-page-header
-          eyebrow="Playground"
-          title="Neural Angular Layout"
-          description="A full app layout composed with the first MVP primitives."
-          icon="sparkles"
-        >
-          <n-button pageHeaderAction variant="ghost">View Docs</n-button>
-          <n-button pageHeaderAction>
-            <n-icon name="play" size="sm" />
-            Run Demo
-          </n-button>
-        </n-page-header>
-
-        <div class="layout-label-row" aria-label="Layout component labels">
-          <n-chip selected>Sidebar</n-chip>
-          <n-chip selected>Toolbar</n-chip>
-          <n-chip selected>Page Header</n-chip>
-          <n-chip selected>Tabs</n-chip>
-          <n-chip selected>Command Bar</n-chip>
-        </div>
-
-        <n-tabs [(value)]="activeLayoutTab">
-          <n-tab-item value="overview" icon="home" label="Overview" />
-          <n-tab-item value="jobs" icon="cpu" label="Jobs" badge="3" />
-          <n-tab-item value="settings" icon="settings" label="Settings" />
-        </n-tabs>
-
-        <n-command-bar align="between">
-          <div nCommandGroup>
-            <n-chip selected>Angular 22</n-chip>
-            <n-chip>Lucide</n-chip>
-            <n-chip>Dark UI</n-chip>
-          </div>
-
-          <div nCommandGroup>
-            <n-button variant="ghost" size="sm">Reset</n-button>
-            <n-button size="sm">
-              Continue
-              <n-icon name="arrow-right" size="sm" />
-            </n-button>
-          </div>
-        </n-command-bar>
-
-        <section class="layout-demo-grid">
-          <n-card variant="gradient" [interactive]="true">
-            <n-card-header>
-              <n-card-title>
-                <span class="title-with-icon">
-                  <n-icon name="cpu" size="sm" />
-                  Processing Job
-                </span>
-              </n-card-title>
-              <n-card-description>
-                Video enhancement pipeline
-              </n-card-description>
-            </n-card-header>
-
-            <n-card-content>
-              <div class="composition-stack">
-                <n-badge variant="success" [dot]="true">Running</n-badge>
-                <n-progress [value]="68" label="Progress" [showValue]="true" />
-                <n-chip selected>Feedback</n-chip>
-              </div>
-            </n-card-content>
-
-            <n-card-footer>
-              <n-button variant="ghost" size="sm">Cancel</n-button>
-              <n-button size="sm">Open</n-button>
-            </n-card-footer>
-          </n-card>
-
-          <n-card>
-            <n-card-header>
-              <n-card-title>Cards & Forms</n-card-title>
-              <n-card-description>
-                Form primitives inside a realistic app layout.
-              </n-card-description>
-            </n-card-header>
-
-            <n-card-content>
-              <div class="form-demo-grid compact-form">
-                <n-input label="Project name" placeholder="Neural demo" />
-                <n-select
-                  label="Model"
-                  placeholder="Select model"
-                  [options]="modelOptions"
-                  [(value)]="selectedModel"
-                />
-              </div>
-            </n-card-content>
-
-            <n-card-footer>
-              <n-button [fullWidth]="true">
-                <n-icon name="plus" size="sm" />
-                Create
-              </n-button>
-            </n-card-footer>
-          </n-card>
-        </section>
-      </div>
-    </n-shell>
-  </section>
-
-  <section class="preview-section data-display-section">
-    <div class="section-heading">
-      <h2>Data Display MVP</h2>
-      <p>Dashboard primitives for Stats, Metrics, Data Cards, Timeline, Table, and Dashboard Composition.</p>
-    </div>
-
-    <section class="data-demo-block">
-      <div class="section-heading compact-heading">
-        <h2>Stats</h2>
-        <p>Compact metric cards with icon, trend, status color, and visual interactivity.</p>
       </div>
 
-      <div class="data-demo-grid">
-        <n-stat-card
-          label="Jobs processed"
-          value="128"
-          description="Last 24 hours"
-          icon="activity"
-          trend="up"
-          trendValue="12%"
-          [interactive]="true"
+      <n-sidebar-section label="Workspace">
+        <n-sidebar-item
+          icon="home"
+          label="Overview"
+          [active]="activeTab === 'overview'"
         />
-
-        <n-stat-card
-          label="GPU usage"
-          value="78%"
-          description="RTX pipeline"
+        <n-sidebar-item
           icon="cpu"
-          variant="primary"
-          trend="up"
-          trendValue="8%"
+          label="Pipeline"
+          [active]="activeTab === 'workflow'"
+          badge="3"
         />
+        <n-sidebar-item icon="settings" label="Settings" />
+      </n-sidebar-section>
 
-        <n-stat-card
-          label="Failed jobs"
-          value="3"
-          description="Needs review"
-          icon="alert-circle"
-          variant="danger"
-          trend="down"
-          trendValue="2%"
-        />
+      <div nSidebarFooter>
+        <n-avatar name="Anderson Oroya" status="online" size="sm" />
+        <div class="brand-copy">
+          <strong>Anderson</strong>
+          <small>Online</small>
+        </div>
       </div>
-    </section>
+    </n-sidebar>
 
-    <section class="data-demo-block">
-      <div class="section-heading compact-heading">
-        <h2>Metrics</h2>
-        <p>Richer cards for progress-backed operational metrics.</p>
-      </div>
-
-      <div class="data-demo-grid two-columns">
-        <n-metric-card
-          title="Enhancement Queue"
-          subtitle="Active video jobs"
-          value="14"
-          icon="cpu"
-          [progress]="64"
-          footer="Capacity target is 20 jobs."
-        >
-          <div class="composition-stack">
-            <n-chip selected>GPU</n-chip>
-            <n-chip>Batch mode</n-chip>
-          </div>
-        </n-metric-card>
-
-        <n-metric-card
-          title="Success Rate"
-          value="98.4"
-          unit="%"
-          icon="circle-check"
-          variant="success"
-          footer="Across the last 500 exports."
-        />
-      </div>
-    </section>
-
-    <section class="data-demo-block">
-      <div class="section-heading compact-heading">
-        <h2>Data Cards</h2>
-        <p>Flexible entity cards for models, jobs, files, and project metadata.</p>
-      </div>
-
-      <div class="data-demo-grid two-columns">
-        <n-data-card
-          title="Real-ESRGAN x4"
-          description="Video enhancement model"
-          icon="sparkles"
-          [items]="modelItems"
-          [interactive]="true"
-        >
-          <div class="composition-stack">
-            <n-button variant="ghost" size="sm">Details</n-button>
-            <n-button size="sm">Use model</n-button>
-          </div>
-        </n-data-card>
-
-        <n-data-card
-          title="Pipeline Snapshot"
-          description="Current workflow metadata"
-          icon="activity"
-          variant="gradient"
-          [items]="pipelineItems"
-        />
-      </div>
-    </section>
-
-    <section class="data-demo-block split-data-demo">
-      <div>
-        <div class="section-heading compact-heading">
-          <h2>Timeline</h2>
-          <p>Sequential activity and pipeline status without JavaScript animation.</p>
+    <div nShellContent>
+      <n-toolbar>
+        <div nToolbarStart>
+          <n-badge variant="success" [dot]="true">System Online</n-badge>
         </div>
 
-        <n-timeline>
-          <n-timeline-item
-            title="Upload completed"
-            description="Source video uploaded successfully"
-            time="10:24"
-            icon="upload"
-            status="success"
-          />
-
-          <n-timeline-item
-            title="Enhancement running"
-            description="AI model is processing frames"
-            time="10:26"
-            icon="cpu"
-            status="running"
-            [active]="true"
-          />
-
-          <n-timeline-item
-            title="Export pending"
-            description="Waiting for pipeline completion"
-            time="Next"
-            icon="file-text"
-            status="pending"
-          />
-        </n-timeline>
-      </div>
-
-      <div>
-        <div class="section-heading compact-heading">
-          <h2>Table</h2>
-          <p>Semantic table with headers, rows, alignment, and empty-state support.</p>
+        <div nToolbarCenter>
+          <span class="toolbar-label">Local package import</span>
         </div>
 
-        <n-table
-          [columns]="jobColumns"
-          [data]="jobs"
-          variant="surface"
-          emptyTitle="No jobs"
-          emptyDescription="Start a new processing job to see results."
-        />
-      </div>
-    </section>
-
-    <section class="data-demo-block">
-      <div class="section-heading compact-heading">
-        <h2>Dashboard Composition</h2>
-        <p>A compact AI jobs dashboard composed from layout and data display primitives.</p>
-      </div>
-
-      <n-shell sidebarMode="none" contentMaxWidth="none">
-        <div nShellContent>
-          <n-page-header
-            eyebrow="Oroya-style workflow"
-            title="AI Jobs Dashboard"
-            description="A composed dashboard using Neural Angular primitives only."
-            icon="activity"
-          >
-            <n-button pageHeaderAction variant="ghost">Export</n-button>
-            <n-button pageHeaderAction>
-              <n-icon name="plus" size="sm" />
-              New Job
-            </n-button>
-          </n-page-header>
-
-          <n-command-bar align="between">
-            <div nCommandGroup>
-              <n-chip selected>Realtime</n-chip>
-              <n-chip>AI Media</n-chip>
-              <n-badge variant="success" [dot]="true">Healthy</n-badge>
-            </div>
-
-            <div nCommandGroup>
-              <n-progress [value]="68" label="Queue" [showValue]="true" />
-              <n-button size="sm">
-                Continue
-                <n-icon name="arrow-right" size="sm" />
-              </n-button>
-            </div>
-          </n-command-bar>
-
-          <div class="dashboard-demo-grid">
-            <n-stat-card
-              label="Processed"
-              value="128"
-              icon="activity"
-              variant="success"
-              trend="up"
-              trendValue="12%"
-            />
-            <n-metric-card
-              title="Render Load"
-              value="68"
-              unit="%"
-              icon="cpu"
-              variant="gradient"
-              [progress]="68"
-            />
-            <n-data-card
-              title="Active Model"
-              description="Real-ESRGAN x4"
-              icon="sparkles"
-              density="compact"
-              [items]="modelItems"
-            />
-          </div>
-
-          <div class="dashboard-demo-grid two-columns">
-            <n-card>
-              <n-card-header>
-                <n-card-title>Pipeline</n-card-title>
-                <n-card-description>Latest job events.</n-card-description>
-              </n-card-header>
-              <n-card-content>
-                <n-timeline density="compact">
-                  <n-timeline-item title="Upload" time="10:24" icon="upload" status="success" />
-                  <n-timeline-item title="Enhance" time="10:26" icon="cpu" status="running" [active]="true" />
-                  <n-timeline-item title="Export" time="Next" icon="file-text" status="pending" />
-                </n-timeline>
-              </n-card-content>
-            </n-card>
-
-            <n-table
-              [columns]="jobColumns"
-              [data]="jobs"
-              density="compact"
-              variant="surface"
-            />
-          </div>
-        </div>
-      </n-shell>
-    </section>
-  </section>
-
-  <section class="preview-section overlay-demo-section">
-    <div class="section-heading">
-      <h2>Overlay / Feedback MVP</h2>
-      <p>Dialog, Drawer, Toast, Tooltip, Popover, and Composition powered by Angular CDK overlays.</p>
-    </div>
-
-    <div class="overlay-demo-grid">
-      <n-card>
-        <n-card-header>
-          <n-card-title>Dialog</n-card-title>
-          <n-card-description>Modal workflow with title, description, focus trap, ESC and backdrop close.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-button (click)="openDialog()">
-            <n-icon name="sparkles" size="sm" />
-            Open Dialog
+        <div nToolbarEnd>
+          <n-button variant="ghost" size="sm">
+            <n-icon name="search" size="sm" />
+            Search
           </n-button>
-        </n-card-content>
-      </n-card>
-
-      <n-card>
-        <n-card-header>
-          <n-card-title>Drawer</n-card-title>
-          <n-card-description>Side panel for settings, filters, inspectors, and workflows.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-button variant="secondary" (click)="openDrawer()">
-            <n-icon name="settings" size="sm" />
-            Open Drawer
-          </n-button>
-        </n-card-content>
-      </n-card>
-
-      <n-card>
-        <n-card-header>
-          <n-card-title>Toast</n-card-title>
-          <n-card-description>Temporary feedback messages with variants and dismiss actions.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <div class="overlay-action-row">
-            <n-button size="sm" (click)="showSuccessToast()">Success Toast</n-button>
-            <n-button size="sm" variant="danger" (click)="showDangerToast()">Danger Toast</n-button>
-            <n-button size="sm" variant="ghost" (click)="showInfoToast()">Info Toast</n-button>
-          </div>
-        </n-card-content>
-      </n-card>
-
-      <n-card>
-        <n-card-header>
-          <n-card-title>Tooltip</n-card-title>
-          <n-card-description>Hover and focus hints with simple text content.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-button nTooltip="Run enhancement pipeline" nTooltipPosition="top">
+          <n-button size="sm">
             <n-icon name="play" size="sm" />
             Run
           </n-button>
-        </n-card-content>
-      </n-card>
-
-      <n-card>
-        <n-card-header>
-          <n-card-title>Popover</n-card-title>
-          <n-card-description>Contextual content with click trigger and outside-click close.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-button [nPopover]="popoverTpl" nPopoverTrigger="click">
-            More actions
-            <n-icon name="chevron-down" size="sm" />
-          </n-button>
-        </n-card-content>
-      </n-card>
-
-      <n-card variant="gradient" [interactive]="true">
-        <n-card-header>
-          <n-card-title>Composition</n-card-title>
-          <n-card-description>Overlays composed with existing Neural Angular UI primitives.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <div class="composition-stack">
-            <n-badge variant="success" [dot]="true">CDK Overlay</n-badge>
-            <n-chip selected>Accessible</n-chip>
-            <n-chip>SSR-safe usage</n-chip>
-          </div>
-        </n-card-content>
-        <n-card-footer>
-          <n-button size="sm" (click)="openDialog()">Configure</n-button>
-          <n-button size="sm" variant="ghost" (click)="showInfoToast()">Notify</n-button>
-        </n-card-footer>
-      </n-card>
-    </div>
-
-    <ng-template #popoverTpl>
-      <div class="demo-popover-menu">
-        <n-button variant="ghost" size="sm">Edit</n-button>
-        <n-button variant="ghost" size="sm">Duplicate</n-button>
-        <n-button variant="danger" size="sm">Delete</n-button>
-      </div>
-    </ng-template>
-  </section>
-
-  <section class="preview-section media-demo-section">
-    <div class="section-heading">
-      <h2>Media / Upload MVP</h2>
-      <p>Dropzone, Selected Files, File Cards, Media Preview, Image Compare, and a media workflow composition.</p>
-    </div>
-
-    <div class="media-demo-grid">
-      <n-card variant="gradient">
-        <n-card-header>
-          <n-card-title>
-            <span class="title-with-icon">
-              <n-icon name="upload" size="sm" />
-              Dropzone
-            </span>
-          </n-card-title>
-          <n-card-description>Native file input with drag and drop validation.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-dropzone
-            accept="image/*,video/*"
-            [multiple]="true"
-            [maxFiles]="4"
-            [maxSize]="500 * 1024 * 1024"
-            variant="media"
-            title="Upload media"
-            description="Drop videos or images to start processing."
-            browseLabel="Select media"
-            (filesSelected)="onMediaFilesSelected($event)"
-            (filesRejected)="onMediaFilesRejected($event)"
-          />
-        </n-card-content>
-      </n-card>
-
-      <n-card>
-        <n-card-header>
-          <n-card-title>Media Preview</n-card-title>
-          <n-card-description>Image, video, audio, or file fallback by URL.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-media-preview
-            [src]="mediaPreviewSrc"
-            kind="image"
-            fit="cover"
-            alt="Demo image preview"
-            title="Enhanced frame"
-            description="Preview generated from the selected media."
-          />
-        </n-card-content>
-      </n-card>
-    </div>
-
-    <div class="media-demo-block">
-      <div class="section-heading compact-heading">
-        <h2>Selected Files</h2>
-        <p>File Cards show metadata, status, progress and emitted actions.</p>
-      </div>
-
-      <div class="media-file-grid">
-        @for (file of selectedFiles; track file.id ?? file.name) {
-          <n-file-card
-            [file]="file"
-            [removable]="true"
-            [previewable]="true"
-            [downloadable]="true"
-            (removed)="removeDemoFile(file)"
-            (preview)="previewDemoFile(file)"
-            (download)="downloadDemoFile(file)"
-            (retry)="retryDemoFile(file)"
-          />
-        }
-      </div>
-    </div>
-
-    <div class="media-demo-grid">
-      <n-card>
-        <n-card-header>
-          <n-card-title>Image Compare</n-card-title>
-          <n-card-description>Before/after comparison with a native range slider.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-image-compare
-            [afterSrc]="compareAfterSrc"
-            beforeMode="filter"
-            beforeAlt="Original frame"
-            afterAlt="Enhanced frame"
-            beforeLabel="Original"
-            afterLabel="4K Enhanced"
-            [(value)]="imageCompareValue"
-          />
-        </n-card-content>
-      </n-card>
-
-      <n-card variant="gradient">
-        <n-card-header>
-          <n-card-title>
-            <span class="title-with-icon">
-              <n-icon name="sparkles" size="sm" />
-              Media Workflow Composition
-            </span>
-          </n-card-title>
-          <n-card-description>Upload, preview and compare AI-enhanced media.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <div class="media-workflow-stack">
-            <n-dropzone
-              accept="image/*,video/*"
-              [multiple]="true"
-              variant="compact"
-              title="Drop media"
-              description="Images and videos are supported."
-              browseLabel="Add files"
-              (filesSelected)="onMediaFilesSelected($event)"
-              (filesRejected)="onMediaFilesRejected($event)"
-            />
-
-            <n-progress [value]="68" label="Processing" [showValue]="true" />
-
-            <div class="media-workflow-meta">
-              <n-badge variant="success" [dot]="true">GPU Ready</n-badge>
-              <n-chip variant="primary" [selected]="true">Real-ESRGAN</n-chip>
-              <n-chip variant="secondary" [selected]="true">4x upscale</n-chip>
-            </div>
-          </div>
-        </n-card-content>
-        <n-card-footer>
-          <n-button variant="ghost" (click)="resetMediaDemo()">Reset</n-button>
-          <n-button (click)="startMediaProcessing()">
-            <n-icon name="play" size="sm" />
-            Start processing
-          </n-button>
-        </n-card-footer>
-      </n-card>
-    </div>
-  </section>
-
-  <section class="preview-section ai-interaction-section">
-    <div class="section-heading">
-      <h2>AI Interaction MVP</h2>
-      <p>Prompt-first, chat-first, and pipeline-first primitives aligned with the imported AI patterns.</p>
-    </div>
-
-    <div class="ai-demo-grid">
-      <n-card>
-        <n-card-header>
-          <n-card-title>Prompt Input</n-card-title>
-          <n-card-description>Textarea + submit flow for AI instructions without backend coupling.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-prompt-input
-            variant="gradient"
-            placeholder="Ask Neural to enhance, analyze or generate..."
-            [clearable]="false"
-            [showCounter]="true"
-            [maxLength]="240"
-            [minRows]="1"
-            [maxRows]="6"
-            [(value)]="aiPrompt"
-            (submitted)="onPromptSubmitted($event)"
-          >
-            <button type="button" nPromptActions class="ai-prompt-chip">
-              <n-icon name="plus" size="xs" />
-              Attach
-            </button>
-            <button
-              type="button"
-              nPromptActions
-              class="ai-prompt-chip ai-prompt-chip--active"
-            >
-              Images
-            </button>
-            <button type="button" nPromptTrailing class="ai-prompt-model">
-              Neural Pro
-              <n-icon name="chevron-down" size="xs" />
-            </button>
-            <span nPromptMeta class="ai-prompt-meta">
-              Neural Pro · Extended context · Angular Material v22
-            </span>
-          </n-prompt-input>
-        </n-card-content>
-      </n-card>
-
-      <n-card>
-        <n-card-header>
-          <n-card-title>Chat</n-card-title>
-          <n-card-description>Burbujas con gradient borders Gemini. User: blue-violet. AI: violet-pink.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <n-chat
-            surface="inline"
-            [messages]="aiPatternMessages"
-            [loading]="true"
-          />
-        </n-card-content>
-      </n-card>
-    </div>
-
-    <div class="ai-demo-grid">
-      <n-card>
-        <n-card-header>
-          <n-card-title>Streaming Text</n-card-title>
-          <n-card-description>Texto token a token con cursor Gemini parpadeante.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <div class="ai-stream-demo">
-            <div class="ai-stream-card">
-              <div class="ai-stream-header">
-                <span class="ai-stream-avatar">N</span>
-                <span class="ai-stream-name">Neural AI</span>
-                <span class="ai-stream-badge">● streaming</span>
-              </div>
-
-              <n-streaming-text
-                surface="inline"
-                [text]="streamingPatternText"
-                state="streaming"
-              />
-            </div>
-
-            <button type="button" class="ai-stream-action">
-              <n-icon name="rotate-ccw" size="xs" />
-              Reiniciar stream
-            </button>
-          </div>
-        </n-card-content>
-      </n-card>
-
-      <n-card>
-        <n-card-header>
-          <n-card-title>Voice Orb</n-card-title>
-          <n-card-description>Esfera Gemini con gradiente cónico 4-stop. Estados visuales para voz y presencia del agente.</n-card-description>
-        </n-card-header>
-        <n-card-content>
-          <div class="ai-voice-stage">
-            <n-voice-orb
-              [state]="voiceState"
-              size="lg"
-              [interactive]="true"
-              (orbClick)="cycleVoiceState()"
-            />
-
-            <div class="ai-state-chip-row">
-              @for (state of voiceStates; track state) {
-                <button
-                  type="button"
-                  class="ai-state-pill"
-                  [class.ai-state-pill--active]="voiceState === state"
-                  (click)="setVoiceState(state)"
-                >
-                  {{ voiceStateLabel(state) }}
-                </button>
-              }
-            </div>
-          </div>
-        </n-card-content>
-      </n-card>
-    </div>
-
-    <div class="ai-demo-block">
-      <div class="section-heading compact-heading">
-        <h3>Tamaños</h3>
-        <p>Variantes sm, md y lg con halo Gemini proporcional.</p>
-      </div>
-
-      <div class="ai-voice-sizes-stage">
-        <div class="ai-voice-sizes-row">
-          <n-voice-orb
-            class="ai-voice-size-demo"
-            size="sm"
-            state="listening"
-          />
-          <n-voice-orb
-            class="ai-voice-size-demo"
-            size="md"
-            state="listening"
-          />
-          <n-voice-orb
-            class="ai-voice-size-demo"
-            size="lg"
-            state="listening"
-          />
         </div>
-      </div>
-    </div>
+      </n-toolbar>
 
-    <div class="ai-demo-block">
-      <div class="section-heading compact-heading">
-        <h2>AI Pipeline</h2>
-        <p>Vertical inspector and horizontal queue variants for media processing workflows.</p>
-      </div>
-
-      <div class="ai-pipeline-demo-grid">
-        <n-card>
-          <n-card-header>
-            <n-card-title>Vertical</n-card-title>
-            <n-card-description>Inspector-style execution flow.</n-card-description>
-          </n-card-header>
-          <n-card-content>
-            <n-ai-pipeline [steps]="pipelineSteps" orientation="vertical" />
-          </n-card-content>
-        </n-card>
-
-        <n-card>
-          <n-card-header>
-            <n-card-title>Horizontal</n-card-title>
-            <n-card-description>Compact queue view for parallel jobs.</n-card-description>
-          </n-card-header>
-          <n-card-content>
-            <n-ai-pipeline
-              [steps]="pipelineSteps"
-              orientation="horizontal"
-              density="compact"
-            />
-          </n-card-content>
-        </n-card>
-      </div>
-    </div>
-
-    <div class="ai-demo-block">
-      <div class="section-heading compact-heading">
-        <h2>AI Workspace Composition</h2>
-        <p>A prompt-driven media enhancement workspace built only from current Neural Angular primitives.</p>
-      </div>
-
-      <div class="ai-workspace-surface">
+      <section class="workspace-panel">
         <n-page-header
-          eyebrow="Neural Workspace"
-          title="AI Media Processing"
-          description="Prompt, chat, pipeline, voice state and media preview in one composed surface."
-          icon="sparkles"
+          eyebrow="@neural/angular-ui"
+          title="Pipeline overview"
+          description="A small integration surface that keeps the playground readable while Storybook carries detailed component states."
+          icon="cpu"
         >
-          <n-button pageHeaderAction variant="ghost">Save preset</n-button>
-          <n-button pageHeaderAction>
-            <n-icon name="play" size="sm" />
-            Run workflow
+          <n-button pageHeaderAction variant="secondary" size="sm">
+            <n-icon name="settings" size="sm" />
+            Configure
           </n-button>
         </n-page-header>
 
-        <n-command-bar align="between">
-          <div nCommandGroup>
-            <n-badge variant="success" [dot]="true">Model Ready</n-badge>
-            <n-chip variant="primary" [selected]="true">Real-ESRGAN</n-chip>
-            <n-chip variant="secondary" [selected]="true">DenoiseNet</n-chip>
-          </div>
-
-          <div nCommandGroup>
-            <n-button variant="ghost" size="sm">Inspect</n-button>
-            <n-button size="sm">
-              Continue
-              <n-icon name="arrow-right" size="sm" />
-            </n-button>
-          </div>
-        </n-command-bar>
-
-        <div class="ai-workspace-grid">
-          <section class="ai-workspace-main">
-            <n-chat [messages]="aiMessages" [loading]="isAiThinking" />
-
-            <n-prompt-input
-              variant="gradient"
-              placeholder="Tell Neural what to do with this media..."
-              [clearable]="false"
-              [showCounter]="true"
-              [maxLength]="280"
-              [minRows]="1"
-              [maxRows]="5"
-              [(value)]="aiPrompt"
-              (submitted)="onPromptSubmitted($event)"
-            >
-              <button type="button" nPromptTrailing class="ai-prompt-model">
-                Neural Pro
-                <n-icon name="chevron-down" size="xs" />
-              </button>
-              <span nPromptMeta class="ai-prompt-meta">
-                No backend yet. This is a local visual demo.
-              </span>
-            </n-prompt-input>
-
-            <n-streaming-text
-              [text]="streamingDemoText"
-              state="streaming"
-            />
-          </section>
-
-          <aside class="ai-workspace-side">
-            <div class="ai-workspace-voice">
-              <div class="ai-workspace-voice-stack">
-                <n-voice-orb
-                  [state]="voiceState"
-                  size="md"
-                  [interactive]="true"
-                  (orbClick)="cycleVoiceState()"
-                />
-
-                <div class="ai-state-chip-row ai-state-chip-row--compact">
-                  @for (state of voiceStates; track state) {
-                    <button
-                      type="button"
-                      class="ai-state-pill ai-state-pill--compact"
-                      [class.ai-state-pill--active]="voiceState === state"
-                      (click)="setVoiceState(state)"
-                    >
-                      {{ voiceStateLabel(state) }}
-                    </button>
-                  }
-                </div>
-              </div>
-            </div>
-
-            <n-ai-pipeline [steps]="pipelineSteps" />
-
-            <n-metric-card
-              title="Render Load"
-              subtitle="Realtime processing"
-              value="68"
-              unit="%"
-              icon="cpu"
-              variant="gradient"
-              [progress]="68"
-              footer="GPU queue is healthy."
-            />
-
-            <div class="ai-workspace-media">
-              <n-media-preview
-                [src]="mediaPreviewSrc"
-                kind="image"
-                fit="cover"
-                alt="AI workspace preview"
-                title="Enhanced frame"
-                description="Preview surface inside the AI workspace."
-              />
-
-              @if (selectedFiles.length > 0) {
-                <n-file-card
-                  [file]="selectedFiles[0]"
-                  [previewable]="true"
-                  [downloadable]="true"
-                  (preview)="previewDemoFile(selectedFiles[0])"
-                  (download)="downloadDemoFile(selectedFiles[0])"
-                />
-              }
-            </div>
-          </aside>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="preview-section components-preview">
-    <div class="section-heading">
-      <h2>Components Preview</h2>
-      <p>First standalone components from `@neural/angular-ui` using the token foundation.</p>
-    </div>
-
-    <div class="component-layout">
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Buttons</h2>
-          <p>Variants, sizes, disabled, loading, full width, and submit type.</p>
-        </div>
-
-        <div class="button-demo-row" aria-label="Button variants">
-          @for (variant of buttonVariants; track variant) {
-            <n-button [variant]="variant">{{ variant }}</n-button>
-          }
-        </div>
-
-        <div class="button-demo-row" aria-label="Button sizes">
-          @for (size of buttonSizes; track size) {
-            <n-button variant="secondary" [size]="size">{{ size }}</n-button>
-          }
-        </div>
-
-        <div class="button-demo-row" aria-label="Button states">
-          <n-button variant="ghost" [disabled]="true">Disabled</n-button>
-          <n-button variant="danger" [loading]="true">Loading</n-button>
-        </div>
-
-        <form class="button-demo-form" (submit)="$event.preventDefault()">
-          <n-button type="submit" [fullWidth]="true">Submit type full width</n-button>
-        </form>
-      </div>
-
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Cards</h2>
-          <p>Surface variants, optional hover treatment, and structured content.</p>
-        </div>
-
-        <div class="card-demo-grid">
-          @for (variant of cardVariants; track variant) {
-            <n-card [variant]="variant" [interactive]="variant === 'gradient'">
-              <n-card-header>
-                <n-card-title>{{ variant }} card</n-card-title>
-                <n-card-description>Token-based surface preview.</n-card-description>
-              </n-card-header>
-              <n-card-content>
-                Designed as a visual container only. Interactive cards keep behavior inside projected content.
-              </n-card-content>
-            </n-card>
-          }
-        </div>
-      </div>
-    </div>
-
-    <n-card variant="gradient" [interactive]="true" class="featured-card-demo">
-      <n-card-header>
-        <n-card-title>Project status</n-card-title>
-        <n-card-description>Current build health</n-card-description>
-      </n-card-header>
-      <n-card-content>
-        NButton and NCard are imported from the local package and rendered together in the playground.
-      </n-card-content>
-      <n-card-footer>
-        <n-button size="sm">Open</n-button>
-        <n-button variant="ghost" size="sm">View docs</n-button>
-      </n-card-footer>
-    </n-card>
-
-    <div class="core-preview-grid">
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Icons</h2>
-          <p>Lucide icons registered through `provideNeuralIcons`.</p>
-        </div>
-
-        <div class="icon-demo-grid" aria-label="Registered icon examples">
-          @for (icon of iconNames; track icon) {
-            <span class="icon-demo-item">
-              <n-icon [name]="icon" />
-              <code>{{ icon }}</code>
-            </span>
-          }
-        </div>
-
-        <div class="icon-size-row" aria-label="Icon sizes">
-          @for (size of iconSizes; track size) {
-            <span class="icon-size-item">
-              <n-icon name="sparkles" [size]="size" />
-              <code>{{ size }}</code>
-            </span>
-          }
-        </div>
-
-        <span class="accessible-icon-demo">
-          <n-icon name="settings" label="Settings" [decorative]="false" />
-          Accessible settings icon
-        </span>
-      </div>
-
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Badges</h2>
-          <p>Status labels with variants, sizes, shapes, and dot mode.</p>
-        </div>
-
-        <div class="badge-demo-row" aria-label="Badge variants">
-          @for (variant of badgeVariants; track variant) {
-            <n-badge [variant]="variant" [dot]="variant === 'success'">
-              {{ variant }}
-            </n-badge>
-          }
-        </div>
-
-        <div class="badge-demo-row" aria-label="Badge sizes and shapes">
-          <n-badge size="sm">Small</n-badge>
-          <n-badge shape="square" variant="primary">Square</n-badge>
-          <n-badge variant="warning" size="sm">Pending</n-badge>
-        </div>
-      </div>
-
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Chips</h2>
-          <p>Inline selection and removable filter primitives.</p>
-        </div>
-
-        <div class="chip-demo-row" aria-label="Chip examples">
-          <n-chip>Default</n-chip>
-          <n-chip variant="primary" [selected]="true">Angular</n-chip>
-          <n-chip variant="secondary">Lucide</n-chip>
-          <n-chip [disabled]="true">Disabled</n-chip>
-          <n-chip [removable]="true" (removed)="handleChipRemoved()">Removable</n-chip>
-        </div>
-
-        <p class="demo-note">Removed events: {{ removedChips }}</p>
-      </div>
-
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Composition</h2>
-          <p>Core primitives composed with card and button.</p>
-        </div>
-
-        <n-card variant="gradient" [interactive]="true">
-          <n-card-header>
-            <n-card-title>
-              <span class="title-with-icon">
-                <n-icon name="sparkles" size="sm" />
-                Neural Core
-              </span>
-            </n-card-title>
-
-            <n-card-description>
-              First usable Core UI primitives.
-            </n-card-description>
-          </n-card-header>
-
-          <n-card-content>
-            <div class="composition-stack">
-              <n-badge variant="success" [dot]="true">Ready</n-badge>
-              <n-chip variant="primary" [selected]="true">Angular 22</n-chip>
-              <n-chip variant="secondary">Lucide</n-chip>
-            </div>
-          </n-card-content>
-
-          <n-card-footer>
-            <n-button size="sm">
-              Open
-              <n-icon name="arrow-right" size="sm" />
-            </n-button>
-          </n-card-footer>
-        </n-card>
-      </div>
-    </div>
-
-    <div class="forms-feedback-grid">
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Forms</h2>
-          <p>Native inputs with labels, hints, errors, and simple value outputs.</p>
-        </div>
-
-        <div class="form-demo-grid">
-          <n-input label="Email" placeholder="you@example.com" />
-          <n-input label="Password" type="password" placeholder="••••••••" />
-          <n-input
-            label="Project"
-            hint="This will be visible in the dashboard"
-            [(value)]="projectName"
-          />
-          <n-input label="API Key" error="Required field" />
-          <n-textarea
-            label="Prompt"
-            placeholder="Write your prompt..."
-            [rows]="5"
-            [(value)]="prompt"
-          />
-          <n-select
-            label="Model"
-            placeholder="Select model"
-            [options]="modelOptions"
-            [(value)]="selectedModel"
-          />
-        </div>
-      </div>
-
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Feedback</h2>
-          <p>Progress, loading and live status primitives.</p>
-        </div>
-
-        <div class="feedback-demo-stack">
-          <n-progress [value]="72" label="Enhancement progress" [showValue]="true" />
-          <n-progress [indeterminate]="true" label="Syncing queue" />
-          <div class="inline-demo-row">
-            <n-spinner label="Loading" />
-            <n-spinner size="sm" variant="neutral" />
-            <n-status-dot status="online" [pulse]="true" label="Online" />
-            <n-status-dot status="danger" label="Error" />
-          </div>
-        </div>
-      </div>
-
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Avatar & Presence</h2>
-          <p>Initials, image-ready avatars, rounded shape, and status dots.</p>
-        </div>
-
-        <div class="avatar-demo-row">
-          <n-avatar name="Anderson Oroya" status="online" />
-          <n-avatar name="Neural Angular" size="lg" />
-          <n-avatar name="Oroya Video" shape="rounded" status="busy" />
-          <n-avatar name="Core UI" size="xl" status="away" />
-        </div>
-      </div>
-
-      <div class="component-panel">
-        <div class="section-heading compact-heading">
-          <h2>Empty State</h2>
-          <p>Actionable empty state with projected controls.</p>
-        </div>
-
-        <n-empty-state
-          icon="sparkles"
-          title="No projects yet"
-          description="Create your first AI-enhanced project."
+        <n-tabs
+          [value]="activeTab"
+          variant="pill"
+          size="sm"
+          (valueChange)="setActiveTab($event)"
         >
-          <n-button>
-            <n-icon name="plus" size="sm" />
-            Create project
-          </n-button>
-        </n-empty-state>
-      </div>
-    </div>
+          <n-tab-item value="overview" label="Overview" icon="home" />
+          <n-tab-item
+            value="workflow"
+            label="Workflow"
+            icon="activity"
+            badge="3"
+          />
+        </n-tabs>
 
-    <div class="component-panel composition-demo">
-      <div class="section-heading compact-heading">
-        <h2>Composition Demo</h2>
-        <p>Forms and feedback primitives composed into a realistic workflow card.</p>
-      </div>
+        @if (activeTab === 'overview') {
+        <section class="metric-grid" aria-label="Pipeline summary">
+          <n-stat-card
+            label="Jobs"
+            value="14"
+            description="Active queue"
+            icon="activity"
+            variant="primary"
+            trend="up"
+            trendValue="18%"
+            interactive
+          />
+          <n-stat-card
+            label="Success"
+            value="98%"
+            description="Last 24h"
+            icon="circle-check"
+            variant="success"
+            trend="up"
+            trendValue="4%"
+            interactive
+          />
+          <n-stat-card
+            label="Latency"
+            value="0.8s"
+            description="Average response"
+            icon="timer"
+            variant="info"
+            trend="down"
+            trendValue="12%"
+            interactive
+          />
+        </section>
 
-      <n-card variant="gradient" [interactive]="true">
-        <n-card-header>
-          <n-card-title>
-            <span class="title-with-icon">
-              <n-icon name="cpu" size="sm" />
-              Processing Job
-            </span>
-          </n-card-title>
-          <n-card-description>
-            Video enhancement pipeline
-          </n-card-description>
-        </n-card-header>
+        <section class="content-grid">
+          <n-card variant="gradient">
+            <n-card-header>
+              <n-card-title>Enhancement worker</n-card-title>
+              <n-card-description>
+                The current model is processing frames with GPU acceleration.
+              </n-card-description>
+            </n-card-header>
 
-        <n-card-content>
-          <div class="composition-stack">
-            <n-badge variant="success" [dot]="true">Running</n-badge>
-            <n-progress [value]="68" label="Progress" [showValue]="true" />
-            <n-chip variant="primary" [selected]="true">Real-ESRGAN</n-chip>
-            <n-chip variant="secondary">GPU</n-chip>
-          </div>
-        </n-card-content>
+            <n-card-content>
+              <div class="status-row">
+                <n-status-dot status="success" label="Healthy" />
+                <n-badge variant="info">Real-ESRGAN x4</n-badge>
+              </div>
+              <n-progress [value]="68" size="md" [showValue]="true" />
+            </n-card-content>
 
-        <n-card-footer>
-          <n-button variant="ghost">Cancel</n-button>
-          <n-button>
-            Open
-            <n-icon name="arrow-right" size="sm" />
-          </n-button>
-        </n-card-footer>
-      </n-card>
-    </div>
-  </section>
+            <n-card-footer>
+              <n-button size="sm">Open worker</n-button>
+              <n-button variant="ghost" size="sm">View logs</n-button>
+            </n-card-footer>
+          </n-card>
 
-  <section class="preview-section">
-    <div class="section-heading">
-      <h2>Surface Tokens</h2>
-      <p>Canvas and layered surfaces from the dark-first design language.</p>
-    </div>
-    <div class="token-grid surfaces">
-      @for (surface of surfaces; track surface[1]) {
-        <article class="token-card" [style.background]="`var(${surface[1]})`">
-          <span>{{ surface[0] }}</span>
-          <code>{{ surface[1] }}</code>
-        </article>
-      }
-    </div>
-  </section>
+          <n-metric-card
+            title="Render budget"
+            subtitle="GPU memory"
+            value="4.2"
+            unit="GB"
+            icon="cpu"
+            variant="gradient"
+            [progress]="62"
+            footer="Auto-scaling remains below threshold."
+          />
+        </section>
+        } @else {
+        <section class="workflow-grid">
+          <n-card>
+            <n-card-header>
+              <n-card-title>Job settings</n-card-title>
+              <n-card-description>
+                Compact form composition with local UI components.
+              </n-card-description>
+            </n-card-header>
 
-  <section class="preview-section">
-    <div class="section-heading">
-      <h2>Color Tokens</h2>
-      <p>Primary, AI-accent, and status colors exposed through `--n-*`.</p>
-    </div>
-    <div class="token-grid">
-      @for (color of colors; track color[1]) {
-        <article class="swatch-card">
-          <div class="swatch" [style.background]="`var(${color[1]})`"></div>
-          <span>{{ color[0] }}</span>
-          <code>{{ color[1] }}</code>
-        </article>
-      }
-    </div>
-  </section>
+            <n-card-content>
+              <div class="form-grid">
+                <n-input label="Project" value="Neural Playground" />
+                <n-select
+                  label="Model"
+                  [value]="selectedModel"
+                  [options]="modelOptions"
+                  (valueChange)="setSelectedModel($event)"
+                />
+                <n-textarea
+                  label="Prompt"
+                  value="Enhance source footage and preserve facial details."
+                  [rows]="4"
+                />
+              </div>
+            </n-card-content>
+          </n-card>
 
-  <section class="preview-section split">
-    <div>
-      <div class="section-heading">
-        <h2>Text Levels</h2>
-        <p>Readable hierarchy against Neural dark surfaces.</p>
-      </div>
-      <div class="text-stack">
-        @for (level of textLevels; track level[1]) {
-          <p [style.color]="`var(${level[1]})`">
-            {{ level[0] }} · {{ level[1] }}
-          </p>
+          <n-card variant="outlined">
+            <n-card-header>
+              <n-card-title>Queue</n-card-title>
+              <n-card-description>
+                Table rendering and responsive overflow in an app shell.
+              </n-card-description>
+            </n-card-header>
+
+            <n-card-content>
+              <n-table
+                variant="surface"
+                density="compact"
+                [columns]="jobColumns"
+                [data]="jobs"
+              />
+            </n-card-content>
+          </n-card>
+        </section>
         }
-      </div>
+      </section>
     </div>
-
-    <div>
-      <div class="section-heading">
-        <h2>Typography</h2>
-        <p>Display, body, and mono token usage.</p>
-      </div>
-      <div class="type-card">
-        <strong>Plus Jakarta Sans</strong>
-        <span>Design system typography sample</span>
-        <code>JetBrains Mono token sample</code>
-      </div>
-    </div>
-  </section>
-
-  <section class="preview-section">
-    <div class="section-heading">
-      <h2>Borders & Radius</h2>
-      <p>Subtle border levels paired with stable rounded geometry.</p>
-    </div>
-    <div class="token-grid compact">
-      @for (border of borders; track border[1]) {
-        <article class="border-card" [style.border-color]="`var(${border[1]})`">
-          <span>{{ border[0] }}</span>
-          <code>{{ border[1] }}</code>
-        </article>
-      }
-      @for (radius of radii; track radius[1]) {
-        <article class="radius-card" [style.border-radius]="`var(${radius[1]})`">
-          <span>{{ radius[0] }}</span>
-          <code>{{ radius[1] }}</code>
-        </article>
-      }
-    </div>
-  </section>
-
-  <section class="preview-section">
-    <div class="section-heading">
-      <h2>Gradients</h2>
-      <p>Gemini-inspired accents without copying prototype components.</p>
-    </div>
-    <div class="token-grid gradients">
-      @for (gradient of gradients; track gradient[1]) {
-        <article class="gradient-card" [style.background]="`var(${gradient[1]})`">
-          <span>{{ gradient[0] }}</span>
-          <code>{{ gradient[1] }}</code>
-        </article>
-      }
-    </div>
-  </section>
-
-  <section class="preview-section split">
-    <div>
-      <div class="section-heading">
-        <h2>Elevation</h2>
-        <p>Depth tokens for future surfaces and overlays.</p>
-      </div>
-      <div class="stack-row">
-        @for (elevation of elevations; track elevation[1]) {
-          <article class="effect-card" [style.box-shadow]="`var(${elevation[1]})`">
-            <span>{{ elevation[0] }}</span>
-            <code>{{ elevation[1] }}</code>
-          </article>
-        }
-      </div>
-    </div>
-
-    <div>
-      <div class="section-heading">
-        <h2>Glow</h2>
-        <p>Opt-in highlight tokens for later components.</p>
-      </div>
-      <div class="stack-row">
-        @for (glow of glows; track glow[1]) {
-          <article class="effect-card glow" [style.box-shadow]="`var(${glow[1]})`">
-            <span>{{ glow[0] }}</span>
-            <code>{{ glow[1] }}</code>
-          </article>
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="preview-section">
-    <div class="section-heading">
-      <h2>Spacing Scale</h2>
-      <p>4px grid tokens used as layout primitives.</p>
-    </div>
-    <div class="spacing-list">
-      @for (space of spacing; track space[1]) {
-        <div class="spacing-row">
-          <span>{{ space[0] }}</span>
-          <div class="spacing-bar" [style.width]="`var(${space[1]})`"></div>
-          <code>{{ space[1] }}</code>
-        </div>
-      }
-    </div>
-  </section>
+  </n-shell>
 </main>
