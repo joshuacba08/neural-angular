@@ -19,6 +19,18 @@
       "types": "./dist/card/index.d.ts",
       "default": "./dist/card/index.js"
     },
+    "./icon": {
+      "types": "./dist/icon/index.d.ts",
+      "default": "./dist/icon/index.js"
+    },
+    "./badge": {
+      "types": "./dist/badge/index.d.ts",
+      "default": "./dist/badge/index.js"
+    },
+    "./chip": {
+      "types": "./dist/chip/index.d.ts",
+      "default": "./dist/chip/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"
@@ -36,6 +48,10 @@
   },
   "peerDependencies": {
     "@angular/common": "^22.0.0",
-    "@angular/core": "^22.0.0"
+    "@angular/core": "^22.0.0",
+    "@lucide/angular": "^1.18.0"
+  },
+  "devDependencies": {
+    "@lucide/angular": "^1.18.0"
   }
 }

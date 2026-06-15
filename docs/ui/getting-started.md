@@ -37,30 +37,71 @@ The package-level style import remains the public target. The local playground c
 
 ## Components
 
-Import from the root package:
+Register theme and icons in application config:
 
 ```ts
-import { NButton, NCard } from '@neural/angular-ui';
+import { provideNeuralIcons, provideNeuralTheme } from '@neural/angular-ui';
+
+export const appConfig = {
+  providers: [
+    provideNeuralTheme({ defaultTheme: 'dark' }),
+    provideNeuralIcons(),
+  ],
+};
+```
+
+Import components from the root package:
+
+```ts
+import { NBadge, NButton, NCard, NChip, NIcon } from '@neural/angular-ui';
 ```
 
 Or import from secondary entry points:
 
 ```ts
+import { NBadge } from '@neural/angular-ui/badge';
 import { NButton } from '@neural/angular-ui/button';
 import { NCard } from '@neural/angular-ui/card';
+import { NChip } from '@neural/angular-ui/chip';
+import { NIcon } from '@neural/angular-ui/icon';
 ```
 
 Use them in standalone components:
 
 ```ts
 @Component({
-  imports: [NButton, NCard],
+  imports: [
+    NBadge,
+    NButton,
+    NCard,
+    NCardContent,
+    NCardFooter,
+    NCardHeader,
+    NCardTitle,
+    NChip,
+    NIcon,
+  ],
   template: `
-    <n-button variant="primary">Primary</n-button>
-    <n-card>Example card</n-card>
+    <n-card variant="gradient">
+      <n-card-header>
+        <n-card-title>
+          <n-icon name="sparkles" size="sm" />
+          Neural Core
+        </n-card-title>
+      </n-card-header>
+
+      <n-card-content>
+        <n-badge variant="success" [dot]="true">Ready</n-badge>
+        <n-chip variant="primary" [selected]="true">Angular 22</n-chip>
+      </n-card-content>
+
+      <n-card-footer>
+        <n-button variant="primary">Open</n-button>
+      </n-card-footer>
+    </n-card>
   `,
 })
 export class ExampleComponent {}
 ```
 
-`NButton` and `NCard` are pure Angular template + CSS components. They do not use browser globals, GSAP, Angular Material, CDK overlays, or fake SSR helpers.
+Core components are pure Angular template + CSS components, with Lucide integrated through `@lucide/angular`. They do not use browser globals, GSAP, Angular Material, CDK overlays, or fake SSR helpers.

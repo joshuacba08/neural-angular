@@ -6,11 +6,11 @@
 |---|---|---|---|---|---|
 | Theme provider | `NThemeProvider` | `nn-tokens.css`, `Neural Angular.html` | High | Foundation | Apply theme class, token CSS, dark mode strategy |
 | Tokens | `NTokens` or CSS entry | `nn-tokens.css` | High | Foundation | Token foundation should come before components |
-| Button | `NButton` | `components.html` | High | Core UI | Filled, gradient, outlined, tonal, ghost, sizes, loading, icon, full width |
-| Card | `NCard` | `components.html` | High | Core UI | Surfaces, gradient borders, stat cards, hover/elevation patterns |
-| Icon | `NIcon` | all HTML files | High | Core UI | Lucide icon references appear throughout |
-| Badge | `NBadge` | `components.html`, `data-patterns.html` | High | Core UI | Status pills, notification dots, semantic badges |
-| Chip | `NChip` | `components.html` | High | Core UI | Filter chips, inline chips, compact variants |
+| Button | `NButton` | `components.html` | Complete | Core UI | Filled, gradient, ghost, sizes, loading, full width |
+| Card | `NCard` | `components.html` | Complete | Core UI | Surfaces, gradient border, hover/elevation pattern |
+| Icon | `NIcon` | all HTML files | Complete | Core UI | Lucide dynamic icon integration with curated provider |
+| Badge | `NBadge` | `components.html`, `data-patterns.html` | Complete | Core UI | Status pills, notification dots, semantic badges |
+| Chip | `NChip` | `components.html` | Complete | Core UI | Filter chips, inline chips, removable action |
 
 ## Form Components
 

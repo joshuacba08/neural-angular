@@ -71,8 +71,64 @@ select {
   width: min(100%, 560px);
 }
 
+.core-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--n-space-6);
+}
+
+.icon-demo-grid,
+.badge-demo-row,
+.chip-demo-row,
+.composition-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--n-space-3);
+  align-items: center;
+}
+
+.icon-demo-item,
+.icon-size-item,
+.accessible-icon-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--n-space-2);
+  min-height: 36px;
+  padding: 0 var(--n-space-3);
+  border: 1px solid var(--n-border-1);
+  border-radius: var(--n-radius-full);
+  background: color-mix(in srgb, var(--n-surface-3) 82%, transparent);
+  color: var(--n-text-1);
+}
+
+.icon-size-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--n-space-3);
+  align-items: center;
+}
+
+.accessible-icon-demo {
+  justify-self: start;
+  color: var(--n-text-2);
+  font-size: var(--n-font-size-13);
+}
+
+.demo-note {
+  margin: 0;
+  color: var(--n-text-2);
+  font-size: var(--n-font-size-13);
+}
+
+.title-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--n-space-2);
+}
+
 @media (max-width: 760px) {
-  .component-layout {
+  .component-layout,
+  .core-preview-grid {
     grid-template-columns: 1fr;
   }
 }

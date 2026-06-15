@@ -94,6 +94,113 @@
         <n-button variant="ghost" size="sm">View docs</n-button>
       </n-card-footer>
     </n-card>
+
+    <div class="core-preview-grid">
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Icons</h2>
+          <p>Lucide icons registered through `provideNeuralIcons`.</p>
+        </div>
+
+        <div class="icon-demo-grid" aria-label="Registered icon examples">
+          @for (icon of iconNames; track icon) {
+            <span class="icon-demo-item">
+              <n-icon [name]="icon" />
+              <code>{{ icon }}</code>
+            </span>
+          }
+        </div>
+
+        <div class="icon-size-row" aria-label="Icon sizes">
+          @for (size of iconSizes; track size) {
+            <span class="icon-size-item">
+              <n-icon name="sparkles" [size]="size" />
+              <code>{{ size }}</code>
+            </span>
+          }
+        </div>
+
+        <span class="accessible-icon-demo">
+          <n-icon name="settings" label="Settings" [decorative]="false" />
+          Accessible settings icon
+        </span>
+      </div>
+
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Badges</h2>
+          <p>Status labels with variants, sizes, shapes, and dot mode.</p>
+        </div>
+
+        <div class="badge-demo-row" aria-label="Badge variants">
+          @for (variant of badgeVariants; track variant) {
+            <n-badge [variant]="variant" [dot]="variant === 'success'">
+              {{ variant }}
+            </n-badge>
+          }
+        </div>
+
+        <div class="badge-demo-row" aria-label="Badge sizes and shapes">
+          <n-badge size="sm">Small</n-badge>
+          <n-badge shape="square" variant="primary">Square</n-badge>
+          <n-badge variant="warning" size="sm">Pending</n-badge>
+        </div>
+      </div>
+
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Chips</h2>
+          <p>Inline selection and removable filter primitives.</p>
+        </div>
+
+        <div class="chip-demo-row" aria-label="Chip examples">
+          <n-chip>Default</n-chip>
+          <n-chip variant="primary" [selected]="true">Angular</n-chip>
+          <n-chip variant="secondary">Lucide</n-chip>
+          <n-chip [disabled]="true">Disabled</n-chip>
+          <n-chip [removable]="true" (removed)="handleChipRemoved()">Removable</n-chip>
+        </div>
+
+        <p class="demo-note">Removed events: {{ removedChips }}</p>
+      </div>
+
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Composition</h2>
+          <p>Core primitives composed with card and button.</p>
+        </div>
+
+        <n-card variant="gradient" [interactive]="true">
+          <n-card-header>
+            <n-card-title>
+              <span class="title-with-icon">
+                <n-icon name="sparkles" size="sm" />
+                Neural Core
+              </span>
+            </n-card-title>
+
+            <n-card-description>
+              First usable Core UI primitives.
+            </n-card-description>
+          </n-card-header>
+
+          <n-card-content>
+            <div class="composition-stack">
+              <n-badge variant="success" [dot]="true">Ready</n-badge>
+              <n-chip variant="primary" [selected]="true">Angular 22</n-chip>
+              <n-chip variant="secondary">Lucide</n-chip>
+            </div>
+          </n-card-content>
+
+          <n-card-footer>
+            <n-button size="sm">
+              Open
+              <n-icon name="arrow-right" size="sm" />
+            </n-button>
+          </n-card-footer>
+        </n-card>
+      </div>
+    </div>
   </section>
 
   <section class="preview-section">

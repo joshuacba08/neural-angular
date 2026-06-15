@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {
+  NBadge,
   NButton,
   NCard,
   NCardContent,
@@ -7,15 +8,20 @@ import {
   NCardFooter,
   NCardHeader,
   NCardTitle,
+  NChip,
+  NIcon,
   NeuralThemeService,
+  type NBadgeVariant,
   type NButtonSize,
   type NButtonVariant,
   type NCardVariant,
+  type NIconSize,
   type NeuralThemeName,
 } from '@neural/angular-ui';
 
 @Component({
   imports: [
+    NBadge,
     NButton,
     NCard,
     NCardHeader,
@@ -23,6 +29,8 @@ import {
     NCardDescription,
     NCardContent,
     NCardFooter,
+    NChip,
+    NIcon,
   ],
   selector: 'app-root',
   templateUrl: './app.html',
@@ -46,6 +54,26 @@ export class App {
     'outlined',
     'gradient',
   ];
+  readonly iconNames = [
+    'sparkles',
+    'settings',
+    'search',
+    'cpu',
+    'play',
+    'upload',
+    'trash-2',
+  ] as const;
+  readonly iconSizes: NIconSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+  readonly badgeVariants: NBadgeVariant[] = [
+    'neutral',
+    'primary',
+    'secondary',
+    'success',
+    'warning',
+    'danger',
+    'info',
+  ];
+  removedChips = 0;
 
   readonly surfaces = [
     ['Canvas', '--n-bg-canvas'],
@@ -120,5 +148,9 @@ export class App {
 
   setTheme(theme: NeuralThemeName): void {
     this.themeService.setTheme(theme);
+  }
+
+  handleChipRemoved(): void {
+    this.removedChips += 1;
   }
 }
