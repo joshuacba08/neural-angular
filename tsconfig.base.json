@@ -16,6 +16,13 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@org/source"]
+    "baseUrl": ".",
+    "customConditions": ["@neural/angular-ui"],
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "@neural/angular-ui": ["packages/ui/src/index.ts"],
+      "@neural/angular-ui/theme": ["packages/ui/src/theme/index.ts"],
+      "@neural/angular-ui/tokens": ["packages/ui/src/tokens/index.ts"]
+    }
   }
 }

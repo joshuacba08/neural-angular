@@ -1,0 +1,169 @@
+<main class="playground-shell">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Neural Angular Playground</p>
+      <h1>Token Preview</h1>
+      <p class="hero-copy">
+        Visual validation for the first `@neural/angular-ui` foundation:
+        curated CSS tokens, theme attributes, Material variable mapping, and
+        compatibility aliases.
+      </p>
+    </div>
+
+    <div class="theme-switcher" aria-label="Theme selection">
+      <span>Theme</span>
+      @for (option of themeOptions; track option) {
+        <button
+          type="button"
+          [class.active]="theme() === option"
+          (click)="setTheme(option)"
+        >
+          {{ option }}
+        </button>
+      }
+    </div>
+  </section>
+
+  <section class="preview-section">
+    <div class="section-heading">
+      <h2>Surface Tokens</h2>
+      <p>Canvas and layered surfaces from the dark-first design language.</p>
+    </div>
+    <div class="token-grid surfaces">
+      @for (surface of surfaces; track surface[1]) {
+        <article class="token-card" [style.background]="`var(${surface[1]})`">
+          <span>{{ surface[0] }}</span>
+          <code>{{ surface[1] }}</code>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="preview-section">
+    <div class="section-heading">
+      <h2>Color Tokens</h2>
+      <p>Primary, AI-accent, and status colors exposed through `--n-*`.</p>
+    </div>
+    <div class="token-grid">
+      @for (color of colors; track color[1]) {
+        <article class="swatch-card">
+          <div class="swatch" [style.background]="`var(${color[1]})`"></div>
+          <span>{{ color[0] }}</span>
+          <code>{{ color[1] }}</code>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="preview-section split">
+    <div>
+      <div class="section-heading">
+        <h2>Text Levels</h2>
+        <p>Readable hierarchy against Neural dark surfaces.</p>
+      </div>
+      <div class="text-stack">
+        @for (level of textLevels; track level[1]) {
+          <p [style.color]="`var(${level[1]})`">
+            {{ level[0] }} · {{ level[1] }}
+          </p>
+        }
+      </div>
+    </div>
+
+    <div>
+      <div class="section-heading">
+        <h2>Typography</h2>
+        <p>Display, body, and mono token usage.</p>
+      </div>
+      <div class="type-card">
+        <strong>Plus Jakarta Sans</strong>
+        <span>Design system typography sample</span>
+        <code>JetBrains Mono token sample</code>
+      </div>
+    </div>
+  </section>
+
+  <section class="preview-section">
+    <div class="section-heading">
+      <h2>Borders & Radius</h2>
+      <p>Subtle border levels paired with stable rounded geometry.</p>
+    </div>
+    <div class="token-grid compact">
+      @for (border of borders; track border[1]) {
+        <article class="border-card" [style.border-color]="`var(${border[1]})`">
+          <span>{{ border[0] }}</span>
+          <code>{{ border[1] }}</code>
+        </article>
+      }
+      @for (radius of radii; track radius[1]) {
+        <article class="radius-card" [style.border-radius]="`var(${radius[1]})`">
+          <span>{{ radius[0] }}</span>
+          <code>{{ radius[1] }}</code>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="preview-section">
+    <div class="section-heading">
+      <h2>Gradients</h2>
+      <p>Gemini-inspired accents without copying prototype components.</p>
+    </div>
+    <div class="token-grid gradients">
+      @for (gradient of gradients; track gradient[1]) {
+        <article class="gradient-card" [style.background]="`var(${gradient[1]})`">
+          <span>{{ gradient[0] }}</span>
+          <code>{{ gradient[1] }}</code>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="preview-section split">
+    <div>
+      <div class="section-heading">
+        <h2>Elevation</h2>
+        <p>Depth tokens for future surfaces and overlays.</p>
+      </div>
+      <div class="stack-row">
+        @for (elevation of elevations; track elevation[1]) {
+          <article class="effect-card" [style.box-shadow]="`var(${elevation[1]})`">
+            <span>{{ elevation[0] }}</span>
+            <code>{{ elevation[1] }}</code>
+          </article>
+        }
+      </div>
+    </div>
+
+    <div>
+      <div class="section-heading">
+        <h2>Glow</h2>
+        <p>Opt-in highlight tokens for later components.</p>
+      </div>
+      <div class="stack-row">
+        @for (glow of glows; track glow[1]) {
+          <article class="effect-card glow" [style.box-shadow]="`var(${glow[1]})`">
+            <span>{{ glow[0] }}</span>
+            <code>{{ glow[1] }}</code>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="preview-section">
+    <div class="section-heading">
+      <h2>Spacing Scale</h2>
+      <p>4px grid tokens used as layout primitives.</p>
+    </div>
+    <div class="spacing-list">
+      @for (space of spacing; track space[1]) {
+        <div class="spacing-row">
+          <span>{{ space[0] }}</span>
+          <div class="spacing-bar" [style.width]="`var(${space[1]})`"></div>
+          <code>{{ space[1] }}</code>
+        </div>
+      }
+    </div>
+  </section>
+</main>

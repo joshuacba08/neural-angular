@@ -2,7 +2,7 @@
 
 Angular-first UI system for Neural Angular.
 
-Current status: token foundation only. This package exposes curated CSS tokens and small TypeScript token metadata. Components, providers, and motion utilities are intentionally not implemented yet.
+Current status: token foundation plus a minimal Angular theme provider. This package exposes curated CSS tokens, small TypeScript token metadata, and an SSR-safe provider for applying `data-n-theme`.
 
 ## Styles
 
@@ -12,11 +12,24 @@ Current status: token foundation only. This package exposes curated CSS tokens a
 
 ## Theme
 
+```ts
+import { provideNeuralTheme } from '@neural/angular-ui';
+
+export const appConfig = {
+  providers: [
+    provideNeuralTheme({
+      defaultTheme: 'dark',
+      storage: false,
+    }),
+  ],
+};
+```
+
 ```html
 <body data-n-theme="dark">
 ```
 
-The dark theme is the primary theme for now. The light theme file exists as an explicit placeholder because the imported design reference is dark-only.
+The provider applies `data-n-theme` to the document element in the browser. The dark theme is the primary theme for now. The light theme file exists as an explicit placeholder because the imported design reference is dark-only.
 
 ## Token Prefixes
 
@@ -25,14 +38,11 @@ Public tokens use the stable `--n-*` prefix. Imported `--nn-*` names are compati
 ## Not Implemented Yet
 
 - Components
-- Theme provider
 - Icon provider
 - Motion provider
 - SSR helpers
 
 ## Next
 
-- Minimal Angular theme provider
-- Tiny playground token usage check
 - `NButton`
 - `NCard`

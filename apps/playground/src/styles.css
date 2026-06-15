@@ -1,0 +1,29 @@
+@import "../../../packages/ui/src/styles/index.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--n-bg-canvas);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(66, 133, 244, 0.18), transparent 30rem),
+    radial-gradient(circle at 80% 8%, rgba(217, 70, 239, 0.12), transparent 28rem),
+    var(--n-bg-canvas);
+  color: var(--n-text-1);
+  font-family: var(--n-font-body);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}

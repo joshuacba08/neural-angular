@@ -11,6 +11,7 @@
 ## Phase 1 - Foundation
 
 - Phase 1A complete: create package structure and migrate the curated token foundation.
+- Phase 1B complete: add a minimal Angular theme provider and token playground validation.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
@@ -65,4 +66,4 @@
 
 ## Implementation Boundary
 
-The first implementation step is intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, and token metadata. Angular components, providers, directives, SSR helpers, CLI, schematics, and adapters remain out of scope until later requirements.
+The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, and an Angular playground token preview. UI components, directives, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@latest",
+  "packageManager": "pnpm@11.6.0",
   "scripts": {
     "dev": "nx run-many -t serve",
     "build": "nx run-many -t build",
@@ -11,8 +11,11 @@
     "lint": "nx run-many -t lint",
     "graph": "nx graph"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@angular/build": "22.0.1",
+    "@angular/cli": "22.0.1",
+    "@angular/compiler-cli": "22.0.1",
+    "@nx/angular": "22.7.5",
     "@nx/js": "22.7.5",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.8",
@@ -20,6 +23,13 @@
     "nx": "22.7.5",
     "prettier": "^3.8.1",
     "tslib": "^2.3.0",
-    "typescript": "~5.9.2"
+    "typescript": "~6.0.3"
+  },
+  "dependencies": {
+    "@angular/common": "22.0.1",
+    "@angular/compiler": "22.0.1",
+    "@angular/core": "22.0.1",
+    "@angular/platform-browser": "22.0.1",
+    "rxjs": "^7.8.2"
   }
 }

@@ -15,6 +15,10 @@
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"
     },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "default": "./dist/theme/index.js"
+    },
     "./styles": "./src/styles/index.css",
     "./styles/tokens": "./src/styles/neural-tokens.css",
     "./styles/dark": "./src/styles/neural-theme.dark.css",

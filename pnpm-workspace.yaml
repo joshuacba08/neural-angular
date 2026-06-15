@@ -3,3 +3,11 @@ packages:
   - "packages/*"
   - "examples/*"
   - "tools/*"
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+  esbuild: false
+  less: false
+  lmdb: false
+  msgpackr-extract: false
+  nx: false
