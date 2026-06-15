@@ -35,3 +35,13 @@ export * from './dropzone/index.js';
 export * from './file-card/index.js';
 export * from './image-compare/index.js';
 export * from './media-preview/index.js';
+export type {
+  NAIMessage,
+  NAIMessageRole,
+  NAIStatus,
+} from './ai/index.js';
+export * from './prompt-input/index.js';
+export * from './chat/index.js';
+export * from './streaming-text/index.js';
+export * from './voice-orb/index.js';
+export * from './ai-pipeline/index.js';

@@ -2,7 +2,7 @@
 
 Angular-first UI system for Neural Angular.
 
-Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, layout/navigation, data display primitives, overlay/feedback primitives, and media/upload primitives.
+Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, layout/navigation, data display primitives, overlay/feedback primitives, media/upload primitives, and AI interaction primitives.
 
 ## Styles
 
@@ -48,9 +48,11 @@ export const appConfig = {
 ```ts
 import {
   NAvatar,
+  NAIPipeline,
   NBadge,
   NButton,
   NCard,
+  NChat,
   NChip,
   NCommandBar,
   NDataCard,
@@ -63,6 +65,7 @@ import {
   NMediaPreview,
   NMetricCard,
   NPageHeader,
+  NPromptInput,
   NProgress,
   NSelect,
   NShell,
@@ -72,6 +75,7 @@ import {
   NSpinner,
   NStatCard,
   NStatusDot,
+  NStreamingText,
   NTable,
   NTabItem,
   NTabs,
@@ -79,6 +83,7 @@ import {
   NTimeline,
   NTimelineItem,
   NToolbar,
+  NVoiceOrb,
 } from '@neural/angular-ui';
 ```
 
@@ -119,7 +124,12 @@ import { NDropzone } from '@neural/angular-ui/dropzone';
 import { NFileCard } from '@neural/angular-ui/file-card';
 import { NImageCompare } from '@neural/angular-ui/image-compare';
 import { NMediaPreview } from '@neural/angular-ui/media-preview';
+import { NAIPipeline } from '@neural/angular-ui/ai-pipeline';
+import { NChat } from '@neural/angular-ui/chat';
 import { formatFileSize, type NFileLike } from '@neural/angular-ui/media';
+import { NPromptInput } from '@neural/angular-ui/prompt-input';
+import { NStreamingText } from '@neural/angular-ui/streaming-text';
+import { NVoiceOrb } from '@neural/angular-ui/voice-orb';
 ```
 
 ```html
@@ -197,6 +207,11 @@ import { formatFileSize, type NFileLike } from '@neural/angular-ui/media';
   afterSrc="assets/demo/after.jpg"
   [(value)]="compareValue"
 />
+<n-chat [messages]="messages" />
+<n-prompt-input [(value)]="prompt" (submitted)="runPrompt($event)" />
+<n-streaming-text [text]="streamedText" state="streaming" />
+<n-voice-orb [state]="voiceState" [interactive]="true" />
+<n-ai-pipeline [steps]="pipelineSteps" />
 ```
 
 ## Overlays
@@ -227,7 +242,8 @@ Public tokens use the stable `--n-*` prefix. Imported `--nn-*` names are compati
 - Pagination and virtual scroll
 - Advanced menu semantics and command palette
 - Real upload backend, object URL previews, thumbnail extraction, Canvas, FFmpeg, and WebCodecs
+- Backend AI clients, WebSocket/EventSource streaming, Markdown rendering, audio capture, and speech APIs
 
 ## Next
 
-- AI interaction primitives
+- Motion MVP

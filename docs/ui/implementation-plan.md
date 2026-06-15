@@ -19,6 +19,7 @@
 - Phase 1G complete: add data display MVP with `NStatCard`, `NMetricCard`, `NDataCard`, `NTimeline`, and `NTable`.
 - Phase 1H complete: add overlay/feedback MVP with `NDialog`, `NDrawer`, `NToast`, `NTooltip`, and `NPopover`.
 - Phase 1I complete: add media/upload MVP with `NDropzone`, `NFileCard`, `NImageCompare`, and `NMediaPreview`.
+- Phase 1J complete: add AI interaction MVP with `NPromptInput`, `NChat`, `NStreamingText`, `NVoiceOrb`, and `NAIPipeline`.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
@@ -79,11 +80,12 @@
 
 ## Phase 7 - AI Patterns
 
-- `NVoiceOrb`
-- `NPromptInput`
-- `NStreamingText`
+- `NVoiceOrb` - complete MVP
+- `NPromptInput` - complete MVP
+- `NStreamingText` - complete MVP
+- `NChat` - complete MVP
+- `NAIPipeline` - complete MVP
 - `NNeuralCanvas`
-- `NAIPipeline`
 
 ## Phase 8 - Product-specific Packages
 

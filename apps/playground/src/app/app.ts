@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {
+  NAIPipeline,
   NAvatar,
   NBadge,
   NButton,
@@ -9,6 +10,7 @@ import {
   NCardFooter,
   NCardHeader,
   NCardTitle,
+  NChat,
   NChip,
   NCommandBar,
   NDataCard,
@@ -23,6 +25,7 @@ import {
   NMediaPreview,
   NMetricCard,
   NPageHeader,
+  NPromptInput,
   NProgress,
   NSelect,
   NShell,
@@ -33,6 +36,7 @@ import {
   NSpinner,
   NStatCard,
   NStatusDot,
+  NStreamingText,
   NTable,
   NTabItem,
   NTabs,
@@ -43,6 +47,8 @@ import {
   NTooltipDirective,
   NPopoverDirective,
   NToolbar,
+  NVoiceOrb,
+  type NAIMessage,
   type NBadgeVariant,
   type NButtonSize,
   type NButtonVariant,
@@ -55,7 +61,9 @@ import {
   type NSelectOption,
   type NTableColumn,
   type NeuralThemeName,
+  type NVoiceOrbState,
 } from '@neural/angular-ui';
+import type { NAIPipelineStep as NAIPipelineStepModel } from '@neural/angular-ui/ai';
 import { DemoDialogComponent } from './demos/overlay-demo/demo-dialog.component';
 import { DemoDrawerComponent } from './demos/overlay-demo/demo-drawer.component';
 
@@ -69,6 +77,7 @@ import { DemoDrawerComponent } from './demos/overlay-demo/demo-drawer.component'
     NCardDescription,
     NCardContent,
     NCardFooter,
+    NChat,
     NChip,
     NCommandBar,
     NDataCard,
@@ -80,7 +89,9 @@ import { DemoDrawerComponent } from './demos/overlay-demo/demo-drawer.component'
     NInput,
     NMediaPreview,
     NMetricCard,
+    NAIPipeline,
     NPageHeader,
+    NPromptInput,
     NSelect,
     NTextarea,
     NAvatar,
@@ -92,6 +103,7 @@ import { DemoDrawerComponent } from './demos/overlay-demo/demo-drawer.component'
     NSpinner,
     NStatCard,
     NStatusDot,
+    NStreamingText,
     NTable,
     NTabs,
     NTabItem,
@@ -100,6 +112,7 @@ import { DemoDrawerComponent } from './demos/overlay-demo/demo-drawer.component'
     NTooltipDirective,
     NPopoverDirective,
     NToolbar,
+    NVoiceOrb,
   ],
   selector: 'app-root',
   templateUrl: './app.html',
@@ -110,6 +123,8 @@ export class App {
   private readonly dialog = inject(NDialogService);
   private readonly drawer = inject(NDrawerService);
   private readonly toast = inject(NToastService);
+  private nextAiMessageId = 5;
+  private voiceStateIndex = 0;
 
   readonly theme = this.themeService.theme;
   readonly themeOptions: NeuralThemeName[] = ['dark', 'light', 'system'];
@@ -154,8 +169,11 @@ export class App {
   selectedModel = 'enhance';
   activeLayoutTab = 'overview';
   prompt = '';
+  aiPrompt = '';
+  isAiThinking = false;
   removedChips = 0;
   imageCompareValue = 56;
+  voiceState: NVoiceOrbState = 'idle';
 
   selectedFiles: NFileLike[] = [
     {
@@ -218,6 +236,123 @@ export class App {
     { name: 'city-night.mp4', model: 'Real-ESRGAN', status: 'Running', progress: '68%' },
     { name: 'portrait.mov', model: 'RIFE', status: 'Queued', progress: '0%' },
     { name: 'old-footage.mp4', model: 'DenoiseNet', status: 'Done', progress: '100%' },
+  ];
+  readonly streamingDemoText =
+    'Analyzing frames, estimating noise profile and preparing enhancement pipeline...';
+  readonly streamingPatternText = `Basandome en el analisis de los datos del Q3, he identificado tres
+patrones clave en el comportamiento de los usuarios:
+
+-> El 68% de las interacciones ocurren entre las 9AM y 2PM
+-> Las consultas de codigo aumentaron un 42% mes a mes
+-> El tiempo promedio de respuesta se redujo de 2.1s a 0.8s
+
+Esta tendencia sugiere que los usuarios prefieren sesiones de trabajo intensivas con el modelo...`;
+  readonly voiceStates: NVoiceOrbState[] = [
+    'idle',
+    'listening',
+    'thinking',
+    'speaking',
+    'muted',
+    'error',
+  ];
+  readonly voiceStateLabels: Record<NVoiceOrbState, string> = {
+    idle: 'Idle',
+    listening: 'Escuchar',
+    thinking: 'Procesar',
+    speaking: 'Responder',
+    muted: 'Muted',
+    error: 'Error',
+  };
+  readonly aiPatternMessages: NAIMessage[] = [
+    {
+      id: 'pattern-1',
+      role: 'assistant',
+      content:
+        '¡Hola! Soy tu asistente Neural. ¿En qué puedo ayudarte hoy? Puedo analizar datos, generar código o responder preguntas complejas.',
+      author: 'Neural AI',
+      avatar: 'N',
+      timestamp: '09:41',
+    },
+    {
+      id: 'pattern-2',
+      role: 'user',
+      content: 'Necesito que analices los datos de ventas del último trimestre.',
+      author: '',
+    },
+    {
+      id: 'pattern-3',
+      role: 'assistant',
+      content: `Analicé los datos del Q3:
+
+→ Ingresos: $2.4M +18%
+→ Unidades: 12,450 +9%
+→ Ticket: $192.6 +8%`,
+      author: 'Neural AI',
+      avatar: 'N',
+      timestamp: '09:42',
+    },
+  ];
+  aiMessages: NAIMessage[] = [
+    {
+      id: '1',
+      role: 'system',
+      content: 'Neural assistant is ready.',
+      timestamp: '10:20',
+      status: 'success',
+    },
+    {
+      id: '2',
+      role: 'user',
+      content: 'Enhance this video and reduce noise.',
+      author: 'Anderson',
+      timestamp: '10:21',
+    },
+    {
+      id: '3',
+      role: 'assistant',
+      content:
+        'I can enhance the video, reduce noise and preserve facial details.',
+      author: 'Neural',
+      timestamp: '10:21',
+      status: 'streaming',
+    },
+    {
+      id: '4',
+      role: 'tool',
+      content: 'Selected model: Real-ESRGAN x4 + DenoiseNet',
+      author: 'Pipeline',
+      timestamp: '10:22',
+    },
+  ];
+  pipelineSteps: NAIPipelineStepModel[] = [
+    {
+      title: 'Upload',
+      description: 'Media file received',
+      icon: 'upload',
+      status: 'success',
+      progress: 100,
+    },
+    {
+      title: 'Analyze',
+      description: 'Detecting resolution, noise and motion',
+      icon: 'search',
+      status: 'success',
+      progress: 100,
+    },
+    {
+      title: 'Enhance',
+      description: 'Running AI enhancement model',
+      icon: 'sparkles',
+      status: 'running',
+      progress: 68,
+      metadata: 'Real-ESRGAN x4',
+    },
+    {
+      title: 'Export',
+      description: 'Waiting for enhanced frames',
+      icon: 'file-text',
+      status: 'pending',
+    },
   ];
 
   readonly surfaces = [
@@ -407,5 +542,52 @@ export class App {
       title: 'Media pipeline',
       icon: 'play',
     });
+  }
+
+  onPromptSubmitted(prompt: string): void {
+    const trimmedPrompt = prompt.trim();
+
+    if (!trimmedPrompt) {
+      return;
+    }
+
+    const userMessage: NAIMessage = {
+      id: `${this.nextAiMessageId++}`,
+      role: 'user',
+      content: trimmedPrompt,
+      author: 'Anderson',
+      timestamp: 'Now',
+    };
+    const assistantMessage: NAIMessage = {
+      id: `${this.nextAiMessageId++}`,
+      role: 'assistant',
+      content: `Prompt queued: ${trimmedPrompt}`,
+      author: 'Neural',
+      timestamp: 'Now',
+      status: 'streaming',
+    };
+
+    this.aiMessages = [...this.aiMessages, userMessage, assistantMessage];
+    this.aiPrompt = '';
+    this.isAiThinking = false;
+
+    this.toast.info('Prompt submitted', {
+      title: 'Neural',
+      icon: 'sparkles',
+    });
+  }
+
+  cycleVoiceState(): void {
+    this.voiceStateIndex = (this.voiceStateIndex + 1) % this.voiceStates.length;
+    this.voiceState = this.voiceStates[this.voiceStateIndex];
+  }
+
+  setVoiceState(state: NVoiceOrbState): void {
+    this.voiceState = state;
+    this.voiceStateIndex = this.voiceStates.indexOf(state);
+  }
+
+  voiceStateLabel(state: NVoiceOrbState): string {
+    return this.voiceStateLabels[state];
   }
 }

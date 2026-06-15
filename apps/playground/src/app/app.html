@@ -673,6 +673,318 @@
     </div>
   </section>
 
+  <section class="preview-section ai-interaction-section">
+    <div class="section-heading">
+      <h2>AI Interaction MVP</h2>
+      <p>Prompt-first, chat-first, and pipeline-first primitives aligned with the imported AI patterns.</p>
+    </div>
+
+    <div class="ai-demo-grid">
+      <n-card>
+        <n-card-header>
+          <n-card-title>Prompt Input</n-card-title>
+          <n-card-description>Textarea + submit flow for AI instructions without backend coupling.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-prompt-input
+            variant="gradient"
+            placeholder="Ask Neural to enhance, analyze or generate..."
+            [clearable]="false"
+            [showCounter]="true"
+            [maxLength]="240"
+            [minRows]="1"
+            [maxRows]="6"
+            [(value)]="aiPrompt"
+            (submitted)="onPromptSubmitted($event)"
+          >
+            <button type="button" nPromptActions class="ai-prompt-chip">
+              <n-icon name="plus" size="xs" />
+              Attach
+            </button>
+            <button
+              type="button"
+              nPromptActions
+              class="ai-prompt-chip ai-prompt-chip--active"
+            >
+              Images
+            </button>
+            <button type="button" nPromptTrailing class="ai-prompt-model">
+              Neural Pro
+              <n-icon name="chevron-down" size="xs" />
+            </button>
+            <span nPromptMeta class="ai-prompt-meta">
+              Neural Pro · Extended context · Angular Material v22
+            </span>
+          </n-prompt-input>
+        </n-card-content>
+      </n-card>
+
+      <n-card>
+        <n-card-header>
+          <n-card-title>Chat</n-card-title>
+          <n-card-description>Burbujas con gradient borders Gemini. User: blue-violet. AI: violet-pink.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-chat
+            surface="inline"
+            [messages]="aiPatternMessages"
+            [loading]="true"
+          />
+        </n-card-content>
+      </n-card>
+    </div>
+
+    <div class="ai-demo-grid">
+      <n-card>
+        <n-card-header>
+          <n-card-title>Streaming Text</n-card-title>
+          <n-card-description>Texto token a token con cursor Gemini parpadeante.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <div class="ai-stream-demo">
+            <div class="ai-stream-card">
+              <div class="ai-stream-header">
+                <span class="ai-stream-avatar">N</span>
+                <span class="ai-stream-name">Neural AI</span>
+                <span class="ai-stream-badge">● streaming</span>
+              </div>
+
+              <n-streaming-text
+                surface="inline"
+                [text]="streamingPatternText"
+                state="streaming"
+              />
+            </div>
+
+            <button type="button" class="ai-stream-action">
+              <n-icon name="rotate-ccw" size="xs" />
+              Reiniciar stream
+            </button>
+          </div>
+        </n-card-content>
+      </n-card>
+
+      <n-card>
+        <n-card-header>
+          <n-card-title>Voice Orb</n-card-title>
+          <n-card-description>Esfera Gemini con gradiente cónico 4-stop. Estados visuales para voz y presencia del agente.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <div class="ai-voice-stage">
+            <n-voice-orb
+              [state]="voiceState"
+              size="lg"
+              [interactive]="true"
+              (orbClick)="cycleVoiceState()"
+            />
+
+            <div class="ai-state-chip-row">
+              @for (state of voiceStates; track state) {
+                <button
+                  type="button"
+                  class="ai-state-pill"
+                  [class.ai-state-pill--active]="voiceState === state"
+                  (click)="setVoiceState(state)"
+                >
+                  {{ voiceStateLabel(state) }}
+                </button>
+              }
+            </div>
+          </div>
+        </n-card-content>
+      </n-card>
+    </div>
+
+    <div class="ai-demo-block">
+      <div class="section-heading compact-heading">
+        <h3>Tamaños</h3>
+        <p>Variantes sm, md y lg con halo Gemini proporcional.</p>
+      </div>
+
+      <div class="ai-voice-sizes-stage">
+        <div class="ai-voice-sizes-row">
+          <n-voice-orb
+            class="ai-voice-size-demo"
+            size="sm"
+            state="listening"
+          />
+          <n-voice-orb
+            class="ai-voice-size-demo"
+            size="md"
+            state="listening"
+          />
+          <n-voice-orb
+            class="ai-voice-size-demo"
+            size="lg"
+            state="listening"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-demo-block">
+      <div class="section-heading compact-heading">
+        <h2>AI Pipeline</h2>
+        <p>Vertical inspector and horizontal queue variants for media processing workflows.</p>
+      </div>
+
+      <div class="ai-pipeline-demo-grid">
+        <n-card>
+          <n-card-header>
+            <n-card-title>Vertical</n-card-title>
+            <n-card-description>Inspector-style execution flow.</n-card-description>
+          </n-card-header>
+          <n-card-content>
+            <n-ai-pipeline [steps]="pipelineSteps" orientation="vertical" />
+          </n-card-content>
+        </n-card>
+
+        <n-card>
+          <n-card-header>
+            <n-card-title>Horizontal</n-card-title>
+            <n-card-description>Compact queue view for parallel jobs.</n-card-description>
+          </n-card-header>
+          <n-card-content>
+            <n-ai-pipeline
+              [steps]="pipelineSteps"
+              orientation="horizontal"
+              density="compact"
+            />
+          </n-card-content>
+        </n-card>
+      </div>
+    </div>
+
+    <div class="ai-demo-block">
+      <div class="section-heading compact-heading">
+        <h2>AI Workspace Composition</h2>
+        <p>A prompt-driven media enhancement workspace built only from current Neural Angular primitives.</p>
+      </div>
+
+      <div class="ai-workspace-surface">
+        <n-page-header
+          eyebrow="Neural Workspace"
+          title="AI Media Processing"
+          description="Prompt, chat, pipeline, voice state and media preview in one composed surface."
+          icon="sparkles"
+        >
+          <n-button pageHeaderAction variant="ghost">Save preset</n-button>
+          <n-button pageHeaderAction>
+            <n-icon name="play" size="sm" />
+            Run workflow
+          </n-button>
+        </n-page-header>
+
+        <n-command-bar align="between">
+          <div nCommandGroup>
+            <n-badge variant="success" [dot]="true">Model Ready</n-badge>
+            <n-chip variant="primary" [selected]="true">Real-ESRGAN</n-chip>
+            <n-chip variant="secondary" [selected]="true">DenoiseNet</n-chip>
+          </div>
+
+          <div nCommandGroup>
+            <n-button variant="ghost" size="sm">Inspect</n-button>
+            <n-button size="sm">
+              Continue
+              <n-icon name="arrow-right" size="sm" />
+            </n-button>
+          </div>
+        </n-command-bar>
+
+        <div class="ai-workspace-grid">
+          <section class="ai-workspace-main">
+            <n-chat [messages]="aiMessages" [loading]="isAiThinking" />
+
+            <n-prompt-input
+              variant="gradient"
+              placeholder="Tell Neural what to do with this media..."
+              [clearable]="false"
+              [showCounter]="true"
+              [maxLength]="280"
+              [minRows]="1"
+              [maxRows]="5"
+              [(value)]="aiPrompt"
+              (submitted)="onPromptSubmitted($event)"
+            >
+              <button type="button" nPromptTrailing class="ai-prompt-model">
+                Neural Pro
+                <n-icon name="chevron-down" size="xs" />
+              </button>
+              <span nPromptMeta class="ai-prompt-meta">
+                No backend yet. This is a local visual demo.
+              </span>
+            </n-prompt-input>
+
+            <n-streaming-text
+              [text]="streamingDemoText"
+              state="streaming"
+            />
+          </section>
+
+          <aside class="ai-workspace-side">
+            <div class="ai-workspace-voice">
+              <div class="ai-workspace-voice-stack">
+                <n-voice-orb
+                  [state]="voiceState"
+                  size="md"
+                  [interactive]="true"
+                  (orbClick)="cycleVoiceState()"
+                />
+
+                <div class="ai-state-chip-row ai-state-chip-row--compact">
+                  @for (state of voiceStates; track state) {
+                    <button
+                      type="button"
+                      class="ai-state-pill ai-state-pill--compact"
+                      [class.ai-state-pill--active]="voiceState === state"
+                      (click)="setVoiceState(state)"
+                    >
+                      {{ voiceStateLabel(state) }}
+                    </button>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <n-ai-pipeline [steps]="pipelineSteps" />
+
+            <n-metric-card
+              title="Render Load"
+              subtitle="Realtime processing"
+              value="68"
+              unit="%"
+              icon="cpu"
+              variant="gradient"
+              [progress]="68"
+              footer="GPU queue is healthy."
+            />
+
+            <div class="ai-workspace-media">
+              <n-media-preview
+                [src]="mediaPreviewSrc"
+                kind="image"
+                fit="cover"
+                alt="AI workspace preview"
+                title="Enhanced frame"
+                description="Preview surface inside the AI workspace."
+              />
+
+              @if (selectedFiles.length > 0) {
+                <n-file-card
+                  [file]="selectedFiles[0]"
+                  [previewable]="true"
+                  [downloadable]="true"
+                  (preview)="previewDemoFile(selectedFiles[0])"
+                  (download)="downloadDemoFile(selectedFiles[0])"
+                />
+              }
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="preview-section components-preview">
     <div class="section-heading">
       <h2>Components Preview</h2>

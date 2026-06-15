@@ -1,0 +1,106 @@
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type '(value: number | string | null | undefined) => number | undefined' is not assignable to type '(v: unknown) => number | undefined'.
+      Types of parameters 'value' and 'v' are incompatible.
+        Type 'unknown' is not assignable to type 'string | number | null | undefined'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:281:4:
+[37m      281 │     [32mtransform[37m: optionalNumberAttribute,
+          ╵     [32m~~~~~~~~~[0m
+  The expected type comes from property 'transform' which is declared here on type 'InputOptionsWithTransform<number | undefined, unknown>'
+    node_modules/.pnpm/@angular+core@22.0.1_@angul_93ddcad6dba4eb07162003e4b5020db4/node_modules/@angular/core/types/core.d.ts:43:4:
+[37m      43 │     [32mtransform[37m?: (v: TransformT) => T;
+         ╵     [32m~~~~~~~~~[0m
+  The last overload is declared here.
+    node_modules/.pnpm/@angular+core@22.0.1_@angul_93ddcad6dba4eb07162003e4b5020db4/node_modules/@angular/core/types/core.d.ts:155:4:
+[37m      155 │     [32m<T>(initialValue: undefined, opts: InputOptionsWithTransform<[37m...
+          ╵     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2308: Module './ai-pipeline-step.component.js' has already exported a member named 'NAIPipelineStep'. Consider explicitly re-exporting to resolve the ambiguity.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/index.ts:3:0:
+[37m      3 │ [32mexport * from './ai-pipeline.types.js';[37m
+        ╵ [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2308: Module './ai/index.js' has already exported a member named 'NAIPipelineStep'. Consider explicitly re-exporting to resolve the ambiguity.[0m [1m[3[39m[22m[1m[31m5m[plugin angular-compiler][0m
+    packages/ui/src/index.ts:43:0:
+[37m      43 │ [32mexport * from './ai-pipeline/index.js';[37m
+         ╵ [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type '(value: number | string | null | undefined) => number | undefined' is not assignable to type '(v: unknown) => number | undefined'.
+      Types of parameters 'value' and 'v' are incompatible.
+        Type 'unknown' is not assignable to type 'string | number | null | undefined'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/prompt-input/prompt-input.component.ts:366:4:
+[37m      366 │     [32mtransform[37m: optionalNumberAttribute,
+          ╵     [32m~~~~~~~~~[0m
+  The expected type comes from property 'transform' which is declared here on type 'InputOptionsWithTransform<number | undefined, unknown>'
+    node_modules/.pnpm/@angular+core@22.0.1_@angul_93ddcad6dba4eb07162003e4b5020db4/node_modules/@angular/core/types/core.d.ts:43:4:
+[37m      43 │     [32mtransform[37m?: (v: TransformT) => T;
+         ╵     [32m~~~~~~~~~[0m
+  The last overload is declared here.
+    node_modules/.pnpm/@angular+core@22.0.1_@angul_93ddcad6dba4eb07162003e4b5020db4/node_modules/@angular/core/types/core.d.ts:155:4:
+[37m      155 │     [32m<T>(initialValue: undefined, opts: InputOptionsWithTransform<[37m...
+          ╵     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NChat is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.ts:80:4:
+[37m      80 │     [32mNChat[37m,
+         ╵     [32m~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NAIPipeline is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.ts:92:4:
+[37m      92 │     [32mNAIPipeline[37m,
+         ╵     [32m~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NPromptInput is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.ts:94:4:
+[37m      94 │     [32mNPromptInput[37m,
+         ╵     [32m~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NStreamingText is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.ts:106:4:
+[37m      106 │     [32mNStreamingText[37m,
+          ╵     [32m~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NVoiceOrb is not used within the template of App[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.ts:115:4:
+[37m      115 │     [32mNVoiceOrb[37m,
+          ╵     [32m~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'voiceStateLabel' does not exist on type 'App'. Did you mean 'voiceState'?[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.html:791:21:
+[37m      791 │                   {{ [32mvoiceStateLabel[37m(state) }}
+          ╵                      [32m~~~~~~~~~~~~~~~[0m
+  Error occurs in the template of component App.
+    apps/playground/src/app/app.ts:118:15:
+[37m      118 │   templateUrl: [32m'./app.html'[37m,
+          ╵                [32m~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'voiceStateLabel' does not exist on type 'App'. Did you mean 'voiceState'?[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.html:791:21:
+[37m      791 │                   {{ [32mvoiceStateLabel[37m(state) }}
+          ╵                      [32m~~~~~~~~~~~~~~~[0m
+  Error occurs in the template of component App.
+    apps/playground/src/app/app.ts:118:15:
+[37m      118 │   templateUrl: [32m'./app.html'[37m,
+          ╵                [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'voiceStateLabel' does not exist on type 'App'. Did you mean 'voiceState'?[0m [1m[35m[plugin angular-compiler][0m
+    apps/playground/src/app/app.html:917:25:
+[37m      917 │                       {{ [32mvoiceStateLabel[37m(state) }}
+          ╵                          [32m~~~~~~~~~~~~~~~[0m
+  Error occurs in the template of component App.
+    apps/playground/src/app/app.ts:118:15:
+[37m      118 │   templateUrl: [32m'./app.html'[37m,
+          ╵                [32m~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NStreamingTextSurface' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/streaming-text/streaming-text.component.ts:3:35:
+[37m      3 │ ... NStreamingTextState, [32mNStreamingTextSurface[37m } from './streaming-...
+        ╵                          [32m~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'surface' does not exist on type 'NStreamingText'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/streaming-text/streaming-text.component.ts:15:40:
+[37m      15 │       [class.n-streaming-text--inline]="[32msurface[37m() === 'inline'"
+         ╵                                         [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NStreamingTextSurface' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/streaming-text/streaming-text.component.ts:3:35:
+[37m      3 │ ... NStreamingTextState, [32mNStreamingTextSurface[37m } from './streaming-...
+        ╵                          [32m~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'surface' does not exist on type 'NStreamingText'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/streaming-text/streaming-text.component.ts:15:40:
+[37m      15 │       [class.n-streaming-text--inline]="[32msurface[37m() === 'inline'"
+         ╵                                         [32m~~~~~~~[0m
+[39m[22m

@@ -22,6 +22,7 @@ import {
   LucideHome,
   LucideInfo,
   LucideLoaderCircle,
+  LucideMic,
   LucideMoon,
   LucidePalette,
   LucidePlay,
@@ -33,6 +34,7 @@ import {
   LucideSun,
   LucideTrash2,
   LucideUpload,
+  LucideUser,
   LucideX,
 } from '@lucide/angular';
 
@@ -60,6 +62,7 @@ export const NEURAL_LUCIDE_ICONS = [
   LucideHome,
   LucideInfo,
   LucideLoaderCircle,
+  LucideMic,
   LucideMoon,
   LucidePalette,
   LucidePlay,
@@ -71,6 +74,7 @@ export const NEURAL_LUCIDE_ICONS = [
   LucideSun,
   LucideTrash2,
   LucideUpload,
+  LucideUser,
   LucideX,
 ] as const;
 
@@ -98,6 +102,7 @@ export const NEURAL_LUCIDE_ICON_NAMES = [
   'home',
   'info',
   'loader-circle',
+  'mic',
   'moon',
   'palette',
   'play',
@@ -109,5 +114,6 @@ export const NEURAL_LUCIDE_ICON_NAMES = [
   'sun',
   'trash-2',
   'upload',
+  'user',
   'x',
 ] as const;

@@ -22,9 +22,12 @@
     "paths": {
       "@neural/angular-ui": ["packages/ui/src/index.ts"],
       "@neural/angular-ui/avatar": ["packages/ui/src/avatar/index.ts"],
+      "@neural/angular-ui/ai": ["packages/ui/src/ai/index.ts"],
+      "@neural/angular-ui/ai-pipeline": ["packages/ui/src/ai-pipeline/index.ts"],
       "@neural/angular-ui/badge": ["packages/ui/src/badge/index.ts"],
       "@neural/angular-ui/button": ["packages/ui/src/button/index.ts"],
       "@neural/angular-ui/card": ["packages/ui/src/card/index.ts"],
+      "@neural/angular-ui/chat": ["packages/ui/src/chat/index.ts"],
       "@neural/angular-ui/chip": ["packages/ui/src/chip/index.ts"],
       "@neural/angular-ui/command-bar": ["packages/ui/src/command-bar/index.ts"],
       "@neural/angular-ui/data-card": ["packages/ui/src/data-card/index.ts"],
@@ -42,6 +45,7 @@
       "@neural/angular-ui/overlay": ["packages/ui/src/overlay/index.ts"],
       "@neural/angular-ui/page-header": ["packages/ui/src/page-header/index.ts"],
       "@neural/angular-ui/popover": ["packages/ui/src/popover/index.ts"],
+      "@neural/angular-ui/prompt-input": ["packages/ui/src/prompt-input/index.ts"],
       "@neural/angular-ui/progress": ["packages/ui/src/progress/index.ts"],
       "@neural/angular-ui/select": ["packages/ui/src/select/index.ts"],
       "@neural/angular-ui/shell": ["packages/ui/src/shell/index.ts"],
@@ -49,6 +53,7 @@
       "@neural/angular-ui/spinner": ["packages/ui/src/spinner/index.ts"],
       "@neural/angular-ui/stat-card": ["packages/ui/src/stat-card/index.ts"],
       "@neural/angular-ui/status-dot": ["packages/ui/src/status-dot/index.ts"],
+      "@neural/angular-ui/streaming-text": ["packages/ui/src/streaming-text/index.ts"],
       "@neural/angular-ui/table": ["packages/ui/src/table/index.ts"],
       "@neural/angular-ui/tabs": ["packages/ui/src/tabs/index.ts"],
       "@neural/angular-ui/textarea": ["packages/ui/src/textarea/index.ts"],
@@ -57,7 +62,8 @@
       "@neural/angular-ui/toast": ["packages/ui/src/toast/index.ts"],
       "@neural/angular-ui/tooltip": ["packages/ui/src/tooltip/index.ts"],
       "@neural/angular-ui/toolbar": ["packages/ui/src/toolbar/index.ts"],
-      "@neural/angular-ui/tokens": ["packages/ui/src/tokens/index.ts"]
+      "@neural/angular-ui/tokens": ["packages/ui/src/tokens/index.ts"],
+      "@neural/angular-ui/voice-orb": ["packages/ui/src/voice-orb/index.ts"]
     }
   }
 }

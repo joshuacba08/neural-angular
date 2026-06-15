@@ -151,6 +151,30 @@
       "types": "./dist/media-preview/index.d.ts",
       "default": "./dist/media-preview/index.js"
     },
+    "./ai": {
+      "types": "./dist/ai/index.d.ts",
+      "default": "./dist/ai/index.js"
+    },
+    "./prompt-input": {
+      "types": "./dist/prompt-input/index.d.ts",
+      "default": "./dist/prompt-input/index.js"
+    },
+    "./chat": {
+      "types": "./dist/chat/index.d.ts",
+      "default": "./dist/chat/index.js"
+    },
+    "./streaming-text": {
+      "types": "./dist/streaming-text/index.d.ts",
+      "default": "./dist/streaming-text/index.js"
+    },
+    "./voice-orb": {
+      "types": "./dist/voice-orb/index.d.ts",
+      "default": "./dist/voice-orb/index.js"
+    },
+    "./ai-pipeline": {
+      "types": "./dist/ai-pipeline/index.d.ts",
+      "default": "./dist/ai-pipeline/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"

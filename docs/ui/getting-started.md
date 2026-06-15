@@ -1,6 +1,6 @@
 # UI Getting Started
 
-The first package planned for the workspace is `@neural/angular-ui`, an Angular-first UI system focused on standalone components, tokens, theming, and SSR-safe behavior.
+The first package planned for the workspace is `@neural/angular-ui`, an Angular-first UI system focused on standalone components, tokens, theming, SSR-safe behavior, and AI-first interaction primitives.
 
 The imported design reference currently lives in `docs/design_system/`. Treat those HTML/CSS files as prototype material for analysis, not as the final Angular implementation.
 
@@ -70,11 +70,14 @@ import {
   NEmptyState,
   NFileCard,
   NIcon,
+  NAIPipeline,
+  NChat,
   NImageCompare,
   NInput,
   NMediaPreview,
   NMetricCard,
   NPageHeader,
+  NPromptInput,
   NProgress,
   NSelect,
   NShell,
@@ -84,6 +87,7 @@ import {
   NSpinner,
   NStatCard,
   NStatusDot,
+  NStreamingText,
   NTable,
   NDialogService,
   NDrawerService,
@@ -96,6 +100,7 @@ import {
   NTimeline,
   NTimelineItem,
   NToolbar,
+  NVoiceOrb,
 } from '@neural/angular-ui';
 ```
 
@@ -131,9 +136,14 @@ import { NDrawerService } from '@neural/angular-ui/drawer';
 import { NFileCard } from '@neural/angular-ui/file-card';
 import { NImageCompare } from '@neural/angular-ui/image-compare';
 import { NMediaPreview } from '@neural/angular-ui/media-preview';
+import { NAIPipeline } from '@neural/angular-ui/ai-pipeline';
+import { NChat } from '@neural/angular-ui/chat';
 import { NPopoverDirective } from '@neural/angular-ui/popover';
+import { NPromptInput } from '@neural/angular-ui/prompt-input';
 import { NToastService } from '@neural/angular-ui/toast';
+import { NStreamingText } from '@neural/angular-ui/streaming-text';
 import { NTooltipDirective } from '@neural/angular-ui/tooltip';
+import { NVoiceOrb } from '@neural/angular-ui/voice-orb';
 ```
 
 Use them in standalone components:
@@ -241,6 +251,11 @@ Use them in standalone components:
     <n-file-card [file]="file" [previewable]="true" />
     <n-media-preview kind="image" [src]="previewSrc" alt="Preview frame" />
     <n-image-compare [beforeSrc]="beforeSrc" [afterSrc]="afterSrc" [(value)]="compareValue" />
+    <n-chat [messages]="messages" />
+    <n-prompt-input [(value)]="prompt" (submitted)="runPrompt($event)" />
+    <n-streaming-text [text]="streamedText" state="streaming" />
+    <n-voice-orb [state]="voiceState" [interactive]="true" />
+    <n-ai-pipeline [steps]="pipelineSteps" />
   `,
 })
 export class ExampleComponent {}
@@ -257,3 +272,5 @@ Data display primitives intentionally avoid advanced data-grid behavior. Sorting
 Overlay primitives intentionally avoid advanced menu semantics, nested overlay policies, command palettes, and custom animation APIs in this MVP.
 
 Media primitives intentionally avoid real upload services, object URL creation, thumbnail extraction, Canvas, FFmpeg, WebCodecs, and product-specific `OV*` components in this MVP.
+
+AI interaction primitives intentionally avoid backend clients, WebSocket/EventSource streaming, Markdown rendering, audio capture, speech APIs, Canvas, and GSAP in this MVP.

@@ -73,13 +73,13 @@
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Voice orb | `NVoiceOrb` | `ai-patterns.html` | Experimental | AI pattern | Animated states and voice UI |
+| Voice orb | `NVoiceOrb` | `ai-patterns.html` | Complete | AI pattern | CSS-only orb states without microphone or audio APIs |
 | Waveform | `NWaveform` | `ai-patterns.html` | Experimental | AI pattern | Canvas/audio stream concerns |
-| Chat interface | `NChat` | `ai-patterns.html` | Medium | AI pattern | Could compose bubbles, prompt input, streaming |
-| Prompt input | `NPromptInput` | `ai-patterns.html` | Medium | AI pattern | Strong future candidate |
+| Chat interface | `NChat` | `ai-patterns.html` | Complete | AI pattern | Includes `NChatMessage` role-based rendering |
+| Prompt input | `NPromptInput` | `ai-patterns.html` | Complete | AI pattern | Submit, clear, counter, and keyboard shortcut support |
 | Neural canvas | `NNeuralCanvas` | `ai-patterns.html` | Experimental | AI pattern | Canvas/browser-only rendering |
-| Streaming text | `NStreamingText` | `ai-patterns.html` | Experimental | AI pattern | Timed text updates and hydration concerns |
-| AI pipeline | `NAIPipeline` | `ai-patterns.html` | Experimental | AI pattern | Animated status graph |
+| Streaming text | `NStreamingText` | `ai-patterns.html` | Complete | AI pattern | Consumer-driven streaming surface with CSS cursor |
+| AI pipeline | `NAIPipeline` | `ai-patterns.html` | Complete | AI pattern | Vertical/horizontal pipeline with status and progress |
 | GPU widget | `NGpuWidget` | `ai-patterns.html` | Low | AI pattern | Product/dashboard adjacent |
 
 ## Media / Video Components
