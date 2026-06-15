@@ -24,6 +24,78 @@
     </div>
   </section>
 
+  <section class="preview-section components-preview">
+    <div class="section-heading">
+      <h2>Components Preview</h2>
+      <p>First standalone components from `@neural/angular-ui` using the token foundation.</p>
+    </div>
+
+    <div class="component-layout">
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Buttons</h2>
+          <p>Variants, sizes, disabled, loading, full width, and submit type.</p>
+        </div>
+
+        <div class="button-demo-row" aria-label="Button variants">
+          @for (variant of buttonVariants; track variant) {
+            <n-button [variant]="variant">{{ variant }}</n-button>
+          }
+        </div>
+
+        <div class="button-demo-row" aria-label="Button sizes">
+          @for (size of buttonSizes; track size) {
+            <n-button variant="secondary" [size]="size">{{ size }}</n-button>
+          }
+        </div>
+
+        <div class="button-demo-row" aria-label="Button states">
+          <n-button variant="ghost" [disabled]="true">Disabled</n-button>
+          <n-button variant="danger" [loading]="true">Loading</n-button>
+        </div>
+
+        <form class="button-demo-form" (submit)="$event.preventDefault()">
+          <n-button type="submit" [fullWidth]="true">Submit type full width</n-button>
+        </form>
+      </div>
+
+      <div class="component-panel">
+        <div class="section-heading compact-heading">
+          <h2>Cards</h2>
+          <p>Surface variants, optional hover treatment, and structured content.</p>
+        </div>
+
+        <div class="card-demo-grid">
+          @for (variant of cardVariants; track variant) {
+            <n-card [variant]="variant" [interactive]="variant === 'gradient'">
+              <n-card-header>
+                <n-card-title>{{ variant }} card</n-card-title>
+                <n-card-description>Token-based surface preview.</n-card-description>
+              </n-card-header>
+              <n-card-content>
+                Designed as a visual container only. Interactive cards keep behavior inside projected content.
+              </n-card-content>
+            </n-card>
+          }
+        </div>
+      </div>
+    </div>
+
+    <n-card variant="gradient" [interactive]="true" class="featured-card-demo">
+      <n-card-header>
+        <n-card-title>Project status</n-card-title>
+        <n-card-description>Current build health</n-card-description>
+      </n-card-header>
+      <n-card-content>
+        NButton and NCard are imported from the local package and rendered together in the playground.
+      </n-card-content>
+      <n-card-footer>
+        <n-button size="sm">Open</n-button>
+        <n-button variant="ghost" size="sm">View docs</n-button>
+      </n-card-footer>
+    </n-card>
+  </section>
+
   <section class="preview-section">
     <div class="section-heading">
       <h2>Surface Tokens</h2>

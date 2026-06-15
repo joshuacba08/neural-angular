@@ -12,13 +12,14 @@
 
 - Phase 1A complete: create package structure and migrate the curated token foundation.
 - Phase 1B complete: add a minimal Angular theme provider and token playground validation.
+- Phase 1C complete: add `NButton`, `NCard`, public exports, docs, and playground component demos.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
 - Create Angular theme provider.
-- Create basic icon strategy.
 - Create `NButton`.
 - Create `NCard`.
+- Create basic icon strategy.
 
 ## Phase 2 - Core UI
 
@@ -66,4 +67,4 @@
 
 ## Implementation Boundary
 
-The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, and an Angular playground token preview. UI components, directives, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.
+The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, `NButton`, `NCard`, and an Angular playground preview. Additional UI components, directives, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.

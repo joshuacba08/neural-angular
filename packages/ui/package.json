@@ -11,6 +11,14 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./button": {
+      "types": "./dist/button/index.d.ts",
+      "default": "./dist/button/index.js"
+    },
+    "./card": {
+      "types": "./dist/card/index.d.ts",
+      "default": "./dist/card/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"

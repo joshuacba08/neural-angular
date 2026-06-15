@@ -21,6 +21,8 @@
     "ignoreDeprecations": "6.0",
     "paths": {
       "@neural/angular-ui": ["packages/ui/src/index.ts"],
+      "@neural/angular-ui/button": ["packages/ui/src/button/index.ts"],
+      "@neural/angular-ui/card": ["packages/ui/src/card/index.ts"],
       "@neural/angular-ui/theme": ["packages/ui/src/theme/index.ts"],
       "@neural/angular-ui/tokens": ["packages/ui/src/tokens/index.ts"]
     }

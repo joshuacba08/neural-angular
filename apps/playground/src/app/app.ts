@@ -1,11 +1,29 @@
 import { Component, inject } from '@angular/core';
 import {
+  NButton,
+  NCard,
+  NCardContent,
+  NCardDescription,
+  NCardFooter,
+  NCardHeader,
+  NCardTitle,
   NeuralThemeService,
+  type NButtonSize,
+  type NButtonVariant,
+  type NCardVariant,
   type NeuralThemeName,
 } from '@neural/angular-ui';
 
 @Component({
-  imports: [],
+  imports: [
+    NButton,
+    NCard,
+    NCardHeader,
+    NCardTitle,
+    NCardDescription,
+    NCardContent,
+    NCardFooter,
+  ],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -15,6 +33,19 @@ export class App {
 
   readonly theme = this.themeService.theme;
   readonly themeOptions: NeuralThemeName[] = ['dark', 'light', 'system'];
+  readonly buttonVariants: NButtonVariant[] = [
+    'primary',
+    'secondary',
+    'ghost',
+    'danger',
+  ];
+  readonly buttonSizes: NButtonSize[] = ['sm', 'md', 'lg'];
+  readonly cardVariants: NCardVariant[] = [
+    'default',
+    'elevated',
+    'outlined',
+    'gradient',
+  ];
 
   readonly surfaces = [
     ['Canvas', '--n-bg-canvas'],

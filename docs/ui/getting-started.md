@@ -4,7 +4,7 @@ The first package planned for the workspace is `@neural/angular-ui`, an Angular-
 
 The imported design reference currently lives in `docs/design_system/`. Treat those HTML/CSS files as prototype material for analysis, not as the final Angular implementation.
 
-The initial package structure now exists in `packages/ui/`. Its first real implementation layer is token-only: public CSS variables use the `--n-*` prefix, while selected imported `--nn-*` names are reserved for compatibility during migration.
+The initial package structure now exists in `packages/ui/`. Public CSS variables use the `--n-*` prefix, while selected imported `--nn-*` names are reserved for compatibility during migration.
 
 ## Styles
 
@@ -31,6 +31,36 @@ export const appConfig = {
 };
 ```
 
-The provider applies `data-n-theme` in the browser and guards access to browser-only APIs. The playground in `apps/playground` validates the tokens visually with normal HTML and local demo styles. Real UI kit components such as `NButton`, `NCard`, `NIcon`, `NBadge`, and `NChip` are still intentionally not implemented.
+The provider applies `data-n-theme` in the browser and guards access to browser-only APIs. The playground in `apps/playground` validates the tokens visually and now renders the first real standalone components.
 
 The package-level style import remains the public target. The local playground currently imports source CSS by relative path so the Angular dev server can resolve it before the UI package has a full packaging pipeline.
+
+## Components
+
+Import from the root package:
+
+```ts
+import { NButton, NCard } from '@neural/angular-ui';
+```
+
+Or import from secondary entry points:
+
+```ts
+import { NButton } from '@neural/angular-ui/button';
+import { NCard } from '@neural/angular-ui/card';
+```
+
+Use them in standalone components:
+
+```ts
+@Component({
+  imports: [NButton, NCard],
+  template: `
+    <n-button variant="primary">Primary</n-button>
+    <n-card>Example card</n-card>
+  `,
+})
+export class ExampleComponent {}
+```
+
+`NButton` and `NCard` are pure Angular template + CSS components. They do not use browser globals, GSAP, Angular Material, CDK overlays, or fake SSR helpers.
