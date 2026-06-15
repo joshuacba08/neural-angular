@@ -61,12 +61,14 @@ import type { NStatCardVariant, NStatTrend } from './stat-card.types.js';
 
       .n-stat-card {
         display: grid;
-        gap: var(--n-space-5);
+        gap: var(--n-space-4);
         min-width: 0;
-        padding: var(--n-space-5);
-        border: 1px solid var(--n-border-1);
+        padding: var(--n-space-4);
+        border: 1px solid transparent;
         border-radius: var(--n-radius-xl);
-        background: var(--n-stat-card-bg);
+        background:
+          linear-gradient(var(--n-surface-2), var(--n-surface-2)) padding-box,
+          var(--n-gradient-border-subtle) border-box;
         color: var(--n-text-1);
         box-shadow: var(--n-elevation-1);
         transition:
@@ -128,11 +130,15 @@ import type { NStatCardVariant, NStatTrend } from './stat-card.types.js';
 
       .n-stat-card__value {
         margin-top: var(--n-space-2);
-        color: var(--n-text-1);
         font-family: var(--n-font-display);
         font-size: var(--n-font-size-32);
         font-weight: var(--n-font-weight-bold);
         line-height: 1;
+        background: var(--n-gradient-gemini);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
       }
 
       .n-stat-card__icon {

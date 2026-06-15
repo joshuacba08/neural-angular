@@ -39,10 +39,12 @@ let nextDropzoneId = 0;
       [class.n-dropzone--compact]="variant() === 'compact'"
       [class.n-dropzone--media]="variant() === 'media'"
       [class.n-dropzone--dragging]="state() === 'dragging'"
+      [class.n-dropzone--filled]="state() === 'filled'"
       [class.n-dropzone--disabled]="disabled()"
       [class.n-dropzone--error]="state() === 'error'"
       [attr.aria-disabled]="disabled()"
       [attr.aria-describedby]="descriptionId"
+      (click)="browse(fileInput)"
       (dragenter)="handleDragEnter($event)"
       (dragover)="handleDragOver($event)"
       (dragleave)="handleDragLeave($event)"
@@ -60,21 +62,22 @@ let nextDropzoneId = 0;
       />
 
       <span class="n-dropzone__icon" aria-hidden="true">
-        <n-icon [name]="icon()" size="lg" />
+        <n-icon [name]="resolvedIcon()" size="lg" />
       </span>
 
       <div class="n-dropzone__body">
-        <h3>{{ title() }}</h3>
-        <p [id]="descriptionId">{{ error() || description() }}</p>
+        <h3>{{ resolvedTitle() }}</h3>
+        <p [id]="descriptionId">{{ resolvedDescription() }}</p>
       </div>
 
       <n-button
+        class="n-dropzone__action"
         variant="secondary"
         size="sm"
         [disabled]="disabled()"
-        (click)="browse(fileInput)"
+        (click)="$event.stopPropagation(); browse(fileInput)"
       >
-        {{ browseLabel() }}
+        {{ resolvedBrowseLabel() }}
       </n-button>
     </section>
   `,
@@ -87,13 +90,15 @@ let nextDropzoneId = 0;
       .n-dropzone {
         display: grid;
         justify-items: center;
-        gap: var(--n-space-4);
-        padding: var(--n-space-8);
+        gap: var(--n-space-3);
+        min-height: 96px;
+        padding: var(--n-space-4);
         border: 1px dashed var(--n-dropzone-border);
-        border-radius: var(--n-radius-2xl);
-        background: var(--n-dropzone-bg);
+        border-radius: var(--n-radius-lg);
+        background: rgba(255, 255, 255, 0.015);
         color: var(--n-text-1);
         text-align: center;
+        cursor: pointer;
         transition:
           border-color var(--n-transition-fast),
           background var(--n-transition-fast),
@@ -109,6 +114,12 @@ let nextDropzoneId = 0;
         border-color: var(--n-dropzone-border-active);
         background: color-mix(in srgb, var(--n-color-primary) 14%, var(--n-dropzone-bg));
         box-shadow: var(--n-focus-ring), var(--n-glow-primary-xs);
+      }
+
+      .n-dropzone--filled {
+        border-style: solid;
+        border-color: color-mix(in srgb, var(--n-color-success) 60%, transparent);
+        background: color-mix(in srgb, var(--n-color-success) 10%, transparent);
       }
 
       .n-dropzone--error {
@@ -129,9 +140,20 @@ let nextDropzoneId = 0;
 
       .n-dropzone--media {
         min-height: 220px;
+        padding: var(--n-space-8);
+        border-radius: var(--n-radius-2xl);
         background:
           radial-gradient(circle at top, color-mix(in srgb, var(--n-color-primary) 13%, transparent), transparent 42%),
           var(--n-dropzone-bg);
+      }
+
+      .n-dropzone--media .n-dropzone__icon {
+        width: 56px;
+        height: 56px;
+        border-radius: var(--n-radius-2xl);
+        background: color-mix(in srgb, var(--n-color-primary) 12%, var(--n-surface-2));
+        color: var(--n-color-primary-bright);
+        box-shadow: var(--n-glow-primary-xs);
       }
 
       .n-dropzone__input {
@@ -148,23 +170,27 @@ let nextDropzoneId = 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 56px;
-        height: 56px;
-        border: 1px solid var(--n-border-2);
-        border-radius: var(--n-radius-2xl);
-        background: color-mix(in srgb, var(--n-color-primary) 12%, var(--n-surface-2));
-        color: var(--n-color-primary-bright);
-        box-shadow: var(--n-glow-primary-xs);
-      }
-
-      .n-dropzone--compact .n-dropzone__icon {
         width: 44px;
         height: 44px;
+        border: 1px solid var(--n-border-2);
+        border-radius: var(--n-radius-lg);
+        background: transparent;
+        color: var(--n-text-2);
+      }
+
+      .n-dropzone--dragging .n-dropzone__icon {
+        color: var(--n-color-primary-bright);
+      }
+
+      .n-dropzone--filled .n-dropzone__icon {
+        border-color: color-mix(in srgb, var(--n-color-success) 32%, transparent);
+        background: color-mix(in srgb, var(--n-color-success) 10%, transparent);
+        color: var(--n-color-success);
       }
 
       .n-dropzone__body {
         display: grid;
-        gap: var(--n-space-2);
+        gap: var(--n-space-1);
         max-width: 520px;
       }
 
@@ -174,18 +200,52 @@ let nextDropzoneId = 0;
       }
 
       .n-dropzone__body h3 {
+        font-size: 0.71875rem;
+        font-weight: var(--n-font-weight-medium);
+        line-height: 1.4;
+      }
+
+      .n-dropzone__body p {
+        color: var(--n-text-2);
+        font-size: var(--n-font-size-12);
+        line-height: 1.5;
+      }
+
+      .n-dropzone--filled .n-dropzone__body h3 {
+        color: var(--n-color-success);
+        font-family: var(--n-font-mono);
+        font-size: var(--n-font-size-11);
+      }
+
+      .n-dropzone--filled .n-dropzone__body p {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .n-dropzone--media .n-dropzone__body {
+        gap: var(--n-space-2);
+      }
+
+      .n-dropzone--media .n-dropzone__body h3 {
         font-family: var(--n-font-display);
         font-size: var(--n-font-size-20);
         font-weight: var(--n-font-weight-semibold);
       }
 
-      .n-dropzone__body p {
-        color: var(--n-text-2);
+      .n-dropzone--media .n-dropzone__body p {
+        font-size: var(--n-font-size-14);
         line-height: 1.6;
       }
 
       .n-dropzone--error .n-dropzone__body p {
         color: var(--n-color-danger);
+      }
+
+      .n-dropzone__action {
+        justify-self: center;
+      }
+
+      .n-dropzone:not(.n-dropzone--media) .n-dropzone__action {
+        display: none;
       }
 
       @media (max-width: 640px) {
@@ -218,6 +278,7 @@ export class NDropzone {
   readonly filesRejected = output<NDropzoneRejectedFile[]>();
 
   private readonly dragging = signal(false);
+  private readonly selectedFiles = signal<ReadonlyArray<NDropzoneFile>>([]);
 
   readonly state = computed<NDropzoneState>(() => {
     if (this.disabled()) {
@@ -228,8 +289,42 @@ export class NDropzone {
       return 'error';
     }
 
-    return this.dragging() ? 'dragging' : 'idle';
+    if (this.dragging()) {
+      return 'dragging';
+    }
+
+    if (this.selectedFiles().length) {
+      return 'filled';
+    }
+
+    return 'idle';
   });
+
+  readonly resolvedIcon = computed(() => (this.state() === 'filled' ? 'circle-check' : this.icon()));
+  readonly resolvedTitle = computed(() => {
+    if (this.state() !== 'filled') {
+      return this.title();
+    }
+
+    const files = this.selectedFiles();
+    if (files.length === 1) {
+      return `${files[0]?.name ?? 'Selected file'} · ${formatFileSize(files[0]?.size)}`;
+    }
+
+    return `${files.length} files selected · ${formatFileSize(files.reduce((sum, file) => sum + file.size, 0))}`;
+  });
+  readonly resolvedDescription = computed(() => {
+    if (this.error()) {
+      return this.error() ?? '';
+    }
+
+    if (this.state() !== 'filled') {
+      return this.description();
+    }
+
+    return 'Drop more files or browse again to replace the current selection.';
+  });
+  readonly resolvedBrowseLabel = computed(() => (this.state() === 'filled' ? 'Replace files' : this.browseLabel()));
 
   browse(inputElement: FileInputLike): void {
     if (this.disabled()) {
@@ -308,6 +403,7 @@ export class NDropzone {
     }
 
     if (accepted.length) {
+      this.selectedFiles.set(accepted);
       this.filesSelected.emit(accepted);
     }
 

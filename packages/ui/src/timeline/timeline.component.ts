@@ -121,8 +121,15 @@ export class NTimeline {
         position: absolute;
         top: var(--n-timeline-dot-size);
         bottom: calc(var(--n-space-4) * -1);
-        width: 1px;
-        background: var(--n-timeline-line);
+        left: 50%;
+        width: 1.5px;
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--n-timeline-status) 40%, transparent),
+          color-mix(in srgb, var(--n-timeline-status) 24%, transparent),
+          transparent
+        );
+        transform: translateX(-50%);
         content: '';
       }
 
@@ -173,7 +180,9 @@ export class NTimeline {
 
       .n-timeline-item__header time {
         color: var(--n-text-3);
-        font-size: var(--n-font-size-12);
+        font-family: var(--n-font-mono);
+        font-size: 0.59375rem;
+        letter-spacing: 0.02em;
         white-space: nowrap;
       }
 

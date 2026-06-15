@@ -36,10 +36,10 @@ import type { NToolbarDensity } from './toolbar.types.js';
         grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
         gap: var(--n-space-4);
         align-items: center;
-        min-height: var(--n-toolbar-height);
-        padding: 0 var(--n-space-4);
-        border-radius: var(--n-radius-xl);
+        min-height: 52px;
+        padding: 0 var(--n-space-5) 0 var(--n-space-6);
         background: var(--n-toolbar-bg);
+        backdrop-filter: blur(20px);
       }
 
       .n-toolbar--compact {
@@ -47,14 +47,13 @@ import type { NToolbarDensity } from './toolbar.types.js';
       }
 
       .n-toolbar--bordered {
-        border: 1px solid var(--n-toolbar-border);
+        border-bottom: 1px solid var(--n-toolbar-border);
       }
 
       .n-toolbar--sticky {
         position: sticky;
         top: var(--n-space-3);
         z-index: var(--n-z-sticky);
-        backdrop-filter: blur(18px);
       }
 
       .n-toolbar__start,

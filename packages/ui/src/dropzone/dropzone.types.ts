@@ -1,5 +1,5 @@
 export type NDropzoneVariant = 'default' | 'compact' | 'media';
-export type NDropzoneState = 'idle' | 'dragging' | 'disabled' | 'error';
+export type NDropzoneState = 'idle' | 'dragging' | 'filled' | 'disabled' | 'error';
 
 export type NDropzoneRejectReason = 'invalid-type' | 'max-size' | 'max-files' | 'disabled';
 

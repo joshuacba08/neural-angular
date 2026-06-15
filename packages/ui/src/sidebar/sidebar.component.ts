@@ -38,9 +38,27 @@ import type { NSidebarSize, NSidebarVariant } from './sidebar.types.js';
         gap: var(--n-space-4);
         height: 100%;
         min-height: 0;
-        padding: var(--n-space-4);
+        padding: var(--n-space-4) 0;
         border-right: 1px solid var(--n-sidebar-border);
-        background: var(--n-sidebar-bg);
+        background: linear-gradient(180deg, #08081c 0%, var(--n-bg-base) 100%);
+        position: relative;
+        z-index: 0;
+      }
+
+      .n-sidebar::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(
+          180deg,
+          rgba(66, 133, 244, 0.3) 0%,
+          rgba(123, 92, 246, 0.15) 50%,
+          transparent 100%
+        );
+        content: '';
+        pointer-events: none;
       }
 
       .n-sidebar--floating {
@@ -83,18 +101,21 @@ import type { NSidebarSize, NSidebarVariant } from './sidebar.types.js';
       }
 
       :host ::ng-deep [nSidebarBrand] {
-        padding: var(--n-space-2);
+        padding: 18px 16px 14px;
+        border-bottom: 1px solid var(--n-border-1);
         color: var(--n-text-1);
       }
 
       :host ::ng-deep [nSidebarBrand] small {
         display: block;
         color: var(--n-text-2);
-        font-size: var(--n-font-size-12);
+        font-family: var(--n-font-mono);
+        font-size: var(--n-font-size-10);
+        letter-spacing: 0.06em;
       }
 
       :host ::ng-deep [nSidebarFooter] {
-        padding: var(--n-space-2);
+        padding: 12px 14px;
         border-top: 1px solid var(--n-border-1);
       }
 
@@ -141,17 +162,17 @@ export class NSidebar {
 
       .n-sidebar-section__label {
         margin: 0;
-        padding: 0 var(--n-space-2);
+        padding: 11px 16px 4px;
         color: var(--n-text-3);
-        font-size: var(--n-font-size-11);
+        font-size: var(--n-font-size-10);
         font-weight: var(--n-font-weight-bold);
-        letter-spacing: 0;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
       .n-sidebar-section__items {
         display: grid;
-        gap: var(--n-space-1);
+        gap: 0;
       }
     `,
   ],
@@ -205,33 +226,53 @@ export class NSidebarSection {
       }
 
       .n-sidebar-item {
+        position: relative;
         display: flex;
         align-items: center;
-        gap: var(--n-space-2);
+        gap: 9px;
         width: 100%;
-        min-height: 38px;
-        padding: 0 var(--n-space-3);
-        border: 1px solid transparent;
-        border-radius: var(--n-radius-md);
+        min-height: 36px;
+        padding: 8px 16px;
+        border: 0;
+        border-radius: 0;
         background: transparent;
         color: var(--n-text-2);
         font: inherit;
-        font-size: var(--n-font-size-14);
+        font-size: var(--n-font-size-13);
         font-weight: var(--n-font-weight-medium);
         text-align: left;
         text-decoration: none;
         cursor: pointer;
         transition:
           background var(--n-transition-fast),
-          border-color var(--n-transition-fast),
           color var(--n-transition-fast);
       }
 
-      .n-sidebar-item:hover:not(:disabled),
-      .n-sidebar-item--active {
-        border-color: var(--n-border-2);
-        background: color-mix(in srgb, var(--n-color-primary) 12%, transparent);
+      .n-sidebar-item::before {
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        left: 0;
+        width: 2.5px;
+        border-radius: 0 3px 3px 0;
+        background: var(--n-gradient-primary-secondary);
+        opacity: 0;
+        transition: opacity var(--n-transition-fast);
+        content: '';
+      }
+
+      .n-sidebar-item:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.025);
         color: var(--n-text-1);
+      }
+
+      .n-sidebar-item--active {
+        background: linear-gradient(90deg, rgba(66, 133, 244, 0.13) 0%, transparent 100%);
+        color: var(--n-color-primary-bright);
+      }
+
+      .n-sidebar-item--active::before {
+        opacity: 1;
       }
 
       .n-sidebar-item:focus-visible {
@@ -250,6 +291,16 @@ export class NSidebarSection {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+
+      .n-sidebar-item n-icon {
+        opacity: 0.45;
+        transition: opacity var(--n-transition-fast);
+      }
+
+      .n-sidebar-item:hover:not(:disabled) n-icon,
+      .n-sidebar-item--active n-icon {
+        opacity: 1;
       }
     `,
   ],
