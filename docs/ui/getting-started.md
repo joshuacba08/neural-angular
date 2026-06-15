@@ -60,9 +60,11 @@ import {
   NCard,
   NChip,
   NCommandBar,
+  NDataCard,
   NEmptyState,
   NIcon,
   NInput,
+  NMetricCard,
   NPageHeader,
   NProgress,
   NSelect,
@@ -71,10 +73,14 @@ import {
   NSidebarItem,
   NSidebarSection,
   NSpinner,
+  NStatCard,
   NStatusDot,
+  NTable,
   NTabItem,
   NTabs,
   NTextarea,
+  NTimeline,
+  NTimelineItem,
   NToolbar,
 } from '@neural/angular-ui';
 ```
@@ -100,6 +106,11 @@ import { NTabItem, NTabs } from '@neural/angular-ui/tabs';
 import { NTextarea } from '@neural/angular-ui/textarea';
 import { NToolbar } from '@neural/angular-ui/toolbar';
 import { NCommandBar } from '@neural/angular-ui/command-bar';
+import { NDataCard } from '@neural/angular-ui/data-card';
+import { NMetricCard } from '@neural/angular-ui/metric-card';
+import { NStatCard } from '@neural/angular-ui/stat-card';
+import { NTable } from '@neural/angular-ui/table';
+import { NTimeline, NTimelineItem } from '@neural/angular-ui/timeline';
 ```
 
 Use them in standalone components:
@@ -116,9 +127,11 @@ Use them in standalone components:
     NCardTitle,
     NChip,
     NCommandBar,
+    NDataCard,
     NEmptyState,
     NIcon,
     NInput,
+    NMetricCard,
     NPageHeader,
     NProgress,
     NSelect,
@@ -127,10 +140,14 @@ Use them in standalone components:
     NSidebarItem,
     NSidebarSection,
     NSpinner,
+    NStatCard,
     NStatusDot,
+    NTable,
     NTabItem,
     NTabs,
     NTextarea,
+    NTimeline,
+    NTimelineItem,
     NToolbar,
   ],
   template: `
@@ -181,6 +198,14 @@ Use them in standalone components:
         <n-button variant="primary">Open</n-button>
       </n-card-footer>
     </n-card>
+
+    <n-stat-card label="Jobs processed" value="128" icon="activity" />
+    <n-metric-card title="Queue" value="14" icon="cpu" [progress]="64" />
+    <n-data-card title="Model" icon="sparkles" [items]="modelItems" />
+    <n-timeline>
+      <n-timeline-item title="Upload completed" status="success" />
+    </n-timeline>
+    <n-table [columns]="jobColumns" [data]="jobs" />
   `,
 })
 export class ExampleComponent {}
@@ -191,3 +216,5 @@ Core and layout components are pure Angular template + CSS components, with Luci
 Form primitives currently expose `value` and `valueChange` for simple two-way binding. `ControlValueAccessor` integration is intentionally left for a future forms-focused iteration.
 
 Layout primitives currently avoid router integration and advanced mobile drawers. Those remain future iterations.
+
+Data display primitives intentionally avoid advanced data-grid behavior. Sorting, filtering, pagination, virtual scroll, and column templates remain future iterations.

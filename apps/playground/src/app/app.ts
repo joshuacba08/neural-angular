@@ -11,9 +11,11 @@ import {
   NCardTitle,
   NChip,
   NCommandBar,
+  NDataCard,
   NEmptyState,
   NIcon,
   NInput,
+  NMetricCard,
   NPageHeader,
   NProgress,
   NSelect,
@@ -23,17 +25,23 @@ import {
   NSidebarSection,
   NeuralThemeService,
   NSpinner,
+  NStatCard,
   NStatusDot,
+  NTable,
   NTabItem,
   NTabs,
   NTextarea,
+  NTimeline,
+  NTimelineItem,
   NToolbar,
   type NBadgeVariant,
   type NButtonSize,
   type NButtonVariant,
   type NCardVariant,
+  type NDataCardItem,
   type NIconSize,
   type NSelectOption,
+  type NTableColumn,
   type NeuralThemeName,
 } from '@neural/angular-ui';
 
@@ -49,9 +57,11 @@ import {
     NCardFooter,
     NChip,
     NCommandBar,
+    NDataCard,
     NEmptyState,
     NIcon,
     NInput,
+    NMetricCard,
     NPageHeader,
     NSelect,
     NTextarea,
@@ -62,9 +72,13 @@ import {
     NSidebarSection,
     NSidebarItem,
     NSpinner,
+    NStatCard,
     NStatusDot,
+    NTable,
     NTabs,
     NTabItem,
+    NTimeline,
+    NTimelineItem,
     NToolbar,
   ],
   selector: 'app-root',
@@ -118,6 +132,31 @@ export class App {
   activeLayoutTab = 'overview';
   prompt = '';
   removedChips = 0;
+
+  readonly modelItems: NDataCardItem[] = [
+    { label: 'Type', value: 'Upscale', icon: 'sparkles' },
+    { label: 'VRAM', value: '4.2 GB', icon: 'cpu', status: 'info' },
+    { label: 'Status', value: 'Installed', icon: 'circle-check', status: 'success' },
+  ];
+
+  readonly pipelineItems: NDataCardItem[] = [
+    { label: 'Source', value: 'city-night.mp4', icon: 'file-text' },
+    { label: 'Model', value: 'Real-ESRGAN', icon: 'sparkles', status: 'info' },
+    { label: 'Queue', value: '14 active', icon: 'activity', status: 'warning' },
+  ];
+
+  readonly jobColumns: NTableColumn[] = [
+    { key: 'name', label: 'Job' },
+    { key: 'model', label: 'Model' },
+    { key: 'status', label: 'Status' },
+    { key: 'progress', label: 'Progress', align: 'end' },
+  ];
+
+  readonly jobs = [
+    { name: 'city-night.mp4', model: 'Real-ESRGAN', status: 'Running', progress: '68%' },
+    { name: 'portrait.mov', model: 'RIFE', status: 'Queued', progress: '0%' },
+    { name: 'old-footage.mp4', model: 'DenoiseNet', status: 'Done', progress: '100%' },
+  ];
 
   readonly surfaces = [
     ['Canvas', '--n-bg-canvas'],

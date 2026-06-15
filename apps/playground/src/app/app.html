@@ -188,6 +188,254 @@
     </n-shell>
   </section>
 
+  <section class="preview-section data-display-section">
+    <div class="section-heading">
+      <h2>Data Display MVP</h2>
+      <p>Dashboard primitives for Stats, Metrics, Data Cards, Timeline, Table, and Dashboard Composition.</p>
+    </div>
+
+    <section class="data-demo-block">
+      <div class="section-heading compact-heading">
+        <h2>Stats</h2>
+        <p>Compact metric cards with icon, trend, status color, and visual interactivity.</p>
+      </div>
+
+      <div class="data-demo-grid">
+        <n-stat-card
+          label="Jobs processed"
+          value="128"
+          description="Last 24 hours"
+          icon="activity"
+          trend="up"
+          trendValue="12%"
+          [interactive]="true"
+        />
+
+        <n-stat-card
+          label="GPU usage"
+          value="78%"
+          description="RTX pipeline"
+          icon="cpu"
+          variant="primary"
+          trend="up"
+          trendValue="8%"
+        />
+
+        <n-stat-card
+          label="Failed jobs"
+          value="3"
+          description="Needs review"
+          icon="alert-circle"
+          variant="danger"
+          trend="down"
+          trendValue="2%"
+        />
+      </div>
+    </section>
+
+    <section class="data-demo-block">
+      <div class="section-heading compact-heading">
+        <h2>Metrics</h2>
+        <p>Richer cards for progress-backed operational metrics.</p>
+      </div>
+
+      <div class="data-demo-grid two-columns">
+        <n-metric-card
+          title="Enhancement Queue"
+          subtitle="Active video jobs"
+          value="14"
+          icon="cpu"
+          [progress]="64"
+          footer="Capacity target is 20 jobs."
+        >
+          <div class="composition-stack">
+            <n-chip selected>GPU</n-chip>
+            <n-chip>Batch mode</n-chip>
+          </div>
+        </n-metric-card>
+
+        <n-metric-card
+          title="Success Rate"
+          value="98.4"
+          unit="%"
+          icon="circle-check"
+          variant="success"
+          footer="Across the last 500 exports."
+        />
+      </div>
+    </section>
+
+    <section class="data-demo-block">
+      <div class="section-heading compact-heading">
+        <h2>Data Cards</h2>
+        <p>Flexible entity cards for models, jobs, files, and project metadata.</p>
+      </div>
+
+      <div class="data-demo-grid two-columns">
+        <n-data-card
+          title="Real-ESRGAN x4"
+          description="Video enhancement model"
+          icon="sparkles"
+          [items]="modelItems"
+          [interactive]="true"
+        >
+          <div class="composition-stack">
+            <n-button variant="ghost" size="sm">Details</n-button>
+            <n-button size="sm">Use model</n-button>
+          </div>
+        </n-data-card>
+
+        <n-data-card
+          title="Pipeline Snapshot"
+          description="Current workflow metadata"
+          icon="activity"
+          variant="gradient"
+          [items]="pipelineItems"
+        />
+      </div>
+    </section>
+
+    <section class="data-demo-block split-data-demo">
+      <div>
+        <div class="section-heading compact-heading">
+          <h2>Timeline</h2>
+          <p>Sequential activity and pipeline status without JavaScript animation.</p>
+        </div>
+
+        <n-timeline>
+          <n-timeline-item
+            title="Upload completed"
+            description="Source video uploaded successfully"
+            time="10:24"
+            icon="upload"
+            status="success"
+          />
+
+          <n-timeline-item
+            title="Enhancement running"
+            description="AI model is processing frames"
+            time="10:26"
+            icon="cpu"
+            status="running"
+            [active]="true"
+          />
+
+          <n-timeline-item
+            title="Export pending"
+            description="Waiting for pipeline completion"
+            time="Next"
+            icon="file-text"
+            status="pending"
+          />
+        </n-timeline>
+      </div>
+
+      <div>
+        <div class="section-heading compact-heading">
+          <h2>Table</h2>
+          <p>Semantic table with headers, rows, alignment, and empty-state support.</p>
+        </div>
+
+        <n-table
+          [columns]="jobColumns"
+          [data]="jobs"
+          variant="surface"
+          emptyTitle="No jobs"
+          emptyDescription="Start a new processing job to see results."
+        />
+      </div>
+    </section>
+
+    <section class="data-demo-block">
+      <div class="section-heading compact-heading">
+        <h2>Dashboard Composition</h2>
+        <p>A compact AI jobs dashboard composed from layout and data display primitives.</p>
+      </div>
+
+      <n-shell sidebarMode="none" contentMaxWidth="none">
+        <div nShellContent>
+          <n-page-header
+            eyebrow="Oroya-style workflow"
+            title="AI Jobs Dashboard"
+            description="A composed dashboard using Neural Angular primitives only."
+            icon="activity"
+          >
+            <n-button pageHeaderAction variant="ghost">Export</n-button>
+            <n-button pageHeaderAction>
+              <n-icon name="plus" size="sm" />
+              New Job
+            </n-button>
+          </n-page-header>
+
+          <n-command-bar align="between">
+            <div nCommandGroup>
+              <n-chip selected>Realtime</n-chip>
+              <n-chip>AI Media</n-chip>
+              <n-badge variant="success" [dot]="true">Healthy</n-badge>
+            </div>
+
+            <div nCommandGroup>
+              <n-progress [value]="68" label="Queue" [showValue]="true" />
+              <n-button size="sm">
+                Continue
+                <n-icon name="arrow-right" size="sm" />
+              </n-button>
+            </div>
+          </n-command-bar>
+
+          <div class="dashboard-demo-grid">
+            <n-stat-card
+              label="Processed"
+              value="128"
+              icon="activity"
+              variant="success"
+              trend="up"
+              trendValue="12%"
+            />
+            <n-metric-card
+              title="Render Load"
+              value="68"
+              unit="%"
+              icon="cpu"
+              variant="gradient"
+              [progress]="68"
+            />
+            <n-data-card
+              title="Active Model"
+              description="Real-ESRGAN x4"
+              icon="sparkles"
+              density="compact"
+              [items]="modelItems"
+            />
+          </div>
+
+          <div class="dashboard-demo-grid two-columns">
+            <n-card>
+              <n-card-header>
+                <n-card-title>Pipeline</n-card-title>
+                <n-card-description>Latest job events.</n-card-description>
+              </n-card-header>
+              <n-card-content>
+                <n-timeline density="compact">
+                  <n-timeline-item title="Upload" time="10:24" icon="upload" status="success" />
+                  <n-timeline-item title="Enhance" time="10:26" icon="cpu" status="running" [active]="true" />
+                  <n-timeline-item title="Export" time="Next" icon="file-text" status="pending" />
+                </n-timeline>
+              </n-card-content>
+            </n-card>
+
+            <n-table
+              [columns]="jobColumns"
+              [data]="jobs"
+              density="compact"
+              variant="surface"
+            />
+          </div>
+        </div>
+      </n-shell>
+    </section>
+  </section>
+
   <section class="preview-section components-preview">
     <div class="section-heading">
       <h2>Components Preview</h2>

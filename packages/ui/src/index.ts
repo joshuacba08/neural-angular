@@ -19,3 +19,8 @@ export * from './toolbar/index.js';
 export * from './tabs/index.js';
 export * from './page-header/index.js';
 export * from './command-bar/index.js';
+export * from './stat-card/index.js';
+export * from './metric-card/index.js';
+export * from './data-card/index.js';
+export * from './timeline/index.js';
+export * from './table/index.js';

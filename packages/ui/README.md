@@ -2,7 +2,7 @@
 
 Angular-first UI system for Neural Angular.
 
-Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, avatars, status, empty states, and the first layout/navigation primitives.
+Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, layout/navigation, and data display primitives.
 
 ## Styles
 
@@ -53,9 +53,11 @@ import {
   NCard,
   NChip,
   NCommandBar,
+  NDataCard,
   NEmptyState,
   NIcon,
   NInput,
+  NMetricCard,
   NPageHeader,
   NProgress,
   NSelect,
@@ -64,10 +66,14 @@ import {
   NSidebarItem,
   NSidebarSection,
   NSpinner,
+  NStatCard,
   NStatusDot,
+  NTable,
   NTabItem,
   NTabs,
   NTextarea,
+  NTimeline,
+  NTimelineItem,
   NToolbar,
 } from '@neural/angular-ui';
 ```
@@ -94,6 +100,11 @@ import { NToolbar } from '@neural/angular-ui/toolbar';
 import { NTabs } from '@neural/angular-ui/tabs';
 import { NPageHeader } from '@neural/angular-ui/page-header';
 import { NCommandBar } from '@neural/angular-ui/command-bar';
+import { NStatCard } from '@neural/angular-ui/stat-card';
+import { NMetricCard } from '@neural/angular-ui/metric-card';
+import { NDataCard } from '@neural/angular-ui/data-card';
+import { NTimeline } from '@neural/angular-ui/timeline';
+import { NTable } from '@neural/angular-ui/table';
 ```
 
 ```html
@@ -146,6 +157,14 @@ import { NCommandBar } from '@neural/angular-ui/command-bar';
     </n-command-bar>
   </div>
 </n-shell>
+
+<n-stat-card label="Jobs processed" value="128" icon="activity" trend="up" trendValue="12%" />
+<n-metric-card title="Enhancement Queue" value="14" icon="cpu" [progress]="64" />
+<n-data-card title="Real-ESRGAN x4" description="Video enhancement model" icon="sparkles" [items]="modelItems" />
+<n-timeline>
+  <n-timeline-item title="Upload completed" time="10:24" icon="upload" status="success" />
+</n-timeline>
+<n-table [columns]="jobColumns" [data]="jobs" />
 ```
 
 ## Token Prefixes
@@ -158,7 +177,9 @@ Public tokens use the stable `--n-*` prefix. Imported `--nn-*` names are compati
 - SSR helpers
 - Router-aware navigation
 - Mobile drawer
+- Advanced table sorting/filtering
+- Pagination and virtual scroll
 
 ## Next
 
-- Data display primitives
+- Overlay and feedback primitives

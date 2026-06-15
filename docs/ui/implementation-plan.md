@@ -16,6 +16,7 @@
 - Phase 1D complete: add Lucide integration, `NIcon`, `NBadge`, `NChip`, docs, and core composition demos.
 - Phase 1E complete: add forms, feedback, avatar, status dot, and empty state primitives.
 - Phase 1F complete: add layout and navigation MVP with `NShell`, `NSidebar`, `NToolbar`, `NTabs`, `NPageHeader`, and `NCommandBar`.
+- Phase 1G complete: add data display MVP with `NStatCard`, `NMetricCard`, `NDataCard`, `NTimeline`, and `NTable`.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
@@ -29,6 +30,7 @@
 - Create `NInput`, `NTextarea`, and `NSelect`.
 - Create `NAvatar`, `NProgress`, `NSpinner`, `NEmptyState`, and `NStatusDot`.
 - Create layout primitives: `NShell`, `NSidebar`, `NToolbar`, `NTabs`, `NPageHeader`, and `NCommandBar`.
+- Create data display primitives: `NStatCard`, `NMetricCard`, `NDataCard`, `NTimeline`, and `NTable`.
 
 ## Phase 2 - Core UI
 
@@ -50,11 +52,11 @@
 
 ## Phase 4 - Data Display
 
-- `NStatCard`
-- `NMetricCard`
-- `NDataCard`
-- `NTable` / Material table theme
-- `NTimeline`
+- `NStatCard` - complete MVP
+- `NMetricCard` - complete MVP
+- `NDataCard` - complete MVP
+- `NTable` - complete MVP
+- `NTimeline` - complete MVP
 
 ## Phase 5 - AI Patterns
 
@@ -77,4 +79,4 @@
 
 ## Implementation Boundary
 
-The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, Core UI primitives, layout/navigation primitives, and an Angular playground preview. Overlays, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.
+The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, Core UI primitives, layout/navigation primitives, data display primitives, and an Angular playground preview. Overlays, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.

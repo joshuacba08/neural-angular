@@ -59,13 +59,13 @@
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Stat card | `NStatCard` | `components.html`, `data-patterns.html` | Medium | Data display | KPI values, trend indicators |
+| Stat card | `NStatCard` | `components.html`, `data-patterns.html` | Complete | Data display | KPI values, trend indicators |
 | Avatar | `NAvatar` | `components.html` | Complete | Data display | Initials/image avatar with optional status |
 | Empty state | `NEmptyState` | `components.html` | Complete | Data display | Icon, title, description, and projected actions |
-| Metric card | `NMetricCard` | `components.html` | Medium | Data display | Dashboard metric pattern |
-| Data card | `NDataCard` | `components.html` | Medium | Data display | Bar/donut/GPU visual patterns |
-| Table | `NTable` or Material table theme | `components.html`, `data-patterns.html` | Medium | Data display | Sortable rows, states, paginator |
-| Timeline | `NTimeline` | `components.html` | Low | Data display | Activity feed pattern |
+| Metric card | `NMetricCard` | `components.html` | Complete | Data display | Dashboard metric pattern with optional progress |
+| Data card | `NDataCard` | `components.html` | Complete | Data display | Entity metadata card with label/value rows |
+| Table | `NTable` | `components.html`, `data-patterns.html` | Complete | Data display | Semantic table MVP without advanced grid behavior |
+| Timeline | `NTimeline` | `components.html` | Complete | Data display | Activity feed and processing pipeline pattern |
 | Calendar | `NCalendar` or Material date/calendar theme | `data-patterns.html` | Low | Data display | Later phase |
 | Chart | `NChart` | `data-patterns.html` | Experimental | Data display | Requires chart strategy, Canvas/SVG decisions |
 

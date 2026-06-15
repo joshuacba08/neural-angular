@@ -87,6 +87,26 @@
       "types": "./dist/command-bar/index.d.ts",
       "default": "./dist/command-bar/index.js"
     },
+    "./stat-card": {
+      "types": "./dist/stat-card/index.d.ts",
+      "default": "./dist/stat-card/index.js"
+    },
+    "./metric-card": {
+      "types": "./dist/metric-card/index.d.ts",
+      "default": "./dist/metric-card/index.js"
+    },
+    "./data-card": {
+      "types": "./dist/data-card/index.d.ts",
+      "default": "./dist/data-card/index.js"
+    },
+    "./timeline": {
+      "types": "./dist/timeline/index.d.ts",
+      "default": "./dist/timeline/index.js"
+    },
+    "./table": {
+      "types": "./dist/table/index.d.ts",
+      "default": "./dist/table/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"
