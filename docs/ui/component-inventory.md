@@ -28,9 +28,9 @@
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Tabs | `NTabs` or Material tabs theme | `components.html` | Medium | Navigation | Badge support and active states |
-| App bar | `NToolbar` | `components.html`, app prototypes | Medium | Navigation | Top-level actions and title layout |
-| Sidebar | `NSidebar` | multiple files | Medium | Navigation | Appears in design system and app prototypes |
+| Tabs | `NTabs` | `components.html` | Complete | Navigation | Simple local-state tabs with badge support and active states |
+| App bar | `NToolbar` | `components.html`, app prototypes | Complete | Navigation | Top-level projected actions and title layout |
+| Sidebar | `NSidebar` | multiple files | Complete | Navigation | Brand, sections, items, optional footer, no router coupling |
 | Bottom navigation | `NBottomNav` | `components.html` | Low | Navigation | Useful for PWA/mobile shells |
 | Breadcrumb | `NBreadcrumb` | `components.html` | Low | Navigation | Later navigation helper |
 
@@ -105,7 +105,9 @@
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Shell | `NShell` | `Oroya App.html`, `Oroya Video.html`, shared nav demos | Medium | Layout | Sidebar + topbar + content architecture |
+| Shell | `NShell` | `Oroya App.html`, `Oroya Video.html`, shared nav demos | Complete | Layout | Sidebar + toolbar + content architecture |
+| Page header | `NPageHeader` | app prototypes | Complete | Layout | Eyebrow, title, description, icon, and actions |
+| Command bar | `NCommandBar` | app prototypes | Complete | Layout | Horizontal quick action and filter strip |
 | Split view | `NSplitView` | `components.html` | Low | Layout | Horizontal and three-pane layouts |
 | Inspector panel | `NInspector` | `components.html` | Low | Layout | Collapsible sections and tool panels |
 | Dashboard layout | app-level pattern | `Oroya App.html` | Low | Layout | Reference for examples, not base component initially |

@@ -15,6 +15,7 @@
 - Phase 1C complete: add `NButton`, `NCard`, public exports, docs, and playground component demos.
 - Phase 1D complete: add Lucide integration, `NIcon`, `NBadge`, `NChip`, docs, and core composition demos.
 - Phase 1E complete: add forms, feedback, avatar, status dot, and empty state primitives.
+- Phase 1F complete: add layout and navigation MVP with `NShell`, `NSidebar`, `NToolbar`, `NTabs`, `NPageHeader`, and `NCommandBar`.
 - Create token package structure.
 - Create theme CSS entry.
 - Decide which imported `--nn-*` tokens become public.
@@ -27,6 +28,7 @@
 - Create `NChip`.
 - Create `NInput`, `NTextarea`, and `NSelect`.
 - Create `NAvatar`, `NProgress`, `NSpinner`, `NEmptyState`, and `NStatusDot`.
+- Create layout primitives: `NShell`, `NSidebar`, `NToolbar`, `NTabs`, `NPageHeader`, and `NCommandBar`.
 
 ## Phase 2 - Core UI
 
@@ -39,11 +41,12 @@
 
 ## Phase 3 - Layout & Navigation
 
-- `NShell`
-- `NSidebar`
-- `NToolbar`
-- `NTabs`
-- `NCommandBar`
+- `NShell` - complete MVP
+- `NSidebar` - complete MVP
+- `NToolbar` - complete MVP
+- `NTabs` - complete MVP
+- `NPageHeader` - complete MVP
+- `NCommandBar` - complete MVP
 
 ## Phase 4 - Data Display
 
@@ -74,4 +77,4 @@
 
 ## Implementation Boundary
 
-The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, Core UI primitives, and an Angular playground preview. Layout, navigation, overlays, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.
+The first implementation steps are intentionally limited to `packages/ui/` structure, CSS entry points, curated public `--n-*` tokens, compatibility-only `--nn-*` mappings, token metadata, a minimal SSR-safe theme provider, Lucide icon provider, Core UI primitives, layout/navigation primitives, and an Angular playground preview. Overlays, advanced motion, SSR package helpers, CLI, schematics, and adapters remain out of scope until later requirements.

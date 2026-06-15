@@ -24,6 +24,170 @@
     </div>
   </section>
 
+  <section class="preview-section layout-mvp-section">
+    <div class="section-heading">
+      <h2>Layout MVP Demo</h2>
+      <p>A full app surface composed with Sidebar, Toolbar, Page Header, Tabs, Command Bar, Cards, Forms, and Feedback.</p>
+    </div>
+
+    <n-shell contentMaxWidth="none">
+      <n-sidebar ariaLabel="Layout demo navigation">
+        <div nSidebarBrand>
+          <span class="layout-brand-mark">
+            <n-icon name="sparkles" size="sm" />
+          </span>
+          <div class="layout-brand-copy">
+            <strong>Neural Angular</strong>
+            <small>UI Kit</small>
+          </div>
+        </div>
+
+        <n-sidebar-section label="Foundation">
+          <n-sidebar-item icon="home" label="Overview" [active]="true" />
+          <n-sidebar-item icon="palette" label="Tokens" />
+          <n-sidebar-item icon="component" label="Components" badge="MVP" />
+        </n-sidebar-section>
+
+        <n-sidebar-section label="Product">
+          <n-sidebar-item icon="cpu" label="AI Jobs" badge="3" />
+          <n-sidebar-item icon="play" label="Video Tools" />
+          <n-sidebar-item icon="settings" label="Settings" />
+        </n-sidebar-section>
+
+        <div nSidebarFooter>
+          <n-avatar name="Anderson Oroya" status="online" size="sm" />
+          <div class="layout-brand-copy">
+            <strong>Anderson Oroya</strong>
+            <small>Online</small>
+          </div>
+        </div>
+      </n-sidebar>
+
+      <div nShellContent>
+        <n-toolbar>
+          <div nToolbarStart>
+            <n-badge variant="success" [dot]="true">System Online</n-badge>
+          </div>
+
+          <div nToolbarCenter>
+            <span class="layout-toolbar-label">Toolbar</span>
+          </div>
+
+          <div nToolbarEnd>
+            <n-button variant="ghost" size="sm">
+              <n-icon name="search" size="sm" />
+              Search
+            </n-button>
+
+            <n-button size="sm">
+              <n-icon name="plus" size="sm" />
+              New
+            </n-button>
+          </div>
+        </n-toolbar>
+
+        <n-page-header
+          eyebrow="Playground"
+          title="Neural Angular Layout"
+          description="A full app layout composed with the first MVP primitives."
+          icon="sparkles"
+        >
+          <n-button pageHeaderAction variant="ghost">View Docs</n-button>
+          <n-button pageHeaderAction>
+            <n-icon name="play" size="sm" />
+            Run Demo
+          </n-button>
+        </n-page-header>
+
+        <div class="layout-label-row" aria-label="Layout component labels">
+          <n-chip selected>Sidebar</n-chip>
+          <n-chip selected>Toolbar</n-chip>
+          <n-chip selected>Page Header</n-chip>
+          <n-chip selected>Tabs</n-chip>
+          <n-chip selected>Command Bar</n-chip>
+        </div>
+
+        <n-tabs [(value)]="activeLayoutTab">
+          <n-tab-item value="overview" icon="home" label="Overview" />
+          <n-tab-item value="jobs" icon="cpu" label="Jobs" badge="3" />
+          <n-tab-item value="settings" icon="settings" label="Settings" />
+        </n-tabs>
+
+        <n-command-bar align="between">
+          <div nCommandGroup>
+            <n-chip selected>Angular 22</n-chip>
+            <n-chip>Lucide</n-chip>
+            <n-chip>Dark UI</n-chip>
+          </div>
+
+          <div nCommandGroup>
+            <n-button variant="ghost" size="sm">Reset</n-button>
+            <n-button size="sm">
+              Continue
+              <n-icon name="arrow-right" size="sm" />
+            </n-button>
+          </div>
+        </n-command-bar>
+
+        <section class="layout-demo-grid">
+          <n-card variant="gradient" [interactive]="true">
+            <n-card-header>
+              <n-card-title>
+                <span class="title-with-icon">
+                  <n-icon name="cpu" size="sm" />
+                  Processing Job
+                </span>
+              </n-card-title>
+              <n-card-description>
+                Video enhancement pipeline
+              </n-card-description>
+            </n-card-header>
+
+            <n-card-content>
+              <div class="composition-stack">
+                <n-badge variant="success" [dot]="true">Running</n-badge>
+                <n-progress [value]="68" label="Progress" [showValue]="true" />
+                <n-chip selected>Feedback</n-chip>
+              </div>
+            </n-card-content>
+
+            <n-card-footer>
+              <n-button variant="ghost" size="sm">Cancel</n-button>
+              <n-button size="sm">Open</n-button>
+            </n-card-footer>
+          </n-card>
+
+          <n-card>
+            <n-card-header>
+              <n-card-title>Cards & Forms</n-card-title>
+              <n-card-description>
+                Form primitives inside a realistic app layout.
+              </n-card-description>
+            </n-card-header>
+
+            <n-card-content>
+              <div class="form-demo-grid compact-form">
+                <n-input label="Project name" placeholder="Neural demo" />
+                <n-select
+                  label="Model"
+                  placeholder="Select model"
+                  [options]="modelOptions"
+                />
+              </div>
+            </n-card-content>
+
+            <n-card-footer>
+              <n-button [fullWidth]="true">
+                <n-icon name="plus" size="sm" />
+                Create
+              </n-button>
+            </n-card-footer>
+          </n-card>
+        </section>
+      </div>
+    </n-shell>
+  </section>
+
   <section class="preview-section components-preview">
     <div class="section-heading">
       <h2>Components Preview</h2>

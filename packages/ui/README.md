@@ -2,7 +2,7 @@
 
 Angular-first UI system for Neural Angular.
 
-Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, and Core UI primitives for buttons, cards, icons, badges, chips, forms, feedback, avatars, status, and empty states.
+Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, avatars, status, empty states, and the first layout/navigation primitives.
 
 ## Styles
 
@@ -52,14 +52,23 @@ import {
   NButton,
   NCard,
   NChip,
+  NCommandBar,
   NEmptyState,
   NIcon,
   NInput,
+  NPageHeader,
   NProgress,
   NSelect,
+  NShell,
+  NSidebar,
+  NSidebarItem,
+  NSidebarSection,
   NSpinner,
   NStatusDot,
+  NTabItem,
+  NTabs,
   NTextarea,
+  NToolbar,
 } from '@neural/angular-ui';
 ```
 
@@ -79,6 +88,12 @@ import { NProgress } from '@neural/angular-ui/progress';
 import { NSpinner } from '@neural/angular-ui/spinner';
 import { NEmptyState } from '@neural/angular-ui/empty-state';
 import { NStatusDot } from '@neural/angular-ui/status-dot';
+import { NShell } from '@neural/angular-ui/shell';
+import { NSidebar } from '@neural/angular-ui/sidebar';
+import { NToolbar } from '@neural/angular-ui/toolbar';
+import { NTabs } from '@neural/angular-ui/tabs';
+import { NPageHeader } from '@neural/angular-ui/page-header';
+import { NCommandBar } from '@neural/angular-ui/command-bar';
 ```
 
 ```html
@@ -104,6 +119,33 @@ import { NStatusDot } from '@neural/angular-ui/status-dot';
     <n-button size="sm">Open</n-button>
   </n-card-footer>
 </n-card>
+
+<n-shell>
+  <n-sidebar>
+    <n-sidebar-section label="Core">
+      <n-sidebar-item icon="home" label="Overview" [active]="true" />
+    </n-sidebar-section>
+  </n-sidebar>
+
+  <div nShellContent>
+    <n-toolbar>
+      <div nToolbarEnd>
+        <n-button size="sm">New</n-button>
+      </div>
+    </n-toolbar>
+
+    <n-page-header title="Neural Layout" description="First app layout primitives." />
+
+    <n-tabs [(value)]="activeTab">
+      <n-tab-item value="overview" label="Overview" />
+    </n-tabs>
+
+    <n-command-bar align="between">
+      <n-chip selected>Angular 22</n-chip>
+      <n-button size="sm">Run</n-button>
+    </n-command-bar>
+  </div>
+</n-shell>
 ```
 
 ## Token Prefixes
@@ -114,8 +156,9 @@ Public tokens use the stable `--n-*` prefix. Imported `--nn-*` names are compati
 
 - Motion provider
 - SSR helpers
+- Router-aware navigation
+- Mobile drawer
 
 ## Next
 
-- Layout primitives
-- Navigation primitives
+- Data display primitives

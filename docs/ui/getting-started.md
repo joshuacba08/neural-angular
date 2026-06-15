@@ -59,14 +59,23 @@ import {
   NButton,
   NCard,
   NChip,
+  NCommandBar,
   NEmptyState,
   NIcon,
   NInput,
+  NPageHeader,
   NProgress,
   NSelect,
+  NShell,
+  NSidebar,
+  NSidebarItem,
+  NSidebarSection,
   NSpinner,
   NStatusDot,
+  NTabItem,
+  NTabs,
   NTextarea,
+  NToolbar,
 } from '@neural/angular-ui';
 ```
 
@@ -80,11 +89,17 @@ import { NChip } from '@neural/angular-ui/chip';
 import { NEmptyState } from '@neural/angular-ui/empty-state';
 import { NIcon } from '@neural/angular-ui/icon';
 import { NInput } from '@neural/angular-ui/input';
+import { NPageHeader } from '@neural/angular-ui/page-header';
 import { NProgress } from '@neural/angular-ui/progress';
 import { NSelect } from '@neural/angular-ui/select';
+import { NShell } from '@neural/angular-ui/shell';
+import { NSidebar } from '@neural/angular-ui/sidebar';
 import { NSpinner } from '@neural/angular-ui/spinner';
 import { NStatusDot } from '@neural/angular-ui/status-dot';
+import { NTabItem, NTabs } from '@neural/angular-ui/tabs';
 import { NTextarea } from '@neural/angular-ui/textarea';
+import { NToolbar } from '@neural/angular-ui/toolbar';
+import { NCommandBar } from '@neural/angular-ui/command-bar';
 ```
 
 Use them in standalone components:
@@ -100,16 +115,54 @@ Use them in standalone components:
     NCardHeader,
     NCardTitle,
     NChip,
+    NCommandBar,
     NEmptyState,
     NIcon,
     NInput,
+    NPageHeader,
     NProgress,
     NSelect,
+    NShell,
+    NSidebar,
+    NSidebarItem,
+    NSidebarSection,
     NSpinner,
     NStatusDot,
+    NTabItem,
+    NTabs,
     NTextarea,
+    NToolbar,
   ],
   template: `
+    <n-shell>
+      <n-sidebar>
+        <n-sidebar-section label="Core">
+          <n-sidebar-item icon="home" label="Overview" [active]="true" />
+        </n-sidebar-section>
+      </n-sidebar>
+
+      <div nShellContent>
+        <n-toolbar>
+          <div nToolbarEnd>
+            <n-button size="sm">New</n-button>
+          </div>
+        </n-toolbar>
+
+        <n-page-header
+          title="Neural Layout"
+          description="First app layout primitives."
+        />
+
+        <n-tabs [(value)]="activeTab">
+          <n-tab-item value="overview" label="Overview" />
+        </n-tabs>
+
+        <n-command-bar>
+          <n-chip selected>Angular 22</n-chip>
+        </n-command-bar>
+      </div>
+    </n-shell>
+
     <n-card variant="gradient">
       <n-card-header>
         <n-card-title>
@@ -133,6 +186,8 @@ Use them in standalone components:
 export class ExampleComponent {}
 ```
 
-Core components are pure Angular template + CSS components, with Lucide integrated through `@lucide/angular`. They do not use browser globals, GSAP, Angular Material, CDK overlays, or fake SSR helpers.
+Core and layout components are pure Angular template + CSS components, with Lucide integrated through `@lucide/angular`. They do not use browser globals, GSAP, Angular Material, CDK overlays, or fake SSR helpers.
 
 Form primitives currently expose `value` and `valueChange` for simple two-way binding. `ControlValueAccessor` integration is intentionally left for a future forms-focused iteration.
+
+Layout primitives currently avoid router integration and advanced mobile drawers. Those remain future iterations.

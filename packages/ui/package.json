@@ -63,6 +63,30 @@
       "types": "./dist/status-dot/index.d.ts",
       "default": "./dist/status-dot/index.js"
     },
+    "./shell": {
+      "types": "./dist/shell/index.d.ts",
+      "default": "./dist/shell/index.js"
+    },
+    "./sidebar": {
+      "types": "./dist/sidebar/index.d.ts",
+      "default": "./dist/sidebar/index.js"
+    },
+    "./toolbar": {
+      "types": "./dist/toolbar/index.d.ts",
+      "default": "./dist/toolbar/index.js"
+    },
+    "./tabs": {
+      "types": "./dist/tabs/index.d.ts",
+      "default": "./dist/tabs/index.js"
+    },
+    "./page-header": {
+      "types": "./dist/page-header/index.d.ts",
+      "default": "./dist/page-header/index.js"
+    },
+    "./command-bar": {
+      "types": "./dist/command-bar/index.d.ts",
+      "default": "./dist/command-bar/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"
