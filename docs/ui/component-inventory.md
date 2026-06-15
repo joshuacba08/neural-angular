@@ -43,16 +43,16 @@
 | Skeleton | `NSkeleton` | `components.html` | Medium | Feedback | Loading placeholders |
 | Status dot | `NStatusDot` | `components.html` | Complete | Feedback | Pulse and inline status states |
 | Alert / message | `NMessage` | `components.html` | Low | Feedback | Success, info, warning, error variants |
-| Toast | `NToast` | `components.html`, app prototypes | Low | Feedback | Needs overlay/a11y design |
+| Toast | `NToast` | `components.html`, app prototypes | Complete | Feedback | CDK overlay toast service with semantic variants |
 
 ## Overlay Components
 
 | Candidate | Suggested Angular Name | Source file | Priority | Category | Notes |
 |---|---|---|---|---|---|
-| Dialog | `NDialog` or Material dialog theme | `components.html` | Medium | Overlay | Confirm and form dialog patterns |
-| Drawer | `NDrawer` | `components.html` | Low | Overlay | Should use CDK overlay/focus management |
-| Popover | `NPopover` | `components.html` | Low | Overlay | Needs CDK positioning |
-| Tooltip | `NTooltip` or Material tooltip theme | `components.html` | Low | Overlay | Prefer accessible tooltip behavior |
+| Dialog | `NDialog` | `components.html` | Complete | Overlay | CDK overlay, portal content, ESC/backdrop close, focus trap |
+| Drawer | `NDrawer` | `components.html` | Complete | Overlay | CDK overlay side sheet with focus trap |
+| Popover | `NPopover` | `components.html` | Complete | Overlay | CDK positioned string/template popover |
+| Tooltip | `NTooltip` | `components.html` | Complete | Overlay | CDK positioned text tooltip for hover/focus |
 | Command palette | `NCommandPalette` | `components.html` | Low | Overlay | Useful, but not first MVP |
 
 ## Data Display Components

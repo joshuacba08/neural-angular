@@ -41,6 +41,11 @@
   --n-data-card-bg: color-mix(in srgb, var(--n-surface-2) 88%, transparent);
   --n-table-header-bg: color-mix(in srgb, var(--n-surface-3) 86%, transparent);
   --n-table-row-hover-bg: color-mix(in srgb, var(--n-color-primary) 8%, transparent);
+  --n-overlay-backdrop-bg: rgba(0, 0, 0, 0.62);
+  --n-overlay-panel-bg: color-mix(in srgb, var(--n-surface-2) 96%, #000);
+  --n-toast-bg: color-mix(in srgb, var(--n-surface-2) 96%, #000);
+  --n-tooltip-bg: color-mix(in srgb, var(--n-surface-4) 96%, #000);
+  --n-popover-bg: color-mix(in srgb, var(--n-surface-2) 96%, #000);
 
   /* Text */
   --n-text-1: rgba(255, 255, 255, 0.92);
@@ -58,6 +63,7 @@
   --n-data-card-border: var(--n-border-1);
   --n-table-border: var(--n-border-1);
   --n-timeline-line: var(--n-border-1);
+  --n-overlay-panel-border: var(--n-border-2);
   --n-field-bg: rgba(255, 255, 255, 0.04);
   --n-field-bg-hover: rgba(255, 255, 255, 0.06);
   --n-field-border: var(--n-border-1);
@@ -126,6 +132,14 @@
   --n-toolbar-height: 60px;
   --n-page-header-gap: var(--n-space-4);
   --n-timeline-dot-size: 28px;
+  --n-dialog-width-sm: 380px;
+  --n-dialog-width-md: 560px;
+  --n-dialog-width-lg: 720px;
+  --n-dialog-width-xl: 920px;
+  --n-drawer-width-sm: 320px;
+  --n-drawer-width-md: 420px;
+  --n-drawer-width-lg: 560px;
+  --n-drawer-width-xl: 720px;
 
   /* Icon */
   --n-icon-size-xs: 12px;
@@ -155,6 +169,7 @@
   --n-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.62), 0 3px 8px rgba(0, 0, 0, 0.4);
   --n-elevation-4: 0 16px 40px rgba(0, 0, 0, 0.66), 0 6px 16px rgba(0, 0, 0, 0.44);
   --n-elevation-5: 0 28px 60px rgba(0, 0, 0, 0.72), 0 12px 28px rgba(0, 0, 0, 0.5);
+  --n-overlay-panel-shadow: var(--n-elevation-5);
 
   /* Glow */
   --n-glow-primary-xs: 0 0 8px rgba(66, 133, 244, 0.25);

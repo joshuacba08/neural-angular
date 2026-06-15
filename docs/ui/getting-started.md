@@ -40,12 +40,17 @@ The package-level style import remains the public target. The local playground c
 Register theme and icons in application config:
 
 ```ts
-import { provideNeuralIcons, provideNeuralTheme } from '@neural/angular-ui';
+import {
+  provideNeuralIcons,
+  provideNeuralOverlay,
+  provideNeuralTheme,
+} from '@neural/angular-ui';
 
 export const appConfig = {
   providers: [
     provideNeuralTheme({ defaultTheme: 'dark' }),
     provideNeuralIcons(),
+    provideNeuralOverlay(),
   ],
 };
 ```
@@ -76,6 +81,11 @@ import {
   NStatCard,
   NStatusDot,
   NTable,
+  NDialogService,
+  NDrawerService,
+  NPopoverDirective,
+  NToastService,
+  NTooltipDirective,
   NTabItem,
   NTabs,
   NTextarea,
@@ -111,6 +121,11 @@ import { NMetricCard } from '@neural/angular-ui/metric-card';
 import { NStatCard } from '@neural/angular-ui/stat-card';
 import { NTable } from '@neural/angular-ui/table';
 import { NTimeline, NTimelineItem } from '@neural/angular-ui/timeline';
+import { NDialogService } from '@neural/angular-ui/dialog';
+import { NDrawerService } from '@neural/angular-ui/drawer';
+import { NPopoverDirective } from '@neural/angular-ui/popover';
+import { NToastService } from '@neural/angular-ui/toast';
+import { NTooltipDirective } from '@neural/angular-ui/tooltip';
 ```
 
 Use them in standalone components:
@@ -143,6 +158,8 @@ Use them in standalone components:
     NStatCard,
     NStatusDot,
     NTable,
+    NPopoverDirective,
+    NTooltipDirective,
     NTabItem,
     NTabs,
     NTextarea,
@@ -206,15 +223,19 @@ Use them in standalone components:
       <n-timeline-item title="Upload completed" status="success" />
     </n-timeline>
     <n-table [columns]="jobColumns" [data]="jobs" />
+    <n-button nTooltip="Run enhancement pipeline">Run</n-button>
+    <n-button [nPopover]="quickInfo">More actions</n-button>
   `,
 })
 export class ExampleComponent {}
 ```
 
-Core and layout components are pure Angular template + CSS components, with Lucide integrated through `@lucide/angular`. They do not use browser globals, GSAP, Angular Material, CDK overlays, or fake SSR helpers.
+Core, layout, data display, and overlay components avoid browser globals and fake SSR helpers. Overlay primitives use Angular CDK Overlay and Portal for runtime positioning.
 
 Form primitives currently expose `value` and `valueChange` for simple two-way binding. `ControlValueAccessor` integration is intentionally left for a future forms-focused iteration.
 
 Layout primitives currently avoid router integration and advanced mobile drawers. Those remain future iterations.
 
 Data display primitives intentionally avoid advanced data-grid behavior. Sorting, filtering, pagination, virtual scroll, and column templates remain future iterations.
+
+Overlay primitives intentionally avoid advanced menu semantics, nested overlay policies, command palettes, and custom animation APIs in this MVP.

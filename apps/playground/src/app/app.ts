@@ -12,6 +12,8 @@ import {
   NChip,
   NCommandBar,
   NDataCard,
+  NDialogService,
+  NDrawerService,
   NEmptyState,
   NIcon,
   NInput,
@@ -33,6 +35,9 @@ import {
   NTextarea,
   NTimeline,
   NTimelineItem,
+  NToastService,
+  NTooltipDirective,
+  NPopoverDirective,
   NToolbar,
   type NBadgeVariant,
   type NButtonSize,
@@ -44,6 +49,8 @@ import {
   type NTableColumn,
   type NeuralThemeName,
 } from '@neural/angular-ui';
+import { DemoDialogComponent } from './demos/overlay-demo/demo-dialog.component';
+import { DemoDrawerComponent } from './demos/overlay-demo/demo-drawer.component';
 
 @Component({
   imports: [
@@ -79,6 +86,8 @@ import {
     NTabItem,
     NTimeline,
     NTimelineItem,
+    NTooltipDirective,
+    NPopoverDirective,
     NToolbar,
   ],
   selector: 'app-root',
@@ -87,6 +96,9 @@ import {
 })
 export class App {
   private readonly themeService = inject(NeuralThemeService);
+  private readonly dialog = inject(NDialogService);
+  private readonly drawer = inject(NDrawerService);
+  private readonly toast = inject(NToastService);
 
   readonly theme = this.themeService.theme;
   readonly themeOptions: NeuralThemeName[] = ['dark', 'light', 'system'];
@@ -235,5 +247,43 @@ export class App {
 
   handleChipRemoved(): void {
     this.removedChips += 1;
+  }
+
+  openDialog(): void {
+    this.dialog.open(DemoDialogComponent, {
+      title: 'Create project',
+      description: 'Configure a new Neural Angular workflow.',
+      size: 'md',
+      data: { mode: 'create' },
+    });
+  }
+
+  openDrawer(): void {
+    this.drawer.open(DemoDrawerComponent, {
+      title: 'Settings',
+      description: 'Adjust Neural Angular preferences.',
+      position: 'right',
+      size: 'md',
+    });
+  }
+
+  showSuccessToast(): void {
+    this.toast.success('Project created successfully.', {
+      title: 'Success',
+      icon: 'circle-check',
+    });
+  }
+
+  showDangerToast(): void {
+    this.toast.danger('Export failed. Check the render queue.', {
+      title: 'Error',
+      duration: 6000,
+    });
+  }
+
+  showInfoToast(): void {
+    this.toast.info('Pipeline preview is ready.', {
+      title: 'Info',
+    });
   }
 }

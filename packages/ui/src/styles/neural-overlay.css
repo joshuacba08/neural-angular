@@ -1,0 +1,48 @@
+.cdk-overlay-container,
+.cdk-global-overlay-wrapper {
+  pointer-events: none;
+  position: fixed;
+  z-index: var(--n-z-modal);
+}
+
+.cdk-overlay-container {
+  inset: 0;
+}
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  inset: 0;
+}
+
+.cdk-overlay-pane {
+  pointer-events: auto;
+  position: absolute;
+}
+
+.n-dialog-overlay-panel,
+.n-drawer-overlay-panel,
+.n-toast-overlay-panel,
+.n-tooltip-overlay-panel,
+.n-popover-overlay-panel {
+  pointer-events: auto;
+}
+
+.n-overlay-backdrop,
+.n-overlay-transparent-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
+
+.n-overlay-backdrop {
+  background: var(--n-overlay-backdrop-bg);
+  backdrop-filter: blur(10px);
+}
+
+.n-overlay-transparent-backdrop {
+  background: transparent;
+}
+
+.n-toast-overlay-panel {
+  position: fixed;
+}

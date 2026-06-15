@@ -2,7 +2,11 @@ import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideNeuralIcons, provideNeuralTheme } from '@neural/angular-ui';
+import {
+  provideNeuralIcons,
+  provideNeuralOverlay,
+  provideNeuralTheme,
+} from '@neural/angular-ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,5 +16,6 @@ export const appConfig: ApplicationConfig = {
       storage: false,
     }),
     provideNeuralIcons(),
+    provideNeuralOverlay(),
   ],
 };

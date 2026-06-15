@@ -107,6 +107,30 @@
       "types": "./dist/table/index.d.ts",
       "default": "./dist/table/index.js"
     },
+    "./overlay": {
+      "types": "./dist/overlay/index.d.ts",
+      "default": "./dist/overlay/index.js"
+    },
+    "./dialog": {
+      "types": "./dist/dialog/index.d.ts",
+      "default": "./dist/dialog/index.js"
+    },
+    "./drawer": {
+      "types": "./dist/drawer/index.d.ts",
+      "default": "./dist/drawer/index.js"
+    },
+    "./toast": {
+      "types": "./dist/toast/index.d.ts",
+      "default": "./dist/toast/index.js"
+    },
+    "./tooltip": {
+      "types": "./dist/tooltip/index.d.ts",
+      "default": "./dist/tooltip/index.js"
+    },
+    "./popover": {
+      "types": "./dist/popover/index.d.ts",
+      "default": "./dist/popover/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"
@@ -123,11 +147,13 @@
     "./styles/compat": "./src/styles/neural-compat.css"
   },
   "peerDependencies": {
+    "@angular/cdk": "^22.0.0",
     "@angular/common": "^22.0.0",
     "@angular/core": "^22.0.0",
     "@lucide/angular": "^1.18.0"
   },
   "devDependencies": {
+    "@angular/cdk": "^22.0.0",
     "@lucide/angular": "^1.18.0"
   }
 }

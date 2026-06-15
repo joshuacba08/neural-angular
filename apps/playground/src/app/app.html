@@ -436,6 +436,107 @@
     </section>
   </section>
 
+  <section class="preview-section overlay-demo-section">
+    <div class="section-heading">
+      <h2>Overlay / Feedback MVP</h2>
+      <p>Dialog, Drawer, Toast, Tooltip, Popover, and Composition powered by Angular CDK overlays.</p>
+    </div>
+
+    <div class="overlay-demo-grid">
+      <n-card>
+        <n-card-header>
+          <n-card-title>Dialog</n-card-title>
+          <n-card-description>Modal workflow with title, description, focus trap, ESC and backdrop close.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-button (click)="openDialog()">
+            <n-icon name="sparkles" size="sm" />
+            Open Dialog
+          </n-button>
+        </n-card-content>
+      </n-card>
+
+      <n-card>
+        <n-card-header>
+          <n-card-title>Drawer</n-card-title>
+          <n-card-description>Side panel for settings, filters, inspectors, and workflows.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-button variant="secondary" (click)="openDrawer()">
+            <n-icon name="settings" size="sm" />
+            Open Drawer
+          </n-button>
+        </n-card-content>
+      </n-card>
+
+      <n-card>
+        <n-card-header>
+          <n-card-title>Toast</n-card-title>
+          <n-card-description>Temporary feedback messages with variants and dismiss actions.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <div class="overlay-action-row">
+            <n-button size="sm" (click)="showSuccessToast()">Success Toast</n-button>
+            <n-button size="sm" variant="danger" (click)="showDangerToast()">Danger Toast</n-button>
+            <n-button size="sm" variant="ghost" (click)="showInfoToast()">Info Toast</n-button>
+          </div>
+        </n-card-content>
+      </n-card>
+
+      <n-card>
+        <n-card-header>
+          <n-card-title>Tooltip</n-card-title>
+          <n-card-description>Hover and focus hints with simple text content.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-button nTooltip="Run enhancement pipeline" nTooltipPosition="top">
+            <n-icon name="play" size="sm" />
+            Run
+          </n-button>
+        </n-card-content>
+      </n-card>
+
+      <n-card>
+        <n-card-header>
+          <n-card-title>Popover</n-card-title>
+          <n-card-description>Contextual content with click trigger and outside-click close.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <n-button [nPopover]="popoverTpl" nPopoverTrigger="click">
+            More actions
+            <n-icon name="chevron-down" size="sm" />
+          </n-button>
+        </n-card-content>
+      </n-card>
+
+      <n-card variant="gradient" [interactive]="true">
+        <n-card-header>
+          <n-card-title>Composition</n-card-title>
+          <n-card-description>Overlays composed with existing Neural Angular UI primitives.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <div class="composition-stack">
+            <n-badge variant="success" [dot]="true">CDK Overlay</n-badge>
+            <n-chip selected>Accessible</n-chip>
+            <n-chip>SSR-safe usage</n-chip>
+          </div>
+        </n-card-content>
+        <n-card-footer>
+          <n-button size="sm" (click)="openDialog()">Configure</n-button>
+          <n-button size="sm" variant="ghost" (click)="showInfoToast()">Notify</n-button>
+        </n-card-footer>
+      </n-card>
+    </div>
+
+    <ng-template #popoverTpl>
+      <div class="demo-popover-menu">
+        <n-button variant="ghost" size="sm">Edit</n-button>
+        <n-button variant="ghost" size="sm">Duplicate</n-button>
+        <n-button variant="danger" size="sm">Delete</n-button>
+      </div>
+    </ng-template>
+  </section>
+
   <section class="preview-section components-preview">
     <div class="section-heading">
       <h2>Components Preview</h2>

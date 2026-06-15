@@ -259,6 +259,31 @@ select {
   min-width: 0;
 }
 
+.overlay-demo-section {
+  display: grid;
+  gap: var(--n-space-5);
+}
+
+.overlay-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--n-space-4);
+  min-width: 0;
+}
+
+.overlay-action-row,
+.demo-popover-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--n-space-3);
+  align-items: center;
+}
+
+.demo-popover-menu {
+  display: grid;
+  gap: var(--n-space-2);
+}
+
 @media (max-width: 760px) {
   .component-layout,
   .core-preview-grid,
@@ -279,7 +304,8 @@ select {
   .dashboard-demo-grid,
   .data-demo-grid.two-columns,
   .dashboard-demo-grid.two-columns,
-  .split-data-demo {
+  .split-data-demo,
+  .overlay-demo-grid {
     grid-template-columns: 1fr;
   }
 }

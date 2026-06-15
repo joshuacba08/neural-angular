@@ -2,7 +2,7 @@
 
 Angular-first UI system for Neural Angular.
 
-Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, layout/navigation, and data display primitives.
+Current status: token foundation, a minimal Angular theme provider, Lucide icon provider, Core UI primitives, forms, feedback, layout/navigation, data display primitives, and overlay/feedback primitives.
 
 ## Styles
 
@@ -105,6 +105,12 @@ import { NMetricCard } from '@neural/angular-ui/metric-card';
 import { NDataCard } from '@neural/angular-ui/data-card';
 import { NTimeline } from '@neural/angular-ui/timeline';
 import { NTable } from '@neural/angular-ui/table';
+import { provideNeuralOverlay } from '@neural/angular-ui/overlay';
+import { NDialogService } from '@neural/angular-ui/dialog';
+import { NDrawerService } from '@neural/angular-ui/drawer';
+import { NToastService } from '@neural/angular-ui/toast';
+import { NTooltipDirective } from '@neural/angular-ui/tooltip';
+import { NPopoverDirective } from '@neural/angular-ui/popover';
 ```
 
 ```html
@@ -165,7 +171,24 @@ import { NTable } from '@neural/angular-ui/table';
   <n-timeline-item title="Upload completed" time="10:24" icon="upload" status="success" />
 </n-timeline>
 <n-table [columns]="jobColumns" [data]="jobs" />
+
+<n-button nTooltip="Run enhancement pipeline">Run</n-button>
+<n-button [nPopover]="popoverTpl">More actions</n-button>
 ```
+
+## Overlays
+
+Register the CDK overlay provider once in application config:
+
+```ts
+import { provideNeuralOverlay } from '@neural/angular-ui';
+
+export const appConfig = {
+  providers: [provideNeuralOverlay()],
+};
+```
+
+`NDialogService`, `NDrawerService`, and `NToastService` are root services. `NTooltipDirective` and `NPopoverDirective` are standalone directives.
 
 ## Token Prefixes
 
@@ -179,7 +202,8 @@ Public tokens use the stable `--n-*` prefix. Imported `--nn-*` names are compati
 - Mobile drawer
 - Advanced table sorting/filtering
 - Pagination and virtual scroll
+- Advanced menu semantics and command palette
 
 ## Next
 
-- Overlay and feedback primitives
+- Media and upload primitives
