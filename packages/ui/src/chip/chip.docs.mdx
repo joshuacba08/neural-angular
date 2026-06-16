@@ -1,0 +1,381 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as ChipStories from './chip.stories';
+
+<Meta of={ChipStories} />
+
+# Chip
+
+`NChip` supports two design-system roles: selectable filter chips and semantic tag chips. It also supports compact density, removable tags, and rich projected content such as icons or avatars.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="chip-doc-tabs"
+    id="chip-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="chip-doc-tabs"
+    id="chip-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="chip-doc-tabs"
+    id="chip-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Chip documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="chip-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="chip-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="chip-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NChip } from '@neural/angular-ui/chip';
+```
+
+### Basic
+
+The default chip is a medium filter pill.
+
+<Canvas of={ChipStories.Playground} layout="centered" sourceState="shown" />
+
+### Design System
+
+Filter chips, semantic tags, removable tags, and avatar chips all share the same core primitive.
+
+<Canvas of={ChipStories.DesignSystem} layout="padded" sourceState="hidden" />
+
+### Filter Chips
+
+Use filter mode for selectable catalog, model, or workflow toggles.
+
+<Canvas of={ChipStories.FilterChips} layout="centered" sourceState="hidden" />
+
+### Tag Variants
+
+Tag mode shifts into semantic inline labels with severity color treatment.
+
+<Canvas of={ChipStories.TagVariants} layout="centered" sourceState="hidden" />
+
+### Removable
+
+When `removable` is enabled the close affordance emits the `removed` output.
+
+<Canvas of={ChipStories.Removable} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NChip`.
+
+<ArgTypes of={ChipStories} sort="requiredFirst" />
+
+### Modes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Mode</th>
+        <th>Design reference</th>
+        <th>Use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>filter</code></td>
+        <td><code>.nn-chip</code></td>
+        <td>Model filters, toggles, and selectable inline controls.</td>
+      </tr>
+      <tr>
+        <td><code>tag</code></td>
+        <td><code>.nn-chip.nn-chip-*</code></td>
+        <td>Semantic labels, removable tags, and compact metadata pills.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>default</code></td>
+        <td>Neutral tags and default filter state.</td>
+      </tr>
+      <tr>
+        <td><code>primary</code></td>
+        <td>Primary semantic tags and selected emphasis.</td>
+      </tr>
+      <tr>
+        <td><code>secondary</code></td>
+        <td>Secondary semantic tags and alternate accent labels.</td>
+      </tr>
+      <tr>
+        <td><code>success</code></td>
+        <td>Healthy, active, or completed states.</td>
+      </tr>
+      <tr>
+        <td><code>warning</code></td>
+        <td>Queued, beta, or caution labels.</td>
+      </tr>
+      <tr>
+        <td><code>danger</code></td>
+        <td>Error, failed, or destructive states.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Sizes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Size</th>
+        <th>Filter chip height</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sm</code></td>
+        <td>24px</td>
+        <td>Compact filter pills for dense toolbars and inline filter sets.</td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td>30px</td>
+        <td>Default chip density.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Outputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Output</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>removed</code></td>
+        <td><code>void</code></td>
+        <td>Emitted when the remove button is clicked and the chip is not disabled.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied by `NChip`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-chip</code></td>
+        <td>Root chip element.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip--filter</code></td>
+        <td>Filter-mode treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip--tag</code></td>
+        <td>Tag-mode treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip--default</code>, <code>--primary</code>, <code>--secondary</code>, <code>--success</code>, <code>--warning</code>, <code>--danger</code></td>
+        <td>Semantic variant modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip--sm</code>, <code>.n-chip--md</code></td>
+        <td>Size modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip--selected</code></td>
+        <td>Selected state for filter chips.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip--disabled</code></td>
+        <td>Disabled visual state.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip__content</code></td>
+        <td>Content wrapper for text and projected icon/avatar.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip__remove</code></td>
+        <td>Close button rendered when `removable` is true.</td>
+      </tr>
+      <tr>
+        <td><code>.n-chip-with-avatar</code></td>
+        <td>Host helper class that tightens tag padding when an avatar is projected.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens consumed by the chip styles.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td>Chip and remove-button pill radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-body</code></td>
+        <td>Chip typeface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-weight-medium</code></td>
+        <td>Chip label weight.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-12</code></td>
+        <td>Default filter-chip text size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-11</code></td>
+        <td>Small filter-chip text size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-1</code></td>
+        <td>Default filter border.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-2</code></td>
+        <td>Default tag border.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td>Default filter surface and selected chip fill.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-3</code></td>
+        <td>Filter hover fill.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-primary</code></td>
+        <td>Filter hover and selected border treatment.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-2</code></td>
+        <td>Default filter and tag text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary</code></td>
+        <td>Selected filter text color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-bright</code></td>
+        <td>Primary tag text and remove focus ring.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-alpha-10</code></td>
+        <td>Primary tag background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary</code></td>
+        <td>Secondary tag text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary-alpha-10</code></td>
+        <td>Secondary tag background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success</code></td>
+        <td>Success tag text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success-alpha-10</code></td>
+        <td>Success tag background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-warning</code></td>
+        <td>Warning tag text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-warning-alpha-10</code></td>
+        <td>Warning tag background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Danger tag text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger-alpha-10</code></td>
+        <td>Danger tag background.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>

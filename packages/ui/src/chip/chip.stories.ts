@@ -7,6 +7,7 @@ import { NChip } from './chip.component.js';
 const meta: Meta<NChip> = {
   title: 'Components/Chip',
   component: NChip,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NAvatar, NChip, NIcon],
@@ -14,16 +15,61 @@ const meta: Meta<NChip> = {
   ],
   argTypes: {
     mode: {
+      description: 'Filter chips are selectable pills; tag chips are semantic labels.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'NChipMode' },
+        defaultValue: { summary: 'filter' },
+      },
       options: ['filter', 'tag'],
     },
     variant: {
+      description: 'Semantic treatment used mainly by tag mode.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'NChipVariant' },
+        defaultValue: { summary: 'default' },
+      },
       options: ['default', 'primary', 'secondary', 'success', 'warning', 'danger'],
     },
     size: {
+      description: 'Density scale for filter chips and projected tag content.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: "'sm' | 'md'" },
+        defaultValue: { summary: 'md' },
+      },
       options: ['sm', 'md'],
+    },
+    selected: {
+      description: 'Active visual state for filter chips.',
+      control: 'boolean',
+      table: {
+        category: 'State',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    disabled: {
+      description: 'Reduces opacity and disables interaction, including remove actions.',
+      control: 'boolean',
+      table: {
+        category: 'State',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    removable: {
+      description: 'Appends a close affordance and emits the removed event on click.',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
   },
   args: {
