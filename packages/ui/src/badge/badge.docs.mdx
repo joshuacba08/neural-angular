@@ -104,6 +104,12 @@ Use `pill` for status chips and `square` for version tags, IDs, or compact count
 
 <Canvas of={BadgeStories.Shapes} layout="centered" sourceState="shown" />
 
+### Notification Badges (Directive)
+
+Use the standalone `[nBadge]` directive to easily anchor absolute-positioned notification counts and status indicators to buttons or icons. The directive automatically sets `position: relative` on the host, handles offset positioning, styles count typography, and applies standard canvas outline borders to match the design spec:
+
+<Canvas of={BadgeStories.NotificationBadges} layout="centered" sourceState="shown" />
+
   </section>
 
   <section className="n-doc-tabs__panel" data-tab="api" id="api">
@@ -113,6 +119,37 @@ Use `pill` for status chips and `square` for version tags, IDs, or compact count
 Defines the input properties of `NBadge`.
 
 <ArgTypes of={BadgeStories} sort="requiredFirst" />
+
+### NBadgeDirective API
+
+Properties supported by the `[nBadge]` directive:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>[nBadge]</code></td>
+        <td><code>string | number | boolean | null | undefined</code></td>
+        <td><code>undefined</code></td>
+        <td>The notification value. If <code>true</code> or empty string, it displays a small indicator dot. If a string or number, it displays the character value. If falsey, it hides the badge.</td>
+      </tr>
+      <tr>
+        <td><code>[nBadgeVariant]</code></td>
+        <td><code>NBadgeVariant</code></td>
+        <td><code>'danger'</code></td>
+        <td>The background variant style matching the design system colors.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ### Variants
 

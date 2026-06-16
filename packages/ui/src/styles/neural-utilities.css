@@ -204,3 +204,84 @@
 .gap-s10 { gap: var(--nn-s10); }
 .gap-s12 { gap: var(--nn-s12); }
 .gap-s16 { gap: var(--nn-s16); }
+
+/* ── Notification Badges (Directive) ── */
+.n-badge-notification {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border: 2px solid var(--n-bg-canvas);
+  border-radius: var(--n-radius-full);
+  background: var(--n-color-danger);
+  color: #fff;
+  font-family: var(--n-font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: var(--n-z-badge, 10);
+}
+
+.n-badge-notification--dot {
+  top: -3px;
+  right: -3px;
+  width: 9px;
+  height: 9px;
+  min-width: 0;
+  padding: 0;
+}
+
+.n-badge-notification--neutral {
+  background: var(--n-surface-3);
+  border-color: var(--n-bg-canvas);
+  color: var(--n-text-2);
+}
+
+.n-badge-notification--gradient {
+  background: var(--n-gradient-gemini);
+  color: #fff;
+}
+
+.n-badge-notification--primary {
+  background: var(--n-color-primary);
+  color: #fff;
+}
+
+.n-badge-notification--secondary {
+  background: var(--n-color-secondary);
+  color: #fff;
+}
+
+.n-badge-notification--tertiary {
+  background: var(--n-color-tertiary);
+  color: #fff;
+}
+
+.n-badge-notification--success {
+  background: var(--n-color-success);
+  color: #fff;
+}
+
+.n-badge-notification--warning {
+  background: var(--n-color-warning);
+  color: #fff;
+}
+
+.n-badge-notification--danger {
+  background: var(--n-color-danger);
+  color: #fff;
+}
+
+.n-badge-notification--info {
+  background: var(--n-color-info);
+  color: #fff;
+}
+

@@ -1,6 +1,8 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 
 import { NBadge } from './badge.component.js';
+import { NBadgeDirective } from './badge.directive.js';
+import { NIcon } from '../icon/icon.component.js';
 
 const meta: Meta<NBadge> = {
   title: 'Components/Badge',
@@ -8,7 +10,7 @@ const meta: Meta<NBadge> = {
   tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [NBadge],
+      imports: [NBadge, NBadgeDirective, NIcon],
     }),
   ],
   argTypes: {
@@ -190,3 +192,42 @@ export const Shapes: Story = {
     `,
   }),
 };
+
+export const NotificationBadges: Story = {
+  render: () => ({
+    template: `
+      <div class="n-story-row" style="gap:24px;align-items:center">
+        <!-- Red circle notification count 4 on a bell button -->
+        <button
+          type="button"
+          [nBadge]="4"
+          nBadgeVariant="danger"
+          style="position:relative;width:40px;height:40px;border-radius:50%;background:var(--n-surface-3);border:1px solid var(--n-border-1);color:var(--n-text-2);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none"
+        >
+          <n-icon name="bell" size="sm" />
+        </button>
+
+        <!-- Gradient notification count 12 on an inbox button -->
+        <button
+          type="button"
+          [nBadge]="12"
+          nBadgeVariant="gradient"
+          style="position:relative;width:40px;height:40px;border-radius:50%;background:var(--n-surface-3);border:1px solid var(--n-border-1);color:var(--n-text-2);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none"
+        >
+          <n-icon name="inbox" size="sm" />
+        </button>
+
+        <!-- Green status indicator dot on a chat bubble button -->
+        <button
+          type="button"
+          [nBadge]="true"
+          nBadgeVariant="success"
+          style="position:relative;width:40px;height:40px;border-radius:50%;background:var(--n-surface-3);border:1px solid var(--n-border-1);color:var(--n-text-2);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;outline:none"
+        >
+          <n-icon name="message-square" size="sm" />
+        </button>
+      </div>
+    `,
+  }),
+};
+
