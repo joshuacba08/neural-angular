@@ -1,19 +1,25 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 
+import { NIcon } from '../icon/icon.component.js';
 import { NAvatar } from './avatar.component.js';
+import { NAvatarGroup } from './avatar-group.component.js';
 
 const meta: Meta<NAvatar> = {
   title: 'Components/Avatar',
   component: NAvatar,
   decorators: [
     moduleMetadata({
-      imports: [NAvatar],
+      imports: [NAvatar, NAvatarGroup, NIcon],
     }),
   ],
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg', 'xl'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
+    variant: {
+      control: 'select',
+      options: ['blue-violet', 'violet-pink', 'gemini', 'surface'],
     },
     shape: {
       control: 'select',
@@ -21,14 +27,15 @@ const meta: Meta<NAvatar> = {
     },
     status: {
       control: 'select',
-      options: [null, 'online', 'offline', 'busy', 'away'],
+      options: [null, 'online', 'active', 'away', 'offline'],
     },
   },
   args: {
-    name: 'Neural Angular',
+    name: 'John Doe',
     size: 'md',
+    variant: 'blue-violet',
     shape: 'circle',
-    status: 'online',
+    status: null,
   },
 };
 
@@ -44,6 +51,7 @@ export const Playground: Story = {
         [name]="name"
         [src]="src"
         [size]="size"
+        [variant]="variant"
         [shape]="shape"
         [status]="status"
       />
@@ -51,28 +59,36 @@ export const Playground: Story = {
   }),
 };
 
-export const Initials: Story = {
+export const SizesAndVariants: Story = {
   render: () => ({
     template: `
-      <div class="n-story-row">
-        <n-avatar name="Neural Angular" />
-        <n-avatar name="Josue Oroya" />
-        <n-avatar name="AI" />
-        <n-avatar name="" />
-      </div>
-    `,
-  }),
-};
+      <section class="n-avatar-showcase">
+        <div class="n-avatar-showcase__block">
+          <p class="n-avatar-showcase__label">Sizes · xs → xl</p>
+          <div class="n-story-row">
+            <n-avatar name="John Doe" size="xs" />
+            <n-avatar name="John Doe" size="sm" />
+            <n-avatar name="John Doe" size="md" />
+            <n-avatar name="John Doe" size="lg" />
+            <n-avatar name="John Doe" size="xl" />
+          </div>
+        </div>
 
-export const Sizes: Story = {
-  render: () => ({
-    template: `
-      <div class="n-story-row">
-        <n-avatar name="Neural" size="sm" />
-        <n-avatar name="Neural" size="md" />
-        <n-avatar name="Neural" size="lg" />
-        <n-avatar name="Neural" size="xl" />
-      </div>
+        <div class="n-avatar-showcase__block">
+          <p class="n-avatar-showcase__label">Gradient variants</p>
+          <div class="n-story-row">
+            <n-avatar name="Amy Brooks" variant="blue-violet" />
+            <n-avatar name="Chris Davis" variant="violet-pink" />
+            <n-avatar name="Eva Fox" variant="gemini" />
+            <n-avatar variant="surface">
+              <n-icon name="user" size="sm" />
+            </n-avatar>
+            <n-avatar variant="surface">
+              <n-icon name="info" size="sm" />
+            </n-avatar>
+          </div>
+        </div>
+      </section>
     `,
   }),
 };
@@ -80,13 +96,37 @@ export const Sizes: Story = {
 export const WithStatus: Story = {
   render: () => ({
     template: `
-      <div class="n-story-row">
-        <n-avatar name="On" status="online" />
-        <n-avatar name="Bs" status="busy" />
-        <n-avatar name="Aw" status="away" />
-        <n-avatar name="Of" status="offline" />
-        <n-avatar name="Sq" shape="rounded" status="online" />
+      <div class="n-story-row n-avatar-status-row">
+        <div class="n-avatar-status-item">
+          <n-avatar name="Amy Lee" status="online" />
+          <span class="n-avatar-status-item__label n-avatar-status-item__label--online">Online</span>
+        </div>
+        <div class="n-avatar-status-item">
+          <n-avatar name="Maria R" variant="violet-pink" status="active" />
+          <span class="n-avatar-status-item__label n-avatar-status-item__label--active">Active</span>
+        </div>
+        <div class="n-avatar-status-item">
+          <n-avatar name="Ken Wu" variant="surface" status="away" />
+          <span class="n-avatar-status-item__label n-avatar-status-item__label--away">Away</span>
+        </div>
       </div>
+    `,
+  }),
+};
+
+export const StackedGroup: Story = {
+  render: () => ({
+    template: `
+      <section class="n-avatar-showcase__block">
+        <p class="n-avatar-showcase__label">AvatarGroup · Stacked</p>
+        <n-avatar-group>
+          <n-avatar variant="surface"><span class="n-avatar-counter">+5</span></n-avatar>
+          <n-avatar name="Grace H" />
+          <n-avatar name="Sam T" variant="gemini" />
+          <n-avatar name="Maria R" variant="violet-pink" />
+          <n-avatar name="John Doe" />
+        </n-avatar-group>
+      </section>
     `,
   }),
 };

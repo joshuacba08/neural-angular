@@ -8,13 +8,48 @@ import * as ButtonStories from './button.stories';
 
 `NButton` is a standalone Angular component that renders a real internal `<button>`. It supports Gemini gradient fills, tonal and ghost treatments, four sizes, icon-only mode, loading state, and full-width CTAs.
 
-<div className="n-doc-nav">
-  <a href="#features">Features</a>
-  <a href="#api">API</a>
-  <a href="#theming">Theming</a>
-</div>
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="button-doc-tabs"
+    id="button-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="button-doc-tabs"
+    id="button-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="button-doc-tabs"
+    id="button-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
 
-<h2 id="features">Features</h2>
+  <div className="n-doc-tabs__list" aria-label="Button documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="button-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="button-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="button-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
 
 ### Import
 
@@ -70,7 +105,11 @@ Use `fullWidth` for page-level CTAs.
 
 <Canvas of={ButtonStories.States} layout="centered" sourceState="hidden" />
 
-<h2 id="api">API</h2>
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
 
 Defines the input properties of `NButton`.
 
@@ -79,66 +118,206 @@ Defines the input properties of `NButton`.
 ### Variants
 
 <div className="n-doc-table-wrap">
-
-| Name | Design reference | Description |
-| --- | --- | --- |
-| `primary` | `.nn-btn-f` | Blue → violet gradient fill |
-| `gemini` | `.nn-btn-fg` | Full Gemini gradient CTA |
-| `accent` | `.nn-btn-fv` | Violet → pink gradient fill |
-| `danger` | `.nn-btn-fd` | Destructive solid action |
-| `outline` | `.nn-btn-o` | Gradient border, transparent fill |
-| `outline-gemini` | `.nn-btn-og` | Gemini gradient border |
-| `tonal` | `.nn-btn-t` | Blue tonal surface |
-| `tonal-violet` | `.nn-btn-tv` | Violet tonal surface |
-| `ghost` | `.nn-btn-g` | Primary ghost action |
-| `secondary` | `.nn-btn-gm` | Muted ghost action |
-
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Design reference</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>primary</code></td>
+        <td><code>.nn-btn-f</code></td>
+        <td>Blue → violet gradient fill</td>
+      </tr>
+      <tr>
+        <td><code>gemini</code></td>
+        <td><code>.nn-btn-fg</code></td>
+        <td>Full Gemini gradient CTA</td>
+      </tr>
+      <tr>
+        <td><code>accent</code></td>
+        <td><code>.nn-btn-fv</code></td>
+        <td>Violet → pink gradient fill</td>
+      </tr>
+      <tr>
+        <td><code>danger</code></td>
+        <td><code>.nn-btn-fd</code></td>
+        <td>Destructive solid action</td>
+      </tr>
+      <tr>
+        <td><code>outline</code></td>
+        <td><code>.nn-btn-o</code></td>
+        <td>Gradient border, transparent fill</td>
+      </tr>
+      <tr>
+        <td><code>outline-gemini</code></td>
+        <td><code>.nn-btn-og</code></td>
+        <td>Gemini gradient border</td>
+      </tr>
+      <tr>
+        <td><code>tonal</code></td>
+        <td><code>.nn-btn-t</code></td>
+        <td>Blue tonal surface</td>
+      </tr>
+      <tr>
+        <td><code>tonal-violet</code></td>
+        <td><code>.nn-btn-tv</code></td>
+        <td>Violet tonal surface</td>
+      </tr>
+      <tr>
+        <td><code>ghost</code></td>
+        <td><code>.nn-btn-g</code></td>
+        <td>Primary ghost action</td>
+      </tr>
+      <tr>
+        <td><code>secondary</code></td>
+        <td><code>.nn-btn-gm</code></td>
+        <td>Muted ghost action</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Sizes
 
 <div className="n-doc-table-wrap">
-
-| Name | Height | Design reference |
-| --- | --- | --- |
-| `sm` | 32px | `.nn-btn-sm` |
-| `md` | 40px | default `.nn-btn` |
-| `lg` | 48px | `.nn-btn-lg` |
-| `xl` | 56px | `.nn-btn-xl` |
-
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Height</th>
+        <th>Design reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sm</code></td>
+        <td>32px</td>
+        <td><code>.nn-btn-sm</code></td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td>40px</td>
+        <td>default <code>.nn-btn</code></td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td>48px</td>
+        <td><code>.nn-btn-lg</code></td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td>56px</td>
+        <td><code>.nn-btn-xl</code></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<h2 id="theming">Theming</h2>
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
 
 ### CSS Classes
 
 List of class names applied by `NButton`.
 
 <div className="n-doc-table-wrap">
-
-| Class | Description |
-| --- | --- |
-| `.n-button` | Root button element |
-| `.n-button__content` | Label and projected content wrapper |
-| `.n-button__loader` | Loading spinner |
-| `.n-button--primary` | Blue → violet gradient variant |
-| `.n-button--gemini` | Gemini gradient variant |
-| `.n-button--accent` | Violet → pink gradient variant |
-| `.n-button--danger` | Danger solid variant |
-| `.n-button--outline` | Gradient border variant |
-| `.n-button--outline-gemini` | Gemini border variant |
-| `.n-button--tonal` | Blue tonal variant |
-| `.n-button--tonal-violet` | Violet tonal variant |
-| `.n-button--ghost` | Primary ghost variant |
-| `.n-button--secondary` | Muted ghost variant |
-| `.n-button--sm` | 32px size modifier |
-| `.n-button--md` | 40px size modifier |
-| `.n-button--lg` | 48px size modifier |
-| `.n-button--xl` | 56px size modifier |
-| `.n-button--ico` | Circular icon-only modifier |
-| `.n-button--full` | Full-width modifier |
-| `.n-button--loading` | Loading state modifier |
-
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-button</code></td>
+        <td>Root button element</td>
+      </tr>
+      <tr>
+        <td><code>.n-button__content</code></td>
+        <td>Label and projected content wrapper</td>
+      </tr>
+      <tr>
+        <td><code>.n-button__loader</code></td>
+        <td>Loading spinner</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--primary</code></td>
+        <td>Blue → violet gradient variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--gemini</code></td>
+        <td>Gemini gradient variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--accent</code></td>
+        <td>Violet → pink gradient variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--danger</code></td>
+        <td>Danger solid variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--outline</code></td>
+        <td>Gradient border variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--outline-gemini</code></td>
+        <td>Gemini border variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--tonal</code></td>
+        <td>Blue tonal variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--tonal-violet</code></td>
+        <td>Violet tonal variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--ghost</code></td>
+        <td>Primary ghost variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--secondary</code></td>
+        <td>Muted ghost variant</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--sm</code></td>
+        <td>32px size modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--md</code></td>
+        <td>40px size modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--lg</code></td>
+        <td>48px size modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--xl</code></td>
+        <td>56px size modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--ico</code></td>
+        <td>Circular icon-only modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--full</code></td>
+        <td>Full-width modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-button--loading</code></td>
+        <td>Loading state modifier</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Design Tokens
@@ -146,31 +325,109 @@ List of class names applied by `NButton`.
 Public `--n-*` tokens consumed by the button styles.
 
 <div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td><code>primary</code> background</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-gemini</code></td>
+        <td><code>gemini</code> background and <code>outline-gemini</code> border</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-secondary-tertiary</code></td>
+        <td><code>accent</code> background</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-surface-strong</code></td>
+        <td><code>outline-gemini</code> hover fill</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td><code>danger</code> background</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary</code></td>
+        <td><code>outline</code> label color</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-bright</code></td>
+        <td><code>ghost</code> label color</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-alpha-10</code></td>
+        <td><code>tonal</code> and <code>ghost</code> surfaces</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary</code></td>
+        <td><code>tonal-violet</code> label color</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary-alpha-10</code></td>
+        <td><code>tonal-violet</code> surface</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-1</code></td>
+        <td><code>outline-gemini</code> label color</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-2</code></td>
+        <td><code>secondary</code> label color</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-1</code></td>
+        <td>Ghost borders</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-primary-xs</code></td>
+        <td><code>primary</code> / <code>tonal</code> glow</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-primary-md</code></td>
+        <td><code>primary</code> hover glow</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-gradient-sm</code></td>
+        <td><code>gemini</code> glow</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-secondary-sm</code></td>
+        <td><code>accent</code> / <code>tonal-violet</code> glow</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-danger-sm</code></td>
+        <td><code>danger</code> hover glow</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td>Pill radius</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-body</code></td>
+        <td>Button typeface</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-weight-semibold</code></td>
+        <td>Button weight</td>
+      </tr>
+      <tr>
+        <td><code>--n-duration-base</code></td>
+        <td>Transition duration</td>
+      </tr>
+      <tr>
+        <td><code>--n-ease-standard</code></td>
+        <td>Transition easing</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-| Token | Used for |
-| --- | --- |
-| `--n-gradient-primary-secondary` | `primary` background |
-| `--n-gradient-gemini` | `gemini` background and `outline-gemini` border |
-| `--n-gradient-secondary-tertiary` | `accent` background |
-| `--n-gradient-surface-strong` | `outline-gemini` hover fill |
-| `--n-color-danger` | `danger` background |
-| `--n-color-primary` | `outline` label color |
-| `--n-color-primary-bright` | `ghost` label color |
-| `--n-color-primary-alpha-10` | `tonal` and `ghost` surfaces |
-| `--n-color-secondary` | `tonal-violet` label color |
-| `--n-color-secondary-alpha-10` | `tonal-violet` surface |
-| `--n-text-1` | `outline-gemini` label color |
-| `--n-text-2` | `secondary` label color |
-| `--n-border-1` | Ghost borders |
-| `--n-glow-primary-xs` | `primary` / `tonal` glow |
-| `--n-glow-primary-md` | `primary` hover glow |
-| `--n-glow-gradient-sm` | `gemini` glow |
-| `--n-glow-secondary-sm` | `accent` / `tonal-violet` glow |
-| `--n-glow-danger-sm` | `danger` hover glow |
-| `--n-radius-full` | Pill radius |
-| `--n-font-body` | Button typeface |
-| `--n-font-weight-semibold` | Button weight |
-| `--n-duration-base` | Transition duration |
-| `--n-ease-standard` | Transition easing |
-
+  </section>
 </div>

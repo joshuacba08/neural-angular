@@ -30,6 +30,7 @@
     "@swc/helpers": "0.5.18",
     "nx": "22.7.5",
     "prettier": "^3.8.1",
+    "remark-gfm": "^4.0.1",
     "storybook": "10.4.4",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
