@@ -13,7 +13,17 @@ const meta: Meta<NBadge> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['neutral', 'primary', 'secondary', 'success', 'warning', 'danger', 'info'],
+      options: [
+        'neutral',
+        'gradient',
+        'primary',
+        'secondary',
+        'tertiary',
+        'success',
+        'warning',
+        'danger',
+        'info',
+      ],
     },
     size: {
       control: 'select',
@@ -26,7 +36,7 @@ const meta: Meta<NBadge> = {
   },
   args: {
     variant: 'neutral',
-    size: 'md',
+    size: 'sm',
     shape: 'pill',
     dot: false,
   },
@@ -47,13 +57,51 @@ export const Playground: Story = {
   }),
 };
 
+export const DesignSystem: Story = {
+  render: () => ({
+    template: `
+      <div style="display:flex;flex-direction:column;gap:24px;max-width:720px">
+        <section>
+          <p style="margin:0 0 10px;font-family:var(--n-font-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--n-text-3)">
+            Chips &amp; Badges · severity variants
+          </p>
+          <div class="n-story-row">
+            <n-badge variant="gradient">✦ Gemini</n-badge>
+            <n-badge variant="primary">Blue Violet</n-badge>
+            <n-badge variant="tertiary">Violet Pink</n-badge>
+            <n-badge variant="success">Activo</n-badge>
+            <n-badge variant="warning">Beta</n-badge>
+            <n-badge variant="danger">Error</n-badge>
+          </div>
+        </section>
+
+        <section>
+          <p style="margin:0 0 10px;font-family:var(--n-font-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--n-text-3)">
+            Standalone · workflow states
+          </p>
+          <div class="n-story-row">
+            <n-badge variant="gradient">Active</n-badge>
+            <n-badge variant="primary">Processing</n-badge>
+            <n-badge variant="success">Done</n-badge>
+            <n-badge variant="warning">Queued</n-badge>
+            <n-badge variant="danger">Failed</n-badge>
+            <n-badge variant="neutral">Idle</n-badge>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
+};
+
 export const Variants: Story = {
   render: () => ({
     template: `
       <div class="n-story-row">
         <n-badge variant="neutral">Neutral</n-badge>
+        <n-badge variant="gradient">Gradient</n-badge>
         <n-badge variant="primary">Primary</n-badge>
         <n-badge variant="secondary">Secondary</n-badge>
+        <n-badge variant="tertiary">Tertiary</n-badge>
         <n-badge variant="success">Success</n-badge>
         <n-badge variant="warning">Warning</n-badge>
         <n-badge variant="danger">Danger</n-badge>
@@ -70,6 +118,17 @@ export const WithDot: Story = {
         <n-badge variant="success" [dot]="true">Running</n-badge>
         <n-badge variant="warning" [dot]="true">Queued</n-badge>
         <n-badge variant="danger" [dot]="true">Failed</n-badge>
+      </div>
+    `,
+  }),
+};
+
+export const Sizes: Story = {
+  render: () => ({
+    template: `
+      <div class="n-story-row">
+        <n-badge variant="primary" size="sm">Small · 20px</n-badge>
+        <n-badge variant="primary" size="md">Medium · 24px</n-badge>
       </div>
     `,
   }),

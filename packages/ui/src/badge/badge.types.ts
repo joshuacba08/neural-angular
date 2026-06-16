@@ -1,7 +1,9 @@
 export type NBadgeVariant =
   | 'neutral'
+  | 'gradient'
   | 'primary'
   | 'secondary'
+  | 'tertiary'
   | 'success'
   | 'warning'
   | 'danger'
