@@ -195,6 +195,10 @@
       "types": "./dist/ai-pipeline/index.d.ts",
       "default": "./dist/ai-pipeline/index.js"
     },
+    "./alert": {
+      "types": "./dist/alert/index.d.ts",
+      "default": "./dist/alert/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"

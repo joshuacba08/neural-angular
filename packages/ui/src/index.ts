@@ -50,3 +50,5 @@ export * from './chat/index.js';
 export * from './streaming-text/index.js';
 export * from './voice-orb/index.js';
 export * from './ai-pipeline/index.js';
+export * from './alert/index.js';
+

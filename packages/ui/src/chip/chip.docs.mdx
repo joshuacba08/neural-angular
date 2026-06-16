@@ -98,6 +98,23 @@ When `removable` is enabled the close affordance emits the `removed` output.
 
 <Canvas of={ChipStories.Removable} layout="centered" sourceState="shown" />
 
+### Status tag recipes
+
+You can project custom status dots (optionally pulsing) inside `NChip` to build semantic live tags:
+
+```html
+<div style="display:flex;gap:8px">
+  <n-chip mode="tag" variant="success">
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--n-color-success)"></span>
+    Processing
+  </n-chip>
+  <n-chip mode="tag" variant="primary">
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--n-color-primary);animation:n-status-dot-pulse 1.5s ease-in-out infinite"></span>
+    Enhancing
+  </n-chip>
+</div>
+```
+
   </section>
 
   <section className="n-doc-tabs__panel" data-tab="api" id="api">
