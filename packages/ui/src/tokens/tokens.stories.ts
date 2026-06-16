@@ -436,7 +436,7 @@ export const MotionAndType: Story = {
                 <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-11 · 11px · 600</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center">
-                <span class="mono" style="color:var(--n-color-primary-bright)">const model = await neural.process(input, { stream: true });</span>
+                <span class="mono" style="color:var(--n-color-primary-bright)">const model = await neural.process(input, {{ '{' }} stream: true {{ '}' }});</span>
                 <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">mono · 13px · monospace</span>
               </div>
             </div>
