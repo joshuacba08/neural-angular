@@ -5,6 +5,7 @@ import { NBadge } from './badge.component.js';
 const meta: Meta<NBadge> = {
   title: 'Components/Badge',
   component: NBadge,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NBadge],
@@ -12,7 +13,13 @@ const meta: Meta<NBadge> = {
   ],
   argTypes: {
     variant: {
+      description: 'Visual severity or emphasis style for the badge surface.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'NBadgeVariant' },
+        defaultValue: { summary: 'neutral' },
+      },
       options: [
         'neutral',
         'gradient',
@@ -26,12 +33,33 @@ const meta: Meta<NBadge> = {
       ],
     },
     size: {
+      description: 'Badge height and padding scale.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: "'sm' | 'md'" },
+        defaultValue: { summary: 'sm' },
+      },
       options: ['sm', 'md'],
     },
     shape: {
+      description: 'Badge silhouette. Use square for compact version tags or counters.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: "'pill' | 'square'" },
+        defaultValue: { summary: 'pill' },
+      },
       options: ['pill', 'square'],
+    },
+    dot: {
+      description: 'Prepends a small status dot that inherits the current badge color.',
+      control: 'boolean',
+      table: {
+        category: 'Status',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
   },
   args: {

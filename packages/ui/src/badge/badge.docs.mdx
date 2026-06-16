@@ -1,0 +1,428 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as BadgeStories from './badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+`NBadge` is a compact status label for workflow states, semantic tags, counters, and highlighted metadata. It uses mono typography, two fixed heights, optional dots, and a Gemini gradient variant for high-emphasis badges.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="badge-doc-tabs"
+    id="badge-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="badge-doc-tabs"
+    id="badge-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="badge-doc-tabs"
+    id="badge-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Badge documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="badge-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="badge-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="badge-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NBadge } from '@neural/angular-ui/badge';
+```
+
+### Basic
+
+The default badge is a neutral pill at 20px height.
+
+<Canvas of={BadgeStories.Playground} layout="centered" sourceState="shown" />
+
+### Design System
+
+Use semantic fills for workflow states and the gradient variant for high-emphasis highlights.
+
+<Canvas of={BadgeStories.DesignSystem} layout="padded" sourceState="hidden" />
+
+### Variants
+
+Each variant keeps the same size and silhouette API while changing tone and emphasis.
+
+<Canvas of={BadgeStories.Variants} layout="padded" sourceState="hidden" />
+
+### With Dot
+
+Enable `dot` for live states such as running, queued, or failed processes.
+
+<Canvas of={BadgeStories.WithDot} layout="centered" sourceState="shown" />
+
+### Sizes
+
+Choose between 20px and 24px heights depending on density and label length.
+
+<Canvas of={BadgeStories.Sizes} layout="centered" sourceState="hidden" />
+
+### Shapes
+
+Use `pill` for status chips and `square` for version tags, IDs, or compact counters.
+
+<Canvas of={BadgeStories.Shapes} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NBadge`.
+
+<ArgTypes of={BadgeStories} sort="requiredFirst" />
+
+### Variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Design reference</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>neutral</code></td>
+        <td>base badge</td>
+        <td>Muted idle or passive state.</td>
+      </tr>
+      <tr>
+        <td><code>gradient</code></td>
+        <td><code>nb-g</code></td>
+        <td>Gemini gradient highlight badge.</td>
+      </tr>
+      <tr>
+        <td><code>primary</code></td>
+        <td><code>nb-bv</code></td>
+        <td>Blue-violet semantic state.</td>
+      </tr>
+      <tr>
+        <td><code>secondary</code></td>
+        <td>secondary semantic</td>
+        <td>Muted secondary accent badge.</td>
+      </tr>
+      <tr>
+        <td><code>tertiary</code></td>
+        <td><code>nb-vp</code></td>
+        <td>Violet-pink semantic state.</td>
+      </tr>
+      <tr>
+        <td><code>success</code></td>
+        <td><code>nb-s</code></td>
+        <td>Success or active state.</td>
+      </tr>
+      <tr>
+        <td><code>warning</code></td>
+        <td><code>nb-w</code></td>
+        <td>Warning, beta, or queued state.</td>
+      </tr>
+      <tr>
+        <td><code>danger</code></td>
+        <td><code>nb-e</code></td>
+        <td>Error or failed state.</td>
+      </tr>
+      <tr>
+        <td><code>info</code></td>
+        <td>info semantic</td>
+        <td>Informational or version-tag state.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Sizes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Height</th>
+        <th>Padding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sm</code></td>
+        <td>20px</td>
+        <td>0 9px</td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td>24px</td>
+        <td>0 11px</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Shapes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Shape</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pill</code></td>
+        <td>Default rounded badge for status labels.</td>
+      </tr>
+      <tr>
+        <td><code>square</code></td>
+        <td>Small rounded rectangle for compact tags and structured labels.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Dot
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dot</code></td>
+        <td>Prepends a 6px status dot that inherits the current badge text color.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied by `NBadge`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-badge</code></td>
+        <td>Root badge element.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge__dot</code></td>
+        <td>Optional 6px status dot.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge__content</code></td>
+        <td>Content wrapper with text truncation support.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--neutral</code></td>
+        <td>Muted neutral variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--gradient</code></td>
+        <td>Gemini gradient variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--primary</code></td>
+        <td>Primary semantic variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--secondary</code></td>
+        <td>Secondary semantic variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--tertiary</code></td>
+        <td>Tertiary semantic variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--success</code></td>
+        <td>Success semantic variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--warning</code></td>
+        <td>Warning semantic variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--danger</code></td>
+        <td>Danger semantic variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--info</code></td>
+        <td>Info semantic variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--sm</code>, <code>.n-badge--md</code></td>
+        <td>Size modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--square</code></td>
+        <td>Square silhouette modifier.</td>
+      </tr>
+      <tr>
+        <td><code>.n-badge--dot</code></td>
+        <td>Modifier enabled when the status dot is shown.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens consumed by the badge styles.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td>Pill silhouette and dot radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-sm</code></td>
+        <td>Square silhouette radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-mono</code></td>
+        <td>Badge typeface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-weight-semibold</code></td>
+        <td>Badge text weight.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-10</code></td>
+        <td><code>sm</code> text size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-11</code></td>
+        <td><code>md</code> text size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-1</code></td>
+        <td>Neutral variant border.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-3</code></td>
+        <td>Neutral badge label color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-gemini</code></td>
+        <td>Gradient badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-alpha-10</code></td>
+        <td>Primary badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary</code></td>
+        <td>Primary badge label color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary-alpha-10</code></td>
+        <td>Secondary badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary</code></td>
+        <td>Secondary badge label color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-tertiary-alpha-10</code></td>
+        <td>Tertiary badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-tertiary</code></td>
+        <td>Tertiary badge label color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success-alpha-10</code></td>
+        <td>Success badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success</code></td>
+        <td>Success badge label and dot color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-warning-alpha-10</code></td>
+        <td>Warning badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-warning</code></td>
+        <td>Warning badge label and dot color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger-alpha-10</code></td>
+        <td>Danger badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Danger badge label and dot color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-info-alpha-10</code></td>
+        <td>Info badge background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-info</code></td>
+        <td>Info badge label and dot color.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>
