@@ -1,0 +1,424 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as AvatarStories from './avatar.stories';
+
+<Meta of={AvatarStories} />
+
+# Avatar
+
+`NAvatar` renders a profile image, derived initials, or projected content such as `NIcon`. It supports five sizes, four gradient and surface variants, optional status indicators, and overlapping stacks with `NAvatarGroup`.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="avatar-doc-tabs"
+    id="avatar-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="avatar-doc-tabs"
+    id="avatar-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="avatar-doc-tabs"
+    id="avatar-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Avatar documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="avatar-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="avatar-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="avatar-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NAvatar, NAvatarGroup } from '@neural/angular-ui/avatar';
+```
+
+### Basic
+
+When `src` is not provided, the component derives initials from `name`.
+
+<Canvas of={AvatarStories.Playground} layout="centered" sourceState="shown" />
+
+### Sizes & Variants
+
+Gradient fills and the neutral surface variant stay consistent across all avatar sizes.
+
+<Canvas of={AvatarStories.SizesAndVariants} layout="padded" sourceState="hidden" />
+
+### With Image
+
+Provide `src` and `alt` to render a real image while keeping the same size and shape API.
+
+<Canvas of={AvatarStories.WithImage} layout="padded" sourceState="shown" />
+
+### Status
+
+Presence dots align to the bottom-right corner. `away` also softens the avatar opacity.
+
+<Canvas of={AvatarStories.WithStatus} layout="centered" sourceState="hidden" />
+
+### Rounded Shape
+
+Rounded squares are supported for legacy layouts, although the design reference prefers circles.
+
+<Canvas of={AvatarStories.RoundedShape} layout="centered" sourceState="hidden" />
+
+### Stacked Group
+
+Use `NAvatarGroup` to overlap multiple participants inside a shared row.
+
+<Canvas of={AvatarStories.StackedGroup} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NAvatar`.
+
+<ArgTypes of={AvatarStories} sort="requiredFirst" />
+
+### Sizes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Dimensions</th>
+        <th>Design reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>xs</code></td>
+        <td>24px</td>
+        <td><code>.nn-av-xs</code></td>
+      </tr>
+      <tr>
+        <td><code>sm</code></td>
+        <td>32px</td>
+        <td><code>.nn-av-sm</code></td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td>40px</td>
+        <td><code>.nn-av-md</code></td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td>56px</td>
+        <td><code>.nn-av-lg</code></td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td>72px</td>
+        <td><code>.nn-av-xl</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Design reference</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>blue-violet</code></td>
+        <td><code>.nn-av-bv</code></td>
+        <td>Blue → violet gradient surface</td>
+      </tr>
+      <tr>
+        <td><code>violet-pink</code></td>
+        <td><code>.nn-av-vp</code></td>
+        <td>Violet → pink gradient surface</td>
+      </tr>
+      <tr>
+        <td><code>gemini</code></td>
+        <td><code>.nn-av-gg</code></td>
+        <td>Full Gemini gradient surface</td>
+      </tr>
+      <tr>
+        <td><code>surface</code></td>
+        <td><code>.nn-av-surf</code></td>
+        <td>Neutral filled surface with border</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Status
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Dot color</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>online</code></td>
+        <td>Success green</td>
+        <td>Marks an available participant.</td>
+      </tr>
+      <tr>
+        <td><code>active</code></td>
+        <td>Primary blue</td>
+        <td>Preferred active/busy state.</td>
+      </tr>
+      <tr>
+        <td><code>away</code></td>
+        <td>Muted gray</td>
+        <td>Dot remains visible and the avatar surface is dimmed.</td>
+      </tr>
+      <tr>
+        <td><code>offline</code></td>
+        <td>Muted gray</td>
+        <td>Inactive presence indicator.</td>
+      </tr>
+      <tr>
+        <td><code>busy</code></td>
+        <td>Primary blue</td>
+        <td>Deprecated alias that resolves internally to <code>active</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Shape
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Shape</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>circle</code></td>
+        <td>Default circular avatar silhouette.</td>
+      </tr>
+      <tr>
+        <td><code>rounded</code></td>
+        <td>Rounded square fallback kept for compatibility with older layouts.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied by `NAvatar` and `NAvatarGroup`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-avatar</code></td>
+        <td>Root avatar element.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__surface</code></td>
+        <td>Visual surface that holds image, initials, or projected content.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__image</code></td>
+        <td>Internal image node rendered when <code>src</code> is present.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__content</code></td>
+        <td>Wrapper for projected content and initials fallback.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__initials</code></td>
+        <td>Derived initials text node.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__status</code></td>
+        <td>Presence dot anchored to the avatar corner.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__status--online</code></td>
+        <td>Success presence color.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__status--active</code></td>
+        <td>Primary presence color.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__status--away</code></td>
+        <td>Muted away color.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar__status--offline</code></td>
+        <td>Muted offline color.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar--xs</code>, <code>--sm</code>, <code>--md</code>, <code>--lg</code>, <code>--xl</code></td>
+        <td>Size modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar--blue-violet</code></td>
+        <td>Blue → violet gradient variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar--violet-pink</code></td>
+        <td>Violet → pink gradient variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar--gemini</code></td>
+        <td>Gemini gradient variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar--surface</code></td>
+        <td>Neutral bordered surface variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar--rounded</code></td>
+        <td>Rounded shape modifier.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar--away</code></td>
+        <td>Reduced opacity applied to away avatars.</td>
+      </tr>
+      <tr>
+        <td><code>.n-avatar-group</code></td>
+        <td>Row-reversed overlapping group container.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens consumed by the avatar styles.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-font-display</code></td>
+        <td>Avatar initials typeface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-weight-bold</code></td>
+        <td>Avatar initials weight.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-14</code></td>
+        <td><code>md</code> initials size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-24</code></td>
+        <td><code>xl</code> initials size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td>Default circular silhouette and status dot radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-lg</code></td>
+        <td>Rounded shape silhouette.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td><code>blue-violet</code> background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-secondary-tertiary</code></td>
+        <td><code>violet-pink</code> background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-gemini</code></td>
+        <td><code>gemini</code> background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-2</code></td>
+        <td><code>surface</code> outline.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-3</code></td>
+        <td><code>surface</code> background fill.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-2</code></td>
+        <td><code>surface</code> icon and initials color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-bg-canvas</code></td>
+        <td>Ring color around grouped avatars and status dots.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success</code></td>
+        <td><code>online</code> status dot.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary</code></td>
+        <td><code>active</code> status dot.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-4</code></td>
+        <td><code>away</code> and <code>offline</code> status dot.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>
