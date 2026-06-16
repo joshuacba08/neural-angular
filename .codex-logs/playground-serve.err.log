@@ -327,3 +327,43 @@ Error: Unable to resolve icon 'timer'
     at runEffectsInView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9465:17)
     at refreshView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9564:5)
 Please consider reporting the error at https://github.com/angular/angular-cli/issues[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 0 arguments, but got 1.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/chip/chip.component.ts:36:32:
+[37m      36 │           (click)="handleRemove([32m$event[37m)"
+         ╵                                 [32m~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m

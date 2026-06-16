@@ -553,3 +553,47 @@ Application bundle generation complete. [0.192 seconds] - 2026-06-16T05:28:10.56
 [37mComponent update sent to client(s).[39m
 [37mPage reload sent to client(s).[39m
 [37mPage reload sent to client(s).[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37m
+No output file changes.
+Application bundle generation complete. [0.167 seconds] - 2026-06-16T05:40:37.743Z
+[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37m
+No output file changes.
+Application bundle generation complete. [0.246 seconds] - 2026-06-16T05:40:51.954Z
+[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37m
+No output file changes.
+Application bundle generation complete. [0.268 seconds] - 2026-06-16T05:41:29.474Z
+[39m
+[37mComponent update sent to client(s).[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37m
+No output file changes.
+Application bundle generation complete. [0.217 seconds] - 2026-06-16T05:41:54.789Z
+[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37m
+No output file changes.
+Application bundle generation complete. [0.270 seconds] - 2026-06-16T05:42:04.058Z
+[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37mApplication bundle generation failed. [0.190 seconds] - 2026-06-16T05:42:14.794Z
+[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m[36m325.85 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m [36m16.76 kB[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m342.60 kB[22m
+Application bundle generation complete. [0.174 seconds] - 2026-06-16T05:42:15.530Z
+[39m
+[37mPage reload sent to client(s).[39m

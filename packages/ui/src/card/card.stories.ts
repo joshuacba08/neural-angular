@@ -23,6 +23,7 @@ import {
 const meta: Meta<NCard> = {
   title: 'Components/Card',
   component: NCard,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [
@@ -48,8 +49,23 @@ const meta: Meta<NCard> = {
   ],
   argTypes: {
     variant: {
+      description: 'Border and emphasis treatment of the card surface.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'NCardVariant' },
+        defaultValue: { summary: 'default' },
+      },
       options: ['default', 'primary', 'secondary', 'gradient', 'elevated', 'outlined'],
+    },
+    interactive: {
+      description: 'Enables hover lift, tint overlay, and pointer cursor.',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
   },
   args: {

@@ -2,7 +2,7 @@
 
 Status: implemented as a Core UI primitive.
 
-`NChip` is a standalone Angular component for compact filters, selections, and labels. It uses public `--n-*` tokens and composes with `NIcon` for the removable action.
+`NChip` supports two design-system modes: **filter chips** (selectable pills with gradient border) and **tag chips** (severity labels, closable, with optional icons/avatars).
 
 ## Imports
 
@@ -18,7 +18,8 @@ import { NChip } from '@neural/angular-ui/chip';
 
 | Input | Type | Default |
 | --- | --- | --- |
-| `variant` | `'default' \| 'primary' \| 'secondary'` | `'default'` |
+| `mode` | `'filter' \| 'tag'` | `'filter'` |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger'` | `'default'` |
 | `size` | `'sm' \| 'md'` | `'md'` |
 | `selected` | `boolean` | `false` |
 | `disabled` | `boolean` | `false` |
@@ -28,14 +29,48 @@ import { NChip } from '@neural/angular-ui/chip';
 | --- | --- |
 | `removed` | `void` |
 
+### Mode mapping
+
+| `mode` | Design | Use |
+| --- | --- | --- |
+| `filter` | `.nn-chip` | Model filters, toggles; use `selected` for `.on` state |
+| `tag` | `.nn-chip.nn-chip-*` | Severity labels, tags, closable filters |
+
+Filter chips: 30px (`md`) / 24px (`sm`), gradient border on hover and when `selected`.
+
+Tag chips: padding-based, semantic colors, optional `removable` with muted close icon.
+
 ## Examples
 
+### Filter chips
+
 ```html
-<n-chip>Default</n-chip>
-<n-chip variant="primary" [selected]="true">Angular</n-chip>
-<n-chip variant="secondary">Lucide</n-chip>
-<n-chip [disabled]="true">Disabled</n-chip>
-<n-chip [removable]="true" (removed)="onRemove()">Removable</n-chip>
+<n-chip [selected]="true">Todos los modelos</n-chip>
+<n-chip>Neural Pro</n-chip>
+<n-chip size="sm">Compact</n-chip>
 ```
 
-When `removable` is true, the chip renders a real internal `<button type="button">` with `aria-label="Remove chip"`. Disabled chips do not emit `removed`.
+### Tag severity
+
+```html
+<n-chip mode="tag" variant="primary">Blue</n-chip>
+<n-chip mode="tag" variant="success">Success</n-chip>
+```
+
+### Closable tag
+
+```html
+<n-chip mode="tag" variant="primary" [removable]="true" (removed)="onRemove()">
+  <n-icon name="info" size="xs" />
+  4K UHD
+</n-chip>
+```
+
+### With avatar
+
+```html
+<n-chip mode="tag" class="n-chip-with-avatar">
+  <n-avatar name="John Doe" size="xs" variant="blue-violet" />
+  John Doe
+</n-chip>
+```

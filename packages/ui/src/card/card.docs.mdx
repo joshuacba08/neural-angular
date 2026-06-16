@@ -1,0 +1,475 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as CardStories from './card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+`NCard` is the core surface primitive for grouped product content. It supports gradient-border variants, reduced-emphasis outlined containers, interactive hover lift, and a family of projected subcomponents for feature cards and horizontal row items.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="card-doc-tabs"
+    id="card-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="card-doc-tabs"
+    id="card-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="card-doc-tabs"
+    id="card-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Card documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="card-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="card-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="card-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import {
+  NCard,
+  NCardContent,
+  NCardDescription,
+  NCardFooter,
+  NCardHeader,
+  NCardIcon,
+  NCardMeta,
+  NCardRow,
+  NCardRowAvatar,
+  NCardRowBody,
+  NCardRowSubtitle,
+  NCardRowTitle,
+  NCardRowTrailing,
+  NCardTitle,
+} from '@neural/angular-ui/card';
+```
+
+### Basic
+
+The root card accepts `variant` and optional interactive hover treatment.
+
+<Canvas of={CardStories.Playground} layout="centered" sourceState="shown" />
+
+### Design System
+
+Feature cards and horizontal list rows share the same visual language while serving different densities.
+
+<Canvas of={CardStories.DesignSystem} layout="padded" sourceState="hidden" />
+
+### Variants
+
+Use gradient borders for featured content and `outlined` for quieter framing.
+
+<Canvas of={CardStories.Variants} layout="padded" sourceState="hidden" />
+
+### Composition
+
+Projected slots make it easy to combine icon, header, content, metadata, and actions in one card.
+
+<Canvas of={CardStories.Composition} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NCard`.
+
+<ArgTypes of={CardStories} sort="requiredFirst" />
+
+### Variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Design reference</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>default</code></td>
+        <td><code>.nn-card</code></td>
+        <td>Gemini border surface for general product content.</td>
+      </tr>
+      <tr>
+        <td><code>gradient</code></td>
+        <td><code>.nn-card</code></td>
+        <td>Alias of the default gradient-border treatment.</td>
+      </tr>
+      <tr>
+        <td><code>primary</code></td>
+        <td><code>.nn-card.bv</code></td>
+        <td>Blue → violet border emphasis.</td>
+      </tr>
+      <tr>
+        <td><code>secondary</code></td>
+        <td><code>.nn-card.vp</code></td>
+        <td>Violet → pink border emphasis.</td>
+      </tr>
+      <tr>
+        <td><code>elevated</code></td>
+        <td>elevated gradient</td>
+        <td>Default gradient border plus stronger elevation shadow.</td>
+      </tr>
+      <tr>
+        <td><code>outlined</code></td>
+        <td>outlined surface</td>
+        <td>Low-emphasis container with plain border and transparent background.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Row variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>default</code></td>
+        <td>General row item with primary-leaning gradient border.</td>
+      </tr>
+      <tr>
+        <td><code>primary</code></td>
+        <td>Blue-violet list rows and lead objects.</td>
+      </tr>
+      <tr>
+        <td><code>secondary</code></td>
+        <td>Violet-pink list rows and alternate lanes.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Subcomponents
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Selector</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>n-card-header</code></td>
+        <td>Header stack for title and supporting description.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-title</code></td>
+        <td>Primary title using the display face.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-description</code></td>
+        <td>Secondary descriptive copy.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-content</code></td>
+        <td>Main content region.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-footer</code></td>
+        <td>Actions row for buttons or secondary metadata.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-icon</code></td>
+        <td>38×38 accent tile for icons.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-meta</code></td>
+        <td>Uppercase mono metadata label.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-row</code></td>
+        <td>Horizontal list-item card surface.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-row-avatar</code></td>
+        <td>Leading visual slot for initials or compact icon avatar.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-row-body</code></td>
+        <td>Text column for title and subtitle.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-row-title</code></td>
+        <td>Row-level title.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-row-subtitle</code></td>
+        <td>Muted row subtitle.</td>
+      </tr>
+      <tr>
+        <td><code>n-card-row-trailing</code></td>
+        <td>Trailing slot for badge, action, or compact metadata.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Accent options
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Values</th>
+        <th>Used by</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>accent</code></td>
+        <td><code>gemini</code>, <code>primary</code>, <code>secondary</code></td>
+        <td><code>n-card-icon</code>, <code>n-card-meta</code>, <code>n-card-row-avatar</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied by the card primitives.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-card</code></td>
+        <td>Root card surface.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card--default</code></td>
+        <td>Default Gemini border variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card--primary</code></td>
+        <td>Primary gradient border variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card--secondary</code></td>
+        <td>Secondary gradient border variant.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card--elevated</code></td>
+        <td>Elevated surface modifier.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card--outlined</code></td>
+        <td>Outlined low-emphasis surface.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card--interactive</code></td>
+        <td>Hover-lift and glow behavior.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-icon</code></td>
+        <td>Icon tile.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-icon--gemini</code>, <code>--primary</code>, <code>--secondary</code></td>
+        <td>Icon accent modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-meta</code></td>
+        <td>Meta label.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-meta--gemini</code>, <code>--primary</code>, <code>--secondary</code></td>
+        <td>Meta accent modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-row</code></td>
+        <td>Horizontal row-card root.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-row--default</code>, <code>--primary</code>, <code>--secondary</code></td>
+        <td>Row-card visual variants.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-row--interactive</code></td>
+        <td>Interactive row hover behavior.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-row-avatar</code></td>
+        <td>Leading row visual.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-row-avatar--gemini</code>, <code>--primary</code>, <code>--secondary</code></td>
+        <td>Row-avatar accent modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-row-body</code></td>
+        <td>Row text stack wrapper.</td>
+      </tr>
+      <tr>
+        <td><code>.n-card-row-trailing</code></td>
+        <td>Trailing slot wrapper.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens consumed by the card styles.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-surface-1</code></td>
+        <td>Default card fill.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td>Interactive hover fill.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-surface</code></td>
+        <td>Hover tint overlay.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border</code></td>
+        <td>Default and elevated border treatment.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-primary</code></td>
+        <td>Primary card and row borders.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-secondary</code></td>
+        <td>Secondary card and row borders.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-gemini</code></td>
+        <td>Gemini icon accent background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td>Primary icon accent and primary meta text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-secondary-tertiary</code></td>
+        <td>Secondary icon accent and secondary meta text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-1</code></td>
+        <td>Outlined card border.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-1</code></td>
+        <td>Primary titles and key content.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-2</code></td>
+        <td>Description and body copy.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-3</code></td>
+        <td>Row subtitle color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-lg</code></td>
+        <td>Card and row corner radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-display</code></td>
+        <td>Card title and row-avatar typeface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-mono</code></td>
+        <td>Meta label typeface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-15</code></td>
+        <td>Card title size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-13</code></td>
+        <td>Body and description size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-10</code></td>
+        <td>Meta label size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-2</code></td>
+        <td>Interactive row hover shadow.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-3</code></td>
+        <td>Elevated cards and interactive card hover shadow.</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-gradient-sm</code></td>
+        <td>Interactive hover glow.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-2</code>, <code>--n-space-3</code>, <code>--n-space-4</code></td>
+        <td>Internal spacing for header, footer, and content rhythm.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>
