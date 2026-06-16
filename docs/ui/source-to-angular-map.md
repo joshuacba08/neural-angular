@@ -52,6 +52,17 @@
 | Prototype pattern | Angular migration |
 |---|---|
 | `<button class="nn-btn nn-btn-f">` | `<n-button variant="primary">` |
+| `<button class="nn-btn nn-btn-fg">` | `<n-button variant="gemini">` |
+| `<button class="nn-btn nn-btn-fv">` | `<n-button variant="accent">` |
+| `<button class="nn-btn nn-btn-fd">` | `<n-button variant="danger">` |
+| `<button class="nn-btn nn-btn-o">` | `<n-button variant="outline">` |
+| `<button class="nn-btn nn-btn-og">` | `<n-button variant="outline-gemini">` |
+| `<button class="nn-btn nn-btn-t">` | `<n-button variant="tonal">` |
+| `<button class="nn-btn nn-btn-tv">` | `<n-button variant="tonal-violet">` |
+| `<button class="nn-btn nn-btn-g">` | `<n-button variant="ghost">` |
+| `<button class="nn-btn nn-btn-gm">` | `<n-button variant="secondary">` |
+| `<button class="nn-btn nn-btn-ico">` | `<n-button [iconOnly]="true" ariaLabel="...">` |
+| `<button class="nn-btn nn-btn-full">` | `<n-button [fullWidth]="true">` |
 | `<div class="nn-card">` | `<n-card>` with projected header/content/footer |
 | `<span class="nn-badge">` | `<n-badge status="success">` or semantic inputs |
 | `<div class="nn-chip on">` | `<n-chip [selected]="true">` |

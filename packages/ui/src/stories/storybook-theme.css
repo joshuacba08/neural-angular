@@ -115,3 +115,36 @@
   letter-spacing: 0;
   text-transform: uppercase;
 }
+
+.n-button-showcase {
+  display: grid;
+  gap: var(--n-space-3);
+  width: min(920px, calc(100vw - 48px));
+}
+
+.n-button-showcase--panel {
+  padding: var(--n-space-6);
+  border: 1px solid transparent;
+  border-radius: var(--n-radius-xl);
+  background:
+    linear-gradient(var(--n-surface-1), var(--n-surface-1)) padding-box,
+    var(--n-gradient-border-subtle) border-box;
+}
+
+.n-button-showcase__tag {
+  margin: 0 0 var(--n-space-2);
+  padding: 3px 8px;
+  width: fit-content;
+  border-radius: var(--n-radius-full);
+  background: var(--n-surface-2);
+  color: var(--n-text-3);
+  font-family: var(--n-font-mono);
+  font-size: var(--n-font-size-10);
+  letter-spacing: 0.04em;
+}
+
+.n-button-cta-stack {
+  display: grid;
+  gap: var(--n-space-3);
+  width: min(520px, calc(100vw - 48px));
+}

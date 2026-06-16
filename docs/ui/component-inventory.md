@@ -6,7 +6,7 @@
 |---|---|---|---|---|---|
 | Theme provider | `NThemeProvider` | `nn-tokens.css`, `Neural Angular.html` | High | Foundation | Apply theme class, token CSS, dark mode strategy |
 | Tokens | `NTokens` or CSS entry | `nn-tokens.css` | High | Foundation | Token foundation should come before components |
-| Button | `NButton` | `components.html` | Complete | Core UI | Filled, gradient, ghost, sizes, loading, full width |
+| Button | `NButton` | `components.html` | Complete | Core UI | Gradient fills, outline, tonal, ghost, 4 sizes, icon-only, loading, full width |
 | Card | `NCard` | `components.html` | Complete | Core UI | Surfaces, gradient border, hover/elevation pattern |
 | Icon | `NIcon` | all HTML files | Complete | Core UI | Lucide dynamic icon integration with curated provider |
 | Badge | `NBadge` | `components.html`, `data-patterns.html` | Complete | Core UI | Status pills, notification dots, semantic badges |
