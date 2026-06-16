@@ -1,0 +1,310 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as EmptyStateStories from './empty-state.stories';
+
+<Meta of={EmptyStateStories} />
+
+# Empty State
+
+`NEmptyState` is a structured empty-state primitive for blank queues, no-result views, and recoverable errors. It combines an optional icon tile, title, description, and projected actions in either vertical or horizontal layout.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="empty-state-doc-tabs"
+    id="empty-state-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="empty-state-doc-tabs"
+    id="empty-state-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="empty-state-doc-tabs"
+    id="empty-state-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Empty State documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="empty-state-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="empty-state-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="empty-state-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NEmptyState } from '@neural/angular-ui/empty-state';
+```
+
+### Basic
+
+The component renders icon, title, description, and projected actions in a single state container.
+
+<Canvas of={EmptyStateStories.Playground} layout="centered" sourceState="shown" />
+
+### Design System
+
+Primary, neutral, and error states map to the most common product-empty moments.
+
+<Canvas of={EmptyStateStories.DesignSystem} layout="padded" sourceState="hidden" />
+
+### Variants
+
+Use semantic variants to align the empty-state tone with the surrounding workflow.
+
+<Canvas of={EmptyStateStories.Variants} layout="padded" sourceState="hidden" />
+
+### Horizontal
+
+Horizontal layout works well inside wider panels, inspectors, and search result areas.
+
+<Canvas of={EmptyStateStories.Horizontal} layout="centered" sourceState="shown" />
+
+### Without Actions
+
+Projected actions are optional for passive or informational states.
+
+<Canvas of={EmptyStateStories.WithoutActions} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NEmptyState`.
+
+<ArgTypes of={EmptyStateStories} sort="requiredFirst" />
+
+### Variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Use</th>
+        <th>Suggested CTA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>primary</code></td>
+        <td>Empty queue, first-use moment, or add-content flow.</td>
+        <td><code>n-button</code> with a high-emphasis action like <code>gemini</code>.</td>
+      </tr>
+      <tr>
+        <td><code>neutral</code></td>
+        <td>No search results or passive informational state.</td>
+        <td><code>ghost</code> or quiet utility action.</td>
+      </tr>
+      <tr>
+        <td><code>error</code></td>
+        <td>Recoverable failure such as offline or unreachable service state.</td>
+        <td>Retry or reconnect action, typically with an icon.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Orientation
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Orientation</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>vertical</code></td>
+        <td>Centered stack for standalone panels and narrower containers.</td>
+      </tr>
+      <tr>
+        <td><code>horizontal</code></td>
+        <td>Two-column layout for wider result panes and inspector surfaces. Collapses back to vertical below 640px.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Content contract
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>icon</code></td>
+        <td>Optional Lucide icon name rendered in the leading tile.</td>
+      </tr>
+      <tr>
+        <td><code>title</code></td>
+        <td>Short heading that names the empty state.</td>
+      </tr>
+      <tr>
+        <td><code>description</code></td>
+        <td>Supporting explanation and suggested next step.</td>
+      </tr>
+      <tr>
+        <td>Projected content</td>
+        <td>Optional actions area for buttons or secondary controls.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied by `NEmptyState`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-empty-state</code></td>
+        <td>Root empty-state container.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state--primary</code></td>
+        <td>Primary empty-state surface treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state--neutral</code></td>
+        <td>Neutral informational treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state--error</code></td>
+        <td>Error-state surface treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state--horizontal</code></td>
+        <td>Horizontal layout modifier.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state__icon</code></td>
+        <td>Leading icon tile.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state__icon--muted</code></td>
+        <td>Neutral icon modifier with softer icon contrast.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state__body</code></td>
+        <td>Text and actions wrapper.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state__title</code></td>
+        <td>Heading element.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state__description</code></td>
+        <td>Supporting copy element.</td>
+      </tr>
+      <tr>
+        <td><code>.n-empty-state__actions</code></td>
+        <td>Projected actions row.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens consumed by the empty-state styles.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-radius-xl</code></td>
+        <td>Container and icon-tile corner radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-1</code></td>
+        <td>Neutral icon border.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-1</code></td>
+        <td>Title color and neutral icon tone.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-3</code></td>
+        <td>Description color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-body</code></td>
+        <td>Title typeface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-14</code></td>
+        <td>Title size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-12</code></td>
+        <td>Description size.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-weight-semibold</code></td>
+        <td>Title weight.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-3</code></td>
+        <td>Body and actions spacing rhythm.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Error icon foreground.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>

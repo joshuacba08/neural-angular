@@ -29,6 +29,7 @@ import { NChatMessage } from './chat-message.component.js';
         </div>
       } @else {
         <n-empty-state
+          variant="neutral"
           icon="sparkles"
           [title]="emptyTitle()"
           [description]="emptyDescription()"

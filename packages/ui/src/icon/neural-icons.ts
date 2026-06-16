@@ -20,6 +20,7 @@ import {
   LucideExternalLink,
   LucideFileText,
   LucideFileVideo,
+  LucideFilm,
   LucideHome,
   LucideInfo,
   LucideLoaderCircle,
@@ -29,6 +30,7 @@ import {
   LucidePlay,
   LucidePlus,
   LucideSearch,
+  LucideSearchX,
   LucideRotateCcw,
   LucideSettings,
   LucideSparkles,
@@ -36,6 +38,7 @@ import {
   LucideTrash2,
   LucideUpload,
   LucideUser,
+  LucideWifiOff,
   LucideX,
 } from '@lucide/angular';
 
@@ -61,6 +64,7 @@ export const NEURAL_LUCIDE_ICONS = [
   LucideFileImage,
   LucideFileText,
   LucideFileVideo,
+  LucideFilm,
   LucideHome,
   LucideInfo,
   LucideLoaderCircle,
@@ -70,6 +74,7 @@ export const NEURAL_LUCIDE_ICONS = [
   LucidePlay,
   LucidePlus,
   LucideSearch,
+  LucideSearchX,
   LucideRotateCcw,
   LucideSettings,
   LucideSparkles,
@@ -77,6 +82,7 @@ export const NEURAL_LUCIDE_ICONS = [
   LucideTrash2,
   LucideUpload,
   LucideUser,
+  LucideWifiOff,
   LucideX,
 ] as const;
 
@@ -102,6 +108,7 @@ export const NEURAL_LUCIDE_ICON_NAMES = [
   'file-image',
   'file-text',
   'file-video',
+  'film',
   'home',
   'info',
   'loader-circle',
@@ -111,6 +118,7 @@ export const NEURAL_LUCIDE_ICON_NAMES = [
   'play',
   'plus',
   'search',
+  'search-x',
   'rotate-ccw',
   'settings',
   'sparkles',
@@ -118,5 +126,8 @@ export const NEURAL_LUCIDE_ICON_NAMES = [
   'trash-2',
   'upload',
   'user',
+  'wifi-off',
   'x',
 ] as const;
+
+export type NeuralLucideIconName = (typeof NEURAL_LUCIDE_ICON_NAMES)[number];

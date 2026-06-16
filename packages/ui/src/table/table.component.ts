@@ -51,6 +51,7 @@ type NTableRow = Record<string, unknown>;
         </div>
       } @else {
         <n-empty-state
+          variant="neutral"
           icon="file-text"
           [title]="emptyTitle()"
           [description]="emptyDescription()"
