@@ -240,3 +240,90 @@
 [37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
          ╵                    [32m~~~~~~~~~~~~~~~~~[0m
 [39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31mComponent update failed: Unable to resolve icon 'timer'
+Error: Unable to resolve icon 'timer'
+    at LucideDynamicIcon.icon.ngDevMode.debugName [as computation] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:137992:15)
+    at Object.producerRecomputeValue (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:307:25)
+    at producerUpdateValueVersion (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:108:8)
+    at _LucideDynamicIcon.computed2 [as icon] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:270:5)
+    at http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:19035:25
+    at Object.fn (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3624:5)
+    at runEffect (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:399:10)
+    at Object.run (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3548:7)
+    at runEffectsInView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9465:17)
+    at refreshView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9564:5)
+Please consider reporting the error at https://github.com/angular/angular-cli/issues[39m[22m
+[1m[31mComponent update failed: Unable to resolve icon 'timer'
+Error: Unable to resolve icon 'timer'
+    at LucideDynamicIcon.icon.ngDevMode.debugName [as computation] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:137992:15)
+    at Object.producerRecomputeValue (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:307:25)
+    at producerUpdateValueVersion (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:108:8)
+    at _LucideDynamicIcon.computed2 [as icon] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:270:5)
+    at http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:19035:25
+    at Object.fn (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3624:5)
+    at runEffect (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:399:10)
+    at Object.run (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3548:7)
+    at runEffectsInView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9465:17)
+    at refreshView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9564:5)
+Please consider reporting the error at https://github.com/angular/angular-cli/issues[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31mComponent update failed: Unable to resolve icon 'timer'
+Error: Unable to resolve icon 'timer'
+    at LucideDynamicIcon.icon.ngDevMode.debugName [as computation] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:137992:15)
+    at Object.producerRecomputeValue (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:307:25)
+    at producerUpdateValueVersion (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:108:8)
+    at _LucideDynamicIcon.computed2 [as icon] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:270:5)
+    at http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:19035:25
+    at Object.fn (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3624:5)
+    at runEffect (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:399:10)
+    at Object.run (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3548:7)
+    at runEffectsInView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9465:17)
+    at refreshView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9564:5)
+Please consider reporting the error at https://github.com/angular/angular-cli/issues[39m[22m
+[1m[31mComponent update failed: Unable to resolve icon 'timer'
+Error: Unable to resolve icon 'timer'
+    at LucideDynamicIcon.icon.ngDevMode.debugName [as computation] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:137992:15)
+    at Object.producerRecomputeValue (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:307:25)
+    at producerUpdateValueVersion (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:108:8)
+    at _LucideDynamicIcon.computed2 [as icon] (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:270:5)
+    at http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/@lucide_angular.js?v=1566e98d:19035:25
+    at Object.fn (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3624:5)
+    at runEffect (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:399:10)
+    at Object.run (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:3548:7)
+    at runEffectsInView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9465:17)
+    at refreshView (http://localhost:4200/@fs/C:/devfiles/personal-projects/neural-angular/.angular/cache/22.0.1/playground/vite/deps/chunk-5JKW7UXE.js?v=1566e98d:9564:5)
+Please consider reporting the error at https://github.com/angular/angular-cli/issues[39m[22m

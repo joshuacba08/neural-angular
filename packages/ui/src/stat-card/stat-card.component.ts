@@ -13,44 +13,34 @@ import type { NStatCardVariant, NStatTrend } from './stat-card.types.js';
       [class.n-stat-card--interactive]="interactive()"
       [class.n-stat-card--primary]="variant() === 'primary'"
       [class.n-stat-card--secondary]="variant() === 'secondary'"
-      [class.n-stat-card--success]="variant() === 'success'"
-      [class.n-stat-card--warning]="variant() === 'warning'"
-      [class.n-stat-card--danger]="variant() === 'danger'"
-      [class.n-stat-card--info]="variant() === 'info'"
     >
-      <div class="n-stat-card__meta">
-        <div>
-          @if (label()) {
-            <p class="n-stat-card__label">{{ label() }}</p>
-          }
-          @if (value() !== undefined && value() !== null) {
-            <p class="n-stat-card__value">{{ value() }}</p>
-          }
-        </div>
-
-        @if (icon()) {
-          <span class="n-stat-card__icon" aria-hidden="true">
-            <n-icon [name]="icon() ?? ''" size="md" />
-          </span>
+      <div class="n-stat-card__content">
+        @if (label()) {
+          <p class="n-stat-card__label">{{ label() }}</p>
         }
-      </div>
-
-      <div class="n-stat-card__footer">
+        @if (value() !== undefined && value() !== null) {
+          <p class="n-stat-card__value">{{ value() }}</p>
+        }
         @if (description()) {
           <p class="n-stat-card__description">{{ description() }}</p>
         }
-
         @if (trendValue()) {
           <span
             class="n-stat-card__trend"
             [class.n-stat-card__trend--up]="trend() === 'up'"
             [class.n-stat-card__trend--down]="trend() === 'down'"
+            [class.n-stat-card__trend--neutral]="trend() === 'neutral'"
           >
-            {{ trend() === 'up' ? '+' : trend() === 'down' ? '-' : '' }}
-            {{ trendValue() }}
+            {{ trendPrefix() }}{{ trendValue() }}
           </span>
         }
       </div>
+
+      @if (icon()) {
+        <span class="n-stat-card__icon" aria-hidden="true">
+          <n-icon [name]="icon() ?? ''" size="md" />
+        </span>
+      }
     </article>
   `,
   styles: [
@@ -60,79 +50,68 @@ import type { NStatCardVariant, NStatTrend } from './stat-card.types.js';
       }
 
       .n-stat-card {
-        display: grid;
-        gap: var(--n-space-4);
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: var(--n-space-3);
         min-width: 0;
-        padding: var(--n-space-4);
+        padding: 22px 18px;
         border: 1px solid transparent;
-        border-radius: var(--n-radius-xl);
+        border-radius: var(--n-radius-lg);
         background:
-          linear-gradient(var(--n-surface-2), var(--n-surface-2)) padding-box,
-          var(--n-gradient-border-subtle) border-box;
+          linear-gradient(var(--n-surface-1), var(--n-surface-1)) padding-box,
+          var(--n-gradient-border) border-box;
         color: var(--n-text-1);
-        box-shadow: var(--n-elevation-1);
         transition:
-          transform var(--n-transition-fast),
-          border-color var(--n-transition-fast),
-          box-shadow var(--n-transition-fast);
+          transform 250ms ease,
+          box-shadow 250ms ease;
       }
 
       .n-stat-card--interactive:hover {
         transform: translateY(-2px);
-        border-color: var(--n-border-3);
-        box-shadow: var(--n-elevation-2);
+        box-shadow: var(--n-elevation-3), var(--n-glow-gradient-sm);
       }
 
       .n-stat-card--primary {
-        border-color: color-mix(in srgb, var(--n-color-primary) 42%, var(--n-border-1));
+        background:
+          linear-gradient(var(--n-surface-1), var(--n-surface-1)) padding-box,
+          var(--n-gradient-border-primary) border-box;
       }
 
       .n-stat-card--secondary {
-        border-color: color-mix(in srgb, var(--n-color-secondary) 42%, var(--n-border-1));
+        background:
+          linear-gradient(var(--n-surface-1), var(--n-surface-1)) padding-box,
+          var(--n-gradient-border-secondary) border-box;
       }
 
-      .n-stat-card--success {
-        border-color: color-mix(in srgb, var(--n-color-success) 42%, var(--n-border-1));
-      }
-
-      .n-stat-card--warning {
-        border-color: color-mix(in srgb, var(--n-color-warning) 42%, var(--n-border-1));
-      }
-
-      .n-stat-card--danger {
-        border-color: color-mix(in srgb, var(--n-color-danger) 42%, var(--n-border-1));
-      }
-
-      .n-stat-card--info {
-        border-color: color-mix(in srgb, var(--n-color-info) 42%, var(--n-border-1));
-      }
-
-      .n-stat-card__meta,
-      .n-stat-card__footer {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: var(--n-space-4);
+      .n-stat-card__content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 0;
         min-width: 0;
       }
 
       .n-stat-card__label,
       .n-stat-card__value,
-      .n-stat-card__description {
+      .n-stat-card__description,
+      .n-stat-card__trend {
         margin: 0;
       }
 
       .n-stat-card__label {
-        color: var(--n-text-2);
-        font-size: var(--n-font-size-13);
-        font-weight: var(--n-font-weight-semibold);
+        color: var(--n-text-3);
+        font-size: 11.5px;
+        line-height: 1.35;
       }
 
       .n-stat-card__value {
-        margin-top: var(--n-space-2);
+        margin-top: 7px;
         font-family: var(--n-font-display);
-        font-size: var(--n-font-size-32);
+        font-size: var(--n-font-size-28);
         font-weight: var(--n-font-weight-bold);
+        letter-spacing: -0.04em;
         line-height: 1;
         background: var(--n-gradient-gemini);
         background-clip: text;
@@ -141,28 +120,17 @@ import type { NStatCardVariant, NStatTrend } from './stat-card.types.js';
         -webkit-text-fill-color: transparent;
       }
 
-      .n-stat-card__icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border: 1px solid var(--n-border-2);
-        border-radius: var(--n-radius-lg);
-        background: color-mix(in srgb, var(--n-color-primary) 12%, var(--n-surface-2));
-        color: var(--n-color-primary-bright);
-      }
-
       .n-stat-card__description {
+        margin-top: var(--n-space-2);
         color: var(--n-text-3);
-        font-size: var(--n-font-size-13);
+        font-size: var(--n-font-size-12);
       }
 
       .n-stat-card__trend {
-        white-space: nowrap;
-        color: var(--n-text-2);
-        font-size: var(--n-font-size-12);
-        font-weight: var(--n-font-weight-bold);
+        margin-top: 10px;
+        font-family: var(--n-font-mono);
+        font-size: 10.5px;
+        line-height: 1.2;
       }
 
       .n-stat-card__trend--up {
@@ -171,6 +139,25 @@ import type { NStatCardVariant, NStatTrend } from './stat-card.types.js';
 
       .n-stat-card__trend--down {
         color: var(--n-color-danger);
+      }
+
+      .n-stat-card__trend--neutral {
+        color: var(--n-text-3);
+      }
+
+      .n-stat-card__icon {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--n-border-2);
+        border-radius: var(--n-radius-md);
+        background: color-mix(in srgb, var(--n-color-primary) 12%, var(--n-surface-2));
+        color: var(--n-color-primary-bright);
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -194,4 +181,15 @@ export class NStatCard {
   readonly trend = input<NStatTrend>('neutral');
   readonly trendValue = input<string | undefined>(undefined);
   readonly interactive = input(false, { transform: booleanAttribute });
+
+  trendPrefix(): string {
+    switch (this.trend()) {
+      case 'up':
+        return '↑ ';
+      case 'down':
+        return '↓ ';
+      default:
+        return '— ';
+    }
+  }
 }

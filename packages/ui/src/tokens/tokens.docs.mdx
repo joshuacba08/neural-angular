@@ -1,0 +1,332 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as TokenStories from './tokens.stories';
+
+<Meta of={TokenStories} />
+
+# Foundation Tokens
+
+Neural tokens define the visual contract for surfaces, hierarchy, rhythm, and semantic feedback. They are the layer beneath every component, shell, overlay, and AI-facing workflow in the system.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="tokens-doc-tabs"
+    id="tokens-doc-tab-overview"
+    value="overview"
+    aria-label="Overview"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="tokens-doc-tabs"
+    id="tokens-doc-tab-reference"
+    value="reference"
+    aria-label="Reference"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="tokens-doc-tabs"
+    id="tokens-doc-tab-usage"
+    value="usage"
+    aria-label="Usage"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Foundation token documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="overview" htmlFor="tokens-doc-tab-overview">
+      Overview
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="reference" htmlFor="tokens-doc-tab-reference">
+      Reference
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="usage" htmlFor="tokens-doc-tab-usage">
+      Usage
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="overview" id="overview">
+
+## Overview
+
+### What the system covers
+
+The token layer is responsible for:
+
+- semantic color roles
+- deep surface hierarchy
+- typography and mono metadata styles
+- spacing and geometry
+- motion timing and easing
+- glow, shadow, and elevation depth
+
+### Core palette
+
+<Canvas of={TokenStories.Overview} layout="fullscreen" sourceState="hidden" />
+
+### Applied system
+
+The same tokens should feel coherent when they move from swatches into real interface decisions.
+
+<Canvas of={TokenStories.SemanticUsage} layout="fullscreen" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="reference" id="reference">
+
+## Reference
+
+### Token groups
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Group</th>
+        <th>Purpose</th>
+        <th>Examples</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>color</code></td>
+        <td>Semantic accents, states, and brand energy.</td>
+        <td><code>--n-color-primary</code>, <code>--n-color-success</code></td>
+      </tr>
+      <tr>
+        <td><code>surface</code></td>
+        <td>Background hierarchy for shells, panels, cards, and overlays.</td>
+        <td><code>--n-bg-canvas</code>, <code>--n-surface-3</code></td>
+      </tr>
+      <tr>
+        <td><code>text</code></td>
+        <td>Readable ink ladder from primary copy to disabled metadata.</td>
+        <td><code>--n-text-1</code>, <code>--n-text-4</code></td>
+      </tr>
+      <tr>
+        <td><code>border</code></td>
+        <td>Hairlines, separators, field outlines, and focus edges.</td>
+        <td><code>--n-border-1</code>, <code>--n-field-border-focus</code></td>
+      </tr>
+      <tr>
+        <td><code>gradient</code></td>
+        <td>High-emphasis fills, borders, and product-brand moments.</td>
+        <td><code>--n-gradient-gemini</code>, <code>--n-gradient-border</code></td>
+      </tr>
+      <tr>
+        <td><code>spacing</code></td>
+        <td>Layout rhythm, component padding, and macro sizing.</td>
+        <td><code>--n-space-4</code>, <code>--n-dialog-width-lg</code></td>
+      </tr>
+      <tr>
+        <td><code>radius</code></td>
+        <td>Corner language from tiny chips to large panels.</td>
+        <td><code>--n-radius-sm</code>, <code>--n-radius-full</code></td>
+      </tr>
+      <tr>
+        <td><code>typography</code></td>
+        <td>Display, body, mono, weights, and size scale.</td>
+        <td><code>--n-font-display</code>, <code>--n-font-size-14</code></td>
+      </tr>
+      <tr>
+        <td><code>elevation</code></td>
+        <td>Shadow depth for panels, drawers, dialogs, and overlays.</td>
+        <td><code>--n-elevation-2</code>, <code>--n-overlay-panel-shadow</code></td>
+      </tr>
+      <tr>
+        <td><code>glow</code></td>
+        <td>Colored luminance used for premium and AI-oriented accents.</td>
+        <td><code>--n-glow-primary-md</code>, <code>--n-glow-gradient-sm</code></td>
+      </tr>
+      <tr>
+        <td><code>motion</code></td>
+        <td>Durations, easings, and reusable transition shorthands.</td>
+        <td><code>--n-duration-base</code>, <code>--n-transition-spring</code></td>
+      </tr>
+      <tr>
+        <td><code>zIndex</code></td>
+        <td>Stacking order for sticky UI, overlays, modals, and toasts.</td>
+        <td><code>--n-z-overlay</code>, <code>--n-z-toast</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Color roles
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-color-primary</code></td>
+        <td>Core action, focus, and active state color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-bright</code></td>
+        <td>Brighter interactive accent for links, hovers, and key emphasis.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary</code></td>
+        <td>Supporting accent for layered semantic treatments.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-tertiary</code></td>
+        <td>Expressive accent for premium and editorial moments.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success</code></td>
+        <td>Healthy, complete, and online feedback.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-warning</code></td>
+        <td>Queued, beta, or caution messaging.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Error, destructive, or failed states.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-info</code></td>
+        <td>Informational state and supporting metadata.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Surface ladder
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-bg-canvas</code></td>
+        <td>Deepest app background and global backdrop.</td>
+      </tr>
+      <tr>
+        <td><code>--n-bg-base</code></td>
+        <td>Primary application shell.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-1</code></td>
+        <td>Default cards, sections, and local panels.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td>Elevated nested panels and dense tool containers.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-3</code></td>
+        <td>Fields, previews, structured controls.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-4</code></td>
+        <td>Highest local contrast for compact elevated areas.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Motion contract
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-duration-fast</code></td>
+        <td>Small hover and micro-state transitions.</td>
+      </tr>
+      <tr>
+        <td><code>--n-duration-base</code></td>
+        <td>Default control and panel transitions.</td>
+      </tr>
+      <tr>
+        <td><code>--n-duration-slow</code></td>
+        <td>Larger layout and reveal changes.</td>
+      </tr>
+      <tr>
+        <td><code>--n-ease-standard</code></td>
+        <td>Default interaction easing.</td>
+      </tr>
+      <tr>
+        <td><code>--n-ease-decelerate</code></td>
+        <td>Exits, overlays, and slow settling motion.</td>
+      </tr>
+      <tr>
+        <td><code>--n-ease-spring</code></td>
+        <td>Playful or high-emphasis motion moments.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="usage" id="usage">
+
+## Usage
+
+### Geometry and depth
+
+<Canvas of={TokenStories.GeometryAndDepth} layout="fullscreen" sourceState="hidden" />
+
+### Type and motion
+
+<Canvas of={TokenStories.MotionAndType} layout="fullscreen" sourceState="hidden" />
+
+### Guidelines
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Principle</th>
+        <th>Guideline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Use semantic roles first</td>
+        <td>Prefer tokens like <code>--n-color-success</code> over hardcoded hex values inside components.</td>
+      </tr>
+      <tr>
+        <td>Preserve the surface ladder</td>
+        <td>Move between <code>canvas → base → surface 1–4</code> rather than inventing one-off panel colors.</td>
+      </tr>
+      <tr>
+        <td>Keep glow intentional</td>
+        <td>Reserve glow tokens for premium emphasis, focus states, and AI-centric accents.</td>
+      </tr>
+      <tr>
+        <td>Match text to contrast</td>
+        <td>Use <code>text-1</code> for primary information, then step down to <code>text-2/3/4</code> for hierarchy.</td>
+      </tr>
+      <tr>
+        <td>Favor token composition</td>
+        <td>Components should compose from shared tokens instead of introducing private visual constants unless truly necessary.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>

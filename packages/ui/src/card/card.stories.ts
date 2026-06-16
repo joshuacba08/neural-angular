@@ -9,6 +9,14 @@ import {
   NCardDescription,
   NCardFooter,
   NCardHeader,
+  NCardIcon,
+  NCardMeta,
+  NCardRow,
+  NCardRowAvatar,
+  NCardRowBody,
+  NCardRowSubtitle,
+  NCardRowTitle,
+  NCardRowTrailing,
   NCardTitle,
 } from './card.component.js';
 
@@ -25,6 +33,14 @@ const meta: Meta<NCard> = {
         NCardDescription,
         NCardFooter,
         NCardHeader,
+        NCardIcon,
+        NCardMeta,
+        NCardRow,
+        NCardRowAvatar,
+        NCardRowBody,
+        NCardRowSubtitle,
+        NCardRowTitle,
+        NCardRowTrailing,
         NCardTitle,
         NIcon,
       ],
@@ -33,7 +49,7 @@ const meta: Meta<NCard> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'elevated', 'outlined', 'gradient'],
+      options: ['default', 'primary', 'secondary', 'gradient', 'elevated', 'outlined'],
     },
   },
   args: {
@@ -57,7 +73,7 @@ export const Playground: Story = {
         </n-card-header>
         <n-card-content>
           <div class="n-story-metric">
-            <span>68%</span>
+            <span class="n-story-metric__value">68%</span>
             <n-badge variant="success">Running</n-badge>
           </div>
         </n-card-content>
@@ -70,25 +86,102 @@ export const Playground: Story = {
   }),
 };
 
+export const DesignSystem: Story = {
+  render: () => ({
+    template: `
+      <div style="display:flex;flex-direction:column;gap:28px;max-width:760px">
+        <section>
+          <p class="n-story-eyebrow">Card Variants</p>
+          <div class="n-story-card-grid">
+            <n-card [interactive]="true">
+              <n-card-icon accent="gemini">
+                <n-icon name="zap" size="md" />
+              </n-card-icon>
+              <n-card-title>Neural Agent</n-card-title>
+              <n-card-content>
+                Contexto extendido de 2M tokens. Respuesta en tiempo real con streaming.
+              </n-card-content>
+              <n-card-meta accent="primary">Gemini full gradient</n-card-meta>
+            </n-card>
+
+            <n-card variant="primary" [interactive]="true">
+              <n-card-icon accent="primary">
+                <n-icon name="eye" size="md" />
+              </n-card-icon>
+              <n-card-title>Vision Model</n-card-title>
+              <n-card-content>
+                Análisis multimodal de imágenes, video y documentos.
+              </n-card-content>
+              <n-card-meta accent="primary">Blue → Violet</n-card-meta>
+            </n-card>
+
+            <n-card variant="secondary" [interactive]="true">
+              <n-card-icon accent="secondary">
+                <n-icon name="code" size="md" />
+              </n-card-icon>
+              <n-card-title>Code Assistant</n-card-title>
+              <n-card-content>
+                Generación y revisión de código en 40+ lenguajes.
+              </n-card-content>
+              <n-card-meta accent="secondary">Violet → Pink</n-card-meta>
+            </n-card>
+          </div>
+        </section>
+
+        <section>
+          <p class="n-story-eyebrow">Horizontal List Item</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <n-card-row variant="primary">
+              <n-card-row-avatar accent="primary">A</n-card-row-avatar>
+              <n-card-row-body>
+                <n-card-row-title>Asesor Financiero AI</n-card-row-title>
+                <n-card-row-subtitle>Especialista en análisis de mercados</n-card-row-subtitle>
+              </n-card-row-body>
+              <n-card-row-trailing>
+                <n-badge variant="success">Activo</n-badge>
+              </n-card-row-trailing>
+            </n-card-row>
+
+            <n-card-row variant="secondary">
+              <n-card-row-avatar accent="secondary">S</n-card-row-avatar>
+              <n-card-row-body>
+                <n-card-row-title>Software Engineer AI</n-card-row-title>
+                <n-card-row-subtitle>Generación y revisión de código</n-card-row-subtitle>
+              </n-card-row-body>
+              <n-card-row-trailing>
+                <n-badge variant="warning">Beta</n-badge>
+              </n-card-row-trailing>
+            </n-card-row>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
+};
+
 export const Variants: Story = {
   render: () => ({
     template: `
       <div class="n-story-grid">
-        <n-card variant="default">
+        <n-card>
           <n-card-title>Default</n-card-title>
-          <n-card-content>Neutral surface for common product content.</n-card-content>
+          <n-card-content>Gradient border surface for product content.</n-card-content>
+        </n-card>
+        <n-card variant="primary">
+          <n-card-title>Primary</n-card-title>
+          <n-card-content>Blue → violet gradient border.</n-card-content>
+        </n-card>
+        <n-card variant="secondary">
+          <n-card-title>Secondary</n-card-title>
+          <n-card-content>Violet → pink gradient border.</n-card-content>
         </n-card>
         <n-card variant="elevated">
           <n-card-title>Elevated</n-card-title>
-          <n-card-content>Raised surface for important information.</n-card-content>
+          <n-card-content>Gradient border with raised elevation.</n-card-content>
         </n-card>
         <n-card variant="outlined">
           <n-card-title>Outlined</n-card-title>
           <n-card-content>Low emphasis container for secondary content.</n-card-content>
-        </n-card>
-        <n-card variant="gradient">
-          <n-card-title>Gradient</n-card-title>
-          <n-card-content>Premium emphasis for focused states.</n-card-content>
         </n-card>
       </div>
     `,
@@ -98,12 +191,12 @@ export const Variants: Story = {
 export const Composition: Story = {
   render: () => ({
     template: `
-      <n-card variant="gradient" interactive class="n-story-card">
+      <n-card [interactive]="true" class="n-story-card">
+        <n-card-icon accent="gemini">
+          <n-icon name="cpu" size="md" />
+        </n-card-icon>
         <n-card-header>
-          <div class="n-story-title-row">
-            <n-icon name="cpu" size="md" />
-            <n-card-title>Neural worker</n-card-title>
-          </div>
+          <n-card-title>Neural worker</n-card-title>
           <n-card-description>GPU queue, model status and export readiness.</n-card-description>
         </n-card-header>
         <n-card-content>

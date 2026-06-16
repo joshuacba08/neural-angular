@@ -52,5 +52,7 @@
   --nn-grad-g-90: var(--n-gradient-gemini-90);
   --nn-grad-surface: var(--n-gradient-surface);
   --nn-border-grad: var(--n-gradient-border);
+  --nn-border-grad-b: var(--n-gradient-border-primary);
+  --nn-border-grad-v: var(--n-gradient-border-secondary);
   --nn-border-subtle: var(--n-gradient-border-subtle);
 }
