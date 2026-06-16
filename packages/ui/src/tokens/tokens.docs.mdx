@@ -55,12 +55,12 @@ Neural tokens define the visual contract for surfaces, hierarchy, rhythm, and se
 
 The token layer is responsible for:
 
-- semantic color roles
-- deep surface hierarchy
-- typography and mono metadata styles
-- spacing and geometry
-- motion timing and easing
-- glow, shadow, and elevation depth
+- **Semantic color roles**: Branding energy, states, and feedback loops.
+- **Deep surface hierarchy**: Dark-first panel stacking and depth contract.
+- **Typography**: Display headlines, clean body layouts, and mono metadata.
+- **Spacing & geometry**: Layout rhythms, borders, and corner radiuses.
+- **Motion timing**: Standard timing values and spring animations.
+- **Depth & elevation**: Soft shadow heights and AI glow accents.
 
 ### Core palette
 
@@ -154,126 +154,602 @@ The same tokens should feel coherent when they move from swatches into real inte
   </table>
 </div>
 
-### Color roles
+### Color & Status Palette
 
 <div className="n-doc-table-wrap">
   <table>
     <thead>
       <tr>
         <th>Token</th>
-        <th>Role</th>
+        <th>Default Value</th>
+        <th>Role & Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><code>--n-color-primary</code></td>
-        <td>Core action, focus, and active state color.</td>
+        <td><code>#4285f4</code></td>
+        <td>Core action, active brand element (Google Blue).</td>
       </tr>
       <tr>
         <td><code>--n-color-primary-bright</code></td>
-        <td>Brighter interactive accent for links, hovers, and key emphasis.</td>
+        <td><code>#669df6</code></td>
+        <td>Brighter blue accent for text links, hovered actions, and high contrast.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-light</code></td>
+        <td><code>#8ab4f8</code></td>
+        <td>Light blue accent, ideal for borders or sub-headers.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-deep</code></td>
+        <td><code>#1a56c4</code></td>
+        <td>Darker blue tone for pressed actions and active outline backdrops.</td>
       </tr>
       <tr>
         <td><code>--n-color-secondary</code></td>
-        <td>Supporting accent for layered semantic treatments.</td>
+        <td><code>#7b5cf6</code></td>
+        <td>Secondary violet tone for secondary CTAs and layered gradients.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary-bright</code></td>
+        <td><code>#9d7bff</code></td>
+        <td>Vibrant violet for secondary state highlights and hover effects.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary-deep</code></td>
+        <td><code>#5b3fcc</code></td>
+        <td>Pressed state for secondary actions.</td>
       </tr>
       <tr>
         <td><code>--n-color-tertiary</code></td>
-        <td>Expressive accent for premium and editorial moments.</td>
+        <td><code>#d946ef</code></td>
+        <td>Fuchsia/Tertiary tone, used for brand styling and AI-accent details.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-tertiary-bright</code></td>
+        <td><code>#e879f9</code></td>
+        <td>Bright fuchsia hover color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-tertiary-deep</code></td>
+        <td><code>#a21caf</code></td>
+        <td>Dark fuchsia active press/state color.</td>
       </tr>
       <tr>
         <td><code>--n-color-success</code></td>
-        <td>Healthy, complete, and online feedback.</td>
+        <td><code>#34a853</code></td>
+        <td>Healthy state, online connectivity, completed operations.</td>
       </tr>
       <tr>
         <td><code>--n-color-warning</code></td>
-        <td>Queued, beta, or caution messaging.</td>
+        <td><code>#fbbc05</code></td>
+        <td>Warning flags, pending cues, queue updates.</td>
       </tr>
       <tr>
         <td><code>--n-color-danger</code></td>
-        <td>Error, destructive, or failed states.</td>
+        <td><code>#ea4335</code></td>
+        <td>Critical errors, failed operations, destructive actions.</td>
       </tr>
       <tr>
         <td><code>--n-color-info</code></td>
-        <td>Informational state and supporting metadata.</td>
+        <td><code>#4285f4</code></td>
+        <td>Information indicator and secondary semantic metadata.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-[role]-alpha-10</code></td>
+        <td><code>rgba(..., 0.1)</code></td>
+        <td>10% opacity tints for semantic backgrounds (success, danger, info, etc.).</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-### Surface ladder
+### Surface Hierarchy
 
 <div className="n-doc-table-wrap">
   <table>
     <thead>
       <tr>
         <th>Token</th>
-        <th>Used for</th>
+        <th>Default Value</th>
+        <th>Layer & Usage</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><code>--n-bg-canvas</code></td>
-        <td>Deepest app background and global backdrop.</td>
+        <td><code>#06060e</code></td>
+        <td>Deepest backdrop level, app background.</td>
       </tr>
       <tr>
         <td><code>--n-bg-base</code></td>
-        <td>Primary application shell.</td>
+        <td><code>#0a0a15</code></td>
+        <td>Primary application frame background (shell layout base).</td>
       </tr>
       <tr>
         <td><code>--n-surface-1</code></td>
-        <td>Default cards, sections, and local panels.</td>
+        <td><code>#0f0f1c</code></td>
+        <td>Level 1 cards, nested layout pages.</td>
       </tr>
       <tr>
         <td><code>--n-surface-2</code></td>
-        <td>Elevated nested panels and dense tool containers.</td>
+        <td><code>#141426</code></td>
+        <td>Level 2 elevated grids, nested sections, and toolboxes.</td>
       </tr>
       <tr>
         <td><code>--n-surface-3</code></td>
-        <td>Fields, previews, structured controls.</td>
+        <td><code>#1a1a2e</code></td>
+        <td>Input fields, code blocks, controls.</td>
       </tr>
       <tr>
         <td><code>--n-surface-4</code></td>
-        <td>Highest local contrast for compact elevated areas.</td>
+        <td><code>#202038</code></td>
+        <td>Highest contrast container surfaces.</td>
+      </tr>
+      <tr>
+        <td><code>--n-overlay</code></td>
+        <td><code>rgba(6, 6, 14, 0.9)</code></td>
+        <td>Semi-transparent backdrop layer.</td>
+      </tr>
+      <tr>
+        <td><code>--n-[component]-bg</code></td>
+        <td>Mix variables</td>
+        <td>Optimized component backgrounds (e.g. <code>--n-sidebar-bg</code>, <code>--n-chat-user-bg</code>).</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-### Motion contract
+### Text Typography
 
 <div className="n-doc-table-wrap">
   <table>
     <thead>
       <tr>
         <th>Token</th>
-        <th>Use</th>
+        <th>Default Value</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-text-1</code></td>
+        <td><code>rgba(255, 255, 255, 0.92)</code></td>
+        <td>High contrast primary copy, titles, labels.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-2</code></td>
+        <td><code>rgba(255, 255, 255, 0.58)</code></td>
+        <td>Medium contrast secondary copy, descriptions, helper text.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-3</code></td>
+        <td><code>rgba(255, 255, 255, 0.34)</code></td>
+        <td>Muted annotations, labels, placeholder hints.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-4</code></td>
+        <td><code>rgba(255, 255, 255, 0.16)</code></td>
+        <td>Disabled text state copy.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-display</code></td>
+        <td><code>"Plus Jakarta Sans", ...</code></td>
+        <td>Headline typography family.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-body</code></td>
+        <td><code>"Plus Jakarta Sans", ...</code></td>
+        <td>General UI typography family.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-mono</code></td>
+        <td><code>"JetBrains Mono", ...</code></td>
+        <td>Code and metadata typography family.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-size-[10-64]</code></td>
+        <td><code>0.625rem - 4rem</code></td>
+        <td>Modular typographic sizes (e.g. <code>14</code> is default body 14px).</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-weight-[light-bold]</code></td>
+        <td><code>300 - 700</code></td>
+        <td>Font weights (regular: <code>400</code>, semibold: <code>600</code>, bold: <code>700</code>).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Borders & Hairlines
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-border-0</code></td>
+        <td><code>rgba(255, 255, 255, 0.04)</code></td>
+        <td>Very subtle separation lines on deep panels.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-1</code></td>
+        <td><code>rgba(255, 255, 255, 0.07)</code></td>
+        <td>Standard card and component layout separations.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-2</code></td>
+        <td><code>rgba(255, 255, 255, 0.12)</code></td>
+        <td>Stronger boundaries (inputs, buttons, overlays).</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-3</code></td>
+        <td><code>rgba(255, 255, 255, 0.2)</code></td>
+        <td>High-contrast element borders.</td>
+      </tr>
+      <tr>
+        <td><code>--n-field-border-*</code></td>
+        <td>Opacity states</td>
+        <td>Input fields border styles (rest, hover, focus).</td>
+      </tr>
+      <tr>
+        <td><code>--n-focus-ring</code></td>
+        <td><code>0 0 0 3px ...</code></td>
+        <td>Focus glow ring for accessibility.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Brand Gradients
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Visual Effect</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-gradient-gemini</code></td>
+        <td><code>linear-gradient(135deg, #4f8eff, #7b5cf6, #d946ef, #f43f5e)</code></td>
+        <td>Vivid Gemini core brand gradient.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-gemini-90</code></td>
+        <td><code>linear-gradient(90deg, #4f8eff, #7b5cf6, #d946ef, #f43f5e)</code></td>
+        <td>Horizontal 90-degree Gemini brand gradient.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td><code>linear-gradient(135deg, #4285f4, #7b5cf6)</code></td>
+        <td>Blue-to-violet linear gradient.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-secondary-tertiary</code></td>
+        <td><code>linear-gradient(135deg, #7b5cf6, #d946ef)</code></td>
+        <td>Violet-to-fuchsia linear gradient.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-surface</code></td>
+        <td><code>linear-gradient(135deg, rgba(66,133,244,.06), ...)</code></td>
+        <td>Subtle ambient background gradient for cards.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border</code></td>
+        <td><code>linear-gradient(135deg, rgba(66,133,244,.45), ...)</code></td>
+        <td>Gradient border fill used inside border-box clips.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Spacing & Geometry
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Pixel Equivalent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-space-1</code></td>
+        <td><code>4px</code></td>
+        <td>Extra-small padding/margins.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-2</code></td>
+        <td><code>8px</code></td>
+        <td>Standard small gap.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-3</code></td>
+        <td><code>12px</code></td>
+        <td>Medium components spacing.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-4</code></td>
+        <td><code>16px</code></td>
+        <td>Default padding for cards and layout cells.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-5</code></td>
+        <td><code>20px</code></td>
+        <td>Large margins.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-6</code></td>
+        <td><code>24px</code></td>
+        <td>Section layouts spacing.</td>
+      </tr>
+      <tr>
+        <td><code>--n-space-[8-32]</code></td>
+        <td><code>32px - 128px</code></td>
+        <td>Macro layouts grid spacing.</td>
+      </tr>
+      <tr>
+        <td><code>--n-sidebar-width-[sm-lg]</code></td>
+        <td><code>220px - 312px</code></td>
+        <td>Standard navigation sidebar width.</td>
+      </tr>
+      <tr>
+        <td><code>--n-dialog-width-[sm-xl]</code></td>
+        <td><code>380px - 920px</code></td>
+        <td>Standard modal widths.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Corner Radius
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Visual Treatment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-radius-none</code></td>
+        <td><code>0</code></td>
+        <td>Sharp corners.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-xs</code></td>
+        <td><code>4px</code></td>
+        <td>Small checkboxes, tags, indicators.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-sm</code></td>
+        <td><code>8px</code></td>
+        <td>Buttons, chips, small item cards.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-md</code></td>
+        <td><code>12px</code></td>
+        <td>Standard cards, inputs, tabs.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-lg</code></td>
+        <td><code>16px</code></td>
+        <td>Default dashboard main cards.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-xl</code></td>
+        <td><code>20px</code></td>
+        <td>Large panels, section container layouts.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-2xl</code></td>
+        <td><code>24px</code></td>
+        <td>Modals, sheets, floating panels.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td><code>9999px</code></td>
+        <td>Perfect circles, pill badges.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Shadows & Elevation
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Elevation Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-elevation-0</code></td>
+        <td><code>none</code></td>
+        <td>Flat layout surface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-1</code></td>
+        <td><code>0 1px 4px rgba(0, 0, 0, 0.65)</code></td>
+        <td>Very low elevation, local chips or hover states.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-2</code></td>
+        <td><code>0 4px 12px rgba(...)</code></td>
+        <td>Default card elevations.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-3</code></td>
+        <td><code>0 8px 24px rgba(...)</code></td>
+        <td>Tooltips, dropdown menus, context popovers.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-4</code></td>
+        <td><code>0 16px 40px rgba(...)</code></td>
+        <td>Sticky overlays, drawers, prompt panels.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-5</code></td>
+        <td><code>0 28px 60px rgba(...)</code></td>
+        <td>Highest elevation, main dialog boxes and alerts.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### AI & Status Glow
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Glow Treatment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-glow-primary-[xs-lg]</code></td>
+        <td>Shadow filters</td>
+        <td>Blue glow shadows for actions, highlights, and focus.</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-secondary-[sm-md]</code></td>
+        <td>Shadow filters</td>
+        <td>Violet glow shadows.</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-tertiary-[sm-md]</code></td>
+        <td>Shadow filters</td>
+        <td>Fuchsia glow shadows for active components.</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-success-sm</code></td>
+        <td>Shadow filters</td>
+        <td>Green semantic status outer glow.</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-danger-sm</code></td>
+        <td>Shadow filters</td>
+        <td>Red semantic error outer glow.</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-gradient-sm</code></td>
+        <td>Shadow filters</td>
+        <td>Composite Gemini brand color outer glow shadow for AI elements.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Motion Contract
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Motion & Behavior</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><code>--n-duration-fast</code></td>
-        <td>Small hover and micro-state transitions.</td>
+        <td><code>150ms</code></td>
+        <td>Micro-animations (hovers, simple opacity shifts).</td>
       </tr>
       <tr>
         <td><code>--n-duration-base</code></td>
-        <td>Default control and panel transitions.</td>
+        <td><code>250ms</code></td>
+        <td>Default timing for buttons, inputs, and tab transitions.</td>
       </tr>
       <tr>
         <td><code>--n-duration-slow</code></td>
-        <td>Larger layout and reveal changes.</td>
+        <td><code>350ms</code></td>
+        <td>Panel slide-ins and sidebar expansions.</td>
+      </tr>
+      <tr>
+        <td><code>--n-duration-slower</code></td>
+        <td><code>550ms</code></td>
+        <td>High-emphasis spring motions and premium reveals.</td>
       </tr>
       <tr>
         <td><code>--n-ease-standard</code></td>
-        <td>Default interaction easing.</td>
+        <td><code>cubic-bezier(0.2, 0, 0, 1)</code></td>
+        <td>Smooth, standardized easing curve.</td>
       </tr>
       <tr>
         <td><code>--n-ease-decelerate</code></td>
-        <td>Exits, overlays, and slow settling motion.</td>
+        <td><code>cubic-bezier(0, 0, 0.2, 1)</code></td>
+        <td>Deceleration curve for entry transitions and menus.</td>
       </tr>
       <tr>
         <td><code>--n-ease-spring</code></td>
-        <td>Playful or high-emphasis motion moments.</td>
+        <td><code>cubic-bezier(0.34, 1.56, 0.64, 1)</code></td>
+        <td>Spring physics curve with subtle bounce effect.</td>
+      </tr>
+      <tr>
+        <td><code>--n-transition-[fast-spring]</code></td>
+        <td>Composite shortcuts</td>
+        <td>Shorthand transition properties (e.g. <code>var(--n-duration-base) var(--n-ease-standard)</code>).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Z-Index Layers
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Stacking Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-z-sticky</code></td>
+        <td><code>200</code></td>
+        <td>Sticky headers, floating navigation elements.</td>
+      </tr>
+      <tr>
+        <td><code>--n-z-overlay</code></td>
+        <td><code>300</code></td>
+        <td>Context menus, tooltips, dropdown selects.</td>
+      </tr>
+      <tr>
+        <td><code>--n-z-modal</code></td>
+        <td><code>400</code></td>
+        <td>Dialog windows, slide-out drawers, full backdrops.</td>
+      </tr>
+      <tr>
+        <td><code>--n-z-toast</code></td>
+        <td><code>500</code></td>
+        <td>System notifications, banners, alerts.</td>
       </tr>
     </tbody>
   </table>

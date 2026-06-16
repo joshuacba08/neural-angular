@@ -21,9 +21,16 @@
 
 .n-story-stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  gap: 12px;
-  width: min(760px, calc(100vw - 48px));
+  grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+  gap: 14px;
+  width: min(920px, calc(100vw - 48px));
+}
+
+.n-story-mini-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  width: min(920px, calc(100vw - 48px));
 }
 
 .n-story-empty-grid {

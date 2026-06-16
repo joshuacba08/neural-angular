@@ -1,0 +1,358 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as StatCardStories from './stat-card.stories';
+
+<Meta of={StatCardStories} />
+
+# Stat Card
+
+`NStatCard` is a standalone Angular component designed to showcase key metrics, statistics, and KPI dashboards. It supports multiple sizes, border gradient variants, icon attachments, semantic trend flags, and interactive hover effects.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="stat-card-doc-tabs"
+    id="stat-card-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="stat-card-doc-tabs"
+    id="stat-card-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="stat-card-doc-tabs"
+    id="stat-card-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Stat Card documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="stat-card-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="stat-card-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="stat-card-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NStatCard } from '@neural/angular-ui/stat-card';
+```
+
+### Basic
+
+A standard metric display utilizing a Gemini gradient value, an icon, and a trend percentage label.
+
+<Canvas of={StatCardStories.Playground} layout="centered" sourceState="shown" />
+
+### KPI Grid
+
+A grid layout using several `NStatCard` components to create an analytical dashboard overview.
+
+<Canvas of={StatCardStories.DesignSystem} layout="padded" sourceState="hidden" />
+
+### With Icon
+
+Default size cards allow displaying an icon badge on top of the metric.
+
+<Canvas of={StatCardStories.WithIcon} layout="centered" sourceState="shown" />
+
+### Mini Size
+
+A space-optimized `mini` layout suited for sidebars, details columns, or inline dashboards. Mini size hides descriptions, trends, and icons.
+
+<Canvas of={StatCardStories.Mini} layout="centered" sourceState="shown" />
+
+### Border Variants
+
+Configure default, primary, or secondary border gradient treatments to differentiate card significance or groupings.
+
+<Canvas of={StatCardStories.Variants} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NStatCard`.
+
+<ArgTypes of={StatCardStories} sort="requiredFirst" />
+
+### Size Options
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Size</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>default</code></td>
+        <td>Default size. Renders complete layout with icon, label, display value, trend, and meta description.</td>
+      </tr>
+      <tr>
+        <td><code>mini</code></td>
+        <td>Condensed size. Renders only the label and value metrics in a smaller padding container.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Variant Options
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Border Gradient Token</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>default</code></td>
+        <td><code>--n-gradient-border</code></td>
+        <td>Default neutral border card.</td>
+      </tr>
+      <tr>
+        <td><code>primary</code></td>
+        <td><code>--n-gradient-border-primary</code></td>
+        <td>Applies primary theme gradient (blue) to the card border.</td>
+      </tr>
+      <tr>
+        <td><code>secondary</code></td>
+        <td><code>--n-gradient-border-secondary</code></td>
+        <td>Applies secondary theme gradient (violet) to the card border.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Trend Options
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Trend</th>
+        <th>Symbol prefix</th>
+        <th>Color Token</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>up</code></td>
+        <td><code>↑ </code></td>
+        <td><code>--n-color-success</code></td>
+        <td>Indicates a positive growth direction (e.g. green).</td>
+      </tr>
+      <tr>
+        <td><code>down</code></td>
+        <td><code>↓ </code></td>
+        <td><code>--n-color-danger</code></td>
+        <td>Indicates a negative/downward growth direction (e.g. red).</td>
+      </tr>
+      <tr>
+        <td><code>neutral</code></td>
+        <td><code>— </code></td>
+        <td><code>--n-text-3</code></td>
+        <td>Indicates a stable trend.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied to/used by `NStatCard`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-stat-card</code></td>
+        <td>Root card element</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card--mini</code></td>
+        <td>Mini dimensions modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card--interactive</code></td>
+        <td>Interactive pointer cursor state modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card--primary</code></td>
+        <td>Primary border gradient modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card--secondary</code></td>
+        <td>Secondary border gradient modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__icon</code></td>
+        <td>Icon wrapper, applies background gradient fill and round shape</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__body</code></td>
+        <td>Main stats container</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__label</code></td>
+        <td>Category top description text</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__value</code></td>
+        <td>Main value text, clips gradient background to display typography in gradient style</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__trend</code></td>
+        <td>Trend percentage badge element</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__trend--up</code></td>
+        <td>Growth up color modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__trend--down</code></td>
+        <td>Growth down color modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__trend--neutral</code></td>
+        <td>Neutral trend color modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-stat-card__meta</code></td>
+        <td>Bottom descriptive context label</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` design tokens consumed by `NStatCard`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-radius-lg</code></td>
+        <td>Card border radius in default mode</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-md</code></td>
+        <td>Card border radius in mini mode</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-1</code></td>
+        <td>Fill background of the card body</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border</code></td>
+        <td>Default border gradient colors</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-primary</code></td>
+        <td>Primary border gradient colors</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-secondary</code></td>
+        <td>Secondary border gradient colors</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-surface</code></td>
+        <td>Background hover gradient highlight effect</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-gemini</code></td>
+        <td>Background gradient for the icon and text gradient clip for display value</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-1</code></td>
+        <td>Primary text color</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-3</code></td>
+        <td>Muted color for standard labels and neutral trend direction</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-4</code></td>
+        <td>Subtle color for bottom metadata description text</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success</code></td>
+        <td>Color for growth up trends</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Color for growth down trends</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-display</code></td>
+        <td>Typeface family for the large display value</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-mono</code></td>
+        <td>Typeface family for the trend indicator</td>
+      </tr>
+      <tr>
+        <td><code>--n-transition-base</code></td>
+        <td>Transition duration for hover effects</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-3</code></td>
+        <td>Hover box-shadow elevation</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-gradient-sm</code></td>
+        <td>Hover glow box-shadow</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>

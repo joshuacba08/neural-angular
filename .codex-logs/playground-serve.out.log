@@ -901,3 +901,13 @@ Application bundle generation complete. [0.327 seconds] - 2026-06-16T06:08:06.78
 Application bundle generation complete. [0.281 seconds] - 2026-06-16T06:08:25.385Z
 [39m
 [37mPage reload sent to client(s).[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37m
+No output file changes.
+Application bundle generation complete. [0.116 seconds] - 2026-06-16T06:21:39.268Z
+[39m
+[33m>[39m Changes detected. Rebuilding...
+[32m√[39m Changes detected. Rebuilding...
+[37mApplication bundle generation failed. [0.250 seconds] - 2026-06-16T06:21:54.226Z
+[39m
