@@ -1,0 +1,184 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as SkeletonStories from './skeleton.stories';
+
+<Meta of={SkeletonStories} />
+
+# Skeleton
+
+`NSkeleton` is a standalone Angular component that renders a placeholder preview for loading content. It supports rectangle, circular, and text line shapes, with an animated shimmer/wave effect matching the Claude Design specifications.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="skeleton-doc-tabs"
+    id="skeleton-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="skeleton-doc-tabs"
+    id="skeleton-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="skeleton-doc-tabs"
+    id="skeleton-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Skeleton documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="skeleton-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="skeleton-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="skeleton-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NSkeleton } from '@neural/angular-ui/skeleton';
+```
+
+### Basic
+
+A standard vertical text and card loading placeholder.
+
+<Canvas of={SkeletonStories.Playground} layout="centered" sourceState="shown" />
+
+### Shapes
+
+Use different shapes (`rect`, `circle`, `text`) for specific placeholder patterns.
+
+<Canvas of={SkeletonStories.Shapes} layout="centered" sourceState="hidden" />
+
+### Composite Layout
+
+A complex dashboard preview using side-by-side cards (text/media preview) and list table rows matching the Claude Design specifications.
+
+<Canvas of={SkeletonStories.CompositeLayout} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NSkeleton`.
+
+<ArgTypes of={SkeletonStories} sort="requiredFirst" />
+
+### Shape Options
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Shape</th>
+        <th>Default height</th>
+        <th>Default border-radius</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>rect</code></td>
+        <td>Controlled by height input</td>
+        <td><code>6px</code></td>
+        <td>Default block shape for card surfaces or media containers</td>
+      </tr>
+      <tr>
+        <td><code>circle</code></td>
+        <td>Controlled by height/width inputs</td>
+        <td><code>50%</code></td>
+        <td>Circular placeholder for avatars, status icons, or circular buttons</td>
+      </tr>
+      <tr>
+        <td><code>text</code></td>
+        <td><code>9px</code></td>
+        <td><code>6px</code></td>
+        <td>Thin line matching normal typography heights for textual placeholders</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied to/used by `NSkeleton`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-skeleton</code></td>
+        <td>Root skeleton placeholder element, implements the shimmer wave animation</td>
+      </tr>
+      <tr>
+        <td><code>.n-skeleton--circle</code></td>
+        <td>Modifier that sets 50% border radius for circular avatars</td>
+      </tr>
+      <tr>
+        <td><code>.n-skeleton--text</code></td>
+        <td>Modifier that sets default height (9px) and border radius for typography</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens related to layout containers where skeletons are typically rendered.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td>Background of parent dashboard cards / layout container boxes</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-0</code></td>
+        <td>Subtle borders of parent cards or list separators</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>

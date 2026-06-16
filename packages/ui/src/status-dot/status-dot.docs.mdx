@@ -1,0 +1,259 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as StatusDotStories from './status-dot.stories';
+
+<Meta of={StatusDotStories} />
+
+# Status Dot
+
+`NStatusDot` is a standalone Angular component that renders a small status indicator dot. It supports multiple statuses, an optional pulsing animation for active/live feedback, and fully accessible labels and semantics.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="status-dot-doc-tabs"
+    id="status-dot-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="status-dot-doc-tabs"
+    id="status-dot-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="status-dot-doc-tabs"
+    id="status-dot-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Status Dot documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="status-dot-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="status-dot-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="status-dot-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NStatusDot } from '@neural/angular-ui/status-dot';
+```
+
+### Basic
+
+By default, the status is `neutral`. You can configure a text label or an accessibility label.
+
+<Canvas of={StatusDotStories.Playground} layout="centered" sourceState="shown" />
+
+### Statuses
+
+All statuses apply matching semantic colors from the design system.
+
+<Canvas of={StatusDotStories.Statuses} layout="centered" sourceState="hidden" />
+
+### Pulse
+
+The `pulse` property adds a subtle, expanding pulse animation around the dot, ideal for indicating active states like live streams, recording sessions, or real-time connectivity.
+
+<Canvas of={StatusDotStories.Pulse} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NStatusDot`.
+
+<ArgTypes of={StatusDotStories} sort="requiredFirst" />
+
+### Status Options
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Color Token</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>neutral</code></td>
+        <td><code>--n-text-3</code></td>
+        <td>Default neutral grey status</td>
+      </tr>
+      <tr>
+        <td><code>online</code> / <code>success</code></td>
+        <td><code>--n-color-success</code></td>
+        <td>Indicates a successful state or active user</td>
+      </tr>
+      <tr>
+        <td><code>busy</code> / <code>danger</code></td>
+        <td><code>--n-color-danger</code></td>
+        <td>Indicates a busy state or critical error</td>
+      </tr>
+      <tr>
+        <td><code>away</code> / <code>warning</code></td>
+        <td><code>--n-color-warning</code></td>
+        <td>Indicates an idle/away state or warning</td>
+      </tr>
+      <tr>
+        <td><code>offline</code></td>
+        <td><code>--n-text-3</code></td>
+        <td>Indicates an offline or disconnected status</td>
+      </tr>
+      <tr>
+        <td><code>info</code></td>
+        <td><code>--n-color-info</code></td>
+        <td>Indicates an informational or neutral blue status</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied to/used by `NStatusDot`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-status-dot</code></td>
+        <td>Root indicator dot element</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--neutral</code></td>
+        <td>Applies neutral status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--online</code></td>
+        <td>Applies online status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--offline</code></td>
+        <td>Applies offline status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--busy</code></td>
+        <td>Applies busy status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--away</code></td>
+        <td>Applies away status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--success</code></td>
+        <td>Applies success status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--warning</code></td>
+        <td>Applies warning status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--danger</code></td>
+        <td>Applies danger status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--info</code></td>
+        <td>Applies info status style</td>
+      </tr>
+      <tr>
+        <td><code>.n-status-dot--pulse</code></td>
+        <td>Enables the expanding pulse animation via pseudo-element</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` design tokens consumed by `NStatusDot`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-bg-canvas</code></td>
+        <td>Border color of the dot to match the background surface</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-2</code></td>
+        <td>Outer box-shadow border color for the dot</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td>Standard round border radius</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-3</code></td>
+        <td>Color for <code>neutral</code> and <code>offline</code> statuses</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success</code></td>
+        <td>Color for <code>online</code> and <code>success</code> statuses</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Color for <code>busy</code> and <code>danger</code> statuses</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-warning</code></td>
+        <td>Color for <code>away</code> and <code>warning</code> statuses</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-info</code></td>
+        <td>Color for <code>info</code> status</td>
+      </tr>
+      <tr>
+        <td><code>--n-duration-slower</code></td>
+        <td>Animation duration for the pulse effect</td>
+      </tr>
+      <tr>
+        <td><code>--n-ease-standard</code></td>
+        <td>Transition and animation easing curve</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>
