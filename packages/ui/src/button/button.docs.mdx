@@ -1,0 +1,176 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as ButtonStories from './button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+`NButton` is a standalone Angular component that renders a real internal `<button>`. It supports Gemini gradient fills, tonal and ghost treatments, four sizes, icon-only mode, loading state, and full-width CTAs.
+
+<div className="n-doc-nav">
+  <a href="#features">Features</a>
+  <a href="#api">API</a>
+  <a href="#theming">Theming</a>
+</div>
+
+<h2 id="features">Features</h2>
+
+### Import
+
+```ts
+import { NButton } from '@neural/angular-ui/button';
+```
+
+### Basic
+
+The default variant is `primary`. Project content via `ng-content`.
+
+<Canvas of={ButtonStories.Playground} layout="centered" sourceState="shown" />
+
+### Gradient Filled
+
+Filled buttons use directional gradients and soft glow shadows.
+
+<Canvas of={ButtonStories.GradientFilled} layout="padded" sourceState="hidden" />
+
+### Outlined, Tonal & Ghost
+
+Lower-emphasis actions use gradient borders, tonal surfaces, or ghost treatments.
+
+<Canvas of={ButtonStories.OutlinedTonalGhost} layout="padded" sourceState="hidden" />
+
+### Sizes
+
+Four pill heights: 32px, 40px, 48px, and 56px.
+
+<Canvas of={ButtonStories.Sizes} layout="centered" sourceState="hidden" />
+
+### With Icon
+
+Project `NIcon` or any inline content before the label.
+
+<Canvas of={ButtonStories.WithIcon} layout="centered" sourceState="shown" />
+
+### Icon Only
+
+Set `iconOnly` and provide `ariaLabel` for accessible naming.
+
+<Canvas of={ButtonStories.IconButtons} layout="centered" sourceState="shown" />
+
+### Full Width
+
+Use `fullWidth` for page-level CTAs.
+
+<Canvas of={ButtonStories.FullWidthCtas} layout="padded" sourceState="shown" />
+
+### States
+
+`loading` disables the control, sets `aria-busy`, and shows a centered spinner.
+
+<Canvas of={ButtonStories.States} layout="centered" sourceState="hidden" />
+
+<h2 id="api">API</h2>
+
+Defines the input properties of `NButton`.
+
+<ArgTypes of={ButtonStories} sort="requiredFirst" />
+
+### Variants
+
+<div className="n-doc-table-wrap">
+
+| Name | Design reference | Description |
+| --- | --- | --- |
+| `primary` | `.nn-btn-f` | Blue → violet gradient fill |
+| `gemini` | `.nn-btn-fg` | Full Gemini gradient CTA |
+| `accent` | `.nn-btn-fv` | Violet → pink gradient fill |
+| `danger` | `.nn-btn-fd` | Destructive solid action |
+| `outline` | `.nn-btn-o` | Gradient border, transparent fill |
+| `outline-gemini` | `.nn-btn-og` | Gemini gradient border |
+| `tonal` | `.nn-btn-t` | Blue tonal surface |
+| `tonal-violet` | `.nn-btn-tv` | Violet tonal surface |
+| `ghost` | `.nn-btn-g` | Primary ghost action |
+| `secondary` | `.nn-btn-gm` | Muted ghost action |
+
+</div>
+
+### Sizes
+
+<div className="n-doc-table-wrap">
+
+| Name | Height | Design reference |
+| --- | --- | --- |
+| `sm` | 32px | `.nn-btn-sm` |
+| `md` | 40px | default `.nn-btn` |
+| `lg` | 48px | `.nn-btn-lg` |
+| `xl` | 56px | `.nn-btn-xl` |
+
+</div>
+
+<h2 id="theming">Theming</h2>
+
+### CSS Classes
+
+List of class names applied by `NButton`.
+
+<div className="n-doc-table-wrap">
+
+| Class | Description |
+| --- | --- |
+| `.n-button` | Root button element |
+| `.n-button__content` | Label and projected content wrapper |
+| `.n-button__loader` | Loading spinner |
+| `.n-button--primary` | Blue → violet gradient variant |
+| `.n-button--gemini` | Gemini gradient variant |
+| `.n-button--accent` | Violet → pink gradient variant |
+| `.n-button--danger` | Danger solid variant |
+| `.n-button--outline` | Gradient border variant |
+| `.n-button--outline-gemini` | Gemini border variant |
+| `.n-button--tonal` | Blue tonal variant |
+| `.n-button--tonal-violet` | Violet tonal variant |
+| `.n-button--ghost` | Primary ghost variant |
+| `.n-button--secondary` | Muted ghost variant |
+| `.n-button--sm` | 32px size modifier |
+| `.n-button--md` | 40px size modifier |
+| `.n-button--lg` | 48px size modifier |
+| `.n-button--xl` | 56px size modifier |
+| `.n-button--ico` | Circular icon-only modifier |
+| `.n-button--full` | Full-width modifier |
+| `.n-button--loading` | Loading state modifier |
+
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens consumed by the button styles.
+
+<div className="n-doc-table-wrap">
+
+| Token | Used for |
+| --- | --- |
+| `--n-gradient-primary-secondary` | `primary` background |
+| `--n-gradient-gemini` | `gemini` background and `outline-gemini` border |
+| `--n-gradient-secondary-tertiary` | `accent` background |
+| `--n-gradient-surface-strong` | `outline-gemini` hover fill |
+| `--n-color-danger` | `danger` background |
+| `--n-color-primary` | `outline` label color |
+| `--n-color-primary-bright` | `ghost` label color |
+| `--n-color-primary-alpha-10` | `tonal` and `ghost` surfaces |
+| `--n-color-secondary` | `tonal-violet` label color |
+| `--n-color-secondary-alpha-10` | `tonal-violet` surface |
+| `--n-text-1` | `outline-gemini` label color |
+| `--n-text-2` | `secondary` label color |
+| `--n-border-1` | Ghost borders |
+| `--n-glow-primary-xs` | `primary` / `tonal` glow |
+| `--n-glow-primary-md` | `primary` hover glow |
+| `--n-glow-gradient-sm` | `gemini` glow |
+| `--n-glow-secondary-sm` | `accent` / `tonal-violet` glow |
+| `--n-glow-danger-sm` | `danger` hover glow |
+| `--n-radius-full` | Pill radius |
+| `--n-font-body` | Button typeface |
+| `--n-font-weight-semibold` | Button weight |
+| `--n-duration-base` | Transition duration |
+| `--n-ease-standard` | Transition easing |
+
+</div>

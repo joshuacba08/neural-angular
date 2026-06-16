@@ -35,6 +35,22 @@
       "types": "./dist/input/index.d.ts",
       "default": "./dist/input/index.js"
     },
+    "./input-number": {
+      "types": "./dist/input-number/index.d.ts",
+      "default": "./dist/input-number/index.js"
+    },
+    "./input-otp": {
+      "types": "./dist/input-otp/index.d.ts",
+      "default": "./dist/input-otp/index.js"
+    },
+    "./password": {
+      "types": "./dist/password/index.d.ts",
+      "default": "./dist/password/index.js"
+    },
+    "./rating": {
+      "types": "./dist/rating/index.d.ts",
+      "default": "./dist/rating/index.js"
+    },
     "./textarea": {
       "types": "./dist/textarea/index.d.ts",
       "default": "./dist/textarea/index.js"

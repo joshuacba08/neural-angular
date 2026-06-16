@@ -137,12 +137,8 @@ When `loading` is `true`, the internal button is disabled, exposes `aria-busy="t
 
 ## Storybook
 
-Button stories mirror the design reference sections from `components.html`:
+Open `Components/Button` in Storybook for an MDX docs page with **Features**, **API**, and **Theming** sections (pure MDX, no extra React/TSX files). Interactive stories remain available as child entries.
 
-- `Gradient Filled`
-- `Outlined Tonal Ghost`
-- `Sizes`
-- `Icon Buttons`
-- `Full Width Ctas`
-
-Run Storybook with `pnpm nx run @neural/angular-ui:storybook` and open `Components/Button`.
+```bash
+pnpm nx run @neural/angular-ui:storybook
+```

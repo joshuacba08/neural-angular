@@ -6,6 +6,7 @@ import { NButton } from './button.component.js';
 const meta: Meta<NButton> = {
   title: 'Components/Button',
   component: NButton,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NButton, NIcon],
@@ -13,7 +14,13 @@ const meta: Meta<NButton> = {
   ],
   argTypes: {
     variant: {
+      description: 'Visual treatment of the button.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'NButtonVariant' },
+        defaultValue: { summary: 'primary' },
+      },
       options: [
         'primary',
         'gemini',
@@ -28,12 +35,69 @@ const meta: Meta<NButton> = {
       ],
     },
     size: {
+      description: 'Button height and horizontal padding.',
       control: 'select',
+      table: {
+        category: 'Appearance',
+        type: { summary: "'sm' | 'md' | 'lg' | 'xl'" },
+        defaultValue: { summary: 'md' },
+      },
       options: ['sm', 'md', 'lg', 'xl'],
     },
     type: {
+      description: 'Native button type attribute.',
       control: 'select',
+      table: {
+        category: 'Behavior',
+        type: { summary: "'button' | 'submit' | 'reset'" },
+        defaultValue: { summary: 'button' },
+      },
       options: ['button', 'submit', 'reset'],
+    },
+    disabled: {
+      description: 'Disables user interaction.',
+      control: 'boolean',
+      table: {
+        category: 'State',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    loading: {
+      description: 'Shows a spinner, disables the button, and sets aria-busy.',
+      control: 'boolean',
+      table: {
+        category: 'State',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    fullWidth: {
+      description: 'Expands the button to the full container width.',
+      control: 'boolean',
+      table: {
+        category: 'Layout',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    iconOnly: {
+      description: 'Renders a circular icon button. Pair with ariaLabel.',
+      control: 'boolean',
+      table: {
+        category: 'Layout',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    ariaLabel: {
+      description: 'Accessible label when iconOnly is true.',
+      control: 'text',
+      table: {
+        category: 'Accessibility',
+        type: { summary: 'string | null' },
+        defaultValue: { summary: 'null' },
+      },
     },
   },
   args: {

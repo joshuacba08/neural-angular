@@ -47,6 +47,12 @@
         "packages/ui/src/image-compare/index.ts"
       ],
       "@neural/angular-ui/input": ["packages/ui/src/input/index.ts"],
+      "@neural/angular-ui/input-number": [
+        "packages/ui/src/input-number/index.ts"
+      ],
+      "@neural/angular-ui/input-otp": ["packages/ui/src/input-otp/index.ts"],
+      "@neural/angular-ui/password": ["packages/ui/src/password/index.ts"],
+      "@neural/angular-ui/rating": ["packages/ui/src/rating/index.ts"],
       "@neural/angular-ui/media": ["packages/ui/src/media/index.ts"],
       "@neural/angular-ui/media-preview": [
         "packages/ui/src/media-preview/index.ts"
