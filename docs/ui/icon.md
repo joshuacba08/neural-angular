@@ -2,19 +2,21 @@
 
 Status: implemented with `@lucide/angular`.
 
-`NIcon` is a standalone Angular component that renders Lucide icons through the Angular-native dynamic icon directive. It does not use `window.lucide`, global scripts, DOM replacement, or manual icon hydration.
+`NIcon` is the shared icon primitive for Neural Angular. It renders registered Lucide glyphs through Angular-native bindings, inherits `currentColor`, resolves size from design tokens, and stays SSR-safe by avoiding global icon hydration.
 
-## Installation
+## Why it exists
 
-`@lucide/angular` is required by `@neural/angular-ui` and is declared as a peer dependency.
+`NIcon` gives the design system a single icon contract:
 
-```bash
-pnpm add @lucide/angular
-```
+- typed `name` values through `NIconName`
+- shared size tokens from `xs` to `xl`
+- accessible decorative vs semantic behavior
+- one provider to register the curated Neural icon pack
+- predictable rendering inside buttons, cards, chips, avatars, and empty states
 
 ## Provider
 
-Register the initial Neural icon set once in application config:
+Register the icon set once at the app boundary:
 
 ```ts
 import { provideNeuralIcons, provideNeuralTheme } from '@neural/angular-ui';
@@ -30,22 +32,44 @@ export const appConfig = {
 ## Imports
 
 ```ts
-import { NIcon, provideNeuralIcons } from '@neural/angular-ui';
+import { NIcon } from '@neural/angular-ui/icon';
 ```
 
 ```ts
-import { NIcon } from '@neural/angular-ui/icon';
+import {
+  NIcon,
+  type NIconName,
+  NEURAL_LUCIDE_ICON_NAMES,
+  provideNeuralIcons,
+} from '@neural/angular-ui';
 ```
 
 ## API
 
-| Input | Type | Default |
+| Input | Type | Default | Notes |
+| --- | --- | --- | --- |
+| `name` | `NIconName \| ''` | `''` | Must exist in the registered Neural icon pack. |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Maps to shared icon tokens. |
+| `label` | `string \| undefined` | `undefined` | Used when the icon is semantic. |
+| `decorative` | `boolean` | `true` | When `true`, the icon is hidden from assistive tech. |
+| `strokeWidth` | `number` | `2` | Passed through to the Lucide SVG stroke width. |
+
+## Accessibility
+
+- Decorative icons render with `aria-hidden="true"`.
+- Semantic icons render `role="img"`.
+- If `decorative` is `false` and `label` is omitted, `NIcon` derives one from the icon name.
+  - Example: `search-x` becomes `Search X`.
+
+## Sizing
+
+| Size | Dimension | Token |
 | --- | --- | --- |
-| `name` | `string` | `''` |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
-| `label` | `string \| undefined` | `undefined` |
-| `decorative` | `boolean` | `true` |
-| `strokeWidth` | `number` | `2` |
+| `xs` | 12px | `--n-icon-size-xs` |
+| `sm` | 16px | `--n-icon-size-sm` |
+| `md` | 20px | `--n-icon-size-md` |
+| `lg` | 24px | `--n-icon-size-lg` |
+| `xl` | 32px | `--n-icon-size-xl` |
 
 ## Examples
 
@@ -56,45 +80,27 @@ import { NIcon } from '@neural/angular-ui/icon';
 <n-icon
   name="trash-2"
   size="sm"
-  label="Delete"
   [decorative]="false"
+  label="Delete project"
 />
 ```
 
-## Registered Icons
+```ts
+import type { NIconName } from '@neural/angular-ui/icon';
 
-Initial registered names:
-
-```txt
-activity
-alert-circle
-arrow-right
-check
-chevron-down
-circle-check
-circle-x
-code
-command
-cpu
-external-link
-file-text
-home
-info
-loader-circle
-moon
-play
-plus
-search
-settings
-sparkles
-sun
-trash-2
-upload
-x
+const emptyStateIcon: NIconName = 'search-x';
 ```
 
-`@lucide/angular@1.18.0` does not expose a GitHub brand icon, so the initial Neural set uses `code` instead.
+## Registry
 
-## Accessibility
+The current Neural pack exposes a curated Lucide subset for product UI, including actions, navigation, status, media, and system glyphs.
 
-Decorative icons render with `aria-hidden="true"`. Meaningful icons should set `[decorative]="false"` and provide `label`, which maps to `role="img"` and `aria-label`.
+You can inspect the available names programmatically:
+
+```ts
+import { NEURAL_LUCIDE_ICON_NAMES } from '@neural/angular-ui/icon';
+
+console.log(NEURAL_LUCIDE_ICON_NAMES);
+```
+
+This keeps app code, Storybook controls, and docs aligned around one registry instead of ad hoc icon strings.

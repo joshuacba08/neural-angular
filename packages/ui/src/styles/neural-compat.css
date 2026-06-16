@@ -50,6 +50,8 @@
 
   --nn-grad-g: var(--n-gradient-gemini);
   --nn-grad-g-90: var(--n-gradient-gemini-90);
+  --nn-grad-blue-v: var(--n-progress-fill-primary);
+  --nn-grad-v-pink: var(--n-progress-fill-secondary);
   --nn-grad-surface: var(--n-gradient-surface);
   --nn-border-grad: var(--n-gradient-border);
   --nn-border-grad-b: var(--n-gradient-border-primary);

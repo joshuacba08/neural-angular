@@ -19,10 +19,15 @@ const meta: Meta<NSpinner> = {
       control: 'select',
       options: ['primary', 'neutral', 'success', 'danger'],
     },
+    mode: {
+      control: 'select',
+      options: ['ring', 'dots'],
+    },
   },
   args: {
     size: 'md',
     variant: 'primary',
+    mode: 'ring',
     label: 'Loading',
   },
 };
@@ -35,7 +40,24 @@ export const Playground: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <n-spinner [size]="size" [variant]="variant" [label]="label" />
+      <n-spinner [size]="size" [variant]="variant" [mode]="mode" [label]="label" />
+    `,
+  }),
+};
+
+export const Modes: Story = {
+  render: () => ({
+    template: `
+      <div class="n-story-row" style="align-items:flex-end">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <n-spinner mode="ring" label="Loading" />
+          <span style="font-size:11px;color:var(--n-text-3)">Ring</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <n-spinner mode="dots" label="Loading" />
+          <span style="font-size:11px;color:var(--n-text-3)">Dots</span>
+        </div>
+      </div>
     `,
   }),
 };

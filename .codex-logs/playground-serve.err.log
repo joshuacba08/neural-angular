@@ -470,3 +470,829 @@ Please consider reporting the error at https://github.com/angular/angular-cli/is
 [37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
          ╵                    [32m~~~~~~~~~~~~~~~~~[0m
 [39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:34:24:
+[37m      34 │           [attr.width]="[32msvgSize[37m()"
+         ╵                         [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:35:25:
+[37m      35 │           [attr.height]="[32msvgSize[37m()"
+         ╵                          [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:36:26:
+[37m      36 │           [attr.viewBox]="[32mviewBox[37m()"
+         ╵                           [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:40:39:
+[37m      40 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:47:23:
+[37m      47 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:48:23:
+[37m[39m[22m[1m[31m      48 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:49:22:
+[37m      49 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:51:33:
+[37m      51 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:55:23:
+[37m      55 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:56:23:
+[37m      56 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:57:22:
+[37m      57 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][39m[22m
+[1m[31m[0m
+    packages/ui/src/spinner/spinner.component.ts:59:27:
+[37m      59 │             [attr.stroke]="[32mstroke[37m()"
+         ╵                            [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:60:33:
+[37m      60 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:62:37:
+[37m      62 │             [attr.stroke-dasharray]="[32mcircumference[37m()"
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:63:38:
+[37m      63 │             [attr.stroke-dashoffset]="[32mdashOffset[37m()"
+         ╵                                       [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:34:24:
+[37m      34 │           [attr.width]="[32msvgSize[37m()"
+         ╵                         [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:35:25:
+[37m      35 │           [attr.height]="[32msvgSize[37m()"
+         ╵                          [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:36:26:
+[37m      36 │           [attr.viewBox]="[32mviewBox[37m()"
+         ╵                           [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:40:39:
+[37m      40 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:47:23:
+[37m      47 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:48:23:
+[37m[39m[22m
+[1m[31m      48 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:49:22:
+[37m      49 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:51:33:
+[37m      51 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:55:23:
+[37m      55 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:56:23:
+[37m      56 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:57:22:
+[37m      57 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][39m[22m[1m[31m[0m
+    packages/ui/src/spinner/spinner.component.ts:59:27:
+[37m      59 │             [attr.stroke]="[32mstroke[37m()"
+         ╵                            [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:60:33:
+[37m      60 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:62:37:
+[37m      62 │             [attr.stroke-dasharray]="[32mcircumference[37m()"
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:63:38:
+[37m      63 │             [attr.stroke-dashoffset]="[32mdashOffset[37m()"
+         ╵                                       [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:34:24:
+[37m      34 │           [attr.width]="[32msvgSize[37m()"
+         ╵                         [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:35:25:
+[37m      35 │           [attr.height]="[32msvgSize[37m()"
+         ╵                          [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:36:26:
+[37m      36 │           [attr.viewBox]="[32mviewBox[37m()"
+         ╵                           [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:40:39:
+[37m      40 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:47:23:
+[37m      47 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:48:23:
+[37m[39m[22m
+[1m[31m      48 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:49:22:
+[37m      49 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:51:33:
+[37m      51 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:55:23:
+[37m      55 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:56:23:
+[37m      56 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:57:22:
+[37m      57 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][39m[22m[1m[31m[0m
+    packages/ui/src/spinner/spinner.component.ts:59:27:
+[37m      59 │             [attr.stroke]="[32mstroke[37m()"
+         ╵                            [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:60:33:
+[37m      60 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:62:37:
+[37m      62 │             [attr.stroke-dasharray]="[32mcircumference[37m()"
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:63:38:
+[37m      63 │             [attr.stroke-dashoffset]="[32mdashOffset[37m()"
+         ╵                                       [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:34:24:
+[37m      34 │           [attr.width]="[32msvgSize[37m()"
+         ╵                         [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:35:25:
+[37m      35 │           [attr.height]="[32msvgSize[37m()"
+         ╵                          [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:36:26:
+[37m      36 │           [attr.viewBox]="[32mviewBox[37m()"
+         ╵                           [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:40:39:
+[37m      40 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:47:23:
+[37m      47 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:48:23:
+[37m[39m[22m[1m[31m      48 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:49:22:
+[37m      49 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:51:33:
+[37m      51 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:55:23:
+[37m      55 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:56:23:
+[37m      56 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:57:22:
+[37m      57 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][39m[22m[1m[31m[0m
+    packages/ui/src/spinner/spinner.component.ts:59:27:
+[37m      59 │             [attr.stroke]="[32mstroke[37m()"
+         ╵                            [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:60:33:
+[37m      60 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:62:37:
+[37m      62 │             [attr.stroke-dasharray]="[32mcircumference[37m()"
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:63:38:
+[37m      63 │             [attr.stroke-dashoffset]="[32mdashOffset[37m()"
+         ╵                                       [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:34:24:
+[37m      34 │           [attr.width]="[32msvgSize[37m()"
+         ╵                         [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:35:25:
+[37m      35 │           [attr.height]="[32msvgSize[37m()"
+         ╵                          [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:36:26:
+[37m      36 │           [attr.viewBox]="[32mviewBox[37m()"
+         ╵                           [32m~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:40:39:
+[37m      40 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:47:23:
+[37m      47 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:48:23:
+[37m[39m[22m[1m[31m      48 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:49:22:
+[37m      49 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:51:33:
+[37m      51 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:55:23:
+[37m      55 │             [attr.cx]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:56:23:
+[37m      56 │             [attr.cy]="[32mcenter[37m()"
+         ╵                        [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:57:22:
+[37m      57 │             [attr.r]="[32mradius[37m()"
+         ╵                       [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][39m[22m[1m[31m[0m
+    packages/ui/src/spinner/spinner.component.ts:59:27:
+[37m      59 │             [attr.stroke]="[32mstroke[37m()"
+         ╵                            [32m~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:60:33:
+[37m      60 │             [attr.stroke-width]="[32mstrokeWidth[37m()"
+         ╵                                  [32m~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:62:37:
+[37m      62 │             [attr.stroke-dasharray]="[32mcircumference[37m()"
+         ╵                                      [32m~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'Number' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:63:38:
+[37m      63 │             [attr.stroke-dashoffset]="[32mdashOffset[37m()"
+         ╵                                       [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:40:39:
+[37m      40 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2349: This expression is not callable.
+  Type 'String' has no call signatures.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/spinner/spinner.component.ts:40:39:
+[37m      40 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6196: 'NProgressIndeterminateMode' is declared but never used.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:3:14:
+[37m      3 │ import type { [32mNProgressIndeterminateMode[37m, NProgressSize, NProgressV...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'indeterminateMode' does not exist on type 'NProgress'. Did you mean 'indeterminate'?[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:70:17:
+[37m      70 │             @if ([32mindeterminateMode[37m() === 'bar') {
+         ╵                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'valueUsesGradient' does not exist on type 'NProgress'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress.component.ts:18:51:
+[37m      18 │ ...         [class.n-progress__value--gradient]="[32mvalueUsesGradient[37m()"
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDuplicate member "dashOffset" in class body[0m [duplicate-class-member]
+    packages/ui/src/progress/progress-ring.component.ts:150:4:
+[37m      150 │     [32mdashOffset[37m = computed(() => {
+          ╵     [32m~~~~~~~~~~[0m
+  The original member "dashOffset" is here:
+    packages/ui/src/progress/progress-ring.component.ts:140:4:
+[37m      140 │     [32mdashOffset[37m = computed(() => {
+          ╵     [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'gradientId' does not exist on type 'NProgressRing'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress-ring.component.ts:34:39:
+[37m      34 │ ...<linearGradient [attr.id]="[32mgradientId[37m()" x1="0" y1="0" x2="1" y...
+         ╵                               [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'gradientStops' does not exist on type 'NProgressRing'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress-ring.component.ts:35:28:
+[37m      35 │               @for (stop of [32mgradientStops[37m(); track stop.offset) {
+         ╵                             [32m~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6133: 'instanceId' is declared but its value is never read.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress-ring.component.ts:195:19:
+[37m      195 │   private readonly [32minstanceId[37m = `n-progress-ring-${++progressRing...
+          ╵                    [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'dashOffset'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress-ring.component.ts:283:11:
+[37m      283 │   readonly [32mdashOffset[37m = computed(() => {
+          ╵            [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2717: Subsequent property declarations must have the same type.  Property 'dashOffset' must be of type 'Signal<number>', but here has type 'Signal<{ offset: string; color: string; }[]>'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress-ring.component.ts:283:11:
+[37m      283 │   readonly [32mdashOffset[37m = computed(() => {
+          ╵            [32m~~~~~~~~~~[0m
+  'dashOffset' was also declared here.
+    packages/ui/src/progress/progress-ring.component.ts:271:1[39m[22m[1m[31m1:
+[37m      271 │   readonly [32mdashOffset[37m = computed(() => {
+          ╵            [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'gradientId' does not exist on type 'NProgressRing'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/progress/progress-ring.component.ts:310:63:
+[37m      310 │ ...cess() ? 'var(--n-color-success)' : `url(#${this.[32mgradientId[37m()})`,
+          ╵                                                     [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[39m[22m

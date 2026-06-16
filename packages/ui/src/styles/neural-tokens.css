@@ -192,8 +192,13 @@
   --n-icon-size-lg: 24px;
   --n-icon-size-xl: 32px;
   --n-avatar-bg: var(--n-gradient-primary-secondary);
-  --n-progress-bg: rgba(255, 255, 255, 0.08);
+  --n-progress-bg: rgba(255, 255, 255, 0.06);
   --n-progress-fill: var(--n-gradient-primary-secondary);
+  --n-progress-fill-gemini: linear-gradient(90deg, #4f8eff 0%, #7b5cf6 50%, #d946ef 100%);
+  --n-progress-fill-gemini-full: var(--n-gradient-gemini-90);
+  --n-progress-fill-primary: linear-gradient(90deg, #4285f4 0%, #7b5cf6 100%);
+  --n-progress-fill-secondary: linear-gradient(90deg, #7b5cf6 0%, #d946ef 100%);
+  --n-progress-fill-success-blue: linear-gradient(90deg, #34a853 0%, #4285f4 100%);
 
   /* Radius */
   --n-radius-none: 0;

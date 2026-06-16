@@ -3,55 +3,371 @@ import {
   LucideAlertCircle,
   LucideArchive,
   LucideArrowRight,
+  LucideBell,
+  LucideCalendar,
   LucideCheck,
   LucideChevronDown,
   LucideChevronsLeftRight,
   LucideCircleCheck,
   LucideCircleX,
+  LucideClock3,
   LucideCode,
   LucideCommand,
   LucideComponent,
   LucideCpu,
   LucideDownload,
+  LucideExternalLink,
   LucideEye,
   LucideEyeOff,
   LucideFileAudio,
   LucideFileImage,
-  LucideExternalLink,
   LucideFileText,
   LucideFileVideo,
   LucideFilm,
+  LucideHeart,
   LucideHome,
   LucideInfo,
+  LucideLink,
   LucideLoaderCircle,
+  LucideMail,
+  LucideMessageSquare,
   LucideMic,
   LucideMoon,
   LucidePalette,
   LucidePlay,
   LucidePlus,
+  LucideRotateCcw,
   LucideSearch,
   LucideSearchX,
-  LucideRotateCcw,
   LucideSettings,
+  LucideShield,
   LucideSparkles,
+  LucideStar,
   LucideSun,
+  LucideTag,
   LucideTrash2,
   LucideUpload,
   LucideUser,
+  LucideUsers,
   LucideWifiOff,
   LucideX,
+  LucideZap,
 } from '@lucide/angular';
+
+export const NEURAL_ICON_CATEGORIES = [
+  'action',
+  'navigation',
+  'status',
+  'media',
+  'system',
+] as const;
+
+export type NeuralLucideIconCategory = (typeof NEURAL_ICON_CATEGORIES)[number];
+
+type NeuralIconRegistryItem = {
+  readonly category: NeuralLucideIconCategory;
+  readonly label: string;
+  readonly description: string;
+};
+
+export const NEURAL_ICON_CATEGORY_LABELS: Record<
+  NeuralLucideIconCategory,
+  string
+> = {
+  action: 'Actions',
+  navigation: 'Navigation',
+  status: 'Status',
+  media: 'Media',
+  system: 'System',
+};
+
+export const NEURAL_LUCIDE_ICON_REGISTRY = {
+  activity: {
+    category: 'status',
+    label: 'Activity',
+    description: 'Telemetry, ongoing work, and live processing.',
+  },
+  'alert-circle': {
+    category: 'status',
+    label: 'Alert Circle',
+    description: 'Warnings, exceptional states, and surfaced issues.',
+  },
+  archive: {
+    category: 'action',
+    label: 'Archive',
+    description: 'Archive, store, or move items out of the active view.',
+  },
+  'arrow-right': {
+    category: 'navigation',
+    label: 'Arrow Right',
+    description: 'Forward progression, next steps, and outbound actions.',
+  },
+  bell: {
+    category: 'status',
+    label: 'Bell',
+    description: 'Alerts, notifications, and activity subscriptions.',
+  },
+  calendar: {
+    category: 'system',
+    label: 'Calendar',
+    description: 'Dates, scheduling, and time-based workflows.',
+  },
+  check: {
+    category: 'status',
+    label: 'Check',
+    description: 'Confirmation, applied actions, and completion.',
+  },
+  'chevron-down': {
+    category: 'navigation',
+    label: 'Chevron Down',
+    description: 'Disclosure, menus, and compact picker controls.',
+  },
+  'chevrons-left-right': {
+    category: 'navigation',
+    label: 'Chevrons Left Right',
+    description: 'Compare, resize, or drag a value between two states.',
+  },
+  'circle-check': {
+    category: 'status',
+    label: 'Circle Check',
+    description: 'Positive completion state inside cards and surfaces.',
+  },
+  'circle-x': {
+    category: 'status',
+    label: 'Circle X',
+    description: 'Errors, rejection states, or destructive outcomes.',
+  },
+  'clock-3': {
+    category: 'system',
+    label: 'Clock 3',
+    description: 'Elapsed time, schedules, and pending work.',
+  },
+  code: {
+    category: 'system',
+    label: 'Code',
+    description: 'Developer tooling, source, and technical configuration.',
+  },
+  command: {
+    category: 'system',
+    label: 'Command',
+    description: 'Keyboard commands, power tools, and utility actions.',
+  },
+  component: {
+    category: 'system',
+    label: 'Component',
+    description: 'Composable UI parts, modules, and library primitives.',
+  },
+  cpu: {
+    category: 'system',
+    label: 'CPU',
+    description: 'Compute, AI infrastructure, and processing capacity.',
+  },
+  download: {
+    category: 'action',
+    label: 'Download',
+    description: 'Export, save locally, or retrieve generated content.',
+  },
+  eye: {
+    category: 'action',
+    label: 'Eye',
+    description: 'Preview, inspect, or reveal content inline.',
+  },
+  'eye-off': {
+    category: 'action',
+    label: 'Eye Off',
+    description: 'Hide sensitive values and toggle visibility off.',
+  },
+  'external-link': {
+    category: 'navigation',
+    label: 'External Link',
+    description: 'Open resources outside the current application shell.',
+  },
+  'file-audio': {
+    category: 'media',
+    label: 'File Audio',
+    description: 'Audio uploads, generated voice, and sound assets.',
+  },
+  'file-image': {
+    category: 'media',
+    label: 'File Image',
+    description: 'Images, previews, and visual asset management.',
+  },
+  'file-text': {
+    category: 'media',
+    label: 'File Text',
+    description: 'Documents, prompts, notes, and text-based resources.',
+  },
+  'file-video': {
+    category: 'media',
+    label: 'File Video',
+    description: 'Video generation, playback, and editing states.',
+  },
+  film: {
+    category: 'media',
+    label: 'Film',
+    description: 'Motion media, clips, and cinematic previews.',
+  },
+  heart: {
+    category: 'status',
+    label: 'Heart',
+    description: 'Favorites, sentiment, and positive affinity states.',
+  },
+  home: {
+    category: 'navigation',
+    label: 'Home',
+    description: 'Primary destination, dashboard, or landing surface.',
+  },
+  info: {
+    category: 'status',
+    label: 'Info',
+    description: 'Helpful context, neutral messaging, and guidance.',
+  },
+  link: {
+    category: 'navigation',
+    label: 'Link',
+    description: 'Connections, references, and linked entities.',
+  },
+  'loader-circle': {
+    category: 'status',
+    label: 'Loader Circle',
+    description: 'Loading spinners, in-flight work, and busy states.',
+  },
+  mail: {
+    category: 'system',
+    label: 'Mail',
+    description: 'Messages, email workflows, and notification delivery.',
+  },
+  'message-square': {
+    category: 'system',
+    label: 'Message Square',
+    description: 'Chat surfaces, threaded conversations, and feedback.',
+  },
+  mic: {
+    category: 'media',
+    label: 'Mic',
+    description: 'Voice input, recording, and live audio controls.',
+  },
+  moon: {
+    category: 'system',
+    label: 'Moon',
+    description: 'Dark theme toggles and night-oriented preferences.',
+  },
+  palette: {
+    category: 'system',
+    label: 'Palette',
+    description: 'Theming, color systems, and design customization.',
+  },
+  play: {
+    category: 'media',
+    label: 'Play',
+    description: 'Playback, launch, and preview execution.',
+  },
+  plus: {
+    category: 'action',
+    label: 'Plus',
+    description: 'Create, add, and start new flows.',
+  },
+  search: {
+    category: 'action',
+    label: 'Search',
+    description: 'Find, query, and inspect indexed content.',
+  },
+  'search-x': {
+    category: 'status',
+    label: 'Search X',
+    description: 'Empty search results and unresolved queries.',
+  },
+  'rotate-ccw': {
+    category: 'action',
+    label: 'Rotate Ccw',
+    description: 'Retry, refresh, and reset operations.',
+  },
+  settings: {
+    category: 'system',
+    label: 'Settings',
+    description: 'Configuration, preferences, and operational controls.',
+  },
+  shield: {
+    category: 'status',
+    label: 'Shield',
+    description: 'Security, safety, and protected workflows.',
+  },
+  sparkles: {
+    category: 'system',
+    label: 'Sparkles',
+    description: 'AI generation, enhancement, and premium emphasis.',
+  },
+  star: {
+    category: 'status',
+    label: 'Star',
+    description: 'Featured states, ratings, and promoted content.',
+  },
+  sun: {
+    category: 'system',
+    label: 'Sun',
+    description: 'Light theme toggles and daytime appearance controls.',
+  },
+  tag: {
+    category: 'system',
+    label: 'Tag',
+    description: 'Metadata, labels, and entity classification.',
+  },
+  'trash-2': {
+    category: 'action',
+    label: 'Trash 2',
+    description: 'Delete, remove, or permanently discard content.',
+  },
+  upload: {
+    category: 'action',
+    label: 'Upload',
+    description: 'Import files, attach media, and ingest assets.',
+  },
+  user: {
+    category: 'system',
+    label: 'User',
+    description: 'Profiles, single participants, and account surfaces.',
+  },
+  users: {
+    category: 'system',
+    label: 'Users',
+    description: 'Teams, collaborators, and grouped participants.',
+  },
+  'wifi-off': {
+    category: 'status',
+    label: 'Wifi Off',
+    description: 'Offline state, connectivity loss, and degraded sessions.',
+  },
+  x: {
+    category: 'action',
+    label: 'X',
+    description: 'Dismiss, close, or cancel the current interaction.',
+  },
+  zap: {
+    category: 'system',
+    label: 'Zap',
+    description: 'Fast actions, automations, and energetic highlights.',
+  },
+} as const satisfies Record<string, NeuralIconRegistryItem>;
+
+export type NeuralLucideIconName = keyof typeof NEURAL_LUCIDE_ICON_REGISTRY;
+
+export const NEURAL_LUCIDE_ICON_NAMES = Object.keys(
+  NEURAL_LUCIDE_ICON_REGISTRY,
+) as NeuralLucideIconName[];
 
 export const NEURAL_LUCIDE_ICONS = [
   LucideActivity,
   LucideAlertCircle,
   LucideArchive,
   LucideArrowRight,
+  LucideBell,
+  LucideCalendar,
   LucideCheck,
   LucideChevronDown,
   LucideChevronsLeftRight,
   LucideCircleCheck,
   LucideCircleX,
+  LucideClock3,
   LucideCode,
   LucideCommand,
   LucideComponent,
@@ -65,9 +381,13 @@ export const NEURAL_LUCIDE_ICONS = [
   LucideFileText,
   LucideFileVideo,
   LucideFilm,
+  LucideHeart,
   LucideHome,
   LucideInfo,
+  LucideLink,
   LucideLoaderCircle,
+  LucideMail,
+  LucideMessageSquare,
   LucideMic,
   LucideMoon,
   LucidePalette,
@@ -77,57 +397,26 @@ export const NEURAL_LUCIDE_ICONS = [
   LucideSearchX,
   LucideRotateCcw,
   LucideSettings,
+  LucideShield,
   LucideSparkles,
+  LucideStar,
   LucideSun,
+  LucideTag,
   LucideTrash2,
   LucideUpload,
   LucideUser,
+  LucideUsers,
   LucideWifiOff,
   LucideX,
+  LucideZap,
 ] as const;
 
-export const NEURAL_LUCIDE_ICON_NAMES = [
-  'activity',
-  'alert-circle',
-  'archive',
-  'arrow-right',
-  'check',
-  'chevron-down',
-  'chevrons-left-right',
-  'circle-check',
-  'circle-x',
-  'code',
-  'command',
-  'component',
-  'cpu',
-  'download',
-  'eye',
-  'eye-off',
-  'external-link',
-  'file-audio',
-  'file-image',
-  'file-text',
-  'file-video',
-  'film',
-  'home',
-  'info',
-  'loader-circle',
-  'mic',
-  'moon',
-  'palette',
-  'play',
-  'plus',
-  'search',
-  'search-x',
-  'rotate-ccw',
-  'settings',
-  'sparkles',
-  'sun',
-  'trash-2',
-  'upload',
-  'user',
-  'wifi-off',
-  'x',
-] as const;
-
-export type NeuralLucideIconName = (typeof NEURAL_LUCIDE_ICON_NAMES)[number];
+export const NEURAL_LUCIDE_ICON_GROUPS = NEURAL_ICON_CATEGORIES.map(
+  (category) => ({
+    id: category,
+    label: NEURAL_ICON_CATEGORY_LABELS[category],
+    icons: NEURAL_LUCIDE_ICON_NAMES.filter(
+      (name) => NEURAL_LUCIDE_ICON_REGISTRY[name].category === category,
+    ),
+  }),
+);

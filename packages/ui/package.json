@@ -71,6 +71,10 @@
       "types": "./dist/spinner/index.d.ts",
       "default": "./dist/spinner/index.js"
     },
+    "./skeleton": {
+      "types": "./dist/skeleton/index.d.ts",
+      "default": "./dist/skeleton/index.js"
+    },
     "./empty-state": {
       "types": "./dist/empty-state/index.d.ts",
       "default": "./dist/empty-state/index.js"

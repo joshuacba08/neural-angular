@@ -1,0 +1,318 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as IconStories from './icon.stories';
+import {
+  NEURAL_ICON_CATEGORY_LABELS,
+  NEURAL_LUCIDE_ICON_GROUPS,
+  NEURAL_LUCIDE_ICON_NAMES,
+  NEURAL_LUCIDE_ICON_REGISTRY,
+} from './neural-icons.js';
+
+<Meta of={IconStories} />
+
+# Icon
+
+`NIcon` is the shared glyph primitive for the Neural UI system. It wraps Lucide with a typed registry, token-based sizing, `currentColor` inheritance, and a provider-first setup that stays friendly to Angular SSR.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="icon-doc-tabs"
+    id="icon-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="icon-doc-tabs"
+    id="icon-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="icon-doc-tabs"
+    id="icon-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Icon documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="icon-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="icon-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="icon-doc-tab-theming">
+      Registry
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NIcon } from '@neural/angular-ui/icon';
+```
+
+### Playground
+
+The component ships with a typed `name` contract, predictable sizing, and an automatic accessible label fallback when `decorative` is disabled.
+
+<Canvas of={IconStories.Playground} layout="centered" sourceState="shown" />
+
+### Scale
+
+Every icon size maps to shared design tokens, keeping buttons, chips, badges, avatars, and cards visually aligned.
+
+<Canvas of={IconStories.SizeScale} layout="padded" sourceState="hidden" />
+
+### Stroke Control
+
+Lucide stroke weight can be tuned per use case without introducing alternate icon assets.
+
+<Canvas of={IconStories.StrokeWeights} layout="padded" sourceState="hidden" />
+
+### Semantic Color
+
+Icons inherit `currentColor`, so the same glyph adapts naturally across status, emphasis, and destructive surfaces.
+
+<Canvas of={IconStories.SemanticColors} layout="padded" sourceState="hidden" />
+
+### In Context
+
+The primitive is designed to disappear into surrounding components rather than behave like a special-case widget.
+
+<Canvas of={IconStories.UIComposition} layout="padded" sourceState="hidden" />
+
+### Registry Gallery
+
+The current Neural pack exposes {NEURAL_LUCIDE_ICON_NAMES.length} curated glyphs grouped by product intent.
+
+<Canvas of={IconStories.RegistryGallery} layout="padded" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NIcon`.
+
+<ArgTypes of={IconStories} sort="requiredFirst" />
+
+### Sizes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Dimensions</th>
+        <th>Token</th>
+        <th>Recommended use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>xs</code></td>
+        <td>12px</td>
+        <td><code>--n-icon-size-xs</code></td>
+        <td>Dense metadata, inline lists, and compact indicators.</td>
+      </tr>
+      <tr>
+        <td><code>sm</code></td>
+        <td>16px</td>
+        <td><code>--n-icon-size-sm</code></td>
+        <td>Buttons, chips, selects, and standard inline controls.</td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td>20px</td>
+        <td><code>--n-icon-size-md</code></td>
+        <td>Default component size for cards and composed surfaces.</td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td>24px</td>
+        <td><code>--n-icon-size-lg</code></td>
+        <td>Panel headers, empty states, and rich affordances.</td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td>32px</td>
+        <td><code>--n-icon-size-xl</code></td>
+        <td>Hero glyphs, onboarding cards, and media placeholders.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Accessibility Behavior
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Configuration</th>
+        <th>Rendered behavior</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>decorative=true</code></td>
+        <td><code>aria-hidden="true"</code></td>
+        <td>Use for purely visual decoration next to already-labeled content.</td>
+      </tr>
+      <tr>
+        <td><code>decorative=false</code> + <code>label</code></td>
+        <td><code>role="img"</code> + explicit <code>aria-label</code></td>
+        <td>Best option for standalone icon buttons or status glyphs.</td>
+      </tr>
+      <tr>
+        <td><code>decorative=false</code> without <code>label</code></td>
+        <td><code>role="img"</code> + derived name label</td>
+        <td><code>search-x</code> becomes “Search X” automatically.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Stroke Guidance
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Stroke</th>
+        <th>Recommended use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>1 - 1.5</code></td>
+        <td>Delicate chrome, secondary metadata, or larger icon sizes.</td>
+      </tr>
+      <tr>
+        <td><code>2</code></td>
+        <td>Default product UI weight across the design system.</td>
+      </tr>
+      <tr>
+        <td><code>2.5 - 3</code></td>
+        <td>High-contrast controls, small sizes, or emphasis on noisy surfaces.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Registry & Provider
+
+### Provider Setup
+
+Register the curated Neural icon pack once at the app boundary.
+
+```ts
+import { provideNeuralIcons, provideNeuralTheme } from '@neural/angular-ui';
+
+export const appConfig = {
+  providers: [
+    provideNeuralTheme({ defaultTheme: 'dark' }),
+    provideNeuralIcons(),
+  ],
+};
+```
+
+### Styling Contract
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Contract</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>currentColor</code></td>
+        <td>The glyph inherits color from the surrounding text or component surface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-icon-current-size</code></td>
+        <td>Internal size variable resolved from the public size token selection.</td>
+      </tr>
+      <tr>
+        <td><code>data-icon-name</code></td>
+        <td>Debug-friendly host attribute reflecting the resolved registered icon.</td>
+      </tr>
+      <tr>
+        <td><code>data-icon-size</code></td>
+        <td>Host attribute exposing the active token size for testing and diagnostics.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Registry Groups
+
+The Neural pack is organized around product intent rather than raw vendor exports.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Group</th>
+        <th>Coverage</th>
+      </tr>
+    </thead>
+    <tbody>
+      {NEURAL_LUCIDE_ICON_GROUPS.map((group) => (
+        <tr key={group.id}>
+          <td><code>{NEURAL_ICON_CATEGORY_LABELS[group.id]}</code></td>
+          <td>{group.icons.length} registered icons</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+### Registered Icons
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Label</th>
+        <th>Category</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {NEURAL_LUCIDE_ICON_NAMES.map((name) => (
+        <tr key={name}>
+          <td><code>{name}</code></td>
+          <td>{NEURAL_LUCIDE_ICON_REGISTRY[name].label}</td>
+          <td>{NEURAL_ICON_CATEGORY_LABELS[NEURAL_LUCIDE_ICON_REGISTRY[name].category]}</td>
+          <td>{NEURAL_LUCIDE_ICON_REGISTRY[name].description}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>

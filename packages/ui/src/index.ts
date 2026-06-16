@@ -15,6 +15,7 @@ export * from './select/index.js';
 export * from './avatar/index.js';
 export * from './progress/index.js';
 export * from './spinner/index.js';
+export * from './skeleton/index.js';
 export * from './empty-state/index.js';
 export * from './status-dot/index.js';
 export * from './shell/index.js';
