@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as ChipStories from './chip.stories';
 
@@ -34,6 +34,14 @@ import * as ChipStories from './chip.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="chip-doc-tabs"
+    id="chip-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Chip documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="chip-doc-tab-features">
@@ -44,6 +52,9 @@ import * as ChipStories from './chip.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="chip-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="chip-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -61,7 +72,7 @@ import { NChip } from '@neural/angular-ui/chip';
 
 The default chip is a medium filter pill.
 
-<Canvas of={ChipStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={ChipStories.Basic} layout="centered" sourceState="shown" />
 
 ### Design System
 
@@ -376,6 +387,17 @@ Public `--n-*` tokens consumed by the chip styles.
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={ChipStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={ChipStories.Playground} />
 
   </section>
 </div>

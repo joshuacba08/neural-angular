@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as AvatarStories from './avatar.stories';
 
@@ -34,6 +34,14 @@ import * as AvatarStories from './avatar.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="avatar-doc-tabs"
+    id="avatar-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Avatar documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="avatar-doc-tab-features">
@@ -44,6 +52,9 @@ import * as AvatarStories from './avatar.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="avatar-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="avatar-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -61,7 +72,7 @@ import { NAvatar, NAvatarGroup } from '@neural/angular-ui/avatar';
 
 When `src` is not provided, the component derives initials from `name`.
 
-<Canvas of={AvatarStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={AvatarStories.Basic} layout="centered" sourceState="shown" />
 
 ### Sizes & Variants
 
@@ -419,6 +430,17 @@ Public `--n-*` tokens consumed by the avatar styles.
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={AvatarStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={AvatarStories.Playground} />
 
   </section>
 </div>

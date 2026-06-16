@@ -104,6 +104,32 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    mode: 'filter',
+    variant: 'default',
+    size: 'md',
+    selected: false,
+    disabled: false,
+    removable: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-chip
+        [mode]="mode"
+        [variant]="variant"
+        [size]="size"
+        [selected]="selected"
+        [disabled]="disabled"
+        [removable]="removable"
+      >
+        Angular
+      </n-chip>
+    `,
+  }),
+};
+
 export const DesignSystem: Story = {
   render: () => ({
     template: `

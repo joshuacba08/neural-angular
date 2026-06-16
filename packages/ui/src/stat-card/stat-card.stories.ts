@@ -54,6 +54,36 @@ export const Playground: Story = {
         [trendValue]="trendValue"
         [variant]="variant"
         [size]="size"
+        style="max-width:220px"
+      />
+    `,
+  }),
+};
+
+export const Basic: Story = {
+  args: {
+    label: 'Tokens / día',
+    value: '2.4M',
+    description: 'Máx. 4M en el plan Pro',
+    icon: 'zap',
+    trend: 'up',
+    trendValue: '18.4% vs. ayer',
+    variant: 'default',
+    size: 'default',
+    interactive: true,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-stat-card
+        [label]="label"
+        [value]="value"
+        [description]="description"
+        [icon]="icon"
+        [trend]="trend"
+        [trendValue]="trendValue"
+        [variant]="variant"
+        [size]="size"
         [interactive]="interactive"
         style="max-width:220px"
       />

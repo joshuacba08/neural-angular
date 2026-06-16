@@ -102,6 +102,34 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    variant: 'default',
+    interactive: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-card [variant]="variant" [interactive]="interactive" class="n-story-card">
+        <n-card-header>
+          <n-card-title>Render pipeline</n-card-title>
+          <n-card-description>Current state of the enhancement queue.</n-card-description>
+        </n-card-header>
+        <n-card-content>
+          <div class="n-story-metric">
+            <span class="n-story-metric__value">68%</span>
+            <n-badge variant="success">Running</n-badge>
+          </div>
+        </n-card-content>
+        <n-card-footer>
+          <n-button size="sm">Open</n-button>
+          <n-button variant="ghost" size="sm">Details</n-button>
+        </n-card-footer>
+      </n-card>
+    `,
+  }),
+};
+
 export const DesignSystem: Story = {
   render: () => ({
     template: `

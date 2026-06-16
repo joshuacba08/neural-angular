@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as EmptyStateStories from './empty-state.stories';
 
@@ -34,6 +34,14 @@ import * as EmptyStateStories from './empty-state.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="empty-state-doc-tabs"
+    id="empty-state-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Empty State documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="empty-state-doc-tab-features">
@@ -44,6 +52,9 @@ import * as EmptyStateStories from './empty-state.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="empty-state-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="empty-state-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -61,7 +72,7 @@ import { NEmptyState } from '@neural/angular-ui/empty-state';
 
 The component renders icon, title, description, and projected actions in a single state container.
 
-<Canvas of={EmptyStateStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={EmptyStateStories.Basic} layout="centered" sourceState="shown" />
 
 ### Design System
 
@@ -305,6 +316,17 @@ Public `--n-*` tokens consumed by the empty-state styles.
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={EmptyStateStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={EmptyStateStories.Playground} />
 
   </section>
 </div>

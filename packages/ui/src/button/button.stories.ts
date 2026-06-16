@@ -135,6 +135,34 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    variant: 'primary',
+    size: 'md',
+    type: 'button',
+    disabled: false,
+    loading: false,
+    fullWidth: false,
+    iconOnly: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-button
+        [variant]="variant"
+        [size]="size"
+        [type]="type"
+        [disabled]="disabled"
+        [loading]="loading"
+        [fullWidth]="fullWidth"
+        [iconOnly]="iconOnly"
+      >
+        Save changes
+      </n-button>
+    `,
+  }),
+};
+
 export const GradientFilled: Story = {
   render: () => ({
     template: `

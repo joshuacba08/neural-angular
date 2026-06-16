@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as ProgressStories from './progress.stories';
 
@@ -34,6 +34,14 @@ import * as ProgressStories from './progress.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="progress-doc-tabs"
+    id="progress-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Progress documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="progress-doc-tab-features">
@@ -44,6 +52,9 @@ import * as ProgressStories from './progress.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="progress-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="progress-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -61,7 +72,7 @@ import { NProgress, NProgressRing } from '@neural/angular-ui/progress';
 
 Linear progress indicators occupy the full width of their container and can show determinate status with a percentage value.
 
-<Canvas of={ProgressStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={ProgressStories.Basic} layout="centered" sourceState="shown" />
 
 ### Variants
 
@@ -441,6 +452,17 @@ Public `--n-*` variables consumed by the progress components:
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={ProgressStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={ProgressStories.Playground} />
 
   </section>
 </div>

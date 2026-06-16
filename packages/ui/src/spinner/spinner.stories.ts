@@ -45,6 +45,21 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    size: 'md',
+    variant: 'primary',
+    mode: 'ring',
+    label: 'Loading',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-spinner [size]="size" [variant]="variant" [mode]="mode" [label]="label" />
+    `,
+  }),
+};
+
 export const Modes: Story = {
   render: () => ({
     template: `

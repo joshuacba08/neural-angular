@@ -10,6 +10,18 @@ const meta: Meta<NSkeleton> = {
       imports: [NSkeleton],
     }),
   ],
+  argTypes: {
+    shape: {
+      control: 'select',
+      options: ['rect', 'circle', 'text'],
+    },
+  },
+  args: {
+    shape: 'rect',
+    width: '100%',
+    height: '60px',
+    radius: '8px',
+  },
 };
 
 export default meta;
@@ -17,6 +29,17 @@ export default meta;
 type Story = StoryObj<NSkeleton>;
 
 export const Playground: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="width: min(320px, calc(100vw - 48px));">
+        <n-skeleton [shape]="shape" [width]="width" [height]="height" [radius]="radius" />
+      </div>
+    `,
+  }),
+};
+
+export const Basic: Story = {
   render: () => ({
     template: `
       <div style="width: min(320px, calc(100vw - 48px)); display:grid; gap:10px">

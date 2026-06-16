@@ -85,6 +85,23 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    variant: 'neutral',
+    size: 'sm',
+    shape: 'pill',
+    dot: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-badge [variant]="variant" [size]="size" [shape]="shape" [dot]="dot">
+        Ready
+      </n-badge>
+    `,
+  }),
+};
+
 export const DesignSystem: Story = {
   render: () => ({
     template: `

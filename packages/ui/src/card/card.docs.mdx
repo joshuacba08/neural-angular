@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as CardStories from './card.stories';
 
@@ -34,6 +34,14 @@ import * as CardStories from './card.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="card-doc-tabs"
+    id="card-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Card documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="card-doc-tab-features">
@@ -44,6 +52,9 @@ import * as CardStories from './card.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="card-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="card-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -76,7 +87,7 @@ import {
 
 The root card accepts `variant` and optional interactive hover treatment.
 
-<Canvas of={CardStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={CardStories.Basic} layout="centered" sourceState="shown" />
 
 ### Design System
 
@@ -470,6 +481,17 @@ Public `--n-*` tokens consumed by the card styles.
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={CardStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={CardStories.Playground} />
 
   </section>
 </div>

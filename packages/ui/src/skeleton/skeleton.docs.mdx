@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as SkeletonStories from './skeleton.stories';
 
@@ -34,6 +34,14 @@ import * as SkeletonStories from './skeleton.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="skeleton-doc-tabs"
+    id="skeleton-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Skeleton documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="skeleton-doc-tab-features">
@@ -44,6 +52,9 @@ import * as SkeletonStories from './skeleton.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="skeleton-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="skeleton-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -59,9 +70,9 @@ import { NSkeleton } from '@neural/angular-ui/skeleton';
 
 ### Basic
 
-A standard vertical text and card loading placeholder.
+Placeholder preview simulating text and content blocks.
 
-<Canvas of={SkeletonStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={SkeletonStories.Basic} layout="centered" sourceState="shown" />
 
 ### Shapes
 
@@ -179,6 +190,17 @@ Public `--n-*` tokens related to layout containers where skeletons are typically
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={SkeletonStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={SkeletonStories.Playground} />
 
   </section>
 </div>

@@ -108,6 +108,35 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    name: 'sparkles',
+    size: 'md',
+    decorative: false,
+    strokeWidth: 2,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <div class="n-icon-preview">
+        <div class="n-icon-preview__glyph">
+          <n-icon
+            [name]="name"
+            [size]="size"
+            [decorative]="decorative"
+            [strokeWidth]="strokeWidth"
+            [label]="label"
+          />
+        </div>
+        <div class="n-icon-preview__meta">
+          <strong>{{ name }}</strong>
+          <span>{{ decorative ? 'Decorative icon' : (label || 'Accessible label derived from name') }}</span>
+        </div>
+      </div>
+    `,
+  }),
+};
+
 export const SizeScale: Story = {
   render: () => ({
     template: `

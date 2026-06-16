@@ -62,6 +62,33 @@ export const Playground: Story = {
           [size]="size"
           [indeterminate]="indeterminate"
           [label]="label"
+        />
+      </div>
+    `,
+  }),
+};
+
+export const Basic: Story = {
+  args: {
+    value: 67,
+    max: 100,
+    variant: 'gemini',
+    size: 'sm',
+    indeterminate: false,
+    label: 'Gemini Gradient · Determinate',
+    showValue: true,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="width: min(480px, calc(100vw - 48px));">
+        <n-progress
+          [value]="value"
+          [max]="max"
+          [variant]="variant"
+          [size]="size"
+          [indeterminate]="indeterminate"
+          [label]="label"
           [showValue]="showValue"
         />
       </div>

@@ -46,6 +46,20 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    status: 'online',
+    pulse: false,
+    label: 'Online',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-status-dot [status]="status" [pulse]="pulse" [label]="label" />
+    `,
+  }),
+};
+
 export const Statuses: Story = {
   render: () => ({
     template: `

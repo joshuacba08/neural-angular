@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as StatCardStories from './stat-card.stories';
 
@@ -34,6 +34,14 @@ import * as StatCardStories from './stat-card.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="stat-card-doc-tabs"
+    id="stat-card-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Stat Card documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="stat-card-doc-tab-features">
@@ -44,6 +52,9 @@ import * as StatCardStories from './stat-card.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="stat-card-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="stat-card-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -59,9 +70,9 @@ import { NStatCard } from '@neural/angular-ui/stat-card';
 
 ### Basic
 
-A standard metric display utilizing a Gemini gradient value, an icon, and a trend percentage label.
+Default layout and dimensions, with interactive hover effects enabled.
 
-<Canvas of={StatCardStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={StatCardStories.Basic} layout="centered" sourceState="shown" />
 
 ### KPI Grid
 
@@ -353,6 +364,17 @@ Public `--n-*` design tokens consumed by `NStatCard`.
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={StatCardStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={StatCardStories.Playground} />
 
   </section>
 </div>

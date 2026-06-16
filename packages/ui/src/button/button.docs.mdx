@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as ButtonStories from './button.stories';
 
@@ -34,6 +34,14 @@ import * as ButtonStories from './button.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="button-doc-tabs"
+    id="button-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Button documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="button-doc-tab-features">
@@ -44,6 +52,9 @@ import * as ButtonStories from './button.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="button-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="button-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -61,7 +72,7 @@ import { NButton } from '@neural/angular-ui/button';
 
 The default variant is `primary`. Project content via `ng-content`.
 
-<Canvas of={ButtonStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={ButtonStories.Basic} layout="centered" sourceState="shown" />
 
 ### Gradient Filled
 
@@ -428,6 +439,17 @@ Public `--n-*` tokens consumed by the button styles.
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={ButtonStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={ButtonStories.Playground} />
 
   </section>
 </div>

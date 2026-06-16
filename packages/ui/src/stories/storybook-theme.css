@@ -319,6 +319,8 @@ body {
   display: none;
 }
 
+.n-doc-tabs:has(.n-doc-tabs__input[value='playground']:checked)
+  .n-doc-tabs__panel[data-tab='playground'],
 .n-doc-tabs:has(.n-doc-tabs__input[value='features']:checked)
   .n-doc-tabs__panel[data-tab='features'],
 .n-doc-tabs:has(.n-doc-tabs__input[value='api']:checked)
@@ -334,6 +336,8 @@ body {
   display: block;
 }
 
+.n-doc-tabs:has(.n-doc-tabs__input[value='playground']:checked)
+  .n-doc-tabs__tab[data-tab='playground'],
 .n-doc-tabs:has(.n-doc-tabs__input[value='features']:checked)
   .n-doc-tabs__tab[data-tab='features'],
 .n-doc-tabs:has(.n-doc-tabs__input[value='api']:checked)
@@ -351,6 +355,9 @@ body {
   box-shadow: inset 0 -2px 0 var(--n-color-primary);
 }
 
+.n-doc-tabs__input[value='playground']:focus-visible
+  ~ .n-doc-tabs__list
+  .n-doc-tabs__tab[data-tab='playground'],
 .n-doc-tabs__input[value='features']:focus-visible
   ~ .n-doc-tabs__list
   .n-doc-tabs__tab[data-tab='features'],

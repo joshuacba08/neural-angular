@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 
 import * as StatusDotStories from './status-dot.stories';
 
@@ -34,6 +34,14 @@ import * as StatusDotStories from './status-dot.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="status-dot-doc-tabs"
+    id="status-dot-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Status Dot documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="status-dot-doc-tab-features">
@@ -44,6 +52,9 @@ import * as StatusDotStories from './status-dot.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="status-dot-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="status-dot-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -61,7 +72,7 @@ import { NStatusDot } from '@neural/angular-ui/status-dot';
 
 By default, the status is `neutral`. You can configure a text label or an accessibility label.
 
-<Canvas of={StatusDotStories.Playground} layout="centered" sourceState="shown" />
+<Canvas of={StatusDotStories.Basic} layout="centered" sourceState="shown" />
 
 ### Statuses
 
@@ -254,6 +265,17 @@ Public `--n-*` design tokens consumed by `NStatusDot`.
     </tbody>
   </table>
 </div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={StatusDotStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={StatusDotStories.Playground} />
 
   </section>
 </div>

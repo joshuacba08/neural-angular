@@ -114,6 +114,29 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    name: 'John Doe',
+    size: 'md',
+    variant: 'blue-violet',
+    shape: 'circle',
+    status: null,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <n-avatar
+        [name]="name"
+        [src]="src"
+        [size]="size"
+        [variant]="variant"
+        [shape]="shape"
+        [status]="status"
+      />
+    `,
+  }),
+};
+
 export const SizesAndVariants: Story = {
   render: () => ({
     template: `

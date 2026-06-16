@@ -97,6 +97,35 @@ export const Playground: Story = {
   }),
 };
 
+export const Basic: Story = {
+  args: {
+    icon: 'film',
+    title: 'No videos yet',
+    description: 'Import a video file to start enhancing with AI upscaling.',
+    variant: 'primary',
+    orientation: 'vertical',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="width: min(280px, calc(100vw - 48px));">
+        <n-empty-state
+          [icon]="icon"
+          [title]="title"
+          [description]="description"
+          [variant]="variant"
+          [orientation]="orientation"
+        >
+          <n-button variant="gemini" size="sm">
+            <n-icon name="plus" size="sm" />
+            Import Video
+          </n-button>
+        </n-empty-state>
+      </div>
+    `,
+  }),
+};
+
 export const DesignSystem: Story = {
   render: () => ({
     template: `
