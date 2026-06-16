@@ -1,0 +1,142 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started/Configuration" />
+
+# Configuration
+
+Application-wide configuration for `@neural/angular-ui`.
+
+<section className="n-guide-page">
+  <div className="n-guide-hero">
+    <p className="n-story-eyebrow">Getting Started</p>
+    <h2>Compose the design system with providers instead of one-off setup code.</h2>
+    <p className="n-guide-lede">
+      Neural UI keeps global setup intentionally small: theme, icons, and overlay plumbing are
+      registered once at the application boundary and reused by every component.
+    </p>
+  </div>
+
+## Provider
+
+The initial configuration is typically defined in `app.config.ts`.
+
+```typescript
+import { ApplicationConfig } from '@angular/core';
+
+import {
+  provideNeuralIcons,
+  provideNeuralOverlay,
+  provideNeuralTheme,
+} from '@neural/angular-ui';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideNeuralTheme({
+      defaultTheme: 'dark',
+      storage: false,
+    }),
+    provideNeuralIcons(),
+    provideNeuralOverlay(),
+  ],
+};
+```
+
+## Theme
+
+Use `provideNeuralTheme()` to configure the initial theme mode and whether the preference should
+be persisted in `localStorage`.
+
+```typescript
+provideNeuralTheme({
+  defaultTheme: 'system',
+  storage: true,
+  storageKey: 'neural-theme',
+});
+```
+
+### Runtime
+
+Switch themes dynamically by injecting `NeuralThemeService`.
+
+```typescript
+import { Component, inject } from '@angular/core';
+import { NeuralThemeService, type NeuralThemeName } from '@neural/angular-ui/theme';
+
+@Component({
+  selector: 'app-theme-toggle',
+  standalone: true,
+  template: `
+    <button type="button" (click)="setTheme('dark')">Dark</button>
+    <button type="button" (click)="setTheme('light')">Light</button>
+    <button type="button" (click)="setTheme('system')">System</button>
+  `,
+})
+export class ThemeToggleComponent {
+  private readonly theme = inject(NeuralThemeService);
+
+  setTheme(value: NeuralThemeName): void {
+    this.theme.setTheme(value);
+  }
+}
+```
+
+The service applies `data-n-theme` to the document root in the browser, so components and raw
+application surfaces stay aligned.
+
+## Icons
+
+Register the Neural icon pack once with `provideNeuralIcons()`. It uses `@lucide/angular`
+directly, without global scripts or post-render DOM replacement.
+
+```typescript
+import { provideNeuralIcons } from '@neural/angular-ui';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideNeuralIcons()],
+};
+```
+
+## Overlay
+
+Components such as dialogs, drawers, toasts, tooltips, and popovers rely on the shared overlay
+providers.
+
+```typescript
+import { provideNeuralOverlay } from '@neural/angular-ui/overlay';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideNeuralOverlay()],
+};
+```
+
+## CSS Base
+
+If you want an explicit server-side fallback before Angular bootstraps, render the initial theme
+attribute in your shell.
+
+```html
+<html data-n-theme="dark">
+  <body>
+    <app-root></app-root>
+  </body>
+</html>
+```
+
+## Notes
+
+<div className="n-guide-grid">
+  <article className="n-guide-card">
+    <strong>Dark-first by default</strong>
+    <p>The visual system currently centers the dark theme and treats light as a supported mode.</p>
+  </article>
+  <article className="n-guide-card">
+    <strong>SSR-friendly</strong>
+    <p>Providers defer browser-only behavior behind injected platform-aware services.</p>
+  </article>
+  <article className="n-guide-card">
+    <strong>Composable setup</strong>
+    <p>You can adopt only theme or icons first and add overlays when the app needs them.</p>
+  </article>
+</div>
+
+</section>

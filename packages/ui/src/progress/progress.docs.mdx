@@ -1,0 +1,446 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as ProgressStories from './progress.stories';
+
+<Meta of={ProgressStories} />
+
+# Progress
+
+`NProgress` and `NProgressRing` are standalone Angular components used to indicate the status of an ongoing process. They support linear, segmented, circular, and advanced "orbital" layouts with Gemini gradients, pulsing shimmers, and dark-mode optimization.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="progress-doc-tabs"
+    id="progress-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="progress-doc-tabs"
+    id="progress-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="progress-doc-tabs"
+    id="progress-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Progress documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="progress-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="progress-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="progress-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NProgress, NProgressRing } from '@neural/angular-ui/progress';
+```
+
+### Basic Linear Progress
+
+Linear progress indicators occupy the full width of their container and can show determinate status with a percentage value.
+
+<Canvas of={ProgressStories.Playground} layout="centered" sourceState="shown" />
+
+### Variants
+
+Choose between 9 standard brand/semantic color variants.
+
+<Canvas of={ProgressStories.Variants} layout="centered" sourceState="hidden" />
+
+### Sizes
+
+Four pre-configured sizes matching layout heights: `xs` (4px), `sm` (5px), `md` (9px), and `lg` (10px).
+
+<Canvas of={ProgressStories.Sizes} layout="centered" sourceState="hidden" />
+
+### Indeterminate
+
+Use `indeterminate` mode when the total time or steps of an operation is unknown. It supports two modes: `fill` (sliding gradient) and `bar` (bouncing bar segment).
+
+<Canvas of={ProgressStories.Indeterminate} layout="centered" sourceState="hidden" />
+
+### Segmented Progress
+
+Segmented progress is activated by providing `totalSteps`. It breaks the bar into separate indicators, showing progress in steps rather than a continuous line.
+
+<Canvas of={ProgressStories.Segmented} layout="centered" sourceState="hidden" />
+
+### Progress Rings & Orbital AI
+
+`NProgressRing` provides circular loading indicators. In `orbital` size, it displays an overlay containing a center label, a metric description, and an sub-caption (ideal for GPU/CPU task status cards).
+
+<Canvas of={ProgressStories.AIPatterns} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties for `NProgress` and `NProgressRing`.
+
+<ArgTypes of={ProgressStories} sort="requiredFirst" />
+
+### NProgress Component Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>value</code></td>
+        <td><code>number</code></td>
+        <td><code>0</code></td>
+        <td>The current value of the progress bar (determinate mode). Clamped between 0 and <code>max</code>.</td>
+      </tr>
+      <tr>
+        <td><code>max</code></td>
+        <td><code>number</code></td>
+        <td><code>100</code></td>
+        <td>The maximum limit for the progress value.</td>
+      </tr>
+      <tr>
+        <td><code>variant</code></td>
+        <td><code>NProgressVariant</code></td>
+        <td><code>'primary'</code></td>
+        <td>Color/visual fill theme: <code>'gemini'</code>, <code>'gemini-full'</code>, <code>'primary'</code>, <code>'secondary'</code>, <code>'success'</code>, <code>'success-blue'</code>, <code>'warning'</code>, <code>'danger'</code>.</td>
+      </tr>
+      <tr>
+        <td><code>size</code></td>
+        <td><code>NProgressSize</code></td>
+        <td><code>'sm'</code></td>
+        <td>Height size modifier: <code>'xs'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>.</td>
+      </tr>
+      <tr>
+        <td><code>indeterminate</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Whether the progress status is indeterminate (looping animation).</td>
+      </tr>
+      <tr>
+        <td><code>indeterminateMode</code></td>
+        <td><code>NProgressIndeterminateMode</code></td>
+        <td><code>'fill'</code></td>
+        <td>Animation style for indeterminate loading: <code>'fill'</code> (sliding bar) or <code>'bar'</code> (discrete pulsing segment).</td>
+      </tr>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Primary label displayed above the progress bar.</td>
+      </tr>
+      <tr>
+        <td><code>showValue</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Whether to show the numerical percentage value.</td>
+      </tr>
+      <tr>
+        <td><code>hint</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Secondary info text displayed below the progress bar.</td>
+      </tr>
+      <tr>
+        <td><code>shimmer</code></td>
+        <td><code>boolean</code></td>
+        <td><code>undefined</code></td>
+        <td>Explicitly controls the sliding shimmer reflection effect. By default, enabled only on `gemini` and `gemini-full` determinate variants.</td>
+      </tr>
+      <tr>
+        <td><code>step</code></td>
+        <td><code>number</code></td>
+        <td><code>0</code></td>
+        <td>Current active step index (segmented mode). Only active if <code>totalSteps</code> &gt; 1.</td>
+      </tr>
+      <tr>
+        <td><code>totalSteps</code></td>
+        <td><code>number</code></td>
+        <td><code>0</code></td>
+        <td>Total number of discrete segments. If &gt; 1, activates segmented progress bar mode.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### NProgressRing Component Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>value</code></td>
+        <td><code>number</code></td>
+        <td><code>0</code></td>
+        <td>Current value of the circular ring progress (0 to 100).</td>
+      </tr>
+      <tr>
+        <td><code>variant</code></td>
+        <td><code>NProgressRingVariant</code></td>
+        <td><code>'primary'</code></td>
+        <td>Color themes: <code>'primary'</code>, <code>'secondary'</code>, <code>'gemini'</code>, <code>'success-blue'</code>, <code>'success'</code>.</td>
+      </tr>
+      <tr>
+        <td><code>size</code></td>
+        <td><code>NProgressRingSize</code></td>
+        <td><code>'lg'</code></td>
+        <td>Renders ring size: <code>'sm'</code> (40px), <code>'md'</code> (56px), <code>'lg'</code> (76px), or <code>'orbital'</code> (100px with center metric support).</td>
+      </tr>
+      <tr>
+        <td><code>indeterminate</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Whether the ring spins continuously (indeterminate status).</td>
+      </tr>
+      <tr>
+        <td><code>showValue</code></td>
+        <td><code>boolean</code></td>
+        <td><code>true</code></td>
+        <td>Whether to render the progress value in the center of standard rings.</td>
+      </tr>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Accessibility/screen reader label. For orbital size, it renders as a small uppercase label in the top center.</td>
+      </tr>
+      <tr>
+        <td><code>metric</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Primary metric name inside orbital layouts (e.g., "GPU", "CPU").</td>
+      </tr>
+      <tr>
+        <td><code>caption</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Helper sub-caption text rendered directly below the ring.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names used for styling the linear and circular progress components.
+
+#### NProgress Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-progress</code></td>
+        <td>Root container of the linear progress layout.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__meta</code></td>
+        <td>Header metadata container (label + value).</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__label</code></td>
+        <td>Main label element.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__value</code></td>
+        <td>Text element for the percentage value.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__value--gradient</code></td>
+        <td>Applied when the percentage text should use a gradient text color.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__track</code></td>
+        <td>The track container holding the filled progress bar.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__fill</code></td>
+        <td>The filled segment indicating determinate progress.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__shimmer</code></td>
+        <td>Pulsing/sliding highlight reflection on the progress bar.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__indeterminate</code></td>
+        <td>Indeterminate slider element (mode: <code>fill</code>).</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__indeterminate-bar</code></td>
+        <td>Indeterminate bouncing bar block (mode: <code>bar</code>).</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__segments</code></td>
+        <td>Flex container used when rendering in segmented progress mode.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__segment</code></td>
+        <td>Single step segment block.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress__segment--filled</code></td>
+        <td>Applied when a segment is considered filled (completed).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### NProgressRing Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-progress-ring</code></td>
+        <td>Root wrapper of the circular ring component.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress-ring__svg</code></td>
+        <td>The main SVG drawing canvas.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress-ring__circle--track</code></td>
+        <td>SVG background track circle.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress-ring__circle--fill</code></td>
+        <td>SVG animating foreground progress path circle.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress-ring__overlay</code></td>
+        <td>Centered flex container for rendering text/metrics.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress-ring__label</code></td>
+        <td>Small top uppercase label inside orbital layouts.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress-ring__value</code></td>
+        <td>Middle large text rendering the metric or percent value.</td>
+      </tr>
+      <tr>
+        <td><code>.n-progress-ring__caption</code></td>
+        <td>Caption label displayed underneath the circular ring.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` variables consumed by the progress components:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-progress-bg</code></td>
+        <td>Track background color (defaults to semi-transparent white/gray).</td>
+      </tr>
+      <tr>
+        <td><code>--n-progress-fill-primary</code></td>
+        <td>Fill color for primary variant (blue-violet gradient).</td>
+      </tr>
+      <tr>
+        <td><code>--n-progress-fill-secondary</code></td>
+        <td>Fill color for secondary variant (violet-pink gradient).</td>
+      </tr>
+      <tr>
+        <td><code>--n-progress-fill-gemini</code></td>
+        <td>Fill color for gemini variant (Gemini-style gradient).</td>
+      </tr>
+      <tr>
+        <td><code>--n-progress-fill-gemini-full</code></td>
+        <td>Fill color for gemini-full variant (extended brand gradient).</td>
+      </tr>
+      <tr>
+        <td><code>--n-progress-fill-success-blue</code></td>
+        <td>Fill color for success-blue variant.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-success</code></td>
+        <td>Semantic success color (green).</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-warning</code></td>
+        <td>Semantic warning color (yellow/amber).</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Semantic danger color (red).</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-bright</code></td>
+        <td>Contrast primary text highlight color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-1</code> / <code>--n-text-2</code> / <code>--n-text-3</code></td>
+        <td>Standard text color scales used for captions, values, and secondary labels.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+</div>

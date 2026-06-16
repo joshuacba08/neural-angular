@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════════════════════
+   NEURAL ANGULAR — Utility Classes
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Gradient Card Borders ── */
+.nn-card {
+  position: relative;
+  display: block;
+  padding: 22px;
+  border: 1px solid transparent;
+  border-radius: var(--nn-r-lg);
+  background:
+    linear-gradient(var(--nn-surface-1), var(--nn-surface-1)) padding-box,
+    var(--nn-border-grad) border-box;
+  color: var(--nn-t1);
+  overflow: hidden;
+  transition:
+    transform var(--nn-t-base),
+    box-shadow var(--nn-t-base),
+    background var(--nn-t-base);
+}
+
+.nn-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--nn-grad-surface);
+  opacity: 0;
+  transition: opacity var(--nn-t-base);
+  pointer-events: none;
+}
+
+.nn-card:hover::before {
+  opacity: 1;
+}
+
+.nn-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--nn-elev-3), var(--nn-glow-g-sm);
+  background:
+    linear-gradient(var(--nn-surface-2), var(--nn-surface-2)) padding-box,
+    var(--nn-border-grad) border-box;
+}
+
+/* Card Variants */
+.nn-card--blue,
+.nn-card.bv {
+  background:
+    linear-gradient(var(--nn-surface-1), var(--nn-surface-1)) padding-box,
+    var(--nn-border-grad-b) border-box;
+}
+
+.nn-card--blue:hover,
+.nn-card.bv:hover {
+  background:
+    linear-gradient(var(--nn-surface-2), var(--nn-surface-2)) padding-box,
+    var(--nn-border-grad-b) border-box;
+}
+
+.nn-card--violet,
+.nn-card.vp {
+  background:
+    linear-gradient(var(--nn-surface-1), var(--nn-surface-1)) padding-box,
+    var(--nn-border-grad-v) border-box;
+}
+
+.nn-card--violet:hover,
+.nn-card.vp:hover {
+  background:
+    linear-gradient(var(--nn-surface-2), var(--nn-surface-2)) padding-box,
+    var(--nn-border-grad-v) border-box;
+}
+
+/* ── Elevations ── */
+.elev-0, .nn-elev-0 { box-shadow: var(--nn-elev-0); }
+.elev-1, .nn-elev-1 { box-shadow: var(--nn-elev-1); }
+.elev-2, .nn-elev-2 { box-shadow: var(--nn-elev-2); }
+.elev-3, .nn-elev-3 { box-shadow: var(--nn-elev-3); }
+.elev-4, .nn-elev-4 { box-shadow: var(--nn-elev-4); }
+.elev-5, .nn-elev-5 { box-shadow: var(--nn-elev-5); }
+
+/* ── Glows ── */
+.glow-blue-md { box-shadow: var(--nn-glow-teal-md); }
+.glow-violet-md { box-shadow: var(--nn-glow-blue-md); }
+.glow-pink-md { box-shadow: var(--nn-glow-violet-md); }
+.glow-gemini { box-shadow: var(--nn-glow-g-sm); }
+.glow-success { box-shadow: var(--nn-glow-success-sm); }
+.glow-error { box-shadow: var(--nn-glow-error-sm); }
+
+/* ── Border Radius ── */
+.r-none { border-radius: var(--nn-r-none); }
+.r-xs   { border-radius: var(--nn-r-xs); }
+.r-sm   { border-radius: var(--nn-r-sm); }
+.r-md   { border-radius: var(--nn-r-md); }
+.r-lg   { border-radius: var(--nn-r-lg); }
+.r-xl   { border-radius: var(--nn-r-xl); }
+.r-2xl  { border-radius: var(--nn-r-2xl); }
+.r-full { border-radius: var(--nn-r-full); }
+
+/* ── Typography Scale ── */
+.sz-64 {
+  font-family: var(--nn-font-d);
+  font-size: var(--nn-sz-64);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+.sz-48 {
+  font-family: var(--nn-font-d);
+  font-size: var(--nn-sz-48);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.sz-36 {
+  font-family: var(--nn-font-d);
+  font-size: var(--nn-sz-36);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.sz-28 {
+  font-family: var(--nn-font-d);
+  font-size: var(--nn-sz-28);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.sz-24 {
+  font-family: var(--nn-font-d);
+  font-size: var(--nn-sz-24);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.sz-20 {
+  font-family: var(--nn-font-d);
+  font-size: var(--nn-sz-20);
+  font-weight: 500;
+  line-height: 1.35;
+}
+.sz-16 {
+  font-family: var(--nn-font-b);
+  font-size: var(--nn-sz-16);
+  font-weight: 400;
+  line-height: 1.45;
+}
+.sz-14 {
+  font-family: var(--nn-font-b);
+  font-size: var(--nn-sz-14);
+  font-weight: 400;
+  line-height: 1.5;
+}
+.sz-13 {
+  font-family: var(--nn-font-b);
+  font-size: var(--nn-sz-13);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.sz-11 {
+  font-family: var(--nn-font-b);
+  font-size: var(--nn-sz-11);
+  font-weight: 600;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.mono {
+  font-family: var(--nn-font-m);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ── Spacing Helpers ── */
+.p-s1  { padding: var(--nn-s1); }
+.p-s2  { padding: var(--nn-s2); }
+.p-s3  { padding: var(--nn-s3); }
+.p-s4  { padding: var(--nn-s4); }
+.p-s5  { padding: var(--nn-s5); }
+.p-s6  { padding: var(--nn-s6); }
+.p-s8  { padding: var(--nn-s8); }
+.p-s10 { padding: var(--nn-s10); }
+.p-s12 { padding: var(--nn-s12); }
+.p-s16 { padding: var(--nn-s16); }
+
+.m-s1  { margin: var(--nn-s1); }
+.m-s2  { margin: var(--nn-s2); }
+.m-s3  { margin: var(--nn-s3); }
+.m-s4  { margin: var(--nn-s4); }
+.m-s5  { margin: var(--nn-s5); }
+.m-s6  { margin: var(--nn-s6); }
+.m-s8  { margin: var(--nn-s8); }
+.m-s10 { margin: var(--nn-s10); }
+.m-s12 { margin: var(--nn-s12); }
+.m-s16 { margin: var(--nn-s16); }
+
+.gap-s1  { gap: var(--nn-s1); }
+.gap-s2  { gap: var(--nn-s2); }
+.gap-s3  { gap: var(--nn-s3); }
+.gap-s4  { gap: var(--nn-s4); }
+.gap-s5  { gap: var(--nn-s5); }
+.gap-s6  { gap: var(--nn-s6); }
+.gap-s8  { gap: var(--nn-s8); }
+.gap-s10 { gap: var(--nn-s10); }
+.gap-s12 { gap: var(--nn-s12); }
+.gap-s16 { gap: var(--nn-s16); }

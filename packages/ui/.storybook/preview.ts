@@ -44,6 +44,18 @@ const preview: Preview = {
       // Keep autodocs pages on the dark Neural theme, cohesive with components.
       theme: neuralTheme,
     },
+    options: {
+      storySort: {
+        order: [
+          'Getting Started',
+          ['Installation', 'Configuration', 'Playground'],
+          'Foundation',
+          'Components',
+          'Forms',
+          '*',
+        ],
+      },
+    },
     layout: 'centered',
   },
   // Generate an autodocs page for every component story by default.

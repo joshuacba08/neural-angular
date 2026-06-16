@@ -58,12 +58,23 @@ const motionTokens = [
   ['Spring', '--n-ease-spring', 'cubic-bezier(0.34, 1.56, 0.64, 1)'],
 ] as const;
 
-const elevationTokens = [
-  ['Elevation 1', '--n-elevation-1'],
-  ['Elevation 2', '--n-elevation-2'],
-  ['Elevation 3', '--n-elevation-3'],
-  ['Elevation 4', '--n-elevation-4'],
+const spaceTokens = [
+  ['s1', '--nn-s1', '4px'],
+  ['s2', '--nn-s2', '8px'],
+  ['s3', '--nn-s3', '12px'],
+  ['s4', '--nn-s4', '16px'],
+  ['s5', '--nn-s5', '20px'],
+  ['s6', '--nn-s6', '24px'],
+  ['s8', '--nn-s8', '32px'],
+  ['s10', '--nn-s10', '40px'],
+  ['s12', '--nn-s12', '48px'],
+  ['s14', '--nn-s14', '56px'],
+  ['s16', '--nn-s16', '64px'],
+  ['s20', '--nn-s20', '80px'],
+  ['s24', '--nn-s24', '96px'],
+  ['s32', '--nn-s32', '128px'],
 ] as const;
+
 
 export const Overview: Story = {
   render: () => ({
@@ -209,19 +220,19 @@ export const GeometryAndDepth: Story = {
   render: () => ({
     props: {
       radiusTokens,
-      elevationTokens,
     },
     template: `
       <section class="n-story-foundation">
         <header>
-          <p class="n-story-eyebrow">Geometry</p>
-          <h1>Radius and elevation</h1>
+          <p class="n-story-eyebrow">Geometry & Depth</p>
+          <h1>Radius, elevation & card borders</h1>
         </header>
 
-        <div class="n-token-geometry-grid">
-          <article class="n-token-geometry-card">
+        <div style="display:flex; flex-direction:column; gap:40px; width:100%">
+          <!-- Radius Scale -->
+          <article class="n-token-geometry-card" style="width:100%">
             <h2>Radius scale</h2>
-            <div class="n-token-radius-grid">
+            <div class="n-token-radius-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:16px">
               @for (token of radiusTokens; track token[1]) {
                 <div class="n-token-radius-item">
                   <span [style.borderRadius]="'var(' + token[1] + ')'"></span>
@@ -233,15 +244,96 @@ export const GeometryAndDepth: Story = {
             </div>
           </article>
 
-          <article class="n-token-geometry-card">
-            <h2>Elevation scale</h2>
-            <div class="n-token-elevation-stack">
-              @for (token of elevationTokens; track token[1]) {
-                <div class="n-token-elevation-item" [style.boxShadow]="'var(' + token[1] + ')'">
-                  <strong>{{ token[0] }}</strong>
-                  <code>{{ token[1] }}</code>
-                </div>
-              }
+          <!-- Elevation Scale -->
+          <article class="n-token-geometry-card" style="width:100%">
+            <h2>Niveles de Elevación</h2>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:14px">
+              <div class="elev-card elev-0" style="background:var(--n-surface-1); border:1px solid var(--n-border-0); padding:20px 16px; border-radius:var(--n-radius-lg)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">elev-0</div>
+                <div style="font-weight:600; font-size:14px; margin:4px 0">Level 0</div>
+                <div style="font-size:11px; color:var(--n-text-3)">Sin sombra. Canvas, elementos flat.</div>
+              </div>
+              <div class="elev-card elev-1" style="background:var(--n-surface-1); border:1px solid var(--n-border-0); padding:20px 16px; border-radius:var(--n-radius-lg)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">elev-1</div>
+                <div style="font-weight:600; font-size:14px; margin:4px 0">Level 1</div>
+                <div style="font-size:11px; color:var(--n-text-3)">Chips, badges.</div>
+              </div>
+              <div class="elev-card elev-2" style="background:var(--n-surface-2); border:1px solid var(--n-border-0); padding:20px 16px; border-radius:var(--n-radius-lg)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">elev-2</div>
+                <div style="font-weight:600; font-size:14px; margin:4px 0">Level 2</div>
+                <div style="font-size:11px; color:var(--n-text-3)">Cards, paneles.</div>
+              </div>
+              <div class="elev-card elev-3" style="background:var(--n-surface-2); padding:20px 16px; border-radius:var(--n-radius-lg)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">elev-3</div>
+                <div style="font-weight:600; font-size:14px; margin:4px 0">Level 3</div>
+                <div style="font-size:11px; color:var(--n-text-3)">Dropdowns.</div>
+              </div>
+              <div class="elev-card elev-4" style="background:var(--n-surface-3); padding:20px 16px; border-radius:var(--n-radius-lg)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">elev-4</div>
+                <div style="font-weight:600; font-size:14px; margin:4px 0">Level 4</div>
+                <div style="font-size:11px; color:var(--n-text-3)">Modales, drawers.</div>
+              </div>
+              <div class="elev-card elev-5" style="background:var(--n-surface-4); padding:20px 16px; border-radius:var(--n-radius-lg)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">elev-5</div>
+                <div style="font-weight:600; font-size:14px; margin:4px 0">Level 5</div>
+                <div style="font-size:11px; color:var(--n-text-3)">Toasts, tooltips.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Gradient Card Borders -->
+          <article class="n-token-geometry-card" style="width:100%">
+            <h2>Gradient Card Borders — Top Acento</h2>
+            <p style="font-size:12px; color:var(--n-text-2); margin-bottom:16px">
+              Los bordes de gradiente se implementan con padding-box / border-box. Los tres acentos del sistema.
+            </p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px">
+              <div class="nn-card">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">Gemini Gradient</div>
+                <div style="font-weight:700; font-size:15px; margin:4px 0">nn-card</div>
+                <div style="font-size:11px; color:var(--n-text-2)">Default. Componentes principales.</div>
+              </div>
+              <div class="nn-card bv">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">Blue &rarr; Violet</div>
+                <div style="font-weight:700; font-size:15px; margin:4px 0">nn-card--blue</div>
+                <div style="font-size:11px; color:var(--n-text-2)">Información, analytics, secundario.</div>
+              </div>
+              <div class="nn-card vp">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">Violet &rarr; Pink</div>
+                <div style="font-weight:700; font-size:15px; margin:4px 0">nn-card--violet</div>
+                <div style="font-size:11px; color:var(--n-text-2)">AI outputs, modelos especiales.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Gradient Glow -->
+          <article class="n-token-geometry-card" style="width:100%">
+            <h2>Gradient Glow — Neural Highlight</h2>
+            <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:center; padding:10px 0">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px">
+                <div class="glow-blue-md" style="width:36px; height:36px; border-radius:50%; background:var(--n-color-primary)"></div>
+                <span style="font-family:var(--n-font-mono); font-size:9.5px; color:var(--n-text-3)">glow-blue-md</span>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px">
+                <div class="glow-violet-md" style="width:36px; height:36px; border-radius:50%; background:var(--n-color-secondary)"></div>
+                <span style="font-family:var(--n-font-mono); font-size:9.5px; color:var(--n-text-3)">glow-violet-md</span>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px">
+                <div class="glow-pink-md" style="width:36px; height:36px; border-radius:50%; background:var(--n-color-tertiary)"></div>
+                <span style="font-family:var(--n-font-mono); font-size:9.5px; color:var(--n-text-3)">glow-pink-md</span>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px">
+                <div class="glow-gemini" style="width:36px; height:36px; border-radius:50%; background:var(--n-gradient-gemini)"></div>
+                <span style="font-family:var(--n-font-mono); font-size:9.5px; color:var(--n-text-3)">glow-gemini</span>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px">
+                <div class="glow-success" style="width:36px; height:36px; border-radius:50%; background:var(--n-color-success)"></div>
+                <span style="font-family:var(--n-font-mono); font-size:9.5px; color:var(--n-text-3)">glow-success</span>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px">
+                <div class="glow-error" style="width:36px; height:36px; border-radius:50%; background:var(--n-color-danger)"></div>
+                <span style="font-family:var(--n-font-mono); font-size:9.5px; color:var(--n-text-3)">glow-error</span>
+              </div>
             </div>
           </article>
         </div>
@@ -254,34 +346,104 @@ export const MotionAndType: Story = {
   render: () => ({
     props: {
       motionTokens,
+      spaceTokens,
     },
     template: `
       <section class="n-story-foundation">
         <header>
-          <p class="n-story-eyebrow">Rhythm</p>
-          <h1>Type and motion</h1>
+          <p class="n-story-eyebrow">Rhythm & Typography</p>
+          <h1>Type, spacing & motion</h1>
         </header>
 
-        <div class="n-token-geometry-grid">
-          <article class="n-token-geometry-card">
-            <h2>Typography</h2>
-            <div class="n-token-type-stack">
-              <div>
-                <p class="n-token-type-stack__display">Plus Jakarta Sans display</p>
-                <code>--n-font-display</code>
+        <div style="display:flex; flex-direction:column; gap:40px; width:100%">
+          <!-- Spacing Scale -->
+          <article class="n-token-geometry-card" style="width:100%">
+            <h2>Escala de Espaciado — 4px grid</h2>
+            <div style="display:flex; flex-direction:column; gap:12px; max-width:600px; width:100%; margin-top:16px">
+              @for (space of spaceTokens; track space[1]) {
+                <div style="display:grid; grid-template-columns:80px 1fr 60px; align-items:center; gap:12px">
+                  <span style="font-family:var(--n-font-mono); font-size:11px; color:var(--n-text-2)">{{ space[1] }}</span>
+                  <div style="height:12px; background:var(--n-gradient-primary-secondary); border-radius:2px" [style.width]="space[2]"></div>
+                  <span style="font-family:var(--n-font-mono); font-size:11px; color:var(--n-text-3); text-align:right">{{ space[2] }}</span>
+                </div>
+              }
+            </div>
+          </article>
+
+          <!-- Typography Families -->
+          <article class="n-token-geometry-card" style="width:100%">
+            <h2>Familias Tipográficas</h2>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top:16px">
+              <!-- Plus Jakarta Sans -->
+              <div style="border:1px solid var(--n-border-1); padding:20px; border-radius:var(--n-radius-lg); background:var(--n-surface-1)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">--nn-font-d / b · Plus Jakarta Sans</div>
+                <div style="font-size:32px; font-weight:700; margin:10px 0; font-family:var(--n-font-display)">Aa Bb Cc</div>
+                <div style="font-size:18px; font-weight:300; margin-bottom:10px; color:var(--n-text-2)">Thin · Light · Regular</div>
+                <div style="font-size:12px; color:var(--n-text-3)">Display · Titulares · Body · Labels<br>Weights: 300 400 500 600 700 800</div>
               </div>
-              <div>
-                <p class="n-token-type-stack__body">Plus Jakarta Sans body copy for dense interfaces and product flows.</p>
-                <code>--n-font-body</code>
-              </div>
-              <div>
-                <p class="n-token-type-stack__mono">JetBrains Mono for system labels and structured metadata.</p>
-                <code>--n-font-mono</code>
+              <!-- JetBrains Mono -->
+              <div style="border:1px solid var(--n-border-1); padding:20px; border-radius:var(--n-radius-lg); background:var(--n-surface-1)">
+                <div style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">--nn-font-m · JetBrains Mono</div>
+                <div style="font-size:32px; font-weight:700; margin:10px 0; font-family:var(--n-font-mono)">01 &lt;code&gt;</div>
+                <div style="font-size:18px; font-weight:400; margin-bottom:10px; color:var(--n-text-2); font-family:var(--n-font-mono)">3.14 · AI · JSON</div>
+                <div style="font-size:12px; color:var(--n-text-3); font-family:var(--n-font-mono)">Código · Tokens · IDs · Datos<br>Weights: 400 500 600</div>
               </div>
             </div>
           </article>
 
-          <article class="n-token-geometry-card">
+          <!-- Typography Scale -->
+          <article class="n-token-geometry-card" style="width:100%">
+            <h2>Escala Tipográfica</h2>
+            <div style="display:flex; flex-direction:column; gap:16px; margin-top:16px">
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-64" style="background:var(--n-gradient-primary-secondary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; color:transparent">Neural</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-64 · 64px · 800</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-48">Display XL</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-48 · 48px · 700</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-36">Heading Display</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-36 · 36px · 600</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-28">Heading 1 — Sección principal</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-28 · 28px · 600</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-24">Heading 2 — Sub-sección</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-24 · 24px · 500</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-20">Heading 3 — Panel o tarjeta</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-20 · 20px · 500</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-16">Body Large — El modelo procesa la solicitud con redes neuronales.</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-16 · 16px · 400</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-14" style="color:var(--n-text-2)">Body Medium — Descripción secundaria con contexto de soporte adicional.</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-14 · 14px · 400</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-13" style="color:var(--n-text-3)">Label · Estado del sistema · Etiqueta de componente</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-13 · 13px · 500</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--n-border-0); padding-bottom:8px">
+                <span class="sz-11" style="color:var(--n-text-3)">Caption · Overline · Metadata</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">sz-11 · 11px · 600</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <span class="mono" style="color:var(--n-color-primary-bright)">const model = await neural.process(input, { stream: true });</span>
+                <span style="font-family:var(--n-font-mono); font-size:10px; color:var(--n-text-3)">mono · 13px · monospace</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Motion Scale -->
+          <article class="n-token-geometry-card" style="width:100%">
             <h2>Motion</h2>
             <div class="n-token-motion-list">
               @for (token of motionTokens; track token[1]) {

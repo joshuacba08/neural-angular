@@ -1,3 +1,23 @@
+/* Subtle Astro-like background gradient and grid pattern for Storybook preview iframe */
+body {
+  background-image: 
+    radial-gradient(120% 120% at 50% 0%, #0d0b21 0%, #06060e 55%, #020206 100%),
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 32px 32px, 32px 32px !important;
+  background-position: center top, center top, center top !important;
+  background-attachment: fixed !important;
+}
+
+/* Ensure all MDX and Docs page wrappers are transparent to show the background */
+.sbdocs,
+.sbdocs-wrapper,
+.sbdocs-content,
+.docs-story {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 .n-story-row {
   display: flex;
   flex-wrap: wrap;
@@ -1000,4 +1020,61 @@
   .n-icon-context-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.n-guide-page {
+  display: grid;
+  gap: var(--n-space-6);
+  width: min(920px, calc(100vw - 48px));
+}
+
+.n-guide-hero {
+  display: grid;
+  gap: var(--n-space-3);
+}
+
+.n-guide-hero h2,
+.n-guide-hero p {
+  margin: 0;
+}
+
+.n-guide-hero h2 {
+  color: var(--n-text-1);
+  font-family: var(--n-font-display);
+  font-size: var(--n-font-size-32);
+  line-height: 1.1;
+}
+
+.n-guide-lede {
+  max-width: 60ch;
+  color: var(--n-text-2);
+  font-size: var(--n-font-size-17);
+  line-height: 1.7;
+}
+
+.n-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--n-space-4);
+}
+
+.n-guide-card {
+  display: grid;
+  gap: var(--n-space-2);
+  padding: var(--n-space-4);
+  border: 1px solid var(--n-border-1);
+  border-radius: var(--n-radius-xl);
+  background: var(--n-surface-2);
+  box-shadow: var(--n-elevation-1);
+}
+
+.n-guide-card strong {
+  color: var(--n-text-1);
+}
+
+.n-guide-card p {
+  margin: 0;
+  color: var(--n-text-2);
+  font-size: var(--n-font-size-13);
+  line-height: 1.65;
 }

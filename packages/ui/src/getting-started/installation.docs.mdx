@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started/Installation" />
+
+# Installation
+
+Setting up `@neural/angular-ui` in an Angular application.
+
+<section className="n-guide-page">
+  <div className="n-guide-hero">
+    <p className="n-story-eyebrow">Getting Started</p>
+    <h2>Install the package, load the styles, and verify the first component.</h2>
+    <p className="n-guide-lede">
+      Neural UI is designed for Angular 22 applications that want a dark-first design system,
+      typed component entry points, and a clean provider-based setup.
+    </p>
+  </div>
+
+## Download
+
+Install the package and its peer dependencies from the npm registry.
+
+```bash
+# Using npm
+npm install @neural/angular-ui @angular/cdk @lucide/angular
+
+# Using yarn
+yarn add @neural/angular-ui @angular/cdk @lucide/angular
+
+# Using pnpm
+pnpm add @neural/angular-ui @angular/cdk @lucide/angular
+```
+
+## Styles
+
+Import the design-system stylesheet once in your global application styles.
+
+```css
+@import "@neural/angular-ui/styles";
+```
+
+The bundle includes design tokens, dark and light theme layers, and the shared base treatment
+ for typography and canvas surfaces.
+
+## Fonts
+
+The default typography tokens target **Plus Jakarta Sans** and **JetBrains Mono**. Load them in
+your app shell for the intended appearance.
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+```
+
+## Verify
+
+Verify your setup by importing a component such as `NButton` or `NCard`. Secondary entry points
+are recommended so each screen only pulls the pieces it uses.
+
+```typescript
+import { Component } from '@angular/core';
+
+import { NButton } from '@neural/angular-ui/button';
+import { NCard, NCardContent, NCardHeader, NCardTitle } from '@neural/angular-ui/card';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [NButton, NCard, NCardContent, NCardHeader, NCardTitle],
+  template: `
+    <n-card>
+      <n-card-header>
+        <n-card-title>Neural UI ready</n-card-title>
+      </n-card-header>
+
+      <n-card-content>
+        <n-button variant="primary">Primary action</n-button>
+      </n-card-content>
+    </n-card>
+  `,
+})
+export class AppComponent {}
+```
+
+## Next Steps
+
+<div className="n-guide-grid">
+  <article className="n-guide-card">
+    <strong>Configuration</strong>
+    <p>Set up theme, icons, overlay services, and optional persistence.</p>
+  </article>
+  <article className="n-guide-card">
+    <strong>Playground</strong>
+    <p>Use Storybook and the workspace playground app to validate composition.</p>
+  </article>
+  <article className="n-guide-card">
+    <strong>Foundation</strong>
+    <p>Review the token system before branching into component-level customization.</p>
+  </article>
+</div>
+
+</section>

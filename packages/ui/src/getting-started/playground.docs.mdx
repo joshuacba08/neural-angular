@@ -1,0 +1,90 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as ButtonStories from '../button/button.stories';
+import * as CardStories from '../card/card.stories';
+
+<Meta title="Getting Started/Playground" />
+
+# Playground
+
+How to experiment with Neural UI inside the monorepo.
+
+<section className="n-guide-page">
+  <div className="n-guide-hero">
+    <p className="n-story-eyebrow">Getting Started</p>
+    <h2>Use Storybook for component reference and the playground app for real composition.</h2>
+    <p className="n-guide-lede">
+      The best workflow is to iterate small states in Storybook, then validate layout, navigation,
+      and application-level behavior in `apps/playground`.
+    </p>
+  </div>
+
+## Storybook
+
+Run the UI library documentation locally:
+
+```bash
+pnpm nx run @neural/angular-ui:storybook
+```
+
+Storybook is the right place for:
+
+- isolated component states
+- design-token inspection
+- visual review of variants and sizes
+- custom MDX documentation
+
+### Example
+
+<Canvas of={ButtonStories.GradientFilled} layout="padded" sourceState="hidden" />
+
+## Playground App
+
+Run the composed Angular application locally:
+
+```bash
+pnpm nx serve playground
+```
+
+The workspace playground is the right place for:
+
+- validating multiple components together
+- checking shell and navigation ergonomics
+- trying realistic pages and data density
+- testing global provider behavior
+
+### Example Surface
+
+<Canvas of={CardStories.Playground} layout="centered" sourceState="hidden" />
+
+## Recommended Workflow
+
+<div className="n-guide-grid">
+  <article className="n-guide-card">
+    <strong>1. Start in Storybook</strong>
+    <p>Dial in variants, spacing, and interaction states while the component surface is small.</p>
+  </article>
+  <article className="n-guide-card">
+    <strong>2. Move to playground</strong>
+    <p>Compose the component with cards, shell, forms, and content hierarchy that resembles a product screen.</p>
+  </article>
+  <article className="n-guide-card">
+    <strong>3. Fold learnings back</strong>
+    <p>Promote stable patterns into stories and docs so the design language keeps getting sharper.</p>
+  </article>
+</div>
+
+## Useful Entry Points
+
+```typescript
+import { NButton } from '@neural/angular-ui/button';
+import { NCard } from '@neural/angular-ui/card';
+import { NEmptyState } from '@neural/angular-ui/empty-state';
+import { NChip } from '@neural/angular-ui/chip';
+import { NAvatar } from '@neural/angular-ui/avatar';
+```
+
+Keep secondary entry points as the default import style in application code. They make examples
+clearer and support tighter bundle composition.
+
+</section>

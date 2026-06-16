@@ -57,4 +57,109 @@
   --nn-border-grad-b: var(--n-gradient-border-primary);
   --nn-border-grad-v: var(--n-gradient-border-secondary);
   --nn-border-subtle: var(--n-gradient-border-subtle);
+
+  /* ── Spacing 4px grid ── */
+  --nn-s1: var(--n-space-1);
+  --nn-s2: var(--n-space-2);
+  --nn-s3: var(--n-space-3);
+  --nn-s4: var(--n-space-4);
+  --nn-s5: var(--n-space-5);
+  --nn-s6: var(--n-space-6);
+  --nn-s8: var(--n-space-8);
+  --nn-s10: var(--n-space-10);
+  --nn-s12: var(--n-space-12);
+  --nn-s14: var(--n-space-14);
+  --nn-s16: var(--n-space-16);
+  --nn-s20: var(--n-space-20);
+  --nn-s24: var(--n-space-24);
+  --nn-s32: var(--n-space-32);
+
+  /* ── Extra Radiuses ── */
+  --nn-r-2xl: 28px;
+  --nn-r-3xl: 40px;
+
+  /* ── Elevations ── */
+  --nn-elev-0: var(--n-elevation-0);
+  --nn-elev-1: var(--n-elevation-1);
+  --nn-elev-2: var(--n-elevation-2);
+  --nn-elev-3: var(--n-elevation-3);
+  --nn-elev-4: var(--n-elevation-4);
+  --nn-elev-5: var(--n-elevation-5);
+
+  /* ── Glows ── */
+  --nn-glow-teal-xs: var(--n-glow-primary-xs);
+  --nn-glow-teal-sm: var(--n-glow-primary-sm);
+  --nn-glow-teal-md: var(--n-glow-primary-md);
+  --nn-glow-teal-lg: var(--n-glow-primary-lg);
+  --nn-glow-blue-sm: var(--n-glow-secondary-sm);
+  --nn-glow-blue-md: var(--n-glow-secondary-md);
+  --nn-glow-violet-sm: var(--n-glow-tertiary-sm);
+  --nn-glow-violet-md: var(--n-glow-tertiary-md);
+  --nn-glow-g-sm: var(--n-glow-gradient-sm);
+  --nn-glow-success-sm: var(--n-glow-success-sm);
+  --nn-glow-error-sm: var(--n-glow-danger-sm);
+
+  /* ── Typography sizes ── */
+  --nn-sz-10: var(--n-font-size-10);
+  --nn-sz-11: var(--n-font-size-11);
+  --nn-sz-12: var(--n-font-size-12);
+  --nn-sz-13: var(--n-font-size-13);
+  --nn-sz-14: var(--n-font-size-14);
+  --nn-sz-15: var(--n-font-size-15);
+  --nn-sz-16: var(--n-font-size-16);
+  --nn-sz-18: var(--n-font-size-18);
+  --nn-sz-20: var(--n-font-size-20);
+  --nn-sz-24: var(--n-font-size-24);
+  --nn-sz-28: var(--n-font-size-28);
+  --nn-sz-32: var(--n-font-size-32);
+  --nn-sz-36: var(--n-font-size-36);
+  --nn-sz-40: var(--n-font-size-40);
+  --nn-sz-48: var(--n-font-size-48);
+  --nn-sz-56: var(--n-font-size-56);
+  --nn-sz-64: var(--n-font-size-64);
+
+  /* ── Font weights ── */
+  --nn-w-light: var(--n-font-weight-light);
+  --nn-w-regular: var(--n-font-weight-regular);
+  --nn-w-medium: var(--n-font-weight-medium);
+  --nn-w-semibold: var(--n-font-weight-semibold);
+  --nn-w-bold: var(--n-font-weight-bold);
+
+  /* ── Motion & Transitions ── */
+  --nn-ease-std: var(--n-ease-standard);
+  --nn-ease-decel: var(--n-ease-decelerate);
+  --nn-ease-spring: var(--n-ease-spring);
+  --nn-dur-sm: var(--n-duration-fast);
+  --nn-dur-md: var(--n-duration-base);
+  --nn-dur-lg: var(--n-duration-slow);
+  --nn-dur-xl: var(--n-duration-slower);
+  --nn-t-fast: var(--n-transition-fast);
+  --nn-t-base: var(--n-transition-base);
+  --nn-t-slow: var(--n-transition-slow);
+  --nn-t-spring: var(--n-transition-spring);
+
+  /* ── Stacking order ── */
+  --nn-z-sticky: var(--n-z-sticky);
+  --nn-z-overlay: var(--n-z-overlay);
+  --nn-z-modal: var(--n-z-modal);
+  --nn-z-toast: var(--n-z-toast);
+
+  /* ── Extra Gradients ── */
+  --nn-grad-blue-cyan: var(--n-gradient-primary-cyan);
+  --nn-grad-g-soft: var(--n-gradient-gemini-soft);
+  --nn-grad-surface-strong: var(--n-gradient-surface-strong);
+
+  /* ── Alpha Opacities ── */
+  --nn-blue-10: var(--n-color-primary-alpha-10);
+  --nn-blue-15: rgba(66, 133, 244, 0.15);
+  --nn-blue-20: rgba(66, 133, 244, 0.20);
+  --nn-violet-10: var(--n-color-secondary-alpha-10);
+  --nn-violet-15: rgba(123, 92, 246, 0.15);
+  --nn-violet-20: rgba(123, 92, 246, 0.20);
+  --nn-pink-10: var(--n-color-tertiary-alpha-10);
+  --nn-pink-15: rgba(217, 70, 239, 0.15);
+  --nn-success-10: var(--n-color-success-alpha-10);
+  --nn-warning-10: var(--n-color-warning-alpha-10);
+  --nn-error-10: var(--n-color-danger-alpha-10);
+  --nn-info-10: var(--n-color-info-alpha-10);
 }
