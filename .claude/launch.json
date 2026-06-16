@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "storybook",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "run", "@neural/angular-ui:storybook"],
+      "port": 4400
+    },
+    {
+      "name": "storybook-static",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "dist/storybook/@neural/angular-ui"],
+      "autoPort": true
+    }
+  ]
+}

@@ -10,6 +10,37 @@ Current status: token foundation, a minimal Angular theme provider, Lucide icon 
 @import "@neural/angular-ui/styles";
 ```
 
+This bundle includes the design tokens, the dark/light theme layers, and a base
+layer that applies the canvas background and typography to `body`.
+
+### Fonts
+
+The `--n-font-*` tokens reference **Plus Jakarta Sans** (display/body) and
+**JetBrains Mono** (code). You must load these typefaces yourself, or the system
+falls back to `system-ui`.
+
+The most reliable option is a `<link>` in your app's `index.html` `<head>`:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+```
+
+A CSS entry point is also provided for convenience (note: bundlers may inline or
+strip remote `@import` rules, so the `<link>` above is preferred):
+
+```css
+@import "@neural/angular-ui/styles/fonts";
+```
+
+For offline or self-hosted setups, declare your own `@font-face` rules for the
+two families instead. The base `body` treatment is also available standalone via
+`@neural/angular-ui/styles/base`.
+
 ## Theme
 
 ```ts

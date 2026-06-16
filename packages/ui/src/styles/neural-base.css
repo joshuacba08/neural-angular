@@ -1,0 +1,24 @@
+/*
+ * Neural Angular base layer.
+ *
+ * Applies the canonical canvas treatment to the document body so the design
+ * system reads correctly out of the box: Gemini dark canvas background, the
+ * Plus Jakarta Sans body family, and primary text color.
+ *
+ * Pair with the web fonts entry point so the typefaces actually load:
+ *   @import "@neural/angular-ui/styles/fonts";
+ *
+ * Included in the main `@neural/angular-ui/styles` bundle.
+ */
+body {
+  margin: 0;
+  background: var(--n-bg-canvas);
+  color: var(--n-text-1);
+  font-family: var(--n-font-body);
+  font-size: var(--n-font-size-14);
+  font-weight: var(--n-font-weight-regular);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}

@@ -1,0 +1,16 @@
+/*
+ * Neural Angular web fonts.
+ *
+ * Loads the design system typefaces from Google Fonts:
+ *   - Plus Jakarta Sans (display + body, weights 300-800)
+ *   - JetBrains Mono (code/data, weights 400-600)
+ *
+ * This is an opt-in entry point. The `--n-font-*` tokens reference these
+ * families, so without loading them the system falls back to system-ui.
+ *
+ *   @import "@neural/angular-ui/styles/fonts";
+ *
+ * For offline or self-hosted setups, replace this import with local
+ * @font-face declarations pointing at your own font files.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap");

@@ -5,6 +5,7 @@ import {
   provideNeuralOverlay,
   provideNeuralTheme,
 } from '../src/index.js';
+import { neuralTheme } from './theme.js';
 
 const preview: Preview = {
   decorators: [
@@ -34,8 +35,19 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    a11y: {
+      // 'todo' surfaces violations in the a11y panel without failing the build.
+      // Promote to 'error' once components are audited.
+      test: 'todo',
+    },
+    docs: {
+      // Keep autodocs pages on the dark Neural theme, cohesive with components.
+      theme: neuralTheme,
+    },
     layout: 'centered',
   },
+  // Generate an autodocs page for every component story by default.
+  tags: ['autodocs'],
 };
 
 export default preview;

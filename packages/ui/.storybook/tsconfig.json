@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "emitDecoratorMetadata": true,
+    "lib": ["es2022", "DOM", "DOM.Iterable"],
     "rootDir": "..",
     "tsBuildInfoFile": "../dist/.storybook/tsconfig.tsbuildinfo"
   },
