@@ -21,6 +21,7 @@ const preview: Preview = {
     }),
   ],
   parameters: {
+    viewMode: 'docs',
     backgrounds: {
       default: 'neural dark',
       values: [

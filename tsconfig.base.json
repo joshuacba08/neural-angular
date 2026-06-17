@@ -87,7 +87,21 @@
       "@neural/angular-ui/tooltip": ["packages/ui/src/tooltip/index.ts"],
       "@neural/angular-ui/toolbar": ["packages/ui/src/toolbar/index.ts"],
       "@neural/angular-ui/tokens": ["packages/ui/src/tokens/index.ts"],
-      "@neural/angular-ui/voice-orb": ["packages/ui/src/voice-orb/index.ts"]
+      "@neural/angular-ui/voice-orb": ["packages/ui/src/voice-orb/index.ts"],
+      "@neural/angular-ui/command-palette": ["packages/ui/src/command-palette/index.ts"],
+      "@neural/angular-ui/float-label": ["packages/ui/src/float-label/index.ts"],
+      "@neural/angular-ui/icon-field": ["packages/ui/src/icon-field/index.ts"],
+      "@neural/angular-ui/input-group": ["packages/ui/src/input-group/index.ts"],
+      "@neural/angular-ui/input-mask": ["packages/ui/src/input-mask/index.ts"],
+      "@neural/angular-ui/autocomplete": ["packages/ui/src/autocomplete/index.ts"],
+      "@neural/angular-ui/multi-select": ["packages/ui/src/multi-select/index.ts"],
+      "@neural/angular-ui/listbox": ["packages/ui/src/listbox/index.ts"],
+      "@neural/angular-ui/datepicker": ["packages/ui/src/datepicker/index.ts"],
+      "@neural/angular-ui/color-picker": ["packages/ui/src/color-picker/index.ts"],
+      "@neural/angular-ui/knob": ["packages/ui/src/knob/index.ts"],
+      "@neural/angular-ui/select-button": ["packages/ui/src/select-button/index.ts"],
+      "@neural/angular-ui/toggle-button": ["packages/ui/src/toggle-button/index.ts"],
+      "@neural/angular-ui/split-button": ["packages/ui/src/split-button/index.ts"]
     }
   }
 }

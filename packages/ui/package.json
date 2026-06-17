@@ -199,6 +199,62 @@
       "types": "./dist/alert/index.d.ts",
       "default": "./dist/alert/index.js"
     },
+    "./command-palette": {
+      "types": "./dist/command-palette/index.d.ts",
+      "default": "./dist/command-palette/index.js"
+    },
+    "./float-label": {
+      "types": "./dist/float-label/index.d.ts",
+      "default": "./dist/float-label/index.js"
+    },
+    "./icon-field": {
+      "types": "./dist/icon-field/index.d.ts",
+      "default": "./dist/icon-field/index.js"
+    },
+    "./input-group": {
+      "types": "./dist/input-group/index.d.ts",
+      "default": "./dist/input-group/index.js"
+    },
+    "./input-mask": {
+      "types": "./dist/input-mask/index.d.ts",
+      "default": "./dist/input-mask/index.js"
+    },
+    "./autocomplete": {
+      "types": "./dist/autocomplete/index.d.ts",
+      "default": "./dist/autocomplete/index.js"
+    },
+    "./multi-select": {
+      "types": "./dist/multi-select/index.d.ts",
+      "default": "./dist/multi-select/index.js"
+    },
+    "./listbox": {
+      "types": "./dist/listbox/index.d.ts",
+      "default": "./dist/listbox/index.js"
+    },
+    "./datepicker": {
+      "types": "./dist/datepicker/index.d.ts",
+      "default": "./dist/datepicker/index.js"
+    },
+    "./color-picker": {
+      "types": "./dist/color-picker/index.d.ts",
+      "default": "./dist/color-picker/index.js"
+    },
+    "./knob": {
+      "types": "./dist/knob/index.d.ts",
+      "default": "./dist/knob/index.js"
+    },
+    "./select-button": {
+      "types": "./dist/select-button/index.d.ts",
+      "default": "./dist/select-button/index.js"
+    },
+    "./toggle-button": {
+      "types": "./dist/toggle-button/index.d.ts",
+      "default": "./dist/toggle-button/index.js"
+    },
+    "./split-button": {
+      "types": "./dist/split-button/index.d.ts",
+      "default": "./dist/split-button/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"

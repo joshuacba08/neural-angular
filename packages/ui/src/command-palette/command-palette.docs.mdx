@@ -1,0 +1,296 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as CommandPaletteStories from './command-palette.stories';
+
+<Meta of={CommandPaletteStories} />
+
+# Command Palette
+
+`NCommandPalette` (also known as the Command Bar) is an interactive search-and-execute palette activated typically with `⌘K`. It provides fuzzy filtering with grouped results, keyboard navigation, execute actions, and custom shortcut key badges.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="command-palette-doc-tabs"
+    id="command-palette-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="command-palette-doc-tabs"
+    id="command-palette-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="command-palette-doc-tabs"
+    id="command-palette-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="command-palette-doc-tabs"
+    id="command-palette-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Command Palette documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="command-palette-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="command-palette-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="command-palette-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="command-palette-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NCommandPalette, NCommandPaletteGroup, NCommandPaletteItem } from '@neural/angular-ui/command-palette';
+```
+
+### Basic Usage
+
+Define groups and item options with shortcut badges, description, and status icons.
+
+<Canvas of={CommandPaletteStories.Basic} layout="centered" sourceState="shown" />
+
+### Keyboard Navigation
+
+`NCommandPalette` intercepts standard arrow and enter keystrokes when focused:
+- **ArrowDown**: Moves active item highlight down. Auto-scrolls list view if highlighted item overflows viewport height.
+- **ArrowUp**: Moves active item highlight up.
+- **Enter**: Triggers execute output on the currently active highlighted item.
+- **Escape**: Triggers the `closed` event to dismiss the command palette.
+
+### Fuzzy Search & Group Hiding
+
+Typing in the top input filters elements by matching search queries against their label, value, and description. Groups automatically hide themselves when no matching child items exist.
+
+<Canvas of={CommandPaletteStories.InteractivePalette} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+### NCommandPalette Component
+
+<ArgTypes of={CommandPaletteStories} sort="requiredFirst" />
+
+### NCommandPaletteGroup Component
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>[label]</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td><strong>Required.</strong> The header label for the command group.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### NCommandPaletteItem Component
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input / Output</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>[value]</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td><strong>Required.</strong> Unique action value/id emitted when selected.</td>
+      </tr>
+      <tr>
+        <td><code>[label]</code></td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td><strong>Required.</strong> Display text of the action.</td>
+      </tr>
+      <tr>
+        <td><code>[description]</code></td>
+        <td><code>string | undefined</code></td>
+        <td><code>undefined</code></td>
+        <td>Helper subtext showing action info.</td>
+      </tr>
+      <tr>
+        <td><code>[icon]</code></td>
+        <td><code>string | undefined</code></td>
+        <td><code>undefined</code></td>
+        <td>Lucide icon name displayed on the left side of the action item.</td>
+      </tr>
+      <tr>
+        <td><code>[iconColor]</code></td>
+        <td><code>string | undefined</code></td>
+        <td><code>undefined</code></td>
+        <td>Override color for the icon.</td>
+      </tr>
+      <tr>
+        <td><code>[shortcut]</code></td>
+        <td><code>string | undefined</code></td>
+        <td><code>undefined</code></td>
+        <td>Shortcut visual indicator (e.g. <code>⌘I</code>, <code>↵</code>).</td>
+      </tr>
+      <tr>
+        <td><code>(trigger)</code></td>
+        <td><code>EventEmitter&lt;&#123; value: string; label: string &#125;&gt;</code></td>
+        <td>-</td>
+        <td>Emitted when the item is clicked or selected via keyboard Enter.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-command-palette</code></td>
+        <td>Outer container holding the search field, result items, and footer.</td>
+      </tr>
+      <tr>
+        <td><code>.n-command-palette__search</code></td>
+        <td>Top section holding search input and Esc hotkey.</td>
+      </tr>
+      <tr>
+        <td><code>.n-command-palette__input</code></td>
+        <td>Actual search textbox.</td>
+      </tr>
+      <tr>
+        <td><code>.n-command-palette__list</code></td>
+        <td>Containment viewport holding groups and items. Supporting 310px max height overflow.</td>
+      </tr>
+      <tr>
+        <td><code>.cmd-group</code></td>
+        <td>Command items divider and section wrapper.</td>
+      </tr>
+      <tr>
+        <td><code>.cmd-item</code></td>
+        <td>The individual clickable item.</td>
+      </tr>
+      <tr>
+        <td><code>.cmd-item.on</code></td>
+        <td>State modifier showing keyboard highlight overlay with background gradients.</td>
+      </tr>
+      <tr>
+        <td><code>.cmd-kb</code></td>
+        <td>Stylized shortcut keys badge.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+The component resolves internal properties to these CSS variable tokens:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td><code>#141426</code></td>
+        <td>Palette background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border</code></td>
+        <td><code>linear-gradient(135deg, rgba(66, 133, 244, 0.45) 0%, rgba(123, 92, 246, 0.40) 50%, rgba(217, 70, 239, 0.30) 100%)</code></td>
+        <td>Gradient border wrapper.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-0</code></td>
+        <td><code>rgba(255, 255, 255, 0.04)</code></td>
+        <td>Subtle separators.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-1</code></td>
+        <td><code>rgba(255, 255, 255, 0.92)</code></td>
+        <td>Main titles typography.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-3</code></td>
+        <td><code>rgba(255, 255, 255, 0.34)</code></td>
+        <td>Muted helper labels.</td>
+      </tr>
+      <tr>
+        <td><code>--n-text-4</code></td>
+        <td><code>rgba(255, 255, 255, 0.16)</code></td>
+        <td>Group headings and navigation helpers.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the command palette controls. Expand **Show code** to view angular markup.
+
+<Canvas of={CommandPaletteStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={CommandPaletteStories.Playground} />
+
+  </section>
+</div>
