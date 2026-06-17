@@ -64,6 +64,7 @@ let nextInputId = 0;
       }
 
       .n-field__control {
+        box-sizing: border-box;
         width: 100%;
         min-width: 0;
         border: 1px solid var(--n-field-border);

@@ -3,6 +3,10 @@ import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   stories: ['../**/*.stories.@(js|jsx|ts|tsx)', '../**/*.docs.mdx'],
+  docs: {
+    defaultName: 'Docs',
+    docsMode: true,
+  },
   addons: [
     {
       name: '@storybook/addon-docs',
