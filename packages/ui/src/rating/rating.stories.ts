@@ -5,6 +5,7 @@ import { NRating } from './rating.component.js';
 const meta: Meta<NRating> = {
   title: 'Forms/Rating',
   component: NRating,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NRating],

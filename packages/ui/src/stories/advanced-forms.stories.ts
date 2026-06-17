@@ -23,6 +23,7 @@ import { NSplitButton } from '../split-button/split-button.component.js';
 
 const meta: Meta = {
   title: 'Forms/Advanced Forms',
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [

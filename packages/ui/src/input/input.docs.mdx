@@ -1,0 +1,122 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as InputStories from './input.stories';
+
+<Meta of={InputStories} />
+
+# Input
+
+`NInput` is the standard text field for Neural Angular forms. It supports labels, hints, errors, three sizes, visual variants, and native input types while keeping the DOM simple and SSR-safe.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="input-doc-tabs" id="input-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="input-doc-tabs" id="input-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="input-doc-tabs" id="input-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="input-doc-tabs" id="input-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Input documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="input-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="input-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="input-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="input-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NInput } from '@neural/angular-ui/input';
+```
+
+### Text Inputs
+
+Use `label`, `placeholder`, `hint`, and `error` for the common field states.
+
+<Canvas of={InputStories.TextInputs} layout="padded" sourceState="shown" />
+
+### Variants
+
+Choose `default`, `filled`, or `ghost` depending on the density and surrounding surface.
+
+<Canvas of={InputStories.Variants} layout="padded" sourceState="hidden" />
+
+### Sizes
+
+`sm`, `md`, and `lg` map to the field rhythm used across the form package.
+
+<Canvas of={InputStories.Sizes} layout="padded" sourceState="hidden" />
+
+### Search
+
+Native input types stay available for specialized fields like search, email, and URL.
+
+<Canvas of={InputStories.Search} layout="centered" sourceState="hidden" />
+
+### States
+
+Disabled, readonly, required, and invalid states are reflected in native attributes and ARIA.
+
+<Canvas of={InputStories.States} layout="padded" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NInput`.
+
+<ArgTypes of={InputStories} sort="requiredFirst" />
+
+### Key Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>label</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Optional visible label.</td></tr>
+      <tr><td><code>placeholder</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Native placeholder text.</td></tr>
+      <tr><td><code>type</code></td><td><code>string</code></td><td><code>'text'</code></td><td>Native input type.</td></tr>
+      <tr><td><code>size</code></td><td><code>'sm' | 'md' | 'lg'</code></td><td><code>'md'</code></td><td>Control height and text scale.</td></tr>
+      <tr><td><code>variant</code></td><td><code>'default' | 'filled' | 'ghost'</code></td><td><code>'default'</code></td><td>Visual surface treatment.</td></tr>
+      <tr><td><code>value</code></td><td><code>string</code></td><td><code>''</code></td><td>Current input value.</td></tr>
+      <tr><td><code>hint</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Helper text below the field.</td></tr>
+      <tr><td><code>error</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Error text and invalid visual state.</td></tr>
+      <tr><td><code>valueChange</code></td><td><code>EventEmitter&lt;string&gt;</code></td><td>-</td><td>Emits when the native input changes.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+`NInput` uses the shared field token set: `--n-field-bg`, `--n-field-bg-hover`, `--n-field-border`, `--n-field-border-hover`, `--n-field-border-focus`, `--n-field-placeholder`, `--n-focus-ring`, `--n-color-danger`, and the standard `--n-text-*`, radius, spacing, and font tokens.
+
+Root classes include `.n-field`, `.n-field__label`, `.n-field__control`, `.n-field__message`, `.n-field--sm`, `.n-field--md`, `.n-field--lg`, `.n-field--filled`, `.n-field--ghost`, `.n-field--invalid`, and `.n-field--disabled`.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time.
+
+<Canvas of={InputStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={InputStories.Playground} />
+
+  </section>
+</div>

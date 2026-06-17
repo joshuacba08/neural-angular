@@ -5,6 +5,7 @@ import { NTextarea } from './textarea.component.js';
 const meta: Meta<NTextarea> = {
   title: 'Forms/Textarea',
   component: NTextarea,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NTextarea],

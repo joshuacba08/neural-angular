@@ -1,0 +1,97 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as RatingStories from './rating.stories';
+
+<Meta of={RatingStories} />
+
+# Rating
+
+`NRating` renders an accessible star rating control for product feedback, quality scoring, and readonly summaries. It supports custom maximum values, disabled state, readonly mode, hover preview, and optional value text.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="rating-doc-tabs" id="rating-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="rating-doc-tabs" id="rating-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="rating-doc-tabs" id="rating-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="rating-doc-tabs" id="rating-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Rating documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="rating-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="rating-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="rating-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="rating-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NRating } from '@neural/angular-ui/rating';
+```
+
+### Readonly
+
+Use readonly ratings for review summaries or completed scoring states.
+
+<Canvas of={RatingStories.Readonly} layout="centered" sourceState="shown" />
+
+### Disabled
+
+Disabled ratings preserve the current value while preventing interaction.
+
+<Canvas of={RatingStories.Disabled} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NRating`.
+
+<ArgTypes of={RatingStories} sort="requiredFirst" />
+
+### Key Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr><th>Input</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>value</code></td><td><code>number</code></td><td><code>0</code></td><td>Current selected rating.</td></tr>
+      <tr><td><code>max</code></td><td><code>number</code></td><td><code>5</code></td><td>Total number of stars.</td></tr>
+      <tr><td><code>readonly</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Prevents changes but keeps normal visual emphasis.</td></tr>
+      <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Disables all star buttons.</td></tr>
+      <tr><td><code>showValue</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Shows the `value / max` text.</td></tr>
+      <tr><td><code>ariaLabel</code></td><td><code>string</code></td><td><code>'Rating'</code></td><td>Accessible slider label.</td></tr>
+      <tr><td><code>valueChange</code></td><td><code>EventEmitter&lt;number&gt;</code></td><td>-</td><td>Emits the next selected value.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Classes include `.n-rating`, `.n-rating__stars`, `.n-rating__star`, `.n-rating__star--on`, and `.n-rating__value`. The selected stars use `--n-color-warning` with a soft drop shadow, while inactive and label colors come from `--n-text-*`.
+
+Motion respects `prefers-reduced-motion` by disabling the hover transition.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time.
+
+<Canvas of={RatingStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={RatingStories.Playground} />
+
+  </section>
+</div>

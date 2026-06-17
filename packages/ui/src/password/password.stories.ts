@@ -5,6 +5,7 @@ import { NPassword } from './password.component.js';
 const meta: Meta<NPassword> = {
   title: 'Forms/Password',
   component: NPassword,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NPassword],

@@ -12,6 +12,7 @@ const modelOptions: NSelectOption[] = [
 const meta: Meta<NSelect> = {
   title: 'Forms/Select',
   component: NSelect,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NSelect],

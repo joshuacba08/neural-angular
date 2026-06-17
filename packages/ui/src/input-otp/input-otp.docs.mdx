@@ -1,0 +1,94 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as InputOtpStories from './input-otp.stories';
+
+<Meta of={InputOtpStories} />
+
+# Input OTP
+
+`NInputOtp` renders a segmented one-time-code field for verification flows. It accepts numeric input, supports paste, emits completion, and keeps each digit keyboard-accessible.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="input-otp-doc-tabs" id="input-otp-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="input-otp-doc-tabs" id="input-otp-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="input-otp-doc-tabs" id="input-otp-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="input-otp-doc-tabs" id="input-otp-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Input OTP documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="input-otp-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="input-otp-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="input-otp-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="input-otp-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NInputOtp } from '@neural/angular-ui/input-otp';
+```
+
+### Prefilled
+
+The component can render an initial partial value and continue editing from there.
+
+<Canvas of={InputOtpStories.Prefilled} layout="centered" sourceState="shown" />
+
+### Disabled
+
+Use disabled OTP fields for read-only verification history or locked auth states.
+
+<Canvas of={InputOtpStories.Disabled} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties and outputs of `NInputOtp`.
+
+<ArgTypes of={InputOtpStories} sort="requiredFirst" />
+
+### Key Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr><th>Input</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>length</code></td><td><code>number</code></td><td><code>6</code></td><td>Number of digit boxes.</td></tr>
+      <tr><td><code>value</code></td><td><code>string</code></td><td><code>''</code></td><td>Initial or externally controlled code value.</td></tr>
+      <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Disables every digit input.</td></tr>
+      <tr><td><code>ariaLabel</code></td><td><code>string</code></td><td><code>'One-time code'</code></td><td>Accessible group label.</td></tr>
+      <tr><td><code>valueChange</code></td><td><code>EventEmitter&lt;string&gt;</code></td><td>-</td><td>Emits every code update.</td></tr>
+      <tr><td><code>completed</code></td><td><code>EventEmitter&lt;string&gt;</code></td><td>-</td><td>Emits when all boxes contain a digit.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Classes include `.n-otp`, `.n-otp__box`, and `.n-otp__box--filled`. The boxes consume `--n-field-border`, `--n-surface-2`, `--n-surface-3`, `--n-color-primary`, `--n-color-primary-alpha-10`, `--n-text-1`, `--n-radius-md`, and `--n-font-mono`.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time.
+
+<Canvas of={InputOtpStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={InputOtpStories.Playground} />
+
+  </section>
+</div>

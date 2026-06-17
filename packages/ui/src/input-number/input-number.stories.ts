@@ -5,6 +5,7 @@ import { NInputNumber } from './input-number.component.js';
 const meta: Meta<NInputNumber> = {
   title: 'Forms/Input Number',
   component: NInputNumber,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NInputNumber],

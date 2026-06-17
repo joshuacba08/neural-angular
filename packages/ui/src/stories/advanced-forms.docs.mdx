@@ -1,0 +1,73 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as AdvancedFormsStories from './advanced-forms.stories';
+
+<Meta of={AdvancedFormsStories} />
+
+# Advanced Forms
+
+Advanced Forms is the combined showcase for Neural Angular form primitives that are designed to work together in dense application surfaces: float labels, icon fields, grouped inputs, masks, pickers, select controls, toggles, and split actions.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-showcase" value="showcase" aria-label="Showcase" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-components" value="components" aria-label="Components" />
+  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-guidance" value="guidance" aria-label="Guidance" />
+
+  <div className="n-doc-tabs__list" aria-label="Advanced Forms documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="showcase" htmlFor="advanced-forms-doc-tab-showcase">Showcase</label>
+    <label className="n-doc-tabs__tab" data-tab="components" htmlFor="advanced-forms-doc-tab-components">Components</label>
+    <label className="n-doc-tabs__tab" data-tab="guidance" htmlFor="advanced-forms-doc-tab-guidance">Guidance</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="showcase" id="showcase">
+
+## Showcase
+
+The story below renders the full advanced form system in one surface.
+
+<Canvas of={AdvancedFormsStories.Showcase} layout="fullscreen" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="components" id="components">
+
+## Components Covered
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Primitive</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>NFloatLabel</code></td><td>Floating label wrapper for native inputs.</td></tr>
+      <tr><td><code>NIconField</code></td><td>Prefix/suffix icon framing for native fields.</td></tr>
+      <tr><td><code>NInputGroup</code></td><td>Grouped controls with leading/trailing addons.</td></tr>
+      <tr><td><code>NInputMaskDirective</code></td><td>Pattern-based input formatting.</td></tr>
+      <tr><td><code>NAutoComplete</code></td><td>Search field with suggestion panel.</td></tr>
+      <tr><td><code>NMultiSelect</code></td><td>Multi-value selection with compact chips.</td></tr>
+      <tr><td><code>NListbox</code></td><td>Single-selection list surface.</td></tr>
+      <tr><td><code>NDatePicker</code></td><td>Date and range picking interactions.</td></tr>
+      <tr><td><code>NColorPicker</code></td><td>Color value selection.</td></tr>
+      <tr><td><code>NKnob</code></td><td>Compact radial numeric control.</td></tr>
+      <tr><td><code>NSelectButton</code></td><td>Segmented option selection.</td></tr>
+      <tr><td><code>NToggleButton</code></td><td>Binary action state with labels/icons.</td></tr>
+      <tr><td><code>NSplitButton</code></td><td>Primary action plus dropdown alternatives.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="guidance" id="guidance">
+
+## Guidance
+
+Use Advanced Forms as a composition reference rather than a single install target. The primitives stay independent so applications can import only the controls they need.
+
+Prefer native inputs inside `NFloatLabel`, `NIconField`, and `NInputGroup` when a full Angular component would be too heavy. Reach for dedicated components like `NSelect`, `NPassword`, `NInputOtp`, or `NRating` when behavior and accessibility are part of the control.
+
+  </section>
+</div>

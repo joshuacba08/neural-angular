@@ -1,0 +1,105 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as InputNumberStories from './input-number.stories';
+
+<Meta of={InputNumberStories} />
+
+# Input Number
+
+`NInputNumber` is a compact numeric field with built-in increment and decrement actions. It supports min/max clamping, step values, helper text, invalid states, and accessible spinbutton semantics.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="input-number-doc-tabs" id="input-number-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="input-number-doc-tabs" id="input-number-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="input-number-doc-tabs" id="input-number-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="input-number-doc-tabs" id="input-number-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Input Number documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="input-number-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="input-number-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="input-number-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="input-number-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NInputNumber } from '@neural/angular-ui/input-number';
+```
+
+### Bounded Values
+
+Use `min`, `max`, and `stepValue` to keep numeric controls inside product limits.
+
+<Canvas of={InputNumberStories.Bounded} layout="centered" sourceState="shown" />
+
+### Sizes
+
+Number fields support the same `sm`, `md`, and `lg` sizing model as text fields.
+
+<Canvas of={InputNumberStories.Sizes} layout="centered" sourceState="hidden" />
+
+### States
+
+Disabled and invalid states affect the wrapper, controls, and helper text.
+
+<Canvas of={InputNumberStories.States} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NInputNumber`.
+
+<ArgTypes of={InputNumberStories} sort="requiredFirst" />
+
+### Key Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr><th>Input</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>label</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Optional visible label.</td></tr>
+      <tr><td><code>value</code></td><td><code>number</code></td><td><code>0</code></td><td>Current numeric value.</td></tr>
+      <tr><td><code>min</code></td><td><code>number | null</code></td><td><code>null</code></td><td>Minimum allowed value.</td></tr>
+      <tr><td><code>max</code></td><td><code>number | null</code></td><td><code>null</code></td><td>Maximum allowed value.</td></tr>
+      <tr><td><code>stepValue</code></td><td><code>number</code></td><td><code>1</code></td><td>Increment/decrement amount.</td></tr>
+      <tr><td><code>size</code></td><td><code>'sm' | 'md' | 'lg'</code></td><td><code>'md'</code></td><td>Control height and text scale.</td></tr>
+      <tr><td><code>hint</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Helper text below the field.</td></tr>
+      <tr><td><code>error</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Error text and invalid visual state.</td></tr>
+      <tr><td><code>valueChange</code></td><td><code>EventEmitter&lt;number&gt;</code></td><td>-</td><td>Emits the next clamped number.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+`NInputNumber` uses shared field tokens plus numeric-control classes: `.n-number`, `.n-number__label`, `.n-number__wrap`, `.n-number__btn`, `.n-number__input`, `.n-number__message`, `.n-number--sm`, `.n-number--md`, `.n-number--lg`, `.n-number--invalid`, and `.n-number--disabled`.
+
+The buttons and input consume `--n-surface-2`, `--n-surface-3`, `--n-surface-4`, `--n-field-border`, `--n-field-border-focus`, `--n-focus-ring`, `--n-color-danger`, `--n-text-*`, `--n-radius-md`, and `--n-font-mono`.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time.
+
+<Canvas of={InputNumberStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={InputNumberStories.Playground} />
+
+  </section>
+</div>

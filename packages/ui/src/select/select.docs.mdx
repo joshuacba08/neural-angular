@@ -1,0 +1,114 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as SelectStories from './select.stories';
+
+<Meta of={SelectStories} />
+
+# Select
+
+`NSelect` is an Angular CDK overlay-backed select control with keyboard navigation, accessible combobox semantics, placeholder support, helper text, and token-based styling.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="select-doc-tabs" id="select-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="select-doc-tabs" id="select-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="select-doc-tabs" id="select-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="select-doc-tabs" id="select-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Select documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="select-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="select-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="select-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="select-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NSelect } from '@neural/angular-ui/select';
+```
+
+### Model Select
+
+Use object options for product choices, model pickers, and settings panels.
+
+<Canvas of={SelectStories.ModelSelect} layout="centered" sourceState="shown" />
+
+### Sizes
+
+`sm`, `md`, and `lg` align with the shared form field height scale.
+
+<Canvas of={SelectStories.Sizes} layout="padded" sourceState="hidden" />
+
+### States
+
+Placeholder, hint, error, and disabled states are handled in the trigger and panel.
+
+<Canvas of={SelectStories.States} layout="padded" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NSelect`.
+
+<ArgTypes of={SelectStories} sort="requiredFirst" />
+
+### Key Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr><th>Input</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>label</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Optional visible label.</td></tr>
+      <tr><td><code>placeholder</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Placeholder option and trigger text.</td></tr>
+      <tr><td><code>value</code></td><td><code>string</code></td><td><code>''</code></td><td>Selected option value.</td></tr>
+      <tr><td><code>options</code></td><td><code>readonly NSelectOption[]</code></td><td><code>[]</code></td><td>Selectable label/value items.</td></tr>
+      <tr><td><code>size</code></td><td><code>'sm' | 'md' | 'lg'</code></td><td><code>'md'</code></td><td>Control height and text scale.</td></tr>
+      <tr><td><code>hint</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Helper text below the field.</td></tr>
+      <tr><td><code>error</code></td><td><code>string</code></td><td><code>undefined</code></td><td>Error text and invalid visual state.</td></tr>
+      <tr><td><code>valueChange</code></td><td><code>EventEmitter&lt;string&gt;</code></td><td>-</td><td>Emits the selected option value.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+### Option Shape
+
+```ts
+type NSelectOption = {
+  label: string;
+  value: string;
+  disabled?: boolean;
+};
+```
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Classes include `.n-select-field`, `.n-select-field__label`, `.n-select-field__control`, `.n-select-field__value`, `.n-select-field__panel`, `.n-select-field__option`, and size/state modifiers.
+
+The trigger and panel consume `--n-field-border`, `--n-field-border-hover`, `--n-field-border-focus`, `--n-gradient-border`, `--n-gradient-border-subtle`, `--n-focus-ring`, `--n-elevation-4`, `--n-glow-primary-xs`, `--n-surface-2`, `--n-text-*`, and `--n-radius-*`.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time.
+
+<Canvas of={SelectStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={SelectStories.Playground} />
+
+  </section>
+</div>

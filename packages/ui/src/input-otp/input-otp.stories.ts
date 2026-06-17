@@ -5,6 +5,7 @@ import { NInputOtp } from './input-otp.component.js';
 const meta: Meta<NInputOtp> = {
   title: 'Forms/Input OTP',
   component: NInputOtp,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NInputOtp],

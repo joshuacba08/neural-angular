@@ -5,6 +5,7 @@ import { NInput } from './input.component.js';
 const meta: Meta<NInput> = {
   title: 'Forms/Input',
   component: NInput,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NInput],
