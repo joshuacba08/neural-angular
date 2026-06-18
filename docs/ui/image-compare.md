@@ -34,7 +34,7 @@ Output: `valueChange` (use `[(value)]` for two-way binding).
 
 ## Accessibility
 
-The control uses a native `<input type="range">`, so keyboard interaction is handled by the browser. Both images keep `alt` text.
+The stage exposes `role="slider"` with keyboard support (`ArrowLeft` / `ArrowRight`, `Home`, `End`). Both images keep `alt` text.
 
 ## SSR Safety
 
@@ -42,4 +42,8 @@ The component is CSS and Angular binding only. It does not use Canvas, pointer-e
 
 ## Known Limitations
 
-Horizontal and vertical clipping are supported, but there is no custom drag handle behavior beyond the native range input.
+Horizontal and vertical clipping are supported with pointer drag across the full surface and keyboard arrows on the focused stage.
+
+## Known Limitations
+
+Filter mode reuses the after image source in the DOM for the degraded preview. Dual-image mode requires distinct before and after assets.

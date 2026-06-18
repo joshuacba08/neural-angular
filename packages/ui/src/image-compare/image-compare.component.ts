@@ -13,18 +13,34 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
       [class.n-image-compare--vertical]="orientation() === 'vertical'"
       [class.n-image-compare--disabled]="disabled()"
     >
-      <div class="n-image-compare__stage">
+      <div
+        class="n-image-compare__stage"
+        tabindex="0"
+        role="slider"
+        [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="100"
+        [attr.aria-valuenow]="clampedValue()"
+        [attr.aria-label]="'Image comparison position'"
+        [attr.aria-orientation]="orientation()"
+        (pointerdown)="onPointerDown($event)"
+        (pointermove)="onPointerMove($event)"
+        (pointerup)="onPointerUp($event)"
+        (pointercancel)="onPointerUp($event)"
+        (keydown)="onKeyDown($event)"
+      >
         <img
           class="n-image-compare__image n-image-compare__image--after"
           [src]="afterSrc()"
           [alt]="afterAlt()"
         />
         @if (resolvedBeforeMode() === 'filter') {
-          <span
-            class="n-image-compare__filter"
+          <img
+            class="n-image-compare__image n-image-compare__image--before n-image-compare__image--filtered"
+            [src]="afterSrc()"
+            alt=""
             aria-hidden="true"
             [style.clip-path]="clipPath()"
-          ></span>
+          />
         } @else {
           <img
             class="n-image-compare__image n-image-compare__image--before"
@@ -40,7 +56,10 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
           [style.left.%]="orientation() === 'horizontal' ? clampedValue() : null"
           [style.top.%]="orientation() === 'vertical' ? clampedValue() : null"
         >
-          <span class="n-image-compare__handle">
+          <span
+            class="n-image-compare__handle"
+            [class.n-image-compare__handle--vertical]="orientation() === 'vertical'"
+          >
             <n-icon name="chevrons-left-right" size="xs" />
           </span>
         </span>
@@ -53,17 +72,6 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
             {{ afterLabel() }}
           </span>
         }
-
-        <input
-          class="n-image-compare__range"
-          type="range"
-          min="0"
-          max="100"
-          [value]="clampedValue()"
-          [disabled]="disabled()"
-          aria-label="Image comparison position"
-          (input)="handleInput($event)"
-        />
       </div>
     </figure>
   `,
@@ -88,7 +96,13 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
         background: var(--n-media-preview-bg);
         cursor: col-resize;
         isolation: isolate;
+        touch-action: none;
         user-select: none;
+      }
+
+      .n-image-compare__stage:focus-visible {
+        box-shadow: var(--n-focus-ring);
+        outline: none;
       }
 
       .n-image-compare__image {
@@ -97,28 +111,19 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
         width: 100%;
         height: 100%;
         object-fit: cover;
+        pointer-events: none;
       }
 
       .n-image-compare__image--before {
         z-index: 2;
       }
 
+      .n-image-compare__image--filtered {
+        filter: saturate(0.18) contrast(0.78) brightness(0.6) blur(1px);
+      }
+
       .n-image-compare--vertical .n-image-compare__stage {
         cursor: row-resize;
-      }
-
-      .n-image-compare--vertical .n-image-compare__range {
-        cursor: row-resize;
-      }
-
-      .n-image-compare__filter {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        pointer-events: none;
-        -webkit-backdrop-filter: saturate(0.18) contrast(0.78) brightness(0.6) blur(1px);
-        backdrop-filter: saturate(0.18) contrast(0.78) brightness(0.6) blur(1px);
-        background: rgba(0, 0, 15, 0.1);
       }
 
       .n-image-compare__divider {
@@ -134,7 +139,9 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
       }
 
       .n-image-compare--vertical .n-image-compare__divider {
+        top: auto;
         right: 0;
+        bottom: auto;
         left: 0;
         width: auto;
         height: 2px;
@@ -155,6 +162,10 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
         display: inline-flex;
         align-items: center;
         justify-content: center;
+      }
+
+      .n-image-compare__handle--vertical {
+        transform: translate(-50%, -50%) rotate(90deg);
       }
 
       .n-image-compare__label {
@@ -190,31 +201,13 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
         color: var(--n-color-primary-light);
       }
 
-      .n-image-compare__range {
-        position: absolute;
-        inset: 0;
-        z-index: 5;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        cursor: col-resize;
-        opacity: 0;
-      }
-
-      .n-image-compare__stage:has(.n-image-compare__range:focus-visible) {
-        box-shadow: var(--n-focus-ring);
-      }
-
       .n-image-compare--disabled {
         opacity: 0.62;
       }
 
       .n-image-compare--disabled .n-image-compare__stage {
         cursor: not-allowed;
-      }
-
-      .n-image-compare--disabled .n-image-compare__range {
-        cursor: not-allowed;
+        pointer-events: none;
       }
     `,
   ],
@@ -231,6 +224,8 @@ export class NImageCompare {
   readonly beforeLabel = input('Before');
   readonly afterLabel = input('After');
   readonly disabled = input(false, { transform: booleanAttribute });
+
+  private dragging = false;
 
   readonly clampedValue = computed(() => {
     const raw = Number(this.value());
@@ -255,10 +250,90 @@ export class NImageCompare {
     return `inset(0 ${hidden}% 0 0)`;
   });
 
-  handleInput(event: Event): void {
-    const source = event.target as HTMLInputElement;
-    const next = source.valueAsNumber ?? Number(source.value ?? this.clampedValue());
+  onPointerDown(event: PointerEvent): void {
+    if (this.disabled() || event.button !== 0) {
+      return;
+    }
 
+    this.dragging = true;
+    event.currentTarget instanceof HTMLElement && event.currentTarget.setPointerCapture(event.pointerId);
+    this.updateFromPointer(event);
+    event.preventDefault();
+  }
+
+  onPointerMove(event: PointerEvent): void {
+    if (!this.dragging) {
+      return;
+    }
+
+    this.updateFromPointer(event);
+    event.preventDefault();
+  }
+
+  onPointerUp(event: PointerEvent): void {
+    if (!this.dragging) {
+      return;
+    }
+
+    this.dragging = false;
+
+    if (event.currentTarget instanceof HTMLElement && event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  }
+
+  onKeyDown(event: KeyboardEvent): void {
+    if (this.disabled()) {
+      return;
+    }
+
+    const step = event.shiftKey ? 10 : 2;
+    let next = this.clampedValue();
+
+    if (this.orientation() === 'vertical') {
+      if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        next -= step;
+      } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+        next += step;
+      } else {
+        return;
+      }
+    } else if (event.key === 'ArrowLeft') {
+      next -= step;
+    } else if (event.key === 'ArrowRight') {
+      next += step;
+    } else if (event.key === 'Home') {
+      next = 0;
+    } else if (event.key === 'End') {
+      next = 100;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
     this.value.set(Math.min(Math.max(next, 0), 100));
+  }
+
+  private updateFromPointer(event: PointerEvent): void {
+    const stage = event.currentTarget;
+
+    if (!(stage instanceof HTMLElement)) {
+      return;
+    }
+
+    const rect = stage.getBoundingClientRect();
+
+    if (!rect.width || !rect.height) {
+      return;
+    }
+
+    const ratio =
+      this.orientation() === 'vertical'
+        ? (event.clientY - rect.top) / rect.height
+        : (event.clientX - rect.left) / rect.width;
+
+    const next = Math.min(Math.max(ratio * 100, 4), 96);
+
+    this.value.set(next);
   }
 }

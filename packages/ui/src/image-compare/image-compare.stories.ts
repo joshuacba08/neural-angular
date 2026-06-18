@@ -23,9 +23,6 @@ const meta: Meta<NImageCompare> = {
     props: {
       ...args,
       position: args.value ?? 50,
-      onValueChange(value: number) {
-        (this as { position: number }).position = value;
-      },
     },
     template: `
       <n-image-compare
@@ -40,8 +37,7 @@ const meta: Meta<NImageCompare> = {
         [beforeLabel]="beforeLabel"
         [afterLabel]="afterLabel"
         [disabled]="disabled"
-        [value]="position"
-        (valueChange)="onValueChange($event)"
+        [(value)]="position"
       />
     `,
   }),
