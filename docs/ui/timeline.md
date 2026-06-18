@@ -23,6 +23,8 @@ import { NTimeline, NTimelineItem } from '@neural/angular-ui/timeline';
 - `time?: string`
 - `icon?: string`
 - `status: 'neutral' | 'success' | 'warning' | 'danger' | 'info' | 'running' | 'pending' = 'neutral'`
+- `timeAlign: 'inline' | 'end' = 'end'`
+- `timeAccent: boolean = false`
 - `active: boolean = false`
 
 ## Example

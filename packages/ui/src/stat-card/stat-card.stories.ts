@@ -3,8 +3,9 @@ import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { NStatCard } from './stat-card.component.js';
 
 const meta: Meta<NStatCard> = {
-  title: 'Components/Stat Card',
+  title: 'App Patterns/Metrics',
   component: NStatCard,
+  tags: ['!autodocs'],
   decorators: [
     moduleMetadata({
       imports: [NStatCard],
@@ -13,7 +14,7 @@ const meta: Meta<NStatCard> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'primary', 'secondary', 'success', 'warning', 'danger', 'info'],
+      options: ['default', 'primary', 'secondary'],
     },
     size: {
       control: 'select',

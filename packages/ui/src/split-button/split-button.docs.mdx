@@ -1,0 +1,267 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as SplitButtonStories from './split-button.stories';
+
+<Meta of={SplitButtonStories} />
+
+# Split Button
+
+`NSplitButton` is a standalone Angular component for pairing one primary action with a compact dropdown of related alternatives. It supports primary and neutral variants, optional leading icon, menu item icons, separators, and outside-click dismissal.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="split-button-doc-tabs"
+    id="split-button-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="split-button-doc-tabs"
+    id="split-button-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="split-button-doc-tabs"
+    id="split-button-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="split-button-doc-tabs"
+    id="split-button-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Split Button documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="split-button-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="split-button-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="split-button-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="split-button-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NSplitButton } from '@neural/angular-ui/split-button';
+```
+
+### Basic
+
+The main button emits `click`; the caret opens a menu built from `model`.
+
+<Canvas of={SplitButtonStories.Basic} layout="centered" sourceState="shown" />
+
+### Variants
+
+Use `primary` for high-emphasis commit actions and `neutral` for secondary grouped actions.
+
+<Canvas of={SplitButtonStories.Variants} layout="centered" sourceState="hidden" />
+
+### With Icon
+
+The root action can show a leading `NIcon`, and menu items can include per-item icons.
+
+<Canvas of={SplitButtonStories.WithIcon} layout="centered" sourceState="shown" />
+
+### Menu Model
+
+Menu items support icons, semantic icon colors, separators, and per-item commands.
+
+<Canvas of={SplitButtonStories.MenuModel} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NSplitButton`.
+
+<ArgTypes of={SplitButtonStories} sort="requiredFirst" />
+
+### Menu Item Shape
+
+```ts
+type NSplitButtonItem = {
+  label: string;
+  icon?: string;
+  iconColor?: string;
+  separator?: boolean;
+  command?: (event?: any) => void;
+};
+```
+
+### Variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Design reference</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>primary</code></td>
+        <td><code>.nn-btn-gm</code></td>
+        <td>Gradient primary split action.</td>
+      </tr>
+      <tr>
+        <td><code>neutral</code></td>
+        <td><code>.nn-btn-f</code></td>
+        <td>Muted surface split action for secondary workflows.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied to/used by `NSplitButton`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.nn-split-wrap</code></td>
+        <td>Root inline-flex wrapper for the main action and caret.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-btn</code></td>
+        <td>Shared button base class.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-btn-gm</code></td>
+        <td>Gradient primary button treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-btn-f</code></td>
+        <td>Neutral filled surface button treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-split-main</code></td>
+        <td>Main action half with left pill radius.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-split-caret</code></td>
+        <td>Dropdown trigger half with fixed caret width.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-split-menu</code></td>
+        <td>Absolute dropdown menu surface.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-split-mi</code></td>
+        <td>Single menu item row.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-split-sep</code></td>
+        <td>Menu separator line.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` design tokens consumed by `NSplitButton`.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td><code>primary</code> action background.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-3</code></td>
+        <td>Neutral button and menu surface.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-4</code></td>
+        <td>Neutral hover state.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-2</code></td>
+        <td>Neutral button border.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-subtle</code></td>
+        <td>Dropdown menu border gradient.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td>Pill radius for split button ends.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-md</code></td>
+        <td>Dropdown menu radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-body</code></td>
+        <td>Button and menu typography.</td>
+      </tr>
+      <tr>
+        <td><code>--n-elevation-3</code></td>
+        <td>Dropdown menu shadow.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to change the label, icon, variant, and menu model.
+
+<Canvas of={SplitButtonStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={SplitButtonStories.Playground} />
+
+  </section>
+</div>

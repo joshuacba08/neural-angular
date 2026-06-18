@@ -1,0 +1,77 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as JobCardStories from './job-card.stories';
+
+<Meta of={JobCardStories} />
+
+# Job Card
+
+`NJobCard` represents a processing queue item from the app-pattern design system. It combines thumbnail treatment, status badge, progress shimmer, and projected workflow content such as `NAIPipeline`.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="job-card-doc-tabs" id="job-card-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="job-card-doc-tabs" id="job-card-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="job-card-doc-tabs" id="job-card-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="job-card-doc-tabs" id="job-card-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Job Card documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="job-card-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="job-card-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="job-card-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="job-card-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NJobCard } from '@neural/angular-ui/job-card';
+import { NAIPipeline } from '@neural/angular-ui/ai-pipeline';
+```
+
+### Processing State
+
+The default story follows the Oroya Video queue card: media title, model metadata, AI processing badge, progress value, and embedded pipeline.
+
+<Canvas of={JobCardStories.Default} layout="padded" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NJobCard`.
+
+<ArgTypes of={JobCardStories} sort="requiredFirst" />
+
+### Content Contract
+
+Projected content renders below the progress bar. Use it for pipeline status, details, or compact action rows.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Classes include `.n-job-card`, `.n-job-card__header`, `.n-job-card__thumbnail`, `.n-job-card__badge`, `.n-job-card__progress-track`, `.n-job-card__progress-fill`, and `.n-job-card__content`.
+
+The card consumes shared tokens for surfaces, gradient borders, semantic status colors, radius, mono text, and the primary/secondary/tertiary progress gradient.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the controls below to adjust the queue card content and status.
+
+<Canvas of={JobCardStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={JobCardStories.Playground} />
+
+  </section>
+</div>

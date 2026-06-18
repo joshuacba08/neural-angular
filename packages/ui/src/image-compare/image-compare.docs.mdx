@@ -1,0 +1,98 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as ImageCompareStories from './image-compare.stories';
+
+<Meta of={ImageCompareStories} />
+
+# Image Compare
+
+`NImageCompare` is the before/after media comparison pattern from the design system. It provides a draggable divider, label chips, horizontal or vertical orientation, and a filter mode for degraded original previews without duplicating assets.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="image-compare-doc-tabs" id="image-compare-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="image-compare-doc-tabs" id="image-compare-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="image-compare-doc-tabs" id="image-compare-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="image-compare-doc-tabs" id="image-compare-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Image Compare documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="image-compare-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="image-compare-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="image-compare-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="image-compare-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NImageCompare } from '@neural/angular-ui/image-compare';
+```
+
+### Before / After Slider
+
+Filter mode follows the Oroya Video reference: the original side is degraded with CSS filtering while the enhanced side remains crisp.
+
+<Canvas of={ImageCompareStories.Default} layout="padded" sourceState="shown" />
+
+### Dual Image Mode
+
+Use separate before and after sources when both assets are available.
+
+<Canvas of={ImageCompareStories.DualImage} layout="padded" sourceState="hidden" />
+
+### Vertical Orientation
+
+Vertical orientation supports stacked comparison surfaces and alternate preview layouts.
+
+<Canvas of={ImageCompareStories.Vertical} layout="padded" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NImageCompare`.
+
+<ArgTypes of={ImageCompareStories} sort="requiredFirst" />
+
+### Modes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr><th>Mode</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>image</code></td><td>Uses separate before and after image sources.</td></tr>
+      <tr><td><code>filter</code></td><td>Uses the after image and applies a degraded overlay for the original side.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Classes include `.n-image-compare`, `.n-image-compare__stage`, `.n-image-compare__divider`, `.n-image-compare__handle`, `.n-image-compare__label`, and orientation/state modifiers.
+
+The component consumes `--n-media-preview-bg`, `--n-media-preview-border`, `--n-image-compare-handle-bg`, `--n-image-compare-handle-border`, `--n-color-primary`, `--n-color-primary-light`, `--n-border-2`, and radius tokens.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the controls below to tune position, labels, mode, and orientation.
+
+<Canvas of={ImageCompareStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={ImageCompareStories.Playground} />
+
+  </section>
+</div>

@@ -1,0 +1,90 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as DropzoneStories from './dropzone.stories';
+
+<Meta of={DropzoneStories} />
+
+# Dropzone
+
+`NDropzone` is the app-pattern upload surface from the design system. It covers the video-import workflow with dashed idle state, active drag feedback, selected-file success state, validation errors, compact layout, and media-sized surfaces.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="dropzone-doc-tabs" id="dropzone-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="dropzone-doc-tabs" id="dropzone-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="dropzone-doc-tabs" id="dropzone-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="dropzone-doc-tabs" id="dropzone-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Dropzone documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="dropzone-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="dropzone-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="dropzone-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="dropzone-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NDropzone } from '@neural/angular-ui/dropzone';
+```
+
+### Default Upload Surface
+
+The default state mirrors the app-pattern reference: dashed border, upload icon, browse action, and video-specific copy.
+
+<Canvas of={DropzoneStories.Default} layout="centered" sourceState="shown" />
+
+### Media Surface
+
+Use the media variant for larger import panels and new-project modals.
+
+<Canvas of={DropzoneStories.Media} layout="padded" sourceState="hidden" />
+
+### Error State
+
+Validation errors use the same surface and action model, with semantic error feedback.
+
+<Canvas of={DropzoneStories.Error} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties and outputs of `NDropzone`.
+
+<ArgTypes of={DropzoneStories} sort="requiredFirst" />
+
+### Rejection Reasons
+
+```ts
+type NDropzoneRejectReason = 'invalid-type' | 'max-size' | 'max-files' | 'disabled';
+```
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Classes include `.n-dropzone`, `.n-dropzone--media`, `.n-dropzone--compact`, `.n-dropzone--dragging`, `.n-dropzone--filled`, `.n-dropzone--error`, `.n-dropzone__icon`, `.n-dropzone__body`, and `.n-dropzone__action`.
+
+The component consumes `--n-dropzone-bg`, `--n-dropzone-border`, `--n-dropzone-border-active`, `--n-dropzone-border-error`, `--n-dropzone-hover-bg`, `--n-focus-ring`, `--n-glow-primary-xs`, `--n-color-success`, and shared surface/radius tokens.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the controls below to tune accepted media, max size, layout variant, and disabled state.
+
+<Canvas of={DropzoneStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={DropzoneStories.Playground} />
+
+  </section>
+</div>

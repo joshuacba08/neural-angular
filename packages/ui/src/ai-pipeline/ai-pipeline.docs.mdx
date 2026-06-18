@@ -1,0 +1,92 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as AIPipelineStories from './ai-pipeline.stories';
+
+<Meta of={AIPipelineStories} />
+
+# AI Pipeline
+
+`NAIPipeline` documents multi-step AI processing flows from the design system. It supports vertical inspector timelines, compact horizontal job-card pipelines, semantic step states, and optional progress.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="ai-pipeline-doc-tabs" id="ai-pipeline-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="ai-pipeline-doc-tabs" id="ai-pipeline-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="ai-pipeline-doc-tabs" id="ai-pipeline-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="ai-pipeline-doc-tabs" id="ai-pipeline-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="AI Pipeline documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="ai-pipeline-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="ai-pipeline-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="ai-pipeline-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="ai-pipeline-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NAIPipeline, NAIPipelineStep } from '@neural/angular-ui/ai-pipeline';
+```
+
+### Vertical Inspector
+
+The default orientation follows the inspector pipeline reference in `docs/design_system`: status markers, connecting rails, supporting metadata, and running progress.
+
+<Canvas of={AIPipelineStories.Default} layout="padded" sourceState="shown" />
+
+### Horizontal Job Pipeline
+
+Use compact horizontal mode inside job cards, processing queues, and dense AI workflow rows.
+
+<Canvas of={AIPipelineStories.Horizontal} layout="padded" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NAIPipeline`.
+
+<ArgTypes of={AIPipelineStories} sort="requiredFirst" />
+
+### Step Shape
+
+```ts
+type NAIPipelineStep = {
+  id?: string;
+  title: string;
+  description?: string;
+  icon?: string;
+  status?: 'pending' | 'running' | 'success' | 'warning' | 'error' | 'skipped';
+  progress?: number;
+  metadata?: string;
+};
+```
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+The pipeline uses `.n-ai-pipeline`, `.n-ai-pipeline-step`, state modifiers like `.n-ai-pipeline-step--running`, and orientation modifiers for vertical or horizontal layouts.
+
+It consumes shared Neural tokens including `--n-color-primary-bright`, `--n-color-success`, `--n-color-warning`, `--n-color-danger`, `--n-pipeline-line`, `--n-pipeline-step-bg`, `--n-border-1`, `--n-surface-2`, and spacing/radius tokens.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to switch orientation, density, and progress rendering.
+
+<Canvas of={AIPipelineStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={AIPipelineStories.Playground} />
+
+  </section>
+</div>

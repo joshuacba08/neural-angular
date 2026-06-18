@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, computed, input, numberAttribute, output } from '@angular/core';
+import { booleanAttribute, Component, computed, input, model } from '@angular/core';
 
 import { NIcon } from '../icon/icon.component.js';
 import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-compare.types.js';
@@ -103,11 +103,20 @@ import type { NImageCompareBeforeMode, NImageCompareOrientation } from './image-
         z-index: 2;
       }
 
+      .n-image-compare--vertical .n-image-compare__stage {
+        cursor: row-resize;
+      }
+
+      .n-image-compare--vertical .n-image-compare__range {
+        cursor: row-resize;
+      }
+
       .n-image-compare__filter {
         position: absolute;
         inset: 0;
         z-index: 2;
         pointer-events: none;
+        -webkit-backdrop-filter: saturate(0.18) contrast(0.78) brightness(0.6) blur(1px);
         backdrop-filter: saturate(0.18) contrast(0.78) brightness(0.6) blur(1px);
         background: rgba(0, 0, 15, 0.1);
       }
@@ -216,16 +225,19 @@ export class NImageCompare {
   readonly beforeAlt = input('Before image');
   readonly afterAlt = input('After image');
   readonly beforeMode = input<NImageCompareBeforeMode>('image');
-  readonly value = input(50, { transform: numberAttribute });
+  readonly value = model(50);
   readonly orientation = input<NImageCompareOrientation>('horizontal');
   readonly showLabels = input(true, { transform: booleanAttribute });
   readonly beforeLabel = input('Before');
   readonly afterLabel = input('After');
   readonly disabled = input(false, { transform: booleanAttribute });
 
-  readonly valueChange = output<number>();
+  readonly clampedValue = computed(() => {
+    const raw = Number(this.value());
+    const resolved = Number.isFinite(raw) ? raw : 50;
 
-  readonly clampedValue = computed(() => Math.min(Math.max(this.value(), 0), 100));
+    return Math.min(Math.max(resolved, 0), 100);
+  });
   readonly resolvedBeforeMode = computed<NImageCompareBeforeMode>(() => {
     if (this.beforeMode() === 'filter') {
       return 'filter';
@@ -244,9 +256,9 @@ export class NImageCompare {
   });
 
   handleInput(event: Event): void {
-    const source = event as unknown as { target?: { valueAsNumber?: number; value?: string } };
-    const value = source.target?.valueAsNumber ?? Number(source.target?.value ?? this.clampedValue());
+    const source = event.target as HTMLInputElement;
+    const next = source.valueAsNumber ?? Number(source.value ?? this.clampedValue());
 
-    this.valueChange.emit(Math.min(Math.max(value, 0), 100));
+    this.value.set(Math.min(Math.max(next, 0), 100));
   }
 }

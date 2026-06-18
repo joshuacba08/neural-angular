@@ -30,7 +30,7 @@ Inputs: `beforeSrc`, `afterSrc`, `beforeAlt`, `afterAlt`, `beforeMode`, `value`,
 
 `beforeMode="image"` renders a split between two image sources. `beforeMode="filter"` uses a `backdrop-filter` overlay over the after image, matching the design-system Before / After pattern for degraded original previews without duplicating the visible asset.
 
-Output: `valueChange`.
+Output: `valueChange` (use `[(value)]` for two-way binding).
 
 ## Accessibility
 

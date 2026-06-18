@@ -255,6 +255,26 @@
       "types": "./dist/split-button/index.d.ts",
       "default": "./dist/split-button/index.js"
     },
+    "./slider": {
+      "types": "./dist/slider/index.d.ts",
+      "default": "./dist/slider/index.js"
+    },
+    "./switch": {
+      "types": "./dist/switch/index.d.ts",
+      "default": "./dist/switch/index.js"
+    },
+    "./accordion": {
+      "types": "./dist/accordion/index.d.ts",
+      "default": "./dist/accordion/index.js"
+    },
+    "./job-card": {
+      "types": "./dist/job-card/index.d.ts",
+      "default": "./dist/job-card/index.js"
+    },
+    "./split-view": {
+      "types": "./dist/split-view/index.d.ts",
+      "default": "./dist/split-view/index.js"
+    },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "default": "./dist/tokens/index.js"

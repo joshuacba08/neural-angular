@@ -65,3 +65,8 @@ export * from './knob/index.js';
 export * from './select-button/index.js';
 export * from './toggle-button/index.js';
 export * from './split-button/index.js';
+export * from './slider/index.js';
+export * from './switch/index.js';
+export * from './accordion/index.js';
+export * from './job-card/index.js';
+export * from './split-view/index.js';

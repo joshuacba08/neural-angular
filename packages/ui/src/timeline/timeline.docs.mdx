@@ -1,0 +1,99 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as TimelineStories from './timeline.stories';
+
+<Meta of={TimelineStories} />
+
+# Timeline
+
+`NTimeline` and `NTimelineItem` represent processing logs, activity feeds, and linked app events. The connector reflects the previous node state, matching the timeline pattern from the design system.
+
+<div className="n-doc-tabs">
+  <input className="n-doc-tabs__input" type="radio" name="timeline-doc-tabs" id="timeline-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="timeline-doc-tabs" id="timeline-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="timeline-doc-tabs" id="timeline-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="timeline-doc-tabs" id="timeline-doc-tab-playground" value="playground" aria-label="Playground" />
+
+  <div className="n-doc-tabs__list" aria-label="Timeline documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="timeline-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="timeline-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="timeline-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="timeline-doc-tab-playground">Playground</label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NTimeline, NTimelineItem } from '@neural/angular-ui/timeline';
+```
+
+### Processing Log
+
+The default timeline uses timestamps, status colors, active running state, and pending tail events.
+
+<Canvas of={TimelineStories.Default} layout="padded" sourceState="shown" />
+
+### Activity Feed
+
+Activity feeds use inline timestamps, icons, composed badges, progress, and actions through the item slot.
+
+<Canvas of={TimelineStories.ActivityFeed} layout="padded" sourceState="shown" />
+
+### Compact Density
+
+Compact mode reduces vertical spacing for inspector panels and dense logs.
+
+<Canvas of={TimelineStories.Compact} layout="padded" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NTimeline`.
+
+<ArgTypes of={TimelineStories} sort="requiredFirst" />
+
+### Item Status
+
+```ts
+type NTimelineItemStatus =
+  | 'neutral'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'info'
+  | 'running'
+  | 'pending';
+
+type NTimelineTimeAlign = 'inline' | 'end';
+```
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Classes include `.n-timeline`, `.n-timeline--compact`, `.n-timeline-item`, `.n-timeline-item__rail`, `.n-timeline-item__dot`, `.n-timeline-item__body`, and semantic status modifiers.
+
+The timeline consumes semantic color tokens, `--n-timeline-dot-size`, `--n-border-1`, `--n-surface-2`, text tokens, spacing, and radius tokens.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the controls below to switch density.
+
+<Canvas of={TimelineStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={TimelineStories.Playground} />
+
+  </section>
+</div>
