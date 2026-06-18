@@ -31,11 +31,23 @@ import * as SplitViewStories from './split-view.stories';
 import { NSplitView } from '@neural/angular-ui/split-view';
 ```
 
+### Horizontal Split
+
+The draggable two-pane layout from the design system: video preview on the left, inspector on the right, with a 4px resize gutter.
+
+<Canvas of={SplitViewStories.HorizontalSplit} layout="padded" sourceState="shown" />
+
 ### Three-Pane Workspace
 
-The default story follows the app-pattern reference: queue, preview, and inspector panes composed from nested split views.
+The compact queue · preview · inspector composition uses fixed pane widths. Combine it with nested split views when you need resizable preview and inspector regions.
 
-<Canvas of={SplitViewStories.Default} layout="padded" sourceState="shown" />
+<Canvas of={SplitViewStories.ThreePane} layout="padded" sourceState="shown" />
+
+### Resizable Workspace
+
+Nested split views recreate the full Oroya-style workspace with a draggable queue rail and preview/inspector divider.
+
+<Canvas of={SplitViewStories.Workspace} layout="padded" sourceState="hidden" />
 
   </section>
 
@@ -57,7 +69,7 @@ Use `[panelFirst]` and `[panelSecond]` on projected children to assign pane cont
 
 ## Theming
 
-Classes include `.n-split-view`, `.n-split-view--horizontal`, `.n-split-view--vertical`, `.n-split-view__panel`, `.n-split-view__gutter`, and `.n-split-view__gutter-handle`.
+Classes include `.n-split-view`, `.n-split-view--horizontal`, `.n-split-view--vertical`, `.n-split-view__panel`, `.n-split-view__gutter`, `.n-split-view__gutter--active`, and `.n-split-view__gutter-handle`.
 
 The split view consumes border, transition, and surface tokens while leaving panel content styling to the composed app surface.
 

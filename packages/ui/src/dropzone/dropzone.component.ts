@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, computed, input, output, signal } from '@angular/core';
+import { booleanAttribute, Component, computed, input, model, output, signal } from '@angular/core';
 
 import { NButton } from '../button/button.component.js';
 import { NIcon } from '../icon/icon.component.js';
@@ -38,6 +38,7 @@ let nextDropzoneId = 0;
       class="n-dropzone"
       [class.n-dropzone--compact]="variant() === 'compact'"
       [class.n-dropzone--media]="variant() === 'media'"
+      [class.n-dropzone--pattern]="isPatternLayout()"
       [class.n-dropzone--dragging]="state() === 'dragging'"
       [class.n-dropzone--filled]="state() === 'filled'"
       [class.n-dropzone--disabled]="disabled()"
@@ -62,23 +63,48 @@ let nextDropzoneId = 0;
       />
 
       <span class="n-dropzone__icon" aria-hidden="true">
-        <n-icon [name]="resolvedIcon()" size="lg" />
+        <n-icon [name]="resolvedIcon()" [size]="resolvedIconSize()" />
       </span>
 
-      <div class="n-dropzone__body">
-        <h3>{{ resolvedTitle() }}</h3>
-        <p [id]="descriptionId">{{ resolvedDescription() }}</p>
-      </div>
+      @if (isPatternLayout()) {
+        <div class="n-dropzone__body">
+          @if (state() === 'dragging') {
+            <p class="n-dropzone__lead n-dropzone__lead--accent">{{ dragTitle() }}</p>
+          } @else if (state() === 'filled') {
+            <p class="n-dropzone__lead n-dropzone__lead--success">{{ resolvedFilledLabel() }}</p>
+          } @else if (state() === 'error') {
+            <p class="n-dropzone__lead">{{ title() }}</p>
+            <p [id]="descriptionId" class="n-dropzone__detail n-dropzone__detail--error">
+              {{ resolvedDescription() }}
+            </p>
+          } @else {
+            <p class="n-dropzone__lead">
+              {{ title() }}
+              @if (accentLabel()) {
+                <span class="n-dropzone__accent">{{ accentLabel() }}</span>
+              }
+            </p>
+            @if (description()) {
+              <p [id]="descriptionId" class="n-dropzone__detail">{{ description() }}</p>
+            }
+          }
+        </div>
+      } @else {
+        <div class="n-dropzone__body">
+          <h3>{{ resolvedTitle() }}</h3>
+          <p [id]="descriptionId">{{ resolvedDescription() }}</p>
+        </div>
 
-      <n-button
-        class="n-dropzone__action"
-        variant="secondary"
-        size="sm"
-        [disabled]="disabled()"
-        (click)="$event.stopPropagation(); browse(fileInput)"
-      >
-        {{ resolvedBrowseLabel() }}
-      </n-button>
+        <n-button
+          class="n-dropzone__action"
+          variant="secondary"
+          size="sm"
+          [disabled]="disabled()"
+          (click)="$event.stopPropagation(); browse(fileInput)"
+        >
+          {{ resolvedBrowseLabel() }}
+        </n-button>
+      }
     </section>
   `,
   styles: [
@@ -116,16 +142,95 @@ let nextDropzoneId = 0;
         box-shadow: var(--n-focus-ring);
       }
 
+      .n-dropzone--pattern {
+        gap: 5px;
+        min-height: 80px;
+        padding: 12px 16px;
+        border-width: 1.5px;
+        border-color: rgba(255, 255, 255, 0.13);
+        border-radius: 10px;
+      }
+
+      .n-dropzone--pattern:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .n-dropzone--pattern .n-dropzone__icon {
+        width: auto;
+        height: auto;
+        border: none;
+        background: transparent;
+        color: var(--n-text-2);
+        opacity: 0.28;
+      }
+
+      .n-dropzone--pattern .n-dropzone__body {
+        gap: 0;
+      }
+
+      .n-dropzone--pattern .n-dropzone__lead {
+        margin: 0;
+        color: var(--n-text-3);
+        font-size: 0.71875rem;
+        line-height: 1.45;
+      }
+
+      .n-dropzone--pattern .n-dropzone__accent {
+        color: var(--n-color-primary-light);
+      }
+
+      .n-dropzone--pattern .n-dropzone__detail {
+        margin: 0;
+        color: var(--n-text-3);
+        font-size: var(--n-font-size-12);
+        line-height: 1.45;
+      }
+
+      .n-dropzone--pattern .n-dropzone__detail--error {
+        color: var(--n-color-danger);
+      }
+
       .n-dropzone--dragging {
         border-color: var(--n-dropzone-border-active);
         background: color-mix(in srgb, var(--n-color-primary) 14%, var(--n-dropzone-bg));
         box-shadow: var(--n-focus-ring), var(--n-glow-primary-xs);
       }
 
+      .n-dropzone--pattern.n-dropzone--dragging {
+        border-color: rgba(66, 133, 244, 0.55);
+        background: rgba(66, 133, 244, 0.07);
+        box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.08);
+      }
+
+      .n-dropzone--pattern.n-dropzone--dragging .n-dropzone__icon {
+        opacity: 1;
+        color: var(--n-color-primary-light);
+      }
+
+      .n-dropzone--pattern .n-dropzone__lead--accent {
+        color: var(--n-color-primary-light);
+      }
+
       .n-dropzone--filled {
         border-style: solid;
         border-color: color-mix(in srgb, var(--n-color-success) 60%, transparent);
         background: color-mix(in srgb, var(--n-color-success) 10%, transparent);
+      }
+
+      .n-dropzone--pattern.n-dropzone--filled {
+        border-color: rgba(52, 168, 83, 0.6);
+        background: rgba(52, 168, 83, 0.06);
+      }
+
+      .n-dropzone--pattern.n-dropzone--filled .n-dropzone__icon {
+        opacity: 1;
+        color: var(--n-color-success);
+      }
+
+      .n-dropzone--pattern .n-dropzone__lead--success {
+        color: var(--n-color-success);
+        font-family: var(--n-font-mono);
+        font-size: var(--n-font-size-11);
       }
 
       .n-dropzone--error {
@@ -276,20 +381,25 @@ export class NDropzone {
   readonly accept = input<string | undefined>(undefined);
   readonly multiple = input(false, { transform: booleanAttribute });
   readonly disabled = input(false, { transform: booleanAttribute });
+  readonly dragActive = input(false, { transform: booleanAttribute });
   readonly maxSize = input<number | undefined>(undefined);
   readonly maxFiles = input<number | undefined>(undefined);
   readonly variant = input<NDropzoneVariant>('default');
   readonly title = input('Drop files here');
-  readonly description = input('Drag and drop files or browse from your device.');
+  readonly description = input('');
+  readonly accentLabel = input('Browse Files');
+  readonly dragTitle = input('Drop to add video');
   readonly browseLabel = input('Browse files');
-  readonly icon = input('upload');
+  readonly icon = input('upload-cloud');
   readonly error = input<string | undefined>(undefined);
+  readonly files = model<NDropzoneFile[]>([]);
 
   readonly filesSelected = output<NDropzoneFile[]>();
   readonly filesRejected = output<NDropzoneRejectedFile[]>();
 
   private readonly dragging = signal(false);
-  private readonly selectedFiles = signal<ReadonlyArray<NDropzoneFile>>([]);
+
+  readonly isPatternLayout = computed(() => this.variant() === 'default');
 
   readonly state = computed<NDropzoneState>(() => {
     if (this.disabled()) {
@@ -300,11 +410,11 @@ export class NDropzone {
       return 'error';
     }
 
-    if (this.dragging()) {
+    if (this.dragActive() || this.dragging()) {
       return 'dragging';
     }
 
-    if (this.selectedFiles().length) {
+    if (this.files().length) {
       return 'filled';
     }
 
@@ -312,17 +422,22 @@ export class NDropzone {
   });
 
   readonly resolvedIcon = computed(() => (this.state() === 'filled' ? 'circle-check' : this.icon()));
+  readonly resolvedIconSize = computed(() => (this.isPatternLayout() ? 'md' : 'lg'));
+  readonly resolvedFilledLabel = computed(() => {
+    const selected = this.files();
+
+    if (selected.length === 1) {
+      return `${selected[0]?.name ?? 'Selected file'} · ${formatFileSize(selected[0]?.size)}`;
+    }
+
+    return `${selected.length} files selected · ${formatFileSize(selected.reduce((sum, file) => sum + file.size, 0))}`;
+  });
   readonly resolvedTitle = computed(() => {
-    if (this.state() !== 'filled') {
-      return this.title();
+    if (this.state() === 'filled') {
+      return this.resolvedFilledLabel();
     }
 
-    const files = this.selectedFiles();
-    if (files.length === 1) {
-      return `${files[0]?.name ?? 'Selected file'} · ${formatFileSize(files[0]?.size)}`;
-    }
-
-    return `${files.length} files selected · ${formatFileSize(files.reduce((sum, file) => sum + file.size, 0))}`;
+    return this.title();
   });
   readonly resolvedDescription = computed(() => {
     if (this.error()) {
@@ -371,18 +486,18 @@ export class NDropzone {
   handleDrop(event: EventLike): void {
     event.preventDefault?.();
     this.dragging.set(false);
-    const files = Array.from((event as DropEventLike).dataTransfer?.files ?? []);
-    this.handleFiles(files);
+    const dropped = Array.from((event as DropEventLike).dataTransfer?.files ?? []);
+    this.handleFiles(dropped);
   }
 
-  private handleFiles(files: NDropzoneFile[]): void {
-    if (!files.length) {
+  private handleFiles(incoming: NDropzoneFile[]): void {
+    if (!incoming.length) {
       return;
     }
 
     if (this.disabled()) {
       this.filesRejected.emit(
-        files.map((file) => this.reject(file, 'disabled', 'Dropzone is disabled.')),
+        incoming.map((file) => this.reject(file, 'disabled', 'Dropzone is disabled.')),
       );
       return;
     }
@@ -391,14 +506,14 @@ export class NDropzone {
     const rejected: NDropzoneRejectedFile[] = [];
     const maxFiles = this.maxFiles();
 
-    if (maxFiles !== undefined && files.length > maxFiles) {
+    if (maxFiles !== undefined && incoming.length > maxFiles) {
       rejected.push(
-        ...files.map((file) =>
+        ...incoming.map((file) =>
           this.reject(file, 'max-files', `A maximum of ${maxFiles} file(s) is allowed.`),
         ),
       );
     } else {
-      for (const file of files) {
+      for (const file of incoming) {
         const maxSize = this.maxSize();
 
         if (!matchesAccept(file, this.accept())) {
@@ -414,7 +529,7 @@ export class NDropzone {
     }
 
     if (accepted.length) {
-      this.selectedFiles.set(accepted);
+      this.files.set(accepted);
       this.filesSelected.emit(accepted);
     }
 

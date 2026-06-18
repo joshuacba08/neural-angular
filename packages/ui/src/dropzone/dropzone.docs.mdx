@@ -33,9 +33,21 @@ import { NDropzone } from '@neural/angular-ui/dropzone';
 
 ### Default Upload Surface
 
-The default state mirrors the app-pattern reference: dashed border, upload icon, browse action, and video-specific copy.
+The default state mirrors the app-pattern reference: dashed border, upload icon, inline browse accent, and video-specific copy.
 
 <Canvas of={DropzoneStories.Default} layout="centered" sourceState="shown" />
+
+### Drag Over
+
+Active drag feedback uses the blue dashed border, glow, and drop copy from the design system.
+
+<Canvas of={DropzoneStories.DragOver} layout="centered" sourceState="shown" />
+
+### Has File
+
+The filled state switches to a solid green border and mono filename summary.
+
+<Canvas of={DropzoneStories.HasFile} layout="centered" sourceState="shown" />
 
 ### Media Surface
 

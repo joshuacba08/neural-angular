@@ -28,9 +28,9 @@ import { NDropzone, type NDropzoneRejectedFile } from '@neural/angular-ui/dropzo
 
 ## API
 
-Inputs: `accept`, `multiple`, `disabled`, `maxSize`, `maxFiles`, `variant`, `title`, `description`, `browseLabel`, `icon`, and `error`.
+Inputs: `accept`, `multiple`, `disabled`, `dragActive`, `maxSize`, `maxFiles`, `variant`, `title`, `description`, `accentLabel`, `dragTitle`, `browseLabel`, `icon`, `error`, and `files`.
 
-Outputs: `filesSelected` and `filesRejected`.
+Outputs: `filesSelected` and `filesRejected`. Use `[(files)]` to control the selected-file summary state.
 
 Rejected reasons: `invalid-type`, `max-size`, `max-files`, and `disabled`.
 

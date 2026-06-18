@@ -28,6 +28,10 @@ import {
 
       <div
         class="n-split-view__gutter"
+        [class.n-split-view__gutter--active]="dragging()"
+        role="separator"
+        [attr.aria-orientation]="direction()"
+        tabindex="0"
         (mousedown)="onMouseDown($event)"
         (touchstart)="onTouchStart($event)"
       >
@@ -72,6 +76,16 @@ import {
         flex-shrink: 0;
       }
 
+      .n-split-view--horizontal .n-split-view__panel--first,
+      .n-split-view--horizontal .n-split-view__panel--second {
+        min-width: 80px;
+      }
+
+      .n-split-view--vertical .n-split-view__panel--first,
+      .n-split-view--vertical .n-split-view__panel--second {
+        min-height: 80px;
+      }
+
       .n-split-view__panel--second {
         flex: 1;
         min-width: 0;
@@ -98,13 +112,15 @@ import {
         cursor: row-resize;
       }
 
-      .n-split-view__gutter:hover {
+      .n-split-view__gutter:hover,
+      .n-split-view__gutter--active {
         background: rgba(66, 133, 244, 0.35) !important;
       }
 
       .n-split-view__gutter-handle {
         border-radius: 99px;
         background: rgba(255, 255, 255, 0.12);
+        pointer-events: none;
       }
 
       .n-split-view--horizontal .n-split-view__gutter-handle {
@@ -122,11 +138,11 @@ import {
 export class NSplitView implements OnInit {
   readonly direction = input<'horizontal' | 'vertical'>('horizontal');
   readonly initialSize = input(50, { transform: numberAttribute });
-  readonly minSize = input(10, { transform: numberAttribute });
-  readonly maxSize = input(90, { transform: numberAttribute });
+  readonly minSize = input(15, { transform: numberAttribute });
+  readonly maxSize = input(85, { transform: numberAttribute });
 
   readonly splitSize = signal(50);
-  private isDragging = false;
+  readonly dragging = signal(false);
 
   private readonly container = viewChild.required<ElementRef<HTMLElement>>('container');
 
@@ -144,18 +160,18 @@ export class NSplitView implements OnInit {
   }
 
   private startDrag(): void {
-    this.isDragging = true;
+    this.dragging.set(true);
   }
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {
-    if (!this.isDragging) return;
+    if (!this.dragging()) return;
     this.updateSplit(event.clientX, event.clientY);
   }
 
   @HostListener('document:touchmove', ['$event'])
   onTouchMove(event: TouchEvent): void {
-    if (!this.isDragging) return;
+    if (!this.dragging()) return;
     const touch = event.touches[0];
     if (touch) {
       this.updateSplit(touch.clientX, touch.clientY);
@@ -165,7 +181,7 @@ export class NSplitView implements OnInit {
   @HostListener('document:mouseup')
   @HostListener('document:touchend')
   onDragEnd(): void {
-    this.isDragging = false;
+    this.dragging.set(false);
   }
 
   private updateSplit(clientX: number, clientY: number): void {
@@ -181,7 +197,6 @@ export class NSplitView implements OnInit {
       pct = (offset / rect.height) * 100;
     }
 
-    // Clamp value
     pct = Math.max(this.minSize(), Math.min(this.maxSize(), pct));
     this.splitSize.set(pct);
   }
