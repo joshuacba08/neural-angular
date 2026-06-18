@@ -42,6 +42,7 @@ type NOtpClipboardEventLike = {
           maxlength="1"
           [value]="digits()[i] ?? ''"
           [disabled]="disabled()"
+          [placeholder]="placeholder()"
           [attr.aria-label]="'Digit ' + (i + 1)"
           (input)="onInput(i, $event)"
           (keydown)="onKeydown(i, $event)"
@@ -101,6 +102,7 @@ export class NInputOtp {
   readonly length = input(6, { transform: numberAttribute });
   readonly value = input('');
   readonly disabled = input(false, { transform: booleanAttribute });
+  readonly placeholder = input('·');
   readonly ariaLabel = input('One-time code');
   readonly valueChange = output<string>();
   readonly completed = output<string>();

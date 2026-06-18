@@ -9,27 +9,29 @@ import * as AdvancedFormsStories from './advanced-forms.stories';
 Advanced Forms is the combined showcase for Neural Angular form primitives that are designed to work together in dense application surfaces: float labels, icon fields, grouped inputs, masks, pickers, select controls, toggles, and split actions.
 
 <div className="n-doc-tabs">
-  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-showcase" value="showcase" aria-label="Showcase" defaultChecked />
-  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-components" value="components" aria-label="Components" />
-  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-guidance" value="guidance" aria-label="Guidance" />
+  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-features" value="features" aria-label="Features" defaultChecked />
+  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-api" value="api" aria-label="API" />
+  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-theming" value="theming" aria-label="Theming" />
+  <input className="n-doc-tabs__input" type="radio" name="advanced-forms-doc-tabs" id="advanced-forms-doc-tab-playground" value="playground" aria-label="Playground" />
 
   <div className="n-doc-tabs__list" aria-label="Advanced Forms documentation sections">
-    <label className="n-doc-tabs__tab" data-tab="showcase" htmlFor="advanced-forms-doc-tab-showcase">Showcase</label>
-    <label className="n-doc-tabs__tab" data-tab="components" htmlFor="advanced-forms-doc-tab-components">Components</label>
-    <label className="n-doc-tabs__tab" data-tab="guidance" htmlFor="advanced-forms-doc-tab-guidance">Guidance</label>
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="advanced-forms-doc-tab-features">Features</label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="advanced-forms-doc-tab-api">API</label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="advanced-forms-doc-tab-theming">Theming</label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="advanced-forms-doc-tab-playground">Playground</label>
   </div>
 
-  <section className="n-doc-tabs__panel" data-tab="showcase" id="showcase">
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
 
-## Showcase
+## Features
 
 The story below renders the full advanced form system in one surface.
 
-<Canvas of={AdvancedFormsStories.Showcase} layout="fullscreen" sourceState="hidden" />
+<Canvas of={AdvancedFormsStories.Showcase} layout="padded" sourceState="hidden" />
 
   </section>
 
-  <section className="n-doc-tabs__panel" data-tab="components" id="components">
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
 
 ## Components Covered
 
@@ -61,13 +63,21 @@ The story below renders the full advanced form system in one surface.
 
   </section>
 
-  <section className="n-doc-tabs__panel" data-tab="guidance" id="guidance">
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
 
-## Guidance
+## Theming
 
 Use Advanced Forms as a composition reference rather than a single install target. The primitives stay independent so applications can import only the controls they need.
 
 Prefer native inputs inside `NFloatLabel`, `NIconField`, and `NInputGroup` when a full Angular component would be too heavy. Reach for dedicated components like `NSelect`, `NPassword`, `NInputOtp`, or `NRating` when behavior and accessibility are part of the control.
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+<Canvas of={AdvancedFormsStories.Showcase} layout="padded" sourceState="hidden" />
 
   </section>
 </div>
