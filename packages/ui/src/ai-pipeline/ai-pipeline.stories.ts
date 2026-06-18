@@ -17,6 +17,9 @@ const meta: Meta<NAIPipeline> = {
     showProgress: {
       control: 'boolean',
     },
+    showStatus: {
+      control: 'boolean',
+    },
   },
 };
 
@@ -43,6 +46,15 @@ export const Horizontal: Story = {
     ...Default.args,
     orientation: 'horizontal',
     density: 'compact',
+    showStatus: false,
+    label: 'AI Pipeline',
+    steps: [
+      { title: 'Import', icon: 'check', status: 'success' },
+      { title: 'Extract', icon: 'check', status: 'success' },
+      { title: 'Enhance', icon: 'sparkles', status: 'running' },
+      { title: 'Encode', icon: 'archive', status: 'pending' },
+      { title: 'Export', icon: 'download', status: 'pending' },
+    ],
   },
 };
 

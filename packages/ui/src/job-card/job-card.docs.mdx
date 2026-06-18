@@ -34,7 +34,20 @@ import { NAIPipeline } from '@neural/angular-ui/ai-pipeline';
 
 ### Processing State
 
-The default story follows the Oroya Video queue card: media title, model metadata, AI processing badge, progress value, and embedded pipeline.
+The default story follows the Oroya Video queue card: media title, model metadata, AI processing badge, progress value, and a compact horizontal `NAIPipeline` embed.
+
+```html
+<n-job-card ...>
+  <n-ai-pipeline
+    label="AI Pipeline"
+    [steps]="jobSteps"
+    orientation="horizontal"
+    density="compact"
+    [showProgress]="false"
+    [showStatus]="false"
+  />
+</n-job-card>
+```
 
 <Canvas of={JobCardStories.Default} layout="padded" sourceState="shown" />
 

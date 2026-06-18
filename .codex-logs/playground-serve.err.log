@@ -2920,3 +2920,557 @@ Please consider reporting the error at https://github.com/angular/angular-cli/is
 [37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
          ╵                  [32m~~~~[0m
 [39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'showStatus' does not exist in type '{ orientation: NAIPipelineOrientation; density: NAIPipelineDensity; showProgress: boolean; showConnector: boolean; }'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:123:8:
+[37m      123 │         [32mshowStatus[37m: this.showStatus(),
+          ╵         [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-righ[39m[22m[1m[31mt" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵          [39m[22m[1m[31m         [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[32mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    pa[39m[22m[1m[31mckages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:38:41:
+[37m      38 │       [class.n-ai-pipeline-step--queue]="[32misQueueEmbed[37m()"
+         ╵                                          [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:46:11:
+[37m      46 │       @if ([32misQueueEmbed[37m()) {
+         ╵            [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'resolvedShowStatus' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:82:17:
+[37m      82 │             @if ([32mresolvedShowStatus[37m()) {
+         ╵                  [32m~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'showStatus' do[39m[22m[1m[31mes not exist in type '{ orientation: NAIPipelineOrientation; density: NAIPipelineDensity; showProgress: boolean; showConnector: boolean; }'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:123:8:
+[37m      123 │         [32mshowStatus[37m: this.showStatus(),
+          ╵         [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵        [39m[22m[1m[31m            [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[32mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[[39m[22m[1m[31mplugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:38:41:
+[37m      38 │       [class.n-ai-pipeline-step--queue]="[32misQueueEmbed[37m()"
+         ╵                                          [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:46:11:
+[37m      46 │       @if ([32misQueueEmbed[37m()) {
+         ╵            [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'resolvedShowStatus' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:82:17:
+[37m      82 │             @if ([32mresolvedShowStatus[37m()) {
+         ╵                  [32m~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'showStatus' do[39m[22m[1m[31mes not exist in type '{ orientation: NAIPipelineOrientation; density: NAIPipelineDensity; showProgress: boolean; showConnector: boolean; }'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:123:8:
+[37m      123 │         [32mshowStatus[37m: this.showStatus(),
+          ╵         [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵        [39m[22m[1m[31m            [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[32mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[[39m[22m[1m[31mplugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:38:41:
+[37m      38 │       [class.n-ai-pipeline-step--queue]="[32misQueueEmbed[37m()"
+         ╵                                          [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:46:11:
+[37m      46 │       @if ([32misQueueEmbed[37m()) {
+         ╵            [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'resolvedShowStatus' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:82:17:
+[37m      82 │             @if ([32mresolvedShowStatus[37m()) {
+         ╵                  [32m~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'showStatus' do[39m[22m[1m[31mes not exist in type '{ orientation: NAIPipelineOrientation; density: NAIPipelineDensity; showProgress: boolean; showConnector: boolean; }'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:123:8:
+[37m      123 │         [32mshowStatus[37m: this.showStatus(),
+          ╵         [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵        [39m[22m[1m[31m            [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[32mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[[39m[22m[1m[31mplugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:38:41:
+[37m      38 │       [class.n-ai-pipeline-step--queue]="[32misQueueEmbed[37m()"
+         ╵                                          [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isQueueEmbed' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:46:11:
+[37m      46 │       @if ([32misQueueEmbed[37m()) {
+         ╵            [32m~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'resolvedShowStatus' does not exist on type 'NAIPipelineStep'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:82:17:
+[37m      82 │             @if ([32mresolvedShowStatus[37m()) {
+         ╵                  [32m~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS6133: 'contextShowStatus' is declared but its value is never read.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline-step.component.ts:335:19:
+[37m      335 │   private readonly [32mcontextShowStatus[37m = signal(true);
+          ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this c[39m[22m[1m[31momponent.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'showStatus' does not exist in type '{ orientation: NAIPipelineOrientation; density: NAIPipelineDensity; showProgress: boolean; showConnector: boolean; }'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:123:8:
+[37m      123 │         [32mshowStatus[37m: this.showStatus(),
+          ╵         [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "x" | "activity" | "alert-ci[39m[22m[1m[31mrcle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[32mname[37m]="icon()!" size="sm" class="nn-split-icon" /[39m[22m[1m[31m>
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'showStatus' does not exist in type '{ orientation: NAIPipelineOrientation; density: NAIPipelineDensity; showProgress: boolean; showConnector: boolean; }'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:123:8:
+[37m      123 │         [32mshowStatus[37m: this.showStatus(),
+          ╵         [32m~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-righ[39m[22m[1m[31mt" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵          [39m[22m[1m[31m         [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[32mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    pa[39m[22m[1m[31mckages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "sea[39m[22m[1m[31mrch" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[3[39m[22m[1m[31m2mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "sea[39m[22m[1m[31mrch" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[3[39m[22m[1m[31m2mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8102: NG8102: The left side of this nullish coalescing operation does not include 'null' or 'undefined' in its type, therefore the '??' operator can be safely removed. Find more at https://v22.angular.dev/extended-diagnostics/NG8102[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/input-otp/input-otp.component.ts:43:19:
+[37m      43 │           [value]="[32mdigits()[i] ?? ''[37m"
+         ╵                    [32m~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: All imports are unused[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/multi-select/multi-select.component.ts:17:2:
+[37m      17 │   [32mimports[37m: [NIcon],
+         ╵   [32m~~~~~~~[0m
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'showStatus' since it isn't a known property of 'n-ai-pipeline-step'.
+1. If 'n-ai-pipeline-step' is an Angular component and it has 'showStatus' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'n-ai-pipeline-step' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/ai-pipeline/ai-pipeline.component.ts:49:12:
+[37m      49 │             [32m[showStatus]="showStatus()"[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/alert/alert.component.ts:20:17:
+[37m      20 │         <n-icon [[32mname[37m]="computedIcon()!" class="n-alert__icon" siz...
+         ╵                  [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"box"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/autocomplete/autocomplete.component.ts:44:22:
+[37m      44 │               <n-icon [32mname[37m="box" class="nn-ac-item-ico" size="sm" />
+         ╵                       [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "sea[39m[22m[1m[31mrch" | "command" | "play" | "x" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 37 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/command-palette/command-palette-item.component.ts:17:19:
+[37m      17 │           <n-icon [[32mname[37m]="icon()!" class="cmd-item__icon" size="sm...
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-left"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:14:18:
+[37m      14 │           <n-icon [32mname[37m="chevron-left" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type '"chevron-right"' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/datepicker/datepicker.component.ts:18:18:
+[37m      18 │           <n-icon [32mname[37m="chevron-right" size="sm" />
+         ╵                   [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:34:19:
+[37m      34 │           <n-icon [[3[39m[22m
+[1m[31m2mname[37m]="icon()!" size="sm" class="nn-split-icon" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/split-button/split-button.component.ts:69:21:
+[37m      69 │                     [[32mname[37m]="item.icon"
+         ╵                      [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "info" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | "circle-check" | "circle-x" | ... 40 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/stat-card/stat-card.component.ts:20:19:
+[37m      20 │           <n-icon [[32mname[37m]="icon() ?? ''" size="sm" />
+         ╵                    [32m~~~~[0m
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string' is not assignable to type '"" | "code" | "link" | "search" | "command" | "play" | "activity" | "alert-circle" | "archive" | "arrow-right" | "bell" | "calendar" | "check" | "chevron-down" | "chevrons-left-right" | ... 38 more ... | "zap"'.[0m [1m[35m[plugin angular-compiler][0m
+    packages/ui/src/toggle-button/toggle-button.component.ts:17:17:
+[37m      17 │         <n-icon [[32mname[37m]="iconName" size="sm" class="nn-btn-ico" />
+         ╵                  [32m~~~~[0m
+[39m[22m

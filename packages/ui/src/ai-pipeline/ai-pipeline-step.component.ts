@@ -35,6 +35,7 @@ const optionalNumberAttribute = (value: unknown): number | undefined => {
       class="n-ai-pipeline-step"
       [class.n-ai-pipeline-step--horizontal]="resolvedOrientation() === 'horizontal'"
       [class.n-ai-pipeline-step--compact]="resolvedDensity() === 'compact'"
+      [class.n-ai-pipeline-step--queue]="isQueueEmbed()"
       [class.n-ai-pipeline-step--pending]="status() === 'pending'"
       [class.n-ai-pipeline-step--running]="isRunning()"
       [class.n-ai-pipeline-step--success]="status() === 'success'"
@@ -42,46 +43,66 @@ const optionalNumberAttribute = (value: unknown): number | undefined => {
       [class.n-ai-pipeline-step--error]="status() === 'error'"
       [class.n-ai-pipeline-step--skipped]="status() === 'skipped'"
     >
-      <span class="n-ai-pipeline-step__marker" aria-hidden="true">
-        <span class="n-ai-pipeline-step__marker-core">
-          @if (icon()) {
-            <n-icon [name]="icon() ?? ''" size="xs" />
-          }
-        </span>
-      </span>
-
-      <div class="n-ai-pipeline-step__body">
-        <div class="n-ai-pipeline-step__header">
-          <div class="n-ai-pipeline-step__copy">
-            @if (title()) {
-              <h3>{{ title() }}</h3>
+      @if (isQueueEmbed()) {
+        <span class="n-ai-pipeline-step__marker" aria-hidden="true">
+          <span class="n-ai-pipeline-step__marker-core">
+            @if (icon()) {
+              <n-icon [name]="icon() ?? ''" size="xs" />
             }
-            @if (metadata()) {
-              <p class="n-ai-pipeline-step__meta">{{ metadata() }}</p>
+          </span>
+        </span>
+
+        @if (title()) {
+          <span class="n-ai-pipeline-step__queue-label">{{ title() }}</span>
+        }
+
+        @if (resolvedShowConnector()) {
+          <span class="n-ai-pipeline-step__connector" aria-hidden="true"></span>
+        }
+      } @else {
+        <span class="n-ai-pipeline-step__marker" aria-hidden="true">
+          <span class="n-ai-pipeline-step__marker-core">
+            @if (icon()) {
+              <n-icon [name]="icon() ?? ''" size="xs" />
+            }
+          </span>
+        </span>
+
+        <div class="n-ai-pipeline-step__body">
+          <div class="n-ai-pipeline-step__header">
+            <div class="n-ai-pipeline-step__copy">
+              @if (title()) {
+                <h3>{{ title() }}</h3>
+              }
+              @if (metadata()) {
+                <p class="n-ai-pipeline-step__meta">{{ metadata() }}</p>
+              }
+            </div>
+
+            @if (resolvedShowStatus()) {
+              <n-badge [variant]="statusVariant()" size="sm">
+                {{ status() }}
+              </n-badge>
             }
           </div>
 
-          <n-badge [variant]="statusVariant()" size="sm">
-            {{ status() }}
-          </n-badge>
+          @if (description()) {
+            <p class="n-ai-pipeline-step__description">{{ description() }}</p>
+          }
+
+          @if (resolvedShowProgress() && progress() !== undefined && isRunning()) {
+            <n-progress
+              [value]="progress() ?? 0"
+              [variant]="progressVariant()"
+              size="sm"
+              [showValue]="true"
+            />
+          }
         </div>
 
-        @if (description()) {
-          <p class="n-ai-pipeline-step__description">{{ description() }}</p>
+        @if (resolvedShowConnector()) {
+          <span class="n-ai-pipeline-step__connector" aria-hidden="true"></span>
         }
-
-        @if (resolvedShowProgress() && progress() !== undefined && isRunning()) {
-          <n-progress
-            [value]="progress() ?? 0"
-            [variant]="progressVariant()"
-            size="sm"
-            [showValue]="true"
-          />
-        }
-      </div>
-
-      @if (resolvedShowConnector()) {
-        <span class="n-ai-pipeline-step__connector" aria-hidden="true"></span>
       }
     </li>
   `,
@@ -89,6 +110,11 @@ const optionalNumberAttribute = (value: unknown): number | undefined => {
     `
       :host {
         display: block;
+      }
+
+      :host-context(.n-ai-pipeline--horizontal) {
+        flex: 1;
+        min-width: 0;
       }
 
       .n-ai-pipeline-step {
@@ -241,6 +267,44 @@ const optionalNumberAttribute = (value: unknown): number | undefined => {
         );
       }
 
+      .n-ai-pipeline-step--queue {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        min-width: 0;
+      }
+
+      .n-ai-pipeline-step--queue .n-ai-pipeline-step__marker-core {
+        width: 22px;
+        height: 22px;
+      }
+
+      .n-ai-pipeline-step--queue .n-ai-pipeline-step__queue-label {
+        color: var(--n-ai-pipeline-status-color);
+        font-family: var(--n-font-mono);
+        font-size: 9px;
+        line-height: 1.2;
+      }
+
+      .n-ai-pipeline-step--queue.n-ai-pipeline-step--pending {
+        opacity: 0.45;
+      }
+
+      .n-ai-pipeline-step--queue .n-ai-pipeline-step__connector {
+        top: 11px;
+        right: -50%;
+        bottom: auto;
+        left: 50%;
+        width: auto;
+        height: 2px;
+        background: color-mix(in srgb, var(--n-ai-pipeline-status-color) 35%, transparent);
+      }
+
+      .n-ai-pipeline-step--queue.n-ai-pipeline-step--running .n-ai-pipeline-step__marker-core {
+        color: var(--n-color-primary-bright);
+      }
+
       .n-ai-pipeline-step--compact .n-ai-pipeline-step__connector {
         bottom: calc(var(--n-space-3) * -1);
       }
@@ -268,6 +332,7 @@ export class NAIPipelineStep {
   private readonly contextOrientation = signal<NAIPipelineOrientation>('vertical');
   private readonly contextDensity = signal<NAIPipelineDensity>('comfortable');
   private readonly contextShowProgress = signal(true);
+  private readonly contextShowStatus = signal(true);
   private readonly contextShowConnector = signal(true);
   private readonly usePipelineContext = signal(false);
 
@@ -283,6 +348,7 @@ export class NAIPipelineStep {
   readonly orientation = input<NAIPipelineOrientation>('vertical');
   readonly density = input<NAIPipelineDensity>('comfortable');
   readonly showProgress = input(true, { transform: booleanAttribute });
+  readonly showStatus = input(true, { transform: booleanAttribute });
   readonly showConnector = input(true, { transform: booleanAttribute });
 
   readonly resolvedOrientation = computed(() =>
@@ -294,8 +360,17 @@ export class NAIPipelineStep {
   readonly resolvedShowProgress = computed(() =>
     this.usePipelineContext() ? this.contextShowProgress() : this.showProgress(),
   );
+  readonly resolvedShowStatus = computed(() =>
+    this.usePipelineContext() ? this.contextShowStatus() : this.showStatus(),
+  );
   readonly resolvedShowConnector = computed(() =>
     this.usePipelineContext() ? this.contextShowConnector() : this.showConnector(),
+  );
+  readonly isQueueEmbed = computed(
+    () =>
+      this.resolvedOrientation() === 'horizontal' &&
+      this.resolvedDensity() === 'compact' &&
+      !this.resolvedShowStatus(),
   );
   readonly isRunning = computed(
     () => this.active() || this.status() === 'running',
@@ -305,12 +380,14 @@ export class NAIPipelineStep {
     orientation: NAIPipelineOrientation;
     density: NAIPipelineDensity;
     showProgress: boolean;
+    showStatus: boolean;
     showConnector: boolean;
   }): void {
     this.usePipelineContext.set(true);
     this.contextOrientation.set(context.orientation);
     this.contextDensity.set(context.density);
     this.contextShowProgress.set(context.showProgress);
+    this.contextShowStatus.set(context.showStatus);
     this.contextShowConnector.set(context.showConnector);
   }
 

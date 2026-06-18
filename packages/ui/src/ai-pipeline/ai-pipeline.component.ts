@@ -8,6 +8,7 @@ import {
   input,
 } from '@angular/core';
 
+import { NIcon } from '../icon/icon.component.js';
 import type { NAIPipelineStep as NAIPipelineStepModel } from '../ai/ai.types.js';
 import { NAIPipelineStep } from './ai-pipeline-step.component.js';
 import type {
@@ -18,8 +19,15 @@ import type {
 @Component({
   selector: 'n-ai-pipeline',
   standalone: true,
-  imports: [NAIPipelineStep],
+  imports: [NAIPipelineStep, NIcon],
   template: `
+    @if (label()) {
+      <div class="n-ai-pipeline__heading">
+        <n-icon name="component" size="xs" />
+        <span>{{ label() }}</span>
+      </div>
+    }
+
     <ol
       class="n-ai-pipeline"
       [class.n-ai-pipeline--vertical]="orientation() === 'vertical'"
@@ -38,6 +46,7 @@ import type {
             [orientation]="orientation()"
             [density]="density()"
             [showProgress]="showProgress()"
+            [showStatus]="showStatus()"
             [showConnector]="!isLast"
           />
         }
@@ -50,6 +59,18 @@ import type {
     `
       :host {
         display: block;
+      }
+
+      .n-ai-pipeline__heading {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 8px;
+        color: var(--n-text-3);
+        font-size: 0.59375rem;
+        font-weight: var(--n-font-weight-bold);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
       .n-ai-pipeline {
@@ -65,8 +86,9 @@ import type {
       }
 
       .n-ai-pipeline--horizontal {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        align-items: start;
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
       }
     `,
   ],
@@ -75,10 +97,12 @@ export class NAIPipeline implements AfterContentInit, AfterContentChecked {
   @ContentChildren(NAIPipelineStep)
   private readonly projectedSteps?: QueryList<NAIPipelineStep>;
 
+  readonly label = input<string | undefined>(undefined);
   readonly steps = input<readonly NAIPipelineStepModel[]>([]);
   readonly orientation = input<NAIPipelineOrientation>('vertical');
   readonly density = input<NAIPipelineDensity>('comfortable');
   readonly showProgress = input(true, { transform: booleanAttribute });
+  readonly showStatus = input(true, { transform: booleanAttribute });
 
   ngAfterContentInit(): void {
     this.syncProjectedSteps();
@@ -96,6 +120,7 @@ export class NAIPipeline implements AfterContentInit, AfterContentChecked {
         orientation: this.orientation(),
         density: this.density(),
         showProgress: this.showProgress(),
+        showStatus: this.showStatus(),
         showConnector: index < steps.length - 1,
       });
     });

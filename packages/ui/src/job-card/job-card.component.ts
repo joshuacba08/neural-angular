@@ -67,7 +67,7 @@ const optionalNumberAttribute = (value: unknown): number | undefined => {
         border: 1px solid transparent;
         background:
           linear-gradient(var(--n-surface-1), var(--n-surface-1)) padding-box,
-          var(--n-border-subtle) border-box;
+          var(--n-gradient-border-subtle) border-box;
         overflow: hidden;
         width: 100%;
         box-sizing: border-box;
@@ -207,6 +207,14 @@ const optionalNumberAttribute = (value: unknown): number | undefined => {
 
       .n-job-card__content {
         margin: 0 16px 14px;
+        padding: 10px 12px;
+        border: 1px solid var(--n-border-0);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .n-job-card__content:empty {
+        display: none;
       }
 
       @keyframes n-job-card-shimmer {
