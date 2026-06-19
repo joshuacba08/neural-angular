@@ -1,0 +1,242 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as OrgChartStories from './org-chart.stories';
+
+<Meta of={OrgChartStories} />
+
+# OrgChart
+
+`NOrgChart` is a recursive organizational and pipeline hierarchy display. It automatically draws connection lines and handles horizontal (pipeline) or vertical tree arrangements based on individual node configuration.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="orgchart-doc-tabs"
+    id="orgchart-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="orgchart-doc-tabs"
+    id="orgchart-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="orgchart-doc-tabs"
+    id="orgchart-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="orgchart-doc-tabs"
+    id="orgchart-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="OrgChart documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="orgchart-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="orgchart-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="orgchart-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="orgchart-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NOrgChart, NOrgChartNode } from '@neural/angular-ui/org-chart';
+```
+
+### Design System
+
+Represents the exact hierarchy layout specified in the Design System.
+
+<Canvas of={OrgChartStories.DesignSystem} layout="padded" sourceState="shown" />
+
+### Capabilities
+
+<ul>
+  <li><strong>Recursive Rendering</strong> — renders nested node hierarchies at any depth.</li>
+  <li><strong>Layout Flexibility</strong> — nodes support horizontal (pipeline columns) or vertical lists under them.</li>
+  <li><strong>Style Customization</strong> — supports inline styles and label classes for color coding pipelines.</li>
+  <li><strong>Spacing controls</strong> — tune <code>boxSpacing</code>, <code>levelGap</code>, and <code>childGap</code> (px).</li>
+  <li><strong>Tree connectors</strong> — continuous T-junction rails via pseudo-elements (no fixed-width segments).</li>
+</ul>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Input properties of `NOrgChart`.
+
+<ArgTypes of={OrgChartStories} sort="requiredFirst" />
+
+### NOrgChartNode Interface
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>string</code></td>
+        <td>The node name or title.</td>
+      </tr>
+      <tr>
+        <td><code>role</code></td>
+        <td><code>string?</code></td>
+        <td>Optional subtitle or job title/role.</td>
+      </tr>
+      <tr>
+        <td><code>children</code></td>
+        <td><code>NOrgChartNode[]?</code></td>
+        <td>Recursive child nodes.</td>
+      </tr>
+      <tr>
+        <td><code>layout</code></td>
+        <td><code>'horizontal' | 'vertical'?</code></td>
+        <td>Direction in which child nodes are arranged (default is 'horizontal').</td>
+      </tr>
+      <tr>
+        <td><code>styleClass</code></td>
+        <td><code>string?</code></td>
+        <td>Custom CSS class for the node wrapper box.</td>
+      </tr>
+      <tr>
+        <td><code>inlineStyle</code></td>
+        <td><code>string?</code></td>
+        <td>Inline CSS styles string applied to the box.</td>
+      </tr>
+      <tr>
+        <td><code>labelStyle</code></td>
+        <td><code>string?</code></td>
+        <td>Inline CSS styles string applied to the label text.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.nn-org-chart</code></td>
+        <td>Root container wrapper.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-org-box</code></td>
+        <td>Card wrapper for an individual node.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-org-name</code></td>
+        <td>Label container inside a node card.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-org-role</code></td>
+        <td>Role/subtitle container inside a node card.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--nn-surface-2</code></td>
+        <td>Node box default background.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-b1</code></td>
+        <td>Standard connector lines color.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-b2</code></td>
+        <td>Strong/primary connector lines color.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-r-md</code></td>
+        <td>Node box border radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-org-box-spacing</code></td>
+        <td>Horizontal margin around branch nodes (default <code>22px</code>).</td>
+      </tr>
+      <tr>
+        <td><code>--n-org-level-gap</code></td>
+        <td>Connector height between levels (default <code>20px</code>).</td>
+      </tr>
+      <tr>
+        <td><code>--n-org-child-gap</code></td>
+        <td>Vertical gap in child chains (default <code>18px</code>).</td>
+      </tr>
+      <tr>
+        <td><code>--nn-font-m</code></td>
+        <td>Monospace font for roles/subtitles.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+<Canvas of={OrgChartStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={OrgChartStories.Playground} />
+
+  </section>
+</div>

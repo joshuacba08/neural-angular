@@ -283,6 +283,18 @@
       "types": "./dist/theme/index.d.ts",
       "default": "./dist/theme/index.js"
     },
+    "./tree": {
+      "types": "./dist/tree/index.d.ts",
+      "default": "./dist/tree/index.js"
+    },
+    "./org-chart": {
+      "types": "./dist/org-chart/index.d.ts",
+      "default": "./dist/org-chart/index.js"
+    },
+    "./pick-list": {
+      "types": "./dist/pick-list/index.d.ts",
+      "default": "./dist/pick-list/index.js"
+    },
     "./styles": "./src/styles/index.css",
     "./styles/fonts": "./src/styles/neural-fonts.css",
     "./styles/base": "./src/styles/neural-base.css",

@@ -1,12 +1,14 @@
 import {
   Component,
-  ElementRef,
-  HostListener,
-  inject,
   input,
   output,
   signal,
 } from '@angular/core';
+import {
+  CdkConnectedOverlay,
+  CdkOverlayOrigin,
+  type ConnectedPosition,
+} from '@angular/cdk/overlay';
 
 import { NIcon } from '../icon/icon.component.js';
 
@@ -15,69 +17,84 @@ export interface NSplitButtonItem {
   icon?: string;
   iconColor?: string;
   separator?: boolean;
-  command?: (event?: any) => void;
+  command?: (event?: Event) => void;
 }
 
 @Component({
   selector: 'n-split-button',
   standalone: true,
-  imports: [NIcon],
+  imports: [NIcon, CdkConnectedOverlay, CdkOverlayOrigin],
   template: `
-    <div class="nn-split-wrap" #container>
-      <!-- Main Action Button -->
+    <div class="nn-split-wrap" cdkOverlayOrigin #origin="cdkOverlayOrigin">
       <button
         type="button"
         [class]="btnClass + ' nn-split-main'"
         (click)="onMainClick($event)"
       >
         @if (icon()) {
-          <n-icon [name]="icon()!" size="sm" class="nn-split-icon" />
+          <n-icon
+            [name]="icon()!"
+            size="sm"
+            class="nn-split-icon"
+            [strokeWidth]="2"
+          />
         }
         <span>{{ label() }}</span>
       </button>
 
-      <!-- Dropdown Caret Trigger -->
       <button
         type="button"
         [class]="btnClass + ' nn-split-caret'"
+        [attr.aria-expanded]="isOpen()"
+        [attr.aria-haspopup]="'menu'"
         (click)="toggleMenu($event)"
       >
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+        <n-icon
+          name="chevron-down"
+          class="nn-split-caret-icon"
+          [strokeWidth]="2.5"
+        />
       </button>
 
-      <!-- Dropdown Overlay Menu -->
-      @if (isOpen() && model().length > 0) {
-        <div class="nn-split-menu open">
-          @for (item of model(); track $index) {
-            @if (item.separator) {
-              <div class="nn-split-sep"></div>
-            } @else {
-              <div class="nn-split-mi" (click)="onItemClick(item, $event)">
-                @if (item.icon) {
-                  <n-icon
-                    [name]="item.icon"
-                    size="sm"
-                    class="nn-split-mi-ico"
-                    [style.color]="item.iconColor ?? null"
-                  />
-                }
-                <span>{{ item.label }}</span>
-              </div>
+      <ng-template
+        cdkConnectedOverlay
+        [cdkConnectedOverlayOpen]="isOpen()"
+        [cdkConnectedOverlayOrigin]="origin"
+        [cdkConnectedOverlayHasBackdrop]="true"
+        [cdkConnectedOverlayBackdropClass]="'n-overlay-transparent-backdrop'"
+        [cdkConnectedOverlayPositions]="overlayPositions"
+        [cdkConnectedOverlayPanelClass]="'n-split-button-overlay-panel'"
+        (backdropClick)="closeMenu()"
+        (detach)="closeMenu()"
+      >
+        @if (model().length > 0) {
+          <div class="nn-split-menu" role="menu">
+            @for (item of model(); track $index) {
+              @if (item.separator) {
+                <div class="nn-split-sep" role="separator"></div>
+              } @else {
+                <button
+                  type="button"
+                  class="nn-split-mi"
+                  role="menuitem"
+                  (click)="onItemClick(item, $event)"
+                >
+                  @if (item.icon) {
+                    <n-icon
+                      [name]="item.icon"
+                      size="sm"
+                      class="nn-split-mi-ico"
+                      [strokeWidth]="2"
+                      [style.color]="item.iconColor ?? null"
+                    />
+                  }
+                  <span>{{ item.label }}</span>
+                </button>
+              }
             }
-          }
-        </div>
-      }
+          </div>
+        }
+      </ng-template>
     </div>
   `,
   styles: [
@@ -145,12 +162,24 @@ export interface NSplitButtonItem {
         border-radius: 0 var(--n-radius-full) var(--n-radius-full) 0 !important;
         cursor: pointer;
         flex-shrink: 0;
+        color: inherit;
+      }
+
+      .nn-split-icon,
+      .nn-split-caret-icon,
+      .nn-split-mi-ico {
+        width: 14px !important;
+        height: 14px !important;
+        min-width: 14px;
+        min-height: 14px;
+        flex-shrink: 0;
+      }
+
+      .nn-split-caret-icon {
+        opacity: 0.95;
       }
 
       .nn-split-menu {
-        position: absolute;
-        top: calc(100% + 6px);
-        left: 0;
         min-width: 190px;
         border-radius: var(--n-radius-md);
         padding: 4px;
@@ -159,23 +188,23 @@ export interface NSplitButtonItem {
           linear-gradient(var(--n-surface-3), var(--n-surface-3)) padding-box,
           var(--n-gradient-border-subtle, var(--n-gradient-border)) border-box;
         box-shadow: var(--n-elevation-3, 0 8px 24px rgba(0, 0, 0, 0.62));
-        z-index: 20;
-        display: none;
-        flex-direction: column;
-      }
-
-      .nn-split-menu.open {
         display: flex;
+        flex-direction: column;
       }
 
       .nn-split-mi {
         display: flex;
         align-items: center;
         gap: 9px;
+        width: 100%;
         padding: 8px 10px;
+        border: 0;
         border-radius: 7px;
+        background: transparent;
+        font: inherit;
         font-size: 12.5px;
         color: var(--n-text-2);
+        text-align: left;
         cursor: pointer;
         transition: background 120ms;
       }
@@ -194,22 +223,33 @@ export interface NSplitButtonItem {
         background: var(--n-border-0);
         margin: 3px 0;
       }
-
-      .nn-split-icon {
-        flex-shrink: 0;
-      }
     `,
   ],
 })
 export class NSplitButton {
-  private readonly elementRef = inject(ElementRef);
+  readonly overlayPositions: ConnectedPosition[] = [
+    {
+      originX: 'start',
+      originY: 'bottom',
+      overlayX: 'start',
+      overlayY: 'top',
+      offsetY: 6,
+    },
+    {
+      originX: 'start',
+      originY: 'top',
+      overlayX: 'start',
+      overlayY: 'bottom',
+      offsetY: -6,
+    },
+  ];
 
   readonly label = input.required<string>();
   readonly icon = input<string | undefined>(undefined);
   readonly model = input<NSplitButtonItem[]>([]);
   readonly variant = input<'primary' | 'neutral'>('neutral');
 
-  readonly click = output<any>();
+  readonly click = output<Event>();
   readonly menuClick = output<NSplitButtonItem>();
 
   readonly isOpen = signal(false);
@@ -218,29 +258,24 @@ export class NSplitButton {
     return this.variant() === 'primary' ? 'nn-btn nn-btn-gm' : 'nn-btn nn-btn-f';
   }
 
-  toggleMenu(event: any): void {
+  toggleMenu(event: Event): void {
     event.stopPropagation();
-    this.isOpen.set(!this.isOpen());
+    this.isOpen.update((open) => !open);
   }
 
-  onMainClick(event: any): void {
+  closeMenu(): void {
     this.isOpen.set(false);
+  }
+
+  onMainClick(event: Event): void {
+    this.closeMenu();
     this.click.emit(event);
   }
 
-  onItemClick(item: NSplitButtonItem, event: any): void {
+  onItemClick(item: NSplitButtonItem, event: Event): void {
     event.stopPropagation();
-    this.isOpen.set(false);
-    if (item.command) {
-      item.command(event);
-    }
+    this.closeMenu();
+    item.command?.(event);
     this.menuClick.emit(item);
-  }
-
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: any): void {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.isOpen.set(false);
-    }
   }
 }

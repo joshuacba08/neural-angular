@@ -1,0 +1,248 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as TreeStories from './tree.stories';
+
+<Meta of={TreeStories} />
+
+# Tree
+
+`NTree` is a recursive expandable-node component for hierarchical data. It renders folder-like structures with animated expand/collapse, dynamic icons per state, and keyboard-friendly interaction — all without any `@angular/material` dependency.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="tree-doc-tabs"
+    id="tree-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="tree-doc-tabs"
+    id="tree-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="tree-doc-tabs"
+    id="tree-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="tree-doc-tabs"
+    id="tree-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Tree documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="tree-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="tree-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="tree-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="tree-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NTree, NTreeNode } from '@neural/angular-ui/tree';
+```
+
+### Design System
+
+Hierarchical file-browser tree with animated expand/collapse transitions.
+
+<Canvas of={TreeStories.DesignSystem} layout="padded" sourceState="shown" />
+
+### Capabilities
+
+<ul>
+  <li><strong>Recursive rendering</strong> — supports infinite depth of nested nodes.</li>
+  <li><strong>Animated expand/collapse</strong> — smooth <code>max-height</code> transitions on child containers.</li>
+  <li><strong>Dynamic icons</strong> — supports separate <code>icon</code>, <code>expandedIcon</code> and <code>collapsedIcon</code> per node.</li>
+  <li><strong>Zero dependencies</strong> — no <code>&#64;angular/material</code> or heavy CDK modules required.</li>
+  <li><strong>SSR-safe</strong> — no direct browser API access.</li>
+</ul>
+
+</section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Input properties of `NTree`.
+
+<ArgTypes of={TreeStories} sort="requiredFirst" />
+
+### NTreeNode Interface
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>string</code></td>
+        <td>Display text for the node.</td>
+      </tr>
+      <tr>
+        <td><code>icon</code></td>
+        <td><code>string?</code></td>
+        <td>Default Lucide icon name.</td>
+      </tr>
+      <tr>
+        <td><code>expandedIcon</code></td>
+        <td><code>string?</code></td>
+        <td>Icon shown when the node is expanded.</td>
+      </tr>
+      <tr>
+        <td><code>collapsedIcon</code></td>
+        <td><code>string?</code></td>
+        <td>Icon shown when the node is collapsed.</td>
+      </tr>
+      <tr>
+        <td><code>children</code></td>
+        <td><code>NTreeNode[]?</code></td>
+        <td>Nested child nodes.</td>
+      </tr>
+      <tr>
+        <td><code>expanded</code></td>
+        <td><code>boolean?</code></td>
+        <td>Initial expanded state.</td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>T?</code></td>
+        <td>Arbitrary payload attached to the node.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.nn-tree</code></td>
+        <td>Root tree container.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-tr-row</code></td>
+        <td>A single clickable tree row.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-tr-row.on</code></td>
+        <td>Expanded parent node highlight.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-tr-toggle</code></td>
+        <td>Chevron toggle container.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-tr-toggle.open</code></td>
+        <td>Rotated state (90°).</td>
+      </tr>
+      <tr>
+        <td><code>.nn-tr-toggle.leaf</code></td>
+        <td>Hidden toggle for leaf nodes.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-tr-kids</code></td>
+        <td>Animated children container.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-tr-kids.open</code></td>
+        <td>Expanded children container.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--nn-r-sm</code></td>
+        <td>Row border radius.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-t2</code></td>
+        <td>Expanded toggle chevron color.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-t4</code></td>
+        <td>Default toggle chevron color.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-blue-bright</code></td>
+        <td>Expanded row text accent.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-ease-decel</code></td>
+        <td>Children expand/collapse easing.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={TreeStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={TreeStories.Playground} />
+
+  </section>
+</div>

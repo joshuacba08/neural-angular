@@ -1,0 +1,265 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as PickListStories from './pick-list.stories';
+
+<Meta of={PickListStories} />
+
+# PickList
+
+`NPickList` is a dual-panel list control that lets users select and transfer items between a source and a target list. It supports drag-and-drop, multi-selection for bulk transfers, and emits array updates for two-way binding.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="picklist-doc-tabs"
+    id="picklist-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="picklist-doc-tabs"
+    id="picklist-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="picklist-doc-tabs"
+    id="picklist-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="picklist-doc-tabs"
+    id="picklist-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="PickList documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="picklist-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="picklist-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="picklist-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="picklist-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NPickList, NPickListItem } from '@neural/angular-ui/pick-list';
+```
+
+### Design System
+
+Represents the exact specifications of the Design System transfer list.
+
+<Canvas of={PickListStories.DesignSystem} layout="padded" sourceState="shown" />
+
+### Capabilities
+
+<ul>
+  <li><strong>Drag &amp; Drop</strong> — powered by Angular CDK <code>DragDropModule</code>.</li>
+  <li><strong>Multi-Selection Transfers</strong> — select multiple items in either panel and transfer them in bulk.</li>
+  <li><strong>State Synchronization</strong> — emits <code>sourceChange</code> and <code>targetChange</code> for two-way binding.</li>
+  <li><strong>Design System Layout</strong> — grid with <code>540px</code> max width, <code>10px</code> column gap, and <code>30px</code> transfer buttons.</li>
+</ul>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Input properties of `NPickList`.
+
+<ArgTypes of={PickListStories} sort="requiredFirst" />
+
+### Outputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Output</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sourceChange</code></td>
+        <td><code>EventEmitter&lt;NPickListItem[]&gt;</code></td>
+        <td>Emits the updated source array after transfers or drag-and-drop.</td>
+      </tr>
+      <tr>
+        <td><code>targetChange</code></td>
+        <td><code>EventEmitter&lt;NPickListItem[]&gt;</code></td>
+        <td>Emits the updated target array after transfers or drag-and-drop.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### NPickListItem Interface
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>string</code></td>
+        <td>Display label for the item.</td>
+      </tr>
+      <tr>
+        <td><code>icon</code></td>
+        <td><code>string?</code></td>
+        <td>Optional Lucide icon name shown next to the label.</td>
+      </tr>
+      <tr>
+        <td><code>iconStyle</code></td>
+        <td><code>string?</code></td>
+        <td>Inline styles applied to the icon container.</td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>any?</code></td>
+        <td>Custom application payload metadata.</td>
+      </tr>
+      <tr>
+        <td><code>selected</code></td>
+        <td><code>boolean?</code></td>
+        <td>Internally tracks selection state.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.nn-pl-panel</code></td>
+        <td>The border-box wrapper for the source or target list panel.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pl-hdr</code></td>
+        <td>The header for either source/target panel.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pl-item</code></td>
+        <td>Draggable and selectable list items.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pl-item.on</code></td>
+        <td>High-emphasis blue highlight for selected items.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pl-btn</code></td>
+        <td>Transfer action buttons.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pl-controls</code></td>
+        <td>Vertical stack of transfer buttons between panels.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pick-list-wrapper</code></td>
+        <td>Root grid container (<code>1fr auto 1fr</code>, max-width 540px).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--nn-surface-2</code></td>
+        <td>Default panel background.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-surface-3</code></td>
+        <td>Header backgrounds and button surfaces.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-b1</code></td>
+        <td>Panel borders.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-b2</code></td>
+        <td>Active button borders.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-r-md</code></td>
+        <td>Panel border radius.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-r-sm</code></td>
+        <td>Button border radius.</td>
+      </tr>
+      <tr>
+        <td><code>--nn-blue-bright</code></td>
+        <td>Selected item color and button hover states.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+<Canvas of={PickListStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={PickListStories.Playground} />
+
+  </section>
+</div>

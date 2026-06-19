@@ -27,6 +27,10 @@
   pointer-events: auto;
 }
 
+.n-split-button-overlay-panel {
+  pointer-events: auto;
+}
+
 .n-overlay-backdrop,
 .n-overlay-transparent-backdrop {
   position: absolute;
