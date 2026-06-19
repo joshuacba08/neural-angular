@@ -5,7 +5,7 @@ import { NIcon } from '../icon/icon.component.js';
 import { NEmptyState } from './empty-state.component.js';
 
 const meta: Meta<NEmptyState> = {
-  title: 'Components/Empty State',
+  title: 'Display & FX/Empty State',
   component: NEmptyState,
   tags: ['!autodocs'],
   decorators: [

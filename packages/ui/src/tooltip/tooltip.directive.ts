@@ -84,7 +84,12 @@ export class NTooltipDirective implements OnDestroy {
     });
     const portalInjector = Injector.create({
       parent: this.injector,
-      providers: [{ provide: N_TOOLTIP_DATA, useValue: { text: this.tooltip() } }],
+      providers: [
+        {
+          provide: N_TOOLTIP_DATA,
+          useValue: { text: this.tooltip(), position: this.position() },
+        },
+      ],
     });
 
     this.overlayRef.attach(

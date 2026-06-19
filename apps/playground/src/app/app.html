@@ -111,6 +111,7 @@
         @if (activeTab === 'overview') {
         <section class="metric-grid" aria-label="Pipeline summary">
           <n-stat-card
+            layout="compact"
             label="Jobs"
             value="14"
             description="Active queue"
@@ -121,6 +122,7 @@
             interactive
           />
           <n-stat-card
+            layout="compact"
             label="Success"
             value="98%"
             description="Last 24h"
@@ -131,6 +133,7 @@
             interactive
           />
           <n-stat-card
+            layout="compact"
             label="Latency"
             value="0.8s"
             description="Average response"
@@ -175,6 +178,162 @@
             [progress]="62"
             footer="Auto-scaling remains below threshold."
           />
+        </section>
+
+        <h2 style="font-size: var(--n-font-size-18); margin: var(--n-space-6) 0 var(--n-space-2); color: var(--n-text-1); font-family: var(--n-font-display);">Display &amp; FX</h2>
+        <section class="content-grid" style="margin-bottom: var(--n-space-6);">
+          <!-- GPU History Bar Chart -->
+          <n-data-card variant="gradient">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px;">
+              <div>
+                <div style="font-size: 11.5px; color: var(--n-text-3); margin-bottom: 5px;">GPU Utilization &middot; Last 16 ticks</div>
+                <div style="font-family: var(--n-font-mono); font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #4285F4 0%, #7B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -.03em; line-height: 1;">82%</div>
+              </div>
+              <n-badge variant="success" [dot]="true">Active</n-badge>
+            </div>
+            <n-bar-chart [data]="gpuHistory" [labels]="gpuLabels" />
+          </n-data-card>
+
+          <!-- VRAM Distribution Donut Chart -->
+          <n-data-card variant="gradient">
+            <n-donut-chart
+              [segments]="vramSegments"
+              centerValue="12 GB"
+              centerLabel="VRAM"
+            />
+          </n-data-card>
+
+          <!-- VRAM Usage Interactive ECharts -->
+          <n-data-card variant="gradient">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px;">
+              <div>
+                <div style="font-size: 11.5px; color: var(--n-text-3); margin-bottom: 5px;">VRAM History &middot; Interactive ECharts</div>
+                <div style="font-family: var(--n-font-mono); font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #7B5CF6 0%, #D946EF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -.03em; line-height: 1;">9.4 GB</div>
+              </div>
+              <n-badge variant="info" [dot]="true">Peak</n-badge>
+            </div>
+            <n-echarts [options]="echartsOptions" height="96px" />
+          </n-data-card>
+        </section>
+
+        <h3 style="font-size: var(--n-font-size-14); margin: var(--n-space-4) 0 var(--n-space-3); color: var(--n-text-2); text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--n-font-display);">Atmospheric Glow &amp; Overlays</h3>
+        <section class="content-grid" style="margin-bottom: var(--n-space-6);">
+          <!-- Glow Card Blue -->
+          <n-glow-card variant="blue">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 11px; text-transform: uppercase; color: var(--n-text-3);">System Link</span>
+              <n-gradient-ring variant="cyan" size="32px">
+                <n-icon name="link" size="sm" style="color: var(--n-text-1);" />
+              </n-gradient-ring>
+            </div>
+            <h4 style="margin: 0 0 6px 0; color: var(--n-text-1); font-size: 15px;">Blue Orb Card</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--n-text-2); line-height: 1.5;">
+              Features a radial background glow orb and animated ring.
+            </p>
+          </n-glow-card>
+
+          <!-- Glow Card Pink -->
+          <n-glow-card variant="pink">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 11px; text-transform: uppercase; color: var(--n-text-3);">Glow Effects</span>
+              <n-gradient-ring variant="secondary" size="32px">
+                <n-icon name="sparkles" size="sm" style="color: var(--n-text-1);" />
+              </n-gradient-ring>
+            </div>
+            <h4 style="margin: 0 0 6px 0; color: var(--n-text-1); font-size: 15px;">Pink Orb Card</h4>
+            <p style="margin: 0; font-size: 12px; color: var(--n-text-2); line-height: 1.5;">
+              Features a bottom-left glow orb decoration.
+            </p>
+          </n-glow-card>
+
+          <!-- Glow Card Gemini & Interactive Overlays -->
+          <n-glow-card variant="gemini">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 11px; text-transform: uppercase; color: var(--n-text-3);">Interactive Overlays</span>
+              <n-gradient-ring variant="gemini" size="32px">
+                <n-icon name="cpu" size="sm" style="color: var(--n-text-1);" />
+              </n-gradient-ring>
+            </div>
+            <h4 style="margin: 0 0 12px 0; color: var(--n-text-1); font-size: 15px;">Overlays &amp; Tooltips</h4>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button
+                nButton
+                variant="ghost"
+                size="sm"
+                nTooltip="Enhanced pipeline is fully ready"
+                nTooltipPosition="top"
+              >
+                Tooltip
+              </button>
+              <button
+                nButton
+                variant="ghost"
+                size="sm"
+                [nPopover]="popoverContent"
+                nPopoverPosition="bottom"
+                nPopoverTrigger="click"
+              >
+                Open Menu
+              </button>
+            </div>
+
+            <ng-template #popoverContent>
+              <div class="n-ctx-menu">
+                <div class="n-ctx-item">
+                  <n-icon name="settings" size="sm" />
+                  <span style="flex-grow: 1; margin-left: 8px;">Settings</span>
+                </div>
+                <div class="n-ctx-item n-ctx-item--active">
+                  <n-icon name="activity" size="sm" />
+                  <span style="flex-grow: 1; margin-left: 8px;">Monitor</span>
+                </div>
+                <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0;"></div>
+                <div class="n-ctx-item n-ctx-item--danger">
+                  <n-icon name="trash" size="sm" />
+                  <span style="flex-grow: 1; margin-left: 8px;">Delete Node</span>
+                </div>
+              </div>
+            </ng-template>
+          </n-glow-card>
+        </section>
+
+        <!-- Sparkline Trends -->
+        <section class="metric-grid" style="margin-bottom: var(--n-space-6);">
+          <n-data-card variant="gradient">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <span style="font-size: 11.5px; color: var(--n-text-3);">Frames / sec</span>
+              <n-badge variant="success">&uarr; 18%</n-badge>
+            </div>
+            <div style="font-family: var(--n-font-mono); font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #4285F4 0%, #7B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 4px;">
+              18.4
+            </div>
+            <div style="font-size: 11px; color: var(--n-text-3); margin-bottom: 10px;">vs 15.6 last job</div>
+            <n-sparkline [points]="sparklinePoints" variant="primary" />
+          </n-data-card>
+
+          <n-data-card variant="gradient">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <span style="font-size: 11.5px; color: var(--n-text-3);">VRAM Peak</span>
+              <n-badge variant="warning">&uarr; 0.8 GB</n-badge>
+            </div>
+            <div style="font-family: var(--n-font-mono); font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #7B5CF6 0%, #D946EF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 4px;">
+              9.4<span style="font-size: 18px; font-weight: 500;">GB</span>
+            </div>
+            <div style="font-size: 11px; color: var(--n-text-3); margin-bottom: 10px;">of 12 GB &middot; 78%</div>
+            <n-sparkline [points]="sparklinePoints" variant="accent" />
+          </n-data-card>
+
+          <n-data-card variant="gradient">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <span style="font-size: 11.5px; color: var(--n-text-3);">Jobs Completed</span>
+              <n-badge variant="success">Today</n-badge>
+            </div>
+            <div style="font-family: var(--n-font-mono); font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #4F8EFF 0%, #F43F5E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 4px;">
+              247
+            </div>
+            <div style="font-size: 11px; color: var(--n-text-3); margin-bottom: 10px;">&uarr; 31 vs yesterday</div>
+            <n-sparkline [points]="sparklinePoints" variant="gemini" />
+          </n-data-card>
         </section>
         } @else {
         <section class="workflow-grid">

@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import {
   NAvatar,
+  NDataCard,
+  NBarChart,
+  NDonutChart,
+  NSparkline,
+  NECharts,
   NBadge,
   NButton,
   NCard,
@@ -27,9 +32,14 @@ import {
   NTextarea,
   NToolbar,
   NeuralThemeService,
+  NGlowCard,
+  NGradientRing,
+  NPopoverDirective,
+  NTooltipDirective,
   type NSelectOption,
   type NTableColumn,
   type NeuralThemeName,
+  type NDonutSegment,
 } from '@neural/angular-ui';
 
 @Component({
@@ -60,6 +70,15 @@ import {
     NTabs,
     NTextarea,
     NToolbar,
+    NDataCard,
+    NBarChart,
+    NDonutChart,
+    NSparkline,
+    NECharts,
+    NGlowCard,
+    NGradientRing,
+    NPopoverDirective,
+    NTooltipDirective,
   ],
   selector: 'app-root',
   templateUrl: './app.html',
@@ -101,6 +120,66 @@ export class App {
       progress: '100%',
     },
   ];
+
+  readonly gpuHistory = [55, 70, 100, 72, 60, 100, 85, 68, 100, 80, 58, 100, 75, 100, 85, 100];
+  readonly gpuLabels = { start: '−2 min', end: 'now' };
+  readonly vramSegments: NDonutSegment[] = [
+    { label: 'Model Active', value: 78, displayValue: '9.4 GB', color: 'blue-violet' },
+    { label: 'Overhead', value: 10, displayValue: '1.2 GB', color: 'violet-pink' },
+    { label: 'Free', value: 12, displayValue: '1.4 GB', color: 'neutral' },
+  ];
+  readonly sparklinePoints = [22, 18, 20, 15, 16, 10, 8, 12, 6];
+
+  readonly echartsOptions = {
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(15, 15, 28, 0.9)',
+      borderColor: 'rgba(255, 255, 255, 0.1)',
+      borderWidth: 1,
+      textStyle: { color: 'rgba(255, 255, 255, 0.9)', fontSize: 11 }
+    },
+    grid: {
+      top: '15px',
+      bottom: '5px',
+      left: '0px',
+      right: '0px',
+      containLabel: false
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      show: false
+    },
+    yAxis: {
+      type: 'value',
+      show: false
+    },
+    series: [
+      {
+        name: 'VRAM Usage (GB)',
+        type: 'line',
+        smooth: true,
+        symbol: 'none',
+        lineStyle: {
+          width: 2,
+          color: '#7B5CF6'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(123, 92, 246, 0.4)' },
+              { offset: 1, color: 'rgba(123, 92, 246, 0.0)' }
+            ]
+          }
+        },
+        data: [4.2, 5.8, 6.1, 5.4, 7.8, 8.4, 9.4, 8.9, 9.2, 9.4]
+      }
+    ]
+  };
 
   activeTab = 'overview';
   selectedModel = 'enhance';

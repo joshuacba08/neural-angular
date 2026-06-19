@@ -1,0 +1,127 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as GlowFxStories from './glow-fx.stories';
+
+<Meta of={GlowFxStories} />
+
+# Glow & FX
+
+The **Glow & FX** collection features modern, decorative aesthetic components designed to elevate the user experience through subtle micro-interactions, hardware-accelerated radial glows, and rotating gradients.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="glow-doc-tabs"
+    id="glow-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="glow-doc-tabs"
+    id="glow-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="glow-doc-tabs"
+    id="glow-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Glow & FX documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="glow-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="glow-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="glow-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Glow Cards
+
+`NGlowCard` renders gradient-border cards with radial glow orbs in blue, pink, and Gemini variants.
+
+```ts
+import { NGlowCard } from '@neural/angular-ui/glow-fx';
+```
+
+<Canvas of={GlowFxStories.GlowCards} layout="padded" sourceState="shown" />
+
+### Gradient Text Scale
+
+Utility classes for Gemini, blue-violet, violet-pink, and white-fade gradient typography.
+
+<Canvas of={GlowFxStories.GradientTextScale} layout="padded" sourceState="shown" />
+
+### Neon Borders
+
+Decorative chips with gradient borders and semantic glow shadows.
+
+<Canvas of={GlowFxStories.NeonBorders} layout="centered" sourceState="shown" />
+
+### Animated Gradient Rings
+
+`NGradientRing` spins a dual-layer Gemini gradient ring. Pure CSS, SSR-safe.
+
+```ts
+import { NGradientRing } from '@neural/angular-ui/glow-fx';
+```
+
+<Canvas of={GlowFxStories.GradientRings} layout="padded" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+### Glow Card Inputs
+
+<ul>
+  <li><code>variant</code>: <code>'blue' | 'pink' | 'gemini'</code> (default <code>'blue'</code>)</li>
+</ul>
+
+### Gradient Ring Inputs
+
+<ul>
+  <li><code>variant</code>: <code>'gemini' | 'primary' | 'secondary' | 'cyan'</code> (default <code>'gemini'</code>)</li>
+  <li><code>size</code>: CSS size string (default <code>'80px'</code>)</li>
+  <li><code>duration</code>: Animation duration string (default <code>'3s'</code>)</li>
+</ul>
+
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+These components utilize CSS custom properties for styling:
+
+```css
+/* Custom variables for Glow Cards */
+--n-gradient-border: linear-gradient(...);
+--n-gradient-border-secondary: linear-gradient(...);
+
+/* Custom variables for Gradient Rings */
+--n-gradient-gemini: linear-gradient(...);
+--n-gradient-primary-secondary: linear-gradient(...);
+--n-gradient-secondary-tertiary: linear-gradient(...);
+--n-gradient-primary-cyan: linear-gradient(...);
+```
+
+  </section>
+</div>

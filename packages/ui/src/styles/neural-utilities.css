@@ -87,6 +87,98 @@
 .glow-success { box-shadow: var(--nn-glow-success-sm); }
 .glow-error { box-shadow: var(--nn-glow-error-sm); }
 
+/* ── Glow & FX: Gradient Text ── */
+.n-glow-text-gemini {
+  background: var(--n-gradient-gemini);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.n-glow-text-blue-v {
+  background: var(--n-progress-fill-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.n-glow-text-v-pink {
+  background: var(--n-progress-fill-secondary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.n-glow-text-white-fade {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.35));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Glow & FX: Neon Border Chips ── */
+.n-neon-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--n-radius-lg);
+  font-size: 13px;
+  color: var(--n-text-2);
+}
+
+.n-neon-chip--blue {
+  background:
+    linear-gradient(var(--n-surface-2), var(--n-surface-2)) padding-box,
+    var(--n-gradient-border-primary) border-box;
+  box-shadow: var(--n-glow-primary-sm);
+}
+
+.n-neon-chip--violet {
+  background:
+    linear-gradient(var(--n-surface-2), var(--n-surface-2)) padding-box,
+    var(--n-gradient-border-secondary) border-box;
+  box-shadow: var(--n-glow-secondary-sm);
+}
+
+.n-neon-chip--gemini {
+  background:
+    linear-gradient(var(--n-surface-2), var(--n-surface-2)) padding-box,
+    var(--n-gradient-border) border-box;
+  box-shadow: var(--n-glow-gradient-sm);
+  font-weight: 600;
+}
+
+.n-neon-chip--gemini .n-neon-chip__label {
+  background: var(--n-gradient-gemini);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.n-neon-chip--success {
+  border-color: rgba(52, 168, 83, 0.5);
+  background: rgba(52, 168, 83, 0.06);
+  box-shadow: var(--n-glow-success-sm);
+  font-family: var(--n-font-mono);
+  font-size: 12px;
+  color: var(--n-color-success);
+}
+
+.n-neon-chip--error {
+  border-color: rgba(234, 67, 53, 0.5);
+  background: rgba(234, 67, 53, 0.06);
+  box-shadow: var(--n-glow-danger-sm);
+  font-family: var(--n-font-mono);
+  font-size: 12px;
+  color: var(--n-color-danger);
+}
+
 /* ── Border Radius ── */
 .r-none { border-radius: var(--nn-r-none); }
 .r-xs   { border-radius: var(--nn-r-xs); }

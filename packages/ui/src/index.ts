@@ -70,3 +70,5 @@ export * from './switch/index.js';
 export * from './accordion/index.js';
 export * from './job-card/index.js';
 export * from './split-view/index.js';
+export * from './glow-fx/index.js';
+

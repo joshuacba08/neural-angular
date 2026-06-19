@@ -1,0 +1,148 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as PopoverStories from './popover.stories';
+
+<Meta of={PopoverStories} />
+
+# Panel & Popover
+
+The **Panel & Popover** suite offers floating UI patterns and containers optimized for dashboard utilities, contextual metadata, tooltips, and interactive overlays.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="popover-doc-tabs"
+    id="popover-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="popover-doc-tabs"
+    id="popover-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="popover-doc-tabs"
+    id="popover-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Popover documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="popover-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="popover-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="popover-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Glass Panels & Tooltips
+
+The reference layout combines a glass info panel, directional tooltip, and context menu from the design system.
+
+<Canvas of={PopoverStories.DesignSystem} layout="centered" sourceState="shown" />
+
+### Popover basic
+
+Use `nPopover` to attach a glass-styled text message or template overlay on click, hover, or focus.
+
+```ts
+import { NPopoverDirective } from '@neural/angular-ui/popover';
+```
+
+<Canvas of={PopoverStories.PopoverBasic} layout="centered" sourceState="hidden" />
+
+### Popover Template
+
+Pass an Angular `<ng-template>` to render rich floating panel content.
+
+<Canvas of={PopoverStories.PopoverTemplate} layout="centered" sourceState="hidden" />
+
+### Tooltips & Directional Arrows
+
+Tooltips display quick text indicators on hover/focus with surface-4 styling and positional arrows.
+
+```ts
+import { NTooltipDirective } from '@neural/angular-ui/tooltip';
+```
+
+<Canvas of={PopoverStories.Tooltips} layout="centered" sourceState="hidden" />
+
+### Glass Panel
+
+Use `.n-glass-panel` for gradient-border glass surfaces with backdrop blur.
+
+<Canvas of={PopoverStories.GlassPanel} layout="centered" sourceState="hidden" />
+
+### Context Menu
+
+Use `.n-ctx-menu` and `.n-ctx-item` utility classes for contextual action menus.
+
+<Canvas of={PopoverStories.ContextMenu} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+The suite exposes two main directives: `NPopoverDirective` and `NTooltipDirective`.
+
+### Popover Directive API
+
+<ArgTypes of={PopoverStories.PopoverBasic} sort="requiredFirst" />
+
+### Tooltip Directive API
+
+The `NTooltipDirective` accepts:
+<ul>
+  <li><code>nTooltip</code>: The string to display inside the tooltip.</li>
+  <li><code>nTooltipPosition</code>: <code>'top' | 'bottom' | 'left' | 'right'</code> (default <code>'top'</code>)</li>
+  <li><code>nTooltipDisabled</code>: Boolean to temporarily disable the tooltip.</li>
+  <li><code>nTooltipShowDelay</code>: Transition delay before showing tooltip (default <code>120</code>ms)</li>
+  <li><code>nTooltipHideDelay</code>: Transition delay before hiding tooltip (default <code>80</code>ms)</li>
+</ul>
+
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+These components consume CSS custom properties for background colors, borders, and shadows:
+
+```css
+/* Tooltip properties */
+--n-tooltip-bg: var(--n-surface-3);
+--n-tooltip-border: var(--n-border-1);
+
+/* Popover properties */
+--n-gradient-border-primary: linear-gradient(...);
+
+/* Glass panel */
+.n-glass-panel
+
+/* Context menu */
+.n-ctx-menu
+.n-ctx-item
+.n-ctx-item--active
+.n-ctx-item--danger
+```
+
+  </section>
+</div>

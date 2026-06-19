@@ -1,0 +1,316 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as DataCardStories from './data-card.stories';
+
+<Meta of={DataCardStories} />
+
+# Data Card
+
+`NDataCard` is a premium container surface designed to show key entity metadata, lists of key-value rows, or embedded custom SVG charts (such as bar charts, donut charts, and sparklines) without external graphing dependencies.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="data-card-doc-tabs"
+    id="data-card-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="data-card-doc-tabs"
+    id="data-card-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="data-card-doc-tabs"
+    id="data-card-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="data-card-doc-tabs"
+    id="data-card-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Data Card documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="data-card-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="data-card-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="data-card-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="data-card-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NDataCard, NBarChart, NDonutChart, NSparkline, NECharts } from '@neural/angular-ui/data-card';
+```
+
+### Basic
+
+Display simple lists of label-value elements with status indicators.
+
+<Canvas of={DataCardStories.Basic} layout="centered" sourceState="shown" />
+
+### Bar Chart (GPU History)
+
+Supports fluctuating SVG bars inside a gradient card wrapper.
+
+<Canvas of={DataCardStories.BarChartGpuHistory} layout="centered" sourceState="shown" />
+
+### Donut Chart (VRAM Distribution)
+
+Draws stacked circle segments with customizable percentages and inline legend keys.
+
+<Canvas of={DataCardStories.DonutVramDistribution} layout="centered" sourceState="shown" />
+
+### Sparkline Metrics
+
+Premium inline SVG trendlines indicating value changes over time.
+
+<Canvas of={DataCardStories.SparklineMetrics} layout="padded" sourceState="shown" />
+
+### Interactive Chart (Apache ECharts)
+
+A lazy-loaded, SSR-safe ECharts wrapper that automatically resizes and updates theme styling on dark/light changes.
+
+<Canvas of={DataCardStories.EChartsGpuHistory} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+### NDataCard Inputs
+
+<ArgTypes of={DataCardStories} sort="requiredFirst" />
+
+### NECharts Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>options</code></td>
+        <td><code>any</code></td>
+        <td><code>&#123;&#125;</code></td>
+        <td>Standard configuration options object for Apache ECharts.</td>
+      </tr>
+      <tr>
+        <td><code>height</code></td>
+        <td><code>string</code></td>
+        <td><code>'200px'</code></td>
+        <td>Height of the ECharts DOM container.</td>
+      </tr>
+      <tr>
+        <td><code>theme</code></td>
+        <td><code>'light' | 'dark'</code></td>
+        <td><code>undefined</code></td>
+        <td>Manual light/dark style override. Defaults to tracking system/application theme.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### NBarChart Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>readonly number[]</code></td>
+        <td><code>[]</code></td>
+        <td>Array of numeric values (0 to 100) representing history.</td>
+      </tr>
+      <tr>
+        <td><code>height</code></td>
+        <td><code>number</code></td>
+        <td><code>64</code></td>
+        <td>Height of the SVG view canvas.</td>
+      </tr>
+      <tr>
+        <td><code>gridLines</code></td>
+        <td><code>boolean</code></td>
+        <td><code>true</code></td>
+        <td>Whether to render the background horizontal ticks.</td>
+      </tr>
+      <tr>
+        <td><code>labels</code></td>
+        <td><code>&#123; start: string; end: string &#125;</code></td>
+        <td><code>undefined</code></td>
+        <td>Start/end labels rendered at the bottom corners.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### NDonutChart Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>segments</code></td>
+        <td><code>readonly NDonutSegment[]</code></td>
+        <td><code>[]</code></td>
+        <td>A list of circle segments to draw sequentially.</td>
+      </tr>
+      <tr>
+        <td><code>centerValue</code></td>
+        <td><code>string</code></td>
+        <td><code>''</code></td>
+        <td>Large text displayed in the center.</td>
+      </tr>
+      <tr>
+        <td><code>centerLabel</code></td>
+        <td><code>string</code></td>
+        <td><code>''</code></td>
+        <td>Small text/label displayed below the center value.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### NSparkline Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>points</code></td>
+        <td><code>readonly number[]</code></td>
+        <td><code>[]</code></td>
+        <td>Array of coordinates plotted sequentially.</td>
+      </tr>
+      <tr>
+        <td><code>variant</code></td>
+        <td><code>'primary' | 'accent' | 'gemini'</code></td>
+        <td><code>'primary'</code></td>
+        <td>The color/gradient style of the trendline.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-data-card</code></td>
+        <td>Root container.</td>
+      </tr>
+      <tr>
+        <td><code>.n-data-card--outlined</code></td>
+        <td>Modifier for transparent background card.</td>
+      </tr>
+      <tr>
+        <td><code>.n-data-card--gradient</code></td>
+        <td>Modifier for custom premium gradient border card.</td>
+      </tr>
+      <tr>
+        <td><code>.n-data-card--compact</code></td>
+        <td>Modifier for high-density padding card.</td>
+      </tr>
+      <tr>
+        <td><code>.n-data-card__items</code></td>
+        <td>List definition container.</td>
+      </tr>
+      <tr>
+        <td><code>.n-donut-chart</code></td>
+        <td>Root donut container holding SVG and legend.</td>
+      </tr>
+      <tr>
+        <td><code>.n-bar-chart</code></td>
+        <td>Root bar chart container.</td>
+      </tr>
+      <tr>
+        <td><code>.n-sparkline</code></td>
+        <td>Inline trendline wrap.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the data card configuration controls below.
+
+<Canvas of={DataCardStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={DataCardStories.Playground} />
+
+  </section>
+</div>

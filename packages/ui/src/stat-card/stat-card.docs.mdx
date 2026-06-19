@@ -68,35 +68,29 @@ import * as StatCardStories from './stat-card.stories';
 import { NStatCard } from '@neural/angular-ui/stat-card';
 ```
 
-### Basic
-
-Default layout and dimensions, with interactive hover effects enabled.
-
-<Canvas of={StatCardStories.Basic} layout="centered" sourceState="shown" />
-
 ### KPI Grid
 
-A grid layout using several `NStatCard` components to create an analytical dashboard overview.
+Four KPI cards with gradient values, delta pills, inline sparklines, and a success-rate progress surface from the design system.
 
-<Canvas of={StatCardStories.DesignSystem} layout="padded" sourceState="hidden" />
+<Canvas of={StatCardStories.KpiGrid} layout="padded" sourceState="shown" />
 
-### With Icon
+### Before / After Comparison
 
-Default size cards allow displaying an icon badge on top of the metric.
+Side-by-side resolution cards for export uplift messaging.
 
-<Canvas of={StatCardStories.WithIcon} layout="centered" sourceState="shown" />
+<Canvas of={StatCardStories.BeforeAfter} layout="centered" sourceState="shown" />
+
+### Compact Layout
+
+Legacy compact cards keep the icon badge, inline trend copy, and hover lift for denser dashboards.
+
+<Canvas of={StatCardStories.Compact} layout="centered" sourceState="hidden" />
 
 ### Mini Size
 
-A space-optimized `mini` layout suited for sidebars, details columns, or inline dashboards. Mini size hides descriptions, trends, and icons.
+A space-optimized `mini` layout suited for sidebars, details columns, or inline dashboards.
 
-<Canvas of={StatCardStories.Mini} layout="centered" sourceState="shown" />
-
-### Border Variants
-
-Configure default, primary, or secondary border gradient treatments to differentiate card significance or groupings.
-
-<Canvas of={StatCardStories.Variants} layout="centered" sourceState="hidden" />
+<Canvas of={StatCardStories.Mini} layout="centered" sourceState="hidden" />
 
   </section>
 
