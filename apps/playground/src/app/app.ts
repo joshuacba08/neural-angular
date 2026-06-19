@@ -36,6 +36,12 @@ import {
   NGradientRing,
   NPopoverDirective,
   NTooltipDirective,
+  NSpeedDial,
+  NSpeedDialItem,
+  NBreadcrumb,
+  NStepper,
+  NStep,
+  type NBreadcrumbItem,
   type NSelectOption,
   type NTableColumn,
   type NeuralThemeName,
@@ -79,6 +85,11 @@ import {
     NGradientRing,
     NPopoverDirective,
     NTooltipDirective,
+    NSpeedDial,
+    NSpeedDialItem,
+    NBreadcrumb,
+    NStepper,
+    NStep,
   ],
   selector: 'app-root',
   templateUrl: './app.html',
@@ -183,6 +194,35 @@ export class App {
 
   activeTab = 'overview';
   selectedModel = 'enhance';
+
+  readonly breadcrumbChevronItems: NBreadcrumbItem[] = [
+    { icon: 'home', url: '#' },
+    { label: 'Projects', url: '#' },
+    { label: 'Anime Collection', url: '#' },
+    { label: 'Episode 12' },
+  ];
+  readonly breadcrumbSlashItems: NBreadcrumbItem[] = [
+    { label: 'Dashboard', url: '#' },
+    { label: 'Queue', url: '#' },
+    { label: 'Processing' },
+  ];
+  currentStep = 2;
+
+  nextStep(): void {
+    if (this.currentStep < 4) {
+      this.currentStep++;
+    }
+  }
+
+  prevStep(): void {
+    if (this.currentStep > 0) {
+      this.currentStep--;
+    }
+  }
+
+  onSpeedDialAction(action: string): void {
+    alert(`${action} clicked!`);
+  }
 
   setTheme(theme: NeuralThemeName): void {
     this.themeService.setTheme(theme);

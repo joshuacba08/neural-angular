@@ -1,0 +1,120 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as BreadcrumbStories from './breadcrumb.stories';
+
+<Meta of={BreadcrumbStories} />
+
+# Breadcrumb
+
+`NBreadcrumb` is a navigation helper that renders hierarchical paths, supporting custom icons, dividers, and active gradients.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="breadcrumb-doc-tabs"
+    id="breadcrumb-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="breadcrumb-doc-tabs"
+    id="breadcrumb-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="breadcrumb-doc-tabs"
+    id="breadcrumb-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Breadcrumb documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="breadcrumb-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="breadcrumb-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="breadcrumb-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NBreadcrumb } from '@neural/angular-ui/breadcrumb';
+```
+
+### Chevron Separator
+
+The default path divider is a right chevron. Home icon support is standard.
+
+<Canvas of={BreadcrumbStories.ChevronSeparator} layout="centered" sourceState="shown" />
+
+### Slash Separator & Gemini Active
+
+Alternate slash divider can be combined with `activeGradient` to render the final item with Gemini gradients.
+
+<Canvas of={BreadcrumbStories.SlashSeparator} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+### NBreadcrumb Component Inputs
+
+<ul>
+  <li><code>items</code>: Array of <code>NBreadcrumbItem</code> objects (required)</li>
+  <li><code>separator</code>: Divider icon: <code>'chevron' | 'slash'</code> (default: <code>'chevron'</code>)</li>
+  <li><code>activeGradient</code>: Adds Gemini text gradient to the active last item (default: <code>false</code>)</li>
+</ul>
+
+### NBreadcrumbItem Interface
+
+<ul>
+  <li><code>label</code>: Text node to show (optional)</li>
+  <li><code>icon</code>: Icon name to show before text (optional)</li>
+  <li><code>url</code>: Navigation anchor link path (optional)</li>
+  <li><code>disabled</code>: Prevents cursor hover and link navigation (optional)</li>
+</ul>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+CSS classes customize paths:
+
+```css
+/* Active last step text */
+.n-breadcrumb__current {
+  color: var(--n-text-1);
+}
+
+/* Link items */
+.n-breadcrumb__link {
+  color: var(--n-text-3);
+}
+
+/* Chevron/Slash */
+.n-breadcrumb__separator {
+  color: var(--n-text-4);
+}
+```
+
+  </section>
+</div>

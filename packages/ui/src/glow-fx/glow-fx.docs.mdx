@@ -33,6 +33,14 @@ The **Glow & FX** collection features modern, decorative aesthetic components de
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="glow-doc-tabs"
+    id="glow-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Glow & FX documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="glow-doc-tab-features">
@@ -43,6 +51,9 @@ The **Glow & FX** collection features modern, decorative aesthetic components de
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="glow-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="glow-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -88,20 +99,108 @@ import { NGradientRing } from '@neural/angular-ui/glow-fx';
 
 ## API
 
-### Glow Card Inputs
+### NGlowCard Inputs
 
-<ul>
-  <li><code>variant</code>: <code>'blue' | 'pink' | 'gemini'</code> (default <code>'blue'</code>)</li>
-</ul>
+<ArgTypes of={GlowFxStories.Playground} sort="requiredFirst" />
 
-### Gradient Ring Inputs
+### NGlowCard Details
 
-<ul>
-  <li><code>variant</code>: <code>'gemini' | 'primary' | 'secondary' | 'cyan'</code> (default <code>'gemini'</code>)</li>
-  <li><code>size</code>: CSS size string (default <code>'80px'</code>)</li>
-  <li><code>duration</code>: Animation duration string (default <code>'3s'</code>)</li>
-</ul>
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>variant</code></td>
+        <td><code>'blue' | 'pink' | 'gemini'</code></td>
+        <td><code>'blue'</code></td>
+        <td>Specifies the glow orb positioning and color style theme.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
+### NGradientRing Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>variant</code></td>
+        <td><code>'gemini' | 'primary' | 'secondary' | 'cyan'</code></td>
+        <td><code>'gemini'</code></td>
+        <td>The active gradient color sequence (e.g. Gemini 4-stop, Blue-Violet, etc.).</td>
+      </tr>
+      <tr>
+        <td><code>size</code></td>
+        <td><code>string</code></td>
+        <td><code>'80px'</code></td>
+        <td>Outer diameter/size of the animated ring.</td>
+      </tr>
+      <tr>
+        <td><code>innerSize</code></td>
+        <td><code>string | undefined</code></td>
+        <td><code>undefined</code></td>
+        <td>Diameter of the central masking disc (default calculates to <code>size - 14px</code>).</td>
+      </tr>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>string</code></td>
+        <td><code>'3s'</code></td>
+        <td>Animation duration for a complete 360-degree rotation.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Utility Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class Name</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-glow-text-gemini</code></td>
+        <td>Applies four-stop Gemini theme gradient to typography.</td>
+      </tr>
+      <tr>
+        <td><code>.n-glow-text-blue-v</code></td>
+        <td>Applies Blue → Violet linear gradient to typography.</td>
+      </tr>
+      <tr>
+        <td><code>.n-glow-text-v-pink</code></td>
+        <td>Applies Violet → Pink linear gradient to typography.</td>
+      </tr>
+      <tr>
+        <td><code>.n-glow-text-white-fade</code></td>
+        <td>Applies semi-transparent white gradient suitable for subtitles.</td>
+      </tr>
+      <tr>
+        <td><code>.n-neon-chip</code></td>
+        <td>Applies border gradient and glowing shadow to decorative badges.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
   </section>
 
@@ -109,19 +208,110 @@ import { NGradientRing } from '@neural/angular-ui/glow-fx';
 
 ## Theming
 
-These components utilize CSS custom properties for styling:
+### CSS Classes
 
-```css
-/* Custom variables for Glow Cards */
---n-gradient-border: linear-gradient(...);
---n-gradient-border-secondary: linear-gradient(...);
+List of class names applied to the elements inside Glow & FX components.
 
-/* Custom variables for Gradient Rings */
---n-gradient-gemini: linear-gradient(...);
---n-gradient-primary-secondary: linear-gradient(...);
---n-gradient-secondary-tertiary: linear-gradient(...);
---n-gradient-primary-cyan: linear-gradient(...);
-```
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-glow-card</code></td>
+        <td>Root container for the glow-card surface.</td>
+      </tr>
+      <tr>
+        <td><code>.n-glow-card__orb</code></td>
+        <td>Absolute positioned radial-gradient sphere representing the glow light.</td>
+      </tr>
+      <tr>
+        <td><code>.n-glow-card__content</code></td>
+        <td>Wrapper ensuring content sits above the decorative background orb.</td>
+      </tr>
+      <tr>
+        <td><code>.n-gradient-ring</code></td>
+        <td>Conic-gradient rotating ring container.</td>
+      </tr>
+      <tr>
+        <td><code>.n-gradient-ring__inner</code></td>
+        <td>Central masking disc containing projected element.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public CSS Custom Properties consumed by the Glow & FX styles.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Description / Default Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-gradient-border</code></td>
+        <td>Gradient border applied on Gemini glow-cards.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-primary</code></td>
+        <td>Gradient border applied on blue glow-cards.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-secondary</code></td>
+        <td>Gradient border applied on pink glow-cards.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-gemini</code></td>
+        <td>4-stop conic gradient applied on Gemini animated rings.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td>Blue-Violet gradient applied on primary animated rings.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-secondary-tertiary</code></td>
+        <td>Violet-Pink gradient applied on secondary animated rings.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-primary-cyan</code></td>
+        <td>Blue-Cyan gradient applied on cyan animated rings.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-1</code></td>
+        <td>Base background fill for the card container.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td>Base background fill for the inner ring disk.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-xl</code></td>
+        <td>Corner radius of the glow-card (defaults to <code>14px</code>).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the glow card variant controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={GlowFxStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={GlowFxStories.Playground} />
 
   </section>
 </div>

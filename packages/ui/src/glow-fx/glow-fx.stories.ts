@@ -7,18 +7,48 @@ import { NGradientRing } from './gradient-ring.component.js';
 const cardTitle = 'font-size:13px;font-weight:600;margin:0 0 4px;position:relative';
 const cardMeta = 'font-size:12px;color:var(--n-text-3);margin:0;position:relative';
 
-const meta: Meta = {
+const meta: Meta<NGlowCard> = {
   title: 'Display & FX/Glow & FX',
+  component: NGlowCard,
   decorators: [
     moduleMetadata({
       imports: [NGlowCard, NGradientRing, NIcon],
     }),
   ],
   tags: ['!autodocs'],
+  argTypes: {
+    variant: {
+      description: 'Glow orb variant / gradient accent theme.',
+      control: 'select',
+      options: ['blue', 'pink', 'gemini'],
+      table: {
+        category: 'Appearance',
+        type: { summary: "'blue' | 'pink' | 'gemini'" },
+        defaultValue: { summary: 'blue' },
+      },
+    },
+  },
+  args: {
+    variant: 'blue',
+  },
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<NGlowCard>;
+
+export const Playground: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="width: min(320px, calc(100vw - 48px));">
+        <n-glow-card [variant]="variant">
+          <div style="${cardTitle}">Playground Card</div>
+          <p style="${cardMeta}">Glow effect is fully interactive.</p>
+        </n-glow-card>
+      </div>
+    `,
+  }),
+};
 
 export const GlowCards: Story = {
   name: 'Glow Cards',
@@ -55,7 +85,7 @@ export const GradientTextScale: Story = {
         <div class="n-glow-text-blue-v" style="font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1.1">
           Blue → Violet
         </div>
-        <div class="n-glow-text-v-pink" style="font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.1;font-size:20px">
+        <div class="n-glow-text-v-pink" style="font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.1">
           Violet → Pink
         </div>
         <div class="n-glow-text-white-fade" style="font-size:15px;font-weight:500">

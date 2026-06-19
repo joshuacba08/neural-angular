@@ -33,6 +33,14 @@ The **Panel & Popover** suite offers floating UI patterns and containers optimiz
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="popover-doc-tabs"
+    id="popover-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Popover documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="popover-doc-tab-features">
@@ -43,6 +51,9 @@ The **Panel & Popover** suite offers floating UI patterns and containers optimiz
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="popover-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="popover-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -102,21 +113,97 @@ Use `.n-ctx-menu` and `.n-ctx-item` utility classes for contextual action menus.
 
 The suite exposes two main directives: `NPopoverDirective` and `NTooltipDirective`.
 
-### Popover Directive API
+### NPopoverDirective Inputs
 
-<ArgTypes of={PopoverStories.PopoverBasic} sort="requiredFirst" />
+<ArgTypes of={PopoverStories.Playground} sort="requiredFirst" />
 
-### Tooltip Directive API
+### NPopoverDirective Details
 
-The `NTooltipDirective` accepts:
-<ul>
-  <li><code>nTooltip</code>: The string to display inside the tooltip.</li>
-  <li><code>nTooltipPosition</code>: <code>'top' | 'bottom' | 'left' | 'right'</code> (default <code>'top'</code>)</li>
-  <li><code>nTooltipDisabled</code>: Boolean to temporarily disable the tooltip.</li>
-  <li><code>nTooltipShowDelay</code>: Transition delay before showing tooltip (default <code>120</code>ms)</li>
-  <li><code>nTooltipHideDelay</code>: Transition delay before hiding tooltip (default <code>80</code>ms)</li>
-</ul>
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>nPopover</code></td>
+        <td><code>NPopoverContent</code></td>
+        <td><code>''</code></td>
+        <td>The text content or custom <code>TemplateRef</code> to render within the popover.</td>
+      </tr>
+      <tr>
+        <td><code>nPopoverPosition</code></td>
+        <td><code>NPopoverPosition</code></td>
+        <td><code>'bottom'</code></td>
+        <td>Preferred position of the popover (<code>'top' | 'bottom' | 'left' | 'right'</code>).</td>
+      </tr>
+      <tr>
+        <td><code>nPopoverTrigger</code></td>
+        <td><code>NPopoverTrigger</code></td>
+        <td><code>'click'</code></td>
+        <td>The interaction that triggers the popover (<code>'click' | 'hover' | 'focus'</code>).</td>
+      </tr>
+      <tr>
+        <td><code>nPopoverDisabled</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Whether the popover trigger is disabled.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
+### NTooltipDirective Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>nTooltip</code></td>
+        <td><code>string</code></td>
+        <td><code>''</code></td>
+        <td>Text message to show inside the tooltip overlay.</td>
+      </tr>
+      <tr>
+        <td><code>nTooltipPosition</code></td>
+        <td><code>NTooltipPosition</code></td>
+        <td><code>'top'</code></td>
+        <td>Tooltip position relative to the host element (<code>'top' | 'bottom' | 'left' | 'right'</code>).</td>
+      </tr>
+      <tr>
+        <td><code>nTooltipDisabled</code></td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Whether the tooltip trigger is disabled.</td>
+      </tr>
+      <tr>
+        <td><code>nTooltipShowDelay</code></td>
+        <td><code>number</code></td>
+        <td><code>120</code></td>
+        <td>Delay before showing the tooltip, in milliseconds.</td>
+      </tr>
+      <tr>
+        <td><code>nTooltipHideDelay</code></td>
+        <td><code>number</code></td>
+        <td><code>80</code></td>
+        <td>Delay before hiding the tooltip, in milliseconds.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
   </section>
 
@@ -124,25 +211,90 @@ The `NTooltipDirective` accepts:
 
 ## Theming
 
-These components consume CSS custom properties for background colors, borders, and shadows:
+### CSS Classes
 
-```css
-/* Tooltip properties */
---n-tooltip-bg: var(--n-surface-3);
---n-tooltip-border: var(--n-border-1);
+List of class names used by the floating overlays and contextual panels.
 
-/* Popover properties */
---n-gradient-border-primary: linear-gradient(...);
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-glass-panel</code></td>
+        <td>Styled glass card container featuring backdrop blur, padding, and border glow.</td>
+      </tr>
+      <tr>
+        <td><code>.n-tooltip</code></td>
+        <td>Muted, floating tooltip container.</td>
+      </tr>
+      <tr>
+        <td><code>.n-tooltip__arrow</code></td>
+        <td>Absolute positioned directional indicator arrow.</td>
+      </tr>
+      <tr>
+        <td><code>.n-ctx-menu</code></td>
+        <td>Vertical command / option menu stack.</td>
+      </tr>
+      <tr>
+        <td><code>.n-ctx-item</code></td>
+        <td>Menu item with hover lift and flex layout.</td>
+      </tr>
+      <tr>
+        <td><code>.n-ctx-item--active</code></td>
+        <td>Accentuated active state styling.</td>
+      </tr>
+      <tr>
+        <td><code>.n-ctx-item--danger</code></td>
+        <td>Warning highlight color for destructive actions.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-/* Glass panel */
-.n-glass-panel
+### Design Tokens
 
-/* Context menu */
-.n-ctx-menu
-.n-ctx-item
-.n-ctx-item--active
-.n-ctx-item--danger
-```
+Public CSS Custom Properties consumed by the panel and popover templates.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value / Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-tooltip-bg</code></td>
+        <td>Fallback color for tooltip background (defaults to <code>var(--n-surface-3)</code>).</td>
+      </tr>
+      <tr>
+        <td><code>--n-tooltip-border</code></td>
+        <td>Fallback color for tooltip border (defaults to <code>var(--n-border-1)</code>).</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border-primary</code></td>
+        <td>Linear gradient used for glass panel borders.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the popover configuration controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={PopoverStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={PopoverStories.Playground} />
 
   </section>
 </div>

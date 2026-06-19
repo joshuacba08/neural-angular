@@ -6,18 +6,87 @@ import { NIcon } from '../icon/icon.component.js';
 import { NPopoverDirective } from './popover.directive.js';
 import { NTooltipDirective } from '../tooltip/tooltip.directive.js';
 
-const meta: Meta = {
+const meta: Meta<NPopoverDirective> = {
   title: 'Display & FX/Panel & Popover',
+  component: NPopoverDirective,
   decorators: [
     moduleMetadata({
       imports: [NPopoverDirective, NTooltipDirective, NButton, NIcon, CommonModule],
     }),
   ],
   tags: ['!autodocs'],
+  argTypes: {
+    content: {
+      name: 'nPopover',
+      description: 'The text content or TemplateRef to display inside the popover.',
+      control: 'text',
+      table: {
+        category: 'Inputs',
+        type: { summary: 'NPopoverContent' },
+        defaultValue: { summary: '' },
+      },
+    },
+    position: {
+      name: 'nPopoverPosition',
+      description: 'Preferred positioning relative to trigger element.',
+      control: 'select',
+      options: ['top', 'bottom', 'left', 'right'],
+      table: {
+        category: 'Inputs',
+        type: { summary: 'NPopoverPosition' },
+        defaultValue: { summary: 'bottom' },
+      },
+    },
+    trigger: {
+      name: 'nPopoverTrigger',
+      description: 'Event type that displays the popover.',
+      control: 'select',
+      options: ['click', 'hover', 'focus'],
+      table: {
+        category: 'Inputs',
+        type: { summary: 'NPopoverTrigger' },
+        defaultValue: { summary: 'click' },
+      },
+    },
+    disabled: {
+      name: 'nPopoverDisabled',
+      description: 'Boolean flag to conditionally prevent display.',
+      control: 'boolean',
+      table: {
+        category: 'Inputs',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
+  args: {
+    content: 'Save current frame as PNG.',
+    position: 'bottom',
+    trigger: 'click',
+    disabled: false,
+  },
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<NPopoverDirective>;
+
+export const Playground: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="display:flex;justify-content:center;align-items:center;height:120px">
+        <n-button
+          [nPopover]="content"
+          [nPopoverPosition]="position"
+          [nPopoverTrigger]="trigger"
+          [nPopoverDisabled]="disabled"
+        >
+          Interactive Trigger
+        </n-button>
+      </div>
+    `,
+  }),
+};
 
 const metricRow = (label: string, value: string, valueStyle = '') => `
   <div style="display:flex;justify-content:space-between;gap:12px">

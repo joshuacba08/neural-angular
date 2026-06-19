@@ -1,0 +1,304 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as SpeedDialStories from './speed-dial.stories';
+
+<Meta of={SpeedDialStories} />
+
+# SpeedDial
+
+`NSpeedDial` is a floating action button (FAB) that reveals staggered action items on click. Matches **Actions & Menus · 01** from the Neural design system.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="speed-dial-doc-tabs"
+    id="speed-dial-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="speed-dial-doc-tabs"
+    id="speed-dial-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="speed-dial-doc-tabs"
+    id="speed-dial-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="speed-dial-doc-tabs"
+    id="speed-dial-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="SpeedDial documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="speed-dial-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="speed-dial-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="speed-dial-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="speed-dial-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NSpeedDial, NSpeedDialItem } from '@neural/angular-ui/speed-dial';
+```
+
+### Design System Overview
+
+Three layout variants side by side: linear stack (open), semi-circle fan, and click-to-open.
+
+<Canvas of={SpeedDialStories.DesignSystem} layout="fullscreen" sourceState="shown" />
+
+### Linear Stacking
+
+Space items vertically (or horizontally) from the FAB with an animated stagger delay.
+
+<Canvas of={SpeedDialStories.LinearUp} layout="centered" sourceState="shown" />
+
+### Semi-circle Fan
+
+Items spread in a horizontal row above the FAB — the design system's "Semi-circle · Up" layout.
+
+<Canvas of={SpeedDialStories.SemiCircleUp} layout="centered" sourceState="shown" />
+
+### Radial Arc
+
+Optional circular arc layout for denser radial menus.
+
+<Canvas of={SpeedDialStories.RadialUp} layout="centered" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+### NSpeedDial Component Inputs
+
+<ArgTypes of={SpeedDialStories.Playground} sort="requiredFirst" />
+
+### NSpeedDial Component Details
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input / Model</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>icon</code></td>
+        <td><code>string</code></td>
+        <td><code>'plus'</code></td>
+        <td>Main button Lucide icon name when closed.</td>
+      </tr>
+      <tr>
+        <td><code>activeIcon</code></td>
+        <td><code>string</code></td>
+        <td><code>'x'</code></td>
+        <td>Main button Lucide icon name when open.</td>
+      </tr>
+      <tr>
+        <td><code>buttonVariant</code></td>
+        <td><code>'primary' | 'gemini' | 'secondary'</code></td>
+        <td><code>'primary'</code></td>
+        <td>Visual theme style applied to the primary FAB button.</td>
+      </tr>
+      <tr>
+        <td><code>type</code></td>
+        <td><code>'linear' | 'semi' | 'radial'</code></td>
+        <td><code>'linear'</code></td>
+        <td>Layout arrangement of action items (linear stack, fan arc, or circular spread).</td>
+      </tr>
+      <tr>
+        <td><code>direction</code></td>
+        <td><code>'up' | 'down' | 'left' | 'right'</code></td>
+        <td><code>'up'</code></td>
+        <td>Spread direction for linear layout.</td>
+      </tr>
+      <tr>
+        <td><code>radius</code></td>
+        <td><code>number</code></td>
+        <td><code>80</code></td>
+        <td>Radius in pixels (only applies to radial layout).</td>
+      </tr>
+      <tr>
+        <td><code>stagger</code></td>
+        <td><code>number</code></td>
+        <td><code>80</code></td>
+        <td>Delay step between item animations in milliseconds.</td>
+      </tr>
+      <tr>
+        <td><code>open</code> (Model)</td>
+        <td><code>boolean</code></td>
+        <td><code>false</code></td>
+        <td>Two-way model state indicating whether the speed dial menu is currently open.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### NSpeedDialItem Component Inputs
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>icon</code> (Required)</td>
+        <td><code>string</code></td>
+        <td><code>undefined</code></td>
+        <td>Lucide icon name displayed inside the child item button.</td>
+      </tr>
+      <tr>
+        <td><code>title</code></td>
+        <td><code>string</code></td>
+        <td><code>''</code></td>
+        <td>Text label / tooltip shown alongside the item.</td>
+      </tr>
+      <tr>
+        <td><code>tone</code></td>
+        <td><code>'default' | 'danger' | 'primary' | 'violet'</code></td>
+        <td><code>'default'</code></td>
+        <td>Hover accent tone and color highlight of the action item.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied to the SpeedDial elements.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-speed-dial</code></td>
+        <td>Root container wrapper.</td>
+      </tr>
+      <tr>
+        <td><code>.n-speed-dial--open</code></td>
+        <td>Modifier class added when action menu is toggled open.</td>
+      </tr>
+      <tr>
+        <td><code>.n-speed-dial__btn</code></td>
+        <td>Main FAB toggle button.</td>
+      </tr>
+      <tr>
+        <td><code>.n-speed-dial__btn--primary</code>, <code>--gemini</code>, <code>--secondary</code></td>
+        <td>FAB color theme modifiers.</td>
+      </tr>
+      <tr>
+        <td><code>.n-speed-dial__actions</code></td>
+        <td>Container holding child action button elements.</td>
+      </tr>
+      <tr>
+        <td><code>.n-speed-dial-item</code></td>
+        <td>Individual action item button class.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public CSS Custom Properties consumed by the SpeedDial styling.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Default Value / Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-progress-fill-primary</code></td>
+        <td>Linear gradient used for the primary FAB theme.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-3</code></td>
+        <td>Default background color of the child action items.</td>
+      </tr>
+      <tr>
+        <td><code>--n-border-2</code></td>
+        <td>Border color of the child action items.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-danger</code></td>
+        <td>Accent color used for danger-toned items.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-light</code></td>
+        <td>Accent color used for primary-toned items.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-secondary</code></td>
+        <td>Accent color used for violet-toned items.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the SpeedDial configuration controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={SpeedDialStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={SpeedDialStories.Playground} />
+
+  </section>
+</div>

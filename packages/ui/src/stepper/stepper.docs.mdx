@@ -1,0 +1,106 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as StepperStories from './stepper.stories';
+
+<Meta of={StepperStories} />
+
+# Stepper
+
+`NStepper` manages linear workflows, providing visual feedback of pipeline state progress and displaying context cards dynamically depending on the current active step index.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="stepper-doc-tabs"
+    id="stepper-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="stepper-doc-tabs"
+    id="stepper-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="stepper-doc-tabs"
+    id="stepper-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Stepper documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="stepper-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="stepper-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="stepper-doc-tab-theming">
+      Theming
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NStepper, NStep } from '@neural/angular-ui/stepper';
+```
+
+### Interactive Pipeline
+
+Maintains and updates workflow indicators dynamically. Green nodes represent completed items, active items use a glowing pulse animation, and upcoming nodes are shaded.
+
+<Canvas of={StepperStories.PipelineSteps} layout="padded" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+### NStepper Component Inputs
+
+<ul>
+  <li><code>activeStep</code>: 0-indexed number representing the active step card (default: <code>0</code>)</li>
+</ul>
+
+### NStep Component Inputs
+
+<ul>
+  <li><code>label</code>: Label string displayed under node (required)</li>
+  <li><code>icon</code>: Icon name displayed when node is upcoming (required)</li>
+  <li><code>completedIcon</code>: Icon name displayed when node is completed (default: <code>'check'</code>)</li>
+  <li><code>activeIcon</code>: Icon name displayed when node is active (default: <code>'sparkles'</code>)</li>
+</ul>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+Visual step skins and lines utilize CSS variables:
+
+```css
+/* completed background */
+--n-color-success: #34a853;
+
+/* active gradient circle background */
+--n-gradient-primary-secondary: linear-gradient(135deg, #4285f4, #7b5cf6);
+
+/* inactive step border color */
+--n-border-2: rgba(255, 255, 255, 0.12);
+```
+
+  </section>
+</div>

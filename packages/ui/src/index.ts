@@ -71,4 +71,8 @@ export * from './accordion/index.js';
 export * from './job-card/index.js';
 export * from './split-view/index.js';
 export * from './glow-fx/index.js';
+export * from './speed-dial/index.js';
+export * from './breadcrumb/index.js';
+export * from './stepper/index.js';
+
 

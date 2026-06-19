@@ -106,6 +106,11 @@
             icon="activity"
             badge="3"
           />
+          <n-tab-item
+            value="actions"
+            label="Actions &amp; Menus"
+            icon="zap"
+          />
         </n-tabs>
 
         @if (activeTab === 'overview') {
@@ -335,7 +340,7 @@
             <n-sparkline [points]="sparklinePoints" variant="gemini" />
           </n-data-card>
         </section>
-        } @else {
+        } @else if (activeTab === 'workflow') {
         <section class="workflow-grid">
           <n-card>
             <n-card-header>
@@ -380,6 +385,137 @@
               />
             </n-card-content>
           </n-card>
+        </section>
+        } @else if (activeTab === 'actions') {
+        <section class="workspace-panel__section">
+          <!-- Stepper Card -->
+          <n-card style="margin-bottom: var(--n-space-6);">
+            <n-card-header>
+              <n-card-title>Stepper · Pipeline Steps</n-card-title>
+              <n-card-description>
+                Interactive flow wizard indicating completed, active, and upcoming tasks.
+              </n-card-description>
+            </n-card-header>
+
+            <n-card-content>
+              <n-stepper [activeStep]="currentStep">
+                <n-step label="Import" icon="check">
+                  <div style="padding: 4px;">
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--n-text-1);">Step 1 · File Import</div>
+                    <div style="font-size: 12.5px; color: var(--n-text-3); line-height: 1.65; margin-bottom: 14px;">
+                      Select video file source from system files. Video segment will be validated and queued for extraction.
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                      <button nButton variant="secondary" size="sm" disabled>← Back</button>
+                      <button nButton size="sm" (click)="nextStep()">Next Step →</button>
+                    </div>
+                  </div>
+                </n-step>
+
+                <n-step label="Extract" icon="check">
+                  <div style="padding: 4px;">
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--n-text-1);">Step 2 · Frame Extraction</div>
+                    <div style="font-size: 12.5px; color: var(--n-text-3); line-height: 1.65; margin-bottom: 14px;">
+                      Splitting media stream into raw uncompressed visual frame arrays. 24 fps stream target detected.
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                      <button nButton variant="secondary" size="sm" (click)="prevStep()">← Back</button>
+                      <button nButton size="sm" (click)="nextStep()">Next Step →</button>
+                    </div>
+                  </div>
+                </n-step>
+
+                <n-step label="Enhance" icon="sparkles">
+                  <div style="padding: 4px;">
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--n-text-1);">Step 3 · AI Enhancement</div>
+                    <div style="font-size: 12.5px; color: var(--n-text-3); line-height: 1.65; margin-bottom: 14px;">
+                      Real-ESRGAN x4 is processing your frames. Scales 1080p → 4K via deep learning super-resolution.
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                      <button nButton variant="secondary" size="sm" (click)="prevStep()">← Back</button>
+                      <button nButton size="sm" (click)="nextStep()">Next Step →</button>
+                    </div>
+                  </div>
+                </n-step>
+
+                <n-step label="Encode" icon="film">
+                  <div style="padding: 4px;">
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--n-text-1);">Step 4 · Video Encoding</div>
+                    <div style="font-size: 12.5px; color: var(--n-text-3); line-height: 1.65; margin-bottom: 14px;">
+                      Compiling processed frames back into target H.265 container stream. Specifying 18 Mbps bitrate.
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                      <button nButton variant="secondary" size="sm" (click)="prevStep()">← Back</button>
+                      <button nButton size="sm" (click)="nextStep()">Next Step →</button>
+                    </div>
+                  </div>
+                </n-step>
+
+                <n-step label="Export" icon="download">
+                  <div style="padding: 4px;">
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--n-text-1);">Step 5 · Compile &amp; Export</div>
+                    <div style="font-size: 12.5px; color: var(--n-text-3); line-height: 1.65; margin-bottom: 14px;">
+                      Finalizing video file assembly. Destination folder set to local workstation downloads.
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                      <button nButton variant="secondary" size="sm" (click)="prevStep()">← Back</button>
+                      <button nButton variant="gemini" size="sm" (click)="onSpeedDialAction('Finish')">Complete Output</button>
+                    </div>
+                  </div>
+                </n-step>
+              </n-stepper>
+            </n-card-content>
+          </n-card>
+
+          <!-- Breadcrumbs and SpeedDial Grid -->
+          <div class="content-grid" style="margin-bottom: var(--n-space-6);">
+            <!-- Breadcrumbs -->
+            <n-card>
+              <n-card-header>
+                <n-card-title>Breadcrumb Navigation</n-card-title>
+                <n-card-description>Hierarchical path variations.</n-card-description>
+              </n-card-header>
+              <n-card-content style="display: flex; flex-direction: column; gap: var(--n-space-4);">
+                <div>
+                  <div style="font-size: 11px; color: var(--n-text-3); margin-bottom: var(--n-space-2);">Chevron separator</div>
+                  <n-breadcrumb [items]="breadcrumbChevronItems" separator="chevron"></n-breadcrumb>
+                </div>
+                <div>
+                  <div style="font-size: 11px; color: var(--n-text-3); margin-bottom: var(--n-space-2);">Slash separator + Gemini Active text</div>
+                  <n-breadcrumb [items]="breadcrumbSlashItems" separator="slash" [activeGradient]="true"></n-breadcrumb>
+                </div>
+              </n-card-content>
+            </n-card>
+
+            <!-- SpeedDials -->
+            <n-card style="min-height: 280px; overflow: visible;">
+              <n-card-header>
+                <n-card-title>SpeedDial FAB Actions</n-card-title>
+                <n-card-description>Animated stagger speed-dials.</n-card-description>
+              </n-card-header>
+              <n-card-content style="display: flex; justify-content: space-around; align-items: flex-end; height: 160px; padding-bottom: 20px; overflow: visible;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <span style="font-size: 10px; color: var(--n-text-3);">Linear Up</span>
+                  <n-speed-dial icon="plus" activeIcon="x" buttonVariant="primary" type="linear" direction="up">
+                    <button n-speed-dial-item icon="trash-2" title="Delete" (clickItem)="onSpeedDialAction('Delete')"></button>
+                    <button n-speed-dial-item icon="share-2" title="Share" (clickItem)="onSpeedDialAction('Share')"></button>
+                    <button n-speed-dial-item icon="download" title="Download" (clickItem)="onSpeedDialAction('Download')"></button>
+                    <button n-speed-dial-item icon="edit-3" title="Edit" (clickItem)="onSpeedDialAction('Edit')"></button>
+                  </n-speed-dial>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative;">
+                  <span style="font-size: 10px; color: var(--n-text-3);">Semi-circle</span>
+                  <n-speed-dial icon="zap" activeIcon="x" buttonVariant="gemini" type="radial" direction="up" [radius]="70">
+                    <button n-speed-dial-item icon="cpu" title="Compute" (clickItem)="onSpeedDialAction('Compute')"></button>
+                    <button n-speed-dial-item icon="bar-chart-2" title="Analyze" (clickItem)="onSpeedDialAction('Analyze')"></button>
+                    <button n-speed-dial-item icon="sparkles" title="Enhance" (clickItem)="onSpeedDialAction('Enhance')"></button>
+                    <button n-speed-dial-item icon="settings" title="Settings" (clickItem)="onSpeedDialAction('Settings')"></button>
+                  </n-speed-dial>
+                </div>
+              </n-card-content>
+            </n-card>
+          </div>
         </section>
         }
       </section>
