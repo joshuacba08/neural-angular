@@ -5,7 +5,7 @@ import * as BreadcrumbStories from './breadcrumb.stories';
 
 # Breadcrumb
 
-`NBreadcrumb` is a navigation helper that renders hierarchical paths, supporting custom icons, dividers, and active gradients.
+`NBreadcrumb` renders hierarchical navigation trails with configurable separators, home icons, and gradient active states. Matches **Actions & Menus · 01** from the Neural design system.
 
 <div className="n-doc-tabs">
   <input
@@ -33,6 +33,14 @@ import * as BreadcrumbStories from './breadcrumb.stories';
     value="theming"
     aria-label="Theming"
   />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="breadcrumb-doc-tabs"
+    id="breadcrumb-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
 
   <div className="n-doc-tabs__list" aria-label="Breadcrumb documentation sections">
     <label className="n-doc-tabs__tab" data-tab="features" htmlFor="breadcrumb-doc-tab-features">
@@ -43,6 +51,9 @@ import * as BreadcrumbStories from './breadcrumb.stories';
     </label>
     <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="breadcrumb-doc-tab-theming">
       Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="breadcrumb-doc-tab-playground">
+      Playground
     </label>
   </div>
 
@@ -56,17 +67,29 @@ import * as BreadcrumbStories from './breadcrumb.stories';
 import { NBreadcrumb } from '@neural/angular-ui/breadcrumb';
 ```
 
+### Design System Overview
+
+Chevron trail with home icon, and slash trail with blue-v gradient active item.
+
+<Canvas of={BreadcrumbStories.DesignSystem} layout="centered" sourceState="shown" />
+
 ### Chevron Separator
 
-The default path divider is a right chevron. Home icon support is standard.
+Default divider with optional home icon. Links hover to primary blue.
 
 <Canvas of={BreadcrumbStories.ChevronSeparator} layout="centered" sourceState="shown" />
 
-### Slash Separator & Gemini Active
+### Slash Separator & Gradient Active
 
-Alternate slash divider can be combined with `activeGradient` to render the final item with Gemini gradients.
+Slash divider with `activeGradient` for the current page label.
 
 <Canvas of={BreadcrumbStories.SlashSeparator} layout="centered" sourceState="shown" />
+
+### Dot Separator
+
+Compact dot divider for minimal trails.
+
+<Canvas of={BreadcrumbStories.DotSeparator} layout="centered" sourceState="shown" />
 
   </section>
 
@@ -76,20 +99,20 @@ Alternate slash divider can be combined with `activeGradient` to render the fina
 
 ### NBreadcrumb Component Inputs
 
-<ul>
-  <li><code>items</code>: Array of <code>NBreadcrumbItem</code> objects (required)</li>
-  <li><code>separator</code>: Divider icon: <code>'chevron' | 'slash'</code> (default: <code>'chevron'</code>)</li>
-  <li><code>activeGradient</code>: Adds Gemini text gradient to the active last item (default: <code>false</code>)</li>
-</ul>
+<ArgTypes of={BreadcrumbStories.Playground} sort="requiredFirst" />
 
 ### NBreadcrumbItem Interface
 
 <ul>
-  <li><code>label</code>: Text node to show (optional)</li>
-  <li><code>icon</code>: Icon name to show before text (optional)</li>
-  <li><code>url</code>: Navigation anchor link path (optional)</li>
-  <li><code>disabled</code>: Prevents cursor hover and link navigation (optional)</li>
+  <li><code>label</code>: Text to display (optional)</li>
+  <li><code>icon</code>: Icon name — <code>house</code> maps to <code>home</code> (optional)</li>
+  <li><code>url</code>: Real navigation href — omit for demo/static crumbs (optional)</li>
+  <li><code>disabled</code>: Disables link interaction (optional)</li>
 </ul>
+
+Items without a real <code>url</code> render as buttons (no navigation). Placeholder values like <code>#</code> are treated the same way. Use <code>(itemClick)</code> to handle crumb selection in apps or demos.
+
+The last item is always rendered as the current page with <code>aria-current="page"</code>.
 
   </section>
 
@@ -97,24 +120,31 @@ Alternate slash divider can be combined with `activeGradient` to render the fina
 
 ## Theming
 
-CSS classes customize paths:
-
 ```css
-/* Active last step text */
-.n-breadcrumb__current {
-  color: var(--n-text-1);
-}
+/* link items */
+--n-text-3: #8f8fbf;
+--n-color-primary-bright: #4285f4;
 
-/* Link items */
-.n-breadcrumb__link {
-  color: var(--n-text-3);
-}
+/* current page */
+--n-text-1: #ffffff;
 
-/* Chevron/Slash */
-.n-breadcrumb__separator {
-  color: var(--n-text-4);
-}
+/* separators */
+--n-text-4: #555577;
+
+/* gradient active label */
+--n-progress-fill-primary: linear-gradient(90deg, #4285f4, #7b5cf6);
 ```
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Toggle separator style and gradient active state. Switch to slash + gradient to match the design system processing trail.
+
+<Canvas of={BreadcrumbStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={BreadcrumbStories.Playground} />
 
   </section>
 </div>

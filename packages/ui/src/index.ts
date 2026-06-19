@@ -29,6 +29,7 @@ export * from './metric-card/index.js';
 export * from './data-card/index.js';
 export * from './timeline/index.js';
 export * from './table/index.js';
+export * from './data-view/index.js';
 export * from './overlay/index.js';
 export * from './dialog/index.js';
 export * from './drawer/index.js';

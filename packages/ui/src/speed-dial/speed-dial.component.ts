@@ -1,8 +1,7 @@
 import {
   Component,
-  ContentChildren,
-  QueryList,
   AfterContentInit,
+  contentChildren,
   effect,
   input,
   model,
@@ -180,7 +179,7 @@ export class NSpeedDial implements AfterContentInit {
 
   readonly open = model(false);
 
-  @ContentChildren(NSpeedDialItem) items!: QueryList<NSpeedDialItem>;
+  readonly items = contentChildren(NSpeedDialItem);
 
   constructor() {
     effect(() => {
@@ -189,15 +188,13 @@ export class NSpeedDial implements AfterContentInit {
       this.direction();
       this.radius();
       this.stagger();
+      this.items();
       this.updateChildren();
     });
   }
 
   ngAfterContentInit(): void {
-    // Re-layout if children list changes dynamically
-    this.items.changes.subscribe(() => {
-      this.updateChildren();
-    });
+    this.updateChildren();
   }
 
   toggle(): void {
@@ -205,11 +202,10 @@ export class NSpeedDial implements AfterContentInit {
   }
 
   private updateChildren(): void {
-    if (!this.items) {
+    const list = this.items();
+    if (!list.length) {
       return;
     }
-
-    const list = this.items.toArray();
     const isOpen = this.open();
     const layout = this.type();
     const isRadial = layout === 'radial';

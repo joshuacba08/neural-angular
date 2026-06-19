@@ -1,0 +1,285 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as TableStories from './table.stories';
+
+<Meta of={TableStories} />
+
+# Table
+
+`NTable` is a high-performance, design-system-aligned table component. It supports interactive client-side sorting, row selection (single or multiple checkboxes), and a paginator footer with dynamic rows-per-page selection.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="table-doc-tabs"
+    id="table-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="table-doc-tabs"
+    id="table-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="table-doc-tabs"
+    id="table-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="table-doc-tabs"
+    id="table-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Table documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="table-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="table-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="table-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="table-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NTable, NTemplate, type NTableColumn } from '@neural/angular-ui/table';
+```
+
+### Basic Table
+
+Display static, immutable data sets inside a clean, modern design surface.
+
+<Canvas of={TableStories.Basic} layout="padded" sourceState="shown" />
+
+### Sortable Table
+
+Interactive column headers allow sorting data fields alphabetically, numerically, or custom formatting.
+
+<Canvas of={TableStories.Sortable} layout="padded" sourceState="shown" />
+
+### Selectable Table
+
+Supports single or multiple row selections via checkbox toggle.
+
+<Canvas of={TableStories.Selectable} layout="padded" sourceState="shown" />
+
+### Paged Table
+
+Client-sliced pages with custom items-per-page select box and responsive paginator controls.
+
+<Canvas of={TableStories.Paged} layout="padded" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties and model parameters of `NTable`.
+
+<ArgTypes of={TableStories} sort="requiredFirst" />
+
+### Column Structure
+
+The `columns` input accepts an array of objects matching the `NTableColumn` interface:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>string</code></td>
+        <td>required</td>
+        <td>The data field key associated with this column.</td>
+      </tr>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>string</code></td>
+        <td>required</td>
+        <td>Header display label.</td>
+      </tr>
+      <tr>
+        <td><code>align</code></td>
+        <td><code>'start' | 'center' | 'end'</code></td>
+        <td><code>'start'</code></td>
+        <td>Text alignment for header and cells.</td>
+      </tr>
+      <tr>
+        <td><code>width</code></td>
+        <td><code>string</code></td>
+        <td><code>null</code></td>
+        <td>CSS width rule (e.g. <code>'120px'</code>).</td>
+      </tr>
+      <tr>
+        <td><code>sortable</code></td>
+        <td><code>boolean</code></td>
+        <td><code>null</code></td>
+        <td>Enables or disables sorting for this specific column.</td>
+      </tr>
+      <tr>
+        <td><code>format</code></td>
+        <td><code>(value: unknown, row: any) => string</code></td>
+        <td><code>null</code></td>
+        <td>Custom formatter function to transform cell value into a string.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Custom Cell Templates
+
+To render HTML (like status badges or links) instead of plain text, project an `<ng-template>` with `nTemplate` structural directive mapping to the column's `key`:
+
+```html
+<n-table [columns]="columns" [data]="data">
+  <ng-template nTemplate="status" let-value let-row="row">
+    <n-badge [variant]="value === 'Done' ? 'success' : 'info'">
+      {{ value }}
+    </n-badge>
+  </ng-template>
+</n-table>
+```
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+List of class names applied to the table component.
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-table</code></td>
+        <td>Root container surface.</td>
+      </tr>
+      <tr>
+        <td><code>.n-table--compact</code></td>
+        <td>Compact cell padding spacing.</td>
+      </tr>
+      <tr>
+        <td><code>.n-table--bordered</code></td>
+        <td>Table border framing treatment.</td>
+      </tr>
+      <tr>
+        <td><code>.n-table--surface</code></td>
+        <td>Elevated surface dark background.</td>
+      </tr>
+      <tr>
+        <td><code>.n-table__checkbox</code></td>
+        <td>Custom checkboxes.</td>
+      </tr>
+      <tr>
+        <td><code>.n-table__header--sortable</code></td>
+        <td>Sortable columns cursor interaction.</td>
+      </tr>
+      <tr>
+        <td><code>.n-table__paginator</code></td>
+        <td>Pagination footer bar.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pg</code></td>
+        <td>Paginator buttons.</td>
+      </tr>
+      <tr>
+        <td><code>.nn-pg.on</code></td>
+        <td>Active page button state.</td>
+      </tr>
+      <tr>
+        <td><code>.n-table__paginator-select</code></td>
+        <td>Select dropdown for rows-per-page.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public `--n-*` tokens consumed by the table styles:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-border-1</code></td>
+        <td>Border color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td>Dark background fill.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-xl</code></td>
+        <td>Root table container border radius.</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary-bright</code></td>
+        <td>Checkbox accent color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td>Active page button gradient.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the table properties using Storybook controls.
+
+<Canvas of={TableStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={TableStories.Playground} />
+
+  </section>
+</div>

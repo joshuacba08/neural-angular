@@ -1,0 +1,259 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as DataViewStories from './data-view.stories';
+
+<Meta of={DataViewStories} />
+
+# DataView
+
+`NDataView` is a layout container that switches display formats dynamically. It accepts structured data lists and maps them to grid cards (with custom border glows and Gemini gradients) or full-width list items using structural directive templates.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="dataview-doc-tabs"
+    id="dataview-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="dataview-doc-tabs"
+    id="dataview-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="dataview-doc-tabs"
+    id="dataview-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="dataview-doc-tabs"
+    id="dataview-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="DataView documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="dataview-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="dataview-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="dataview-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="dataview-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NDataView, NGridItem, NListItem } from '@neural/angular-ui/data-view';
+```
+
+### Grid Layout
+
+Display items in a multi-column card layout that scales automatically. Uses the `nGridItem` directive.
+
+<Canvas of={DataViewStories.GridView} layout="padded" sourceState="shown" />
+
+### List Layout
+
+Display items in a compact, full-width vertical list stack. Uses the `nListItem` directive.
+
+<Canvas of={DataViewStories.ListView} layout="padded" sourceState="shown" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties and content templates of `NDataView`.
+
+<ArgTypes of={DataViewStories} sort="requiredFirst" />
+
+### Structural Directives
+
+Configure separate grid and list item layout templates using direct template projection:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Directive</th>
+        <th>Selector</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>NGridItem</code></td>
+        <td><code>[nGridItem]</code></td>
+        <td>Template config to render inside the Grid layout (1 column per item).</td>
+      </tr>
+      <tr>
+        <td><code>NListItem</code></td>
+        <td><code>[nListItem]</code></td>
+        <td>Template config to render inside the List layout (full-width row per item).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Basic Setup Example
+
+```html
+<n-data-view [data]="items" [layout]="activeLayout">
+  <!-- Grid Card Template -->
+  <ng-template nGridItem let-item>
+    <div class="n-dv-card n-dv-card--default">
+      <h4>{{ item.name }}</h4>
+      <p>{{ item.desc }}</p>
+    </div>
+  </ng-template>
+
+  <!-- List Row Template -->
+  <ng-template nListItem let-item>
+    <div class="n-dv-list-item n-dv-list-item--default">
+      <span>{{ item.name }}</span>
+      <n-badge variant="info">{{ item.status }}</n-badge>
+    </div>
+  </ng-template>
+</n-data-view>
+```
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Helper Classes
+
+`NDataView` defines built-in utility styles that you can apply directly inside your item templates to achieve visual consistency with the design system:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Target Layout</th>
+        <th>Visual Effect</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-dv-card</code></td>
+        <td>Grid Item</td>
+        <td>Basic card spacing and border.</td>
+      </tr>
+      <tr>
+        <td><code>.n-dv-card--default</code></td>
+        <td>Grid Item</td>
+        <td>Subtle border gradient with dark background surface.</td>
+      </tr>
+      <tr>
+        <td><code>.n-dv-card--active</code></td>
+        <td>Grid Item</td>
+        <td>Active glow effect with vibrant primary gradient border.</td>
+      </tr>
+      <tr>
+        <td><code>.n-dv-card--muted</code></td>
+        <td>Grid Item</td>
+        <td>Muted, lower opacity available state.</td>
+      </tr>
+      <tr>
+        <td><code>.n-dv-list-item</code></td>
+        <td>List Item</td>
+        <td>Horizontal flex container row.</td>
+      </tr>
+      <tr>
+        <td><code>.n-dv-list-item--default</code></td>
+        <td>List Item</td>
+        <td>Subtle border gradient with dark background surface.</td>
+      </tr>
+      <tr>
+        <td><code>.n-dv-list-item--active</code></td>
+        <td>List Item</td>
+        <td>Vibrant active primary gradient border outline and subtle glow shadow.</td>
+      </tr>
+      <tr>
+        <td><code>.n-dv-list-item--muted</code></td>
+        <td>List Item</td>
+        <td>Muted, semi-transparent row for secondary states.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+Public design tokens consumed by the layout classes:
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-radius-lg</code></td>
+        <td>Border radius of the grid item card container.</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-md</code></td>
+        <td>Border radius of the list item row container.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-2</code></td>
+        <td>Grid item background color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-surface-1</code></td>
+        <td>List item background color.</td>
+      </tr>
+      <tr>
+        <td><code>--n-gradient-border</code></td>
+        <td>Active state border gradient colors.</td>
+      </tr>
+      <tr>
+        <td><code>--n-glow-gradient-sm</code></td>
+        <td>Active item atmospheric glow drop shadow.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the DataView layout switcher in the live playground.
+
+<Canvas of={DataViewStories.Playground} layout="padded" sourceState="hidden" />
+<Controls of={DataViewStories.Playground} />
+
+  </section>
+</div>

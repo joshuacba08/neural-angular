@@ -118,7 +118,7 @@ export const Playground: Story = {
           [direction]="direction"
           [radius]="radius"
           [stagger]="stagger"
-          [open]="open"
+          [(open)]="open"
         >
           <button n-speed-dial-item icon="trash-2" tone="danger" title="Delete"></button>
           <button n-speed-dial-item icon="external-link" title="Share"></button>

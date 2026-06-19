@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import { NIcon } from '../icon/icon.component.js';
 import type { NBreadcrumbItem } from './breadcrumb.types.js';
@@ -13,37 +13,70 @@ import type { NBreadcrumbItem } from './breadcrumb.types.js';
         @for (item of items(); track $index; let isLast = $last) {
           <li class="n-breadcrumb__item">
             @if (!isLast) {
-              <a
-                [href]="item.url || 'javascript:void(0)'"
-                class="n-breadcrumb__link"
-                [class.n-breadcrumb__link--disabled]="item.disabled"
-              >
-                @if (item.icon) {
-                  <n-icon
-                    [name]="item.icon"
-                    [size]="item.icon === 'house' || item.icon === 'home' ? 'xs' : 'sm'"
-                    style="width: 13px; height: 13px;"
-                  />
-                }
-                @if (item.label) {
-                  <span>{{ item.label }}</span>
-                }
-              </a>
+              @if (isNavigable(item)) {
+                <a
+                  [href]="item.url!"
+                  class="n-breadcrumb__link"
+                  [class.n-breadcrumb__link--disabled]="item.disabled"
+                  (click)="onItemClick($event, item, $index)"
+                >
+                  @if (item.icon) {
+                    <n-icon
+                      [name]="resolveIcon(item.icon)"
+                      [size]="isHomeIcon(item.icon) ? 'xs' : 'sm'"
+                      style="width: 13px; height: 13px;"
+                    />
+                  }
+                  @if (item.label) {
+                    <span>{{ item.label }}</span>
+                  }
+                </a>
+              } @else {
+                <button
+                  type="button"
+                  class="n-breadcrumb__link"
+                  [class.n-breadcrumb__link--disabled]="item.disabled"
+                  [disabled]="item.disabled"
+                  (click)="onItemClick($event, item, $index)"
+                >
+                  @if (item.icon) {
+                    <n-icon
+                      [name]="resolveIcon(item.icon)"
+                      [size]="isHomeIcon(item.icon) ? 'xs' : 'sm'"
+                      style="width: 13px; height: 13px;"
+                    />
+                  }
+                  @if (item.label) {
+                    <span>{{ item.label }}</span>
+                  }
+                </button>
+              }
 
               <span class="n-breadcrumb__separator" aria-hidden="true">
-                @if (separator() === 'chevron') {
-                  <n-icon name="chevron-right" size="xs" style="width: 11px; height: 11px;" />
-                } @else {
-                  <n-icon name="slash" size="xs" style="width: 11px; height: 11px;" />
+                @switch (separator()) {
+                  @case ('chevron') {
+                    <n-icon name="chevron-right" size="xs" style="width: 11px; height: 11px;" />
+                  }
+                  @case ('slash') {
+                    <n-icon name="slash" size="xs" style="width: 11px; height: 11px;" />
+                  }
+                  @case ('dot') {
+                    <span class="n-breadcrumb__dot"></span>
+                  }
                 }
               </span>
             } @else {
               <span
                 class="n-breadcrumb__current"
                 [class.n-breadcrumb__current--gradient]="activeGradient()"
+                aria-current="page"
               >
                 @if (item.icon) {
-                  <n-icon [name]="item.icon" size="sm" style="width: 13px; height: 13px;" />
+                  <n-icon
+                    [name]="resolveIcon(item.icon)"
+                    [size]="isHomeIcon(item.icon) ? 'xs' : 'sm'"
+                    style="width: 13px; height: 13px;"
+                  />
                 }
                 @if (item.label) {
                   <span>{{ item.label }}</span>
@@ -88,6 +121,14 @@ import type { NBreadcrumbItem } from './breadcrumb.types.js';
         gap: 4px;
       }
 
+      button.n-breadcrumb__link {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        text-align: inherit;
+      }
+
       .n-breadcrumb__link:hover:not(.n-breadcrumb__link--disabled) {
         color: var(--n-color-primary-bright, #4285f4);
       }
@@ -109,9 +150,11 @@ import type { NBreadcrumbItem } from './breadcrumb.types.js';
 
       .n-breadcrumb__current--gradient {
         font-weight: 600;
-        background: var(--n-gradient-gemini, linear-gradient(135deg, #4f8eff, #7b5cf6, #d946ef, #f43f5e));
+        background: var(--n-progress-fill-primary);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
+        color: transparent;
       }
 
       .n-breadcrumb__separator {
@@ -121,11 +164,49 @@ import type { NBreadcrumbItem } from './breadcrumb.types.js';
         justify-content: center;
         flex-shrink: 0;
       }
+
+      .n-breadcrumb__dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--n-text-4, #555577);
+        display: inline-block;
+      }
     `,
   ],
 })
 export class NBreadcrumb {
   readonly items = input.required<NBreadcrumbItem[]>();
-  readonly separator = input<'chevron' | 'slash'>('chevron');
+  readonly separator = input<'chevron' | 'slash' | 'dot'>('chevron');
   readonly activeGradient = input(false);
+  readonly itemClick = output<{ item: NBreadcrumbItem; index: number; event: Event }>();
+
+  isNavigable(item: NBreadcrumbItem): boolean {
+    if (item.disabled) {
+      return false;
+    }
+
+    const url = item.url?.trim();
+    if (!url) {
+      return false;
+    }
+
+    return url !== '#' && url !== 'javascript:void(0)' && !url.startsWith('javascript:');
+  }
+
+  onItemClick(event: Event, item: NBreadcrumbItem, index: number): void {
+    if (!this.isNavigable(item)) {
+      event.preventDefault();
+    }
+
+    this.itemClick.emit({ item, index, event });
+  }
+
+  resolveIcon(icon: string): string {
+    return icon === 'house' ? 'home' : icon;
+  }
+
+  isHomeIcon(icon: string): boolean {
+    return icon === 'house' || icon === 'home';
+  }
 }

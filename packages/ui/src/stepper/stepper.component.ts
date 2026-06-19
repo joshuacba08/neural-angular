@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList, input, computed } from '@angular/core';
+import { Component, computed, contentChildren, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 
 import { NIcon } from '../icon/icon.component.js';
@@ -11,7 +11,7 @@ import { NStep } from './step.component.js';
   template: `
     <div class="n-stepper">
       <div class="n-stepper__header" role="tablist">
-        @for (step of steps; track $index; let last = $last) {
+        @for (step of steps(); track $index; let last = $last) {
           <div
             class="n-stepper__step"
             [class.n-stepper__step--completed]="$index < activeStep()"
@@ -22,11 +22,11 @@ import { NStep } from './step.component.js';
           >
             <div class="n-stepper__circle">
               @if ($index < activeStep()) {
-                <n-icon [name]="step.completedIcon()" size="sm" />
+                <n-icon [name]="step.completedIcon()" size="sm" style="width: 14px; height: 14px;" />
               } @else if ($index === activeStep()) {
-                <n-icon [name]="step.activeIcon()" size="sm" />
+                <n-icon [name]="step.activeIcon()" size="sm" style="width: 14px; height: 14px;" />
               } @else {
-                <n-icon [name]="step.icon()" size="sm" />
+                <n-icon [name]="step.icon()" size="sm" style="width: 13px; height: 13px;" />
               }
             </div>
             <span class="n-stepper__label">{{ step.label() }}</span>
@@ -60,7 +60,6 @@ import { NStep } from './step.component.js';
       .n-stepper {
         display: flex;
         flex-direction: column;
-        gap: var(--n-space-5, 20px);
         width: 100%;
       }
 
@@ -68,14 +67,16 @@ import { NStep } from './step.component.js';
         display: flex;
         align-items: center;
         width: 100%;
+        margin-bottom: 18px;
       }
 
       .n-stepper__step {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
-        flex: 0 0 auto;
+        gap: 5px;
+        flex: 1;
+        min-width: 0;
         position: relative;
         text-align: center;
       }
@@ -101,7 +102,7 @@ import { NStep } from './step.component.js';
       }
 
       .n-stepper__step--active .n-stepper__circle {
-        background: var(--n-gradient-primary-secondary, linear-gradient(135deg, #4285f4, #7b5cf6));
+        background: var(--n-progress-fill-primary);
         color: #fff;
         animation: ps-glow 1.8s ease-in-out infinite;
       }
@@ -117,7 +118,7 @@ import { NStep } from './step.component.js';
       }
 
       .n-stepper__label {
-        font-size: var(--n-font-size-11, 11px);
+        font-size: 10.5px;
         font-weight: 500;
         white-space: nowrap;
       }
@@ -147,7 +148,7 @@ import { NStep } from './step.component.js';
       }
 
       .n-stepper__connector--active {
-        background: var(--n-gradient-primary-secondary, linear-gradient(135deg, #4285f4, #7b5cf6));
+        background: var(--n-progress-fill-primary);
       }
 
       .n-stepper__connector--upcoming {
@@ -161,6 +162,27 @@ import { NStep } from './step.component.js';
         background:
           linear-gradient(var(--n-surface-2, #0f0f1c), var(--n-surface-2, #0f0f1c)) padding-box,
           var(--n-gradient-border-primary) border-box;
+      }
+
+      .n-stepper__content h4,
+      .n-stepper__content .n-stepper__title {
+        margin: 0 0 5px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--n-text-1, #ffffff);
+      }
+
+      .n-stepper__content p,
+      .n-stepper__content .n-stepper__description {
+        margin: 0 0 14px;
+        font-size: 12.5px;
+        color: var(--n-text-3, #8f8fbf);
+        line-height: 1.65;
+      }
+
+      .n-stepper__actions {
+        display: flex;
+        gap: 8px;
       }
 
       @keyframes ps-glow {
@@ -178,15 +200,11 @@ import { NStep } from './step.component.js';
 export class NStepper {
   readonly activeStep = input(0);
 
-  @ContentChildren(NStep) steps!: QueryList<NStep>;
+  readonly steps = contentChildren(NStep);
 
   readonly activeStepTemplate = computed(() => {
-    if (!this.steps) {
-      return null;
-    }
-    const stepArray = this.steps.toArray();
+    const stepArray = this.steps();
     const index = this.activeStep();
-    const activeStepComponent = stepArray[index];
-    return activeStepComponent ? activeStepComponent.contentTemplate : null;
+    return stepArray[index]?.contentTemplate ?? null;
   });
 }

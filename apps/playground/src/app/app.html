@@ -39,12 +39,20 @@
           icon="home"
           label="Overview"
           [active]="activeTab === 'overview'"
+          (click)="setActiveTab('overview')"
         />
         <n-sidebar-item
           icon="cpu"
           label="Pipeline"
           [active]="activeTab === 'workflow'"
           badge="3"
+          (click)="setActiveTab('workflow')"
+        />
+        <n-sidebar-item
+          icon="table"
+          label="Table &amp; DataView"
+          [active]="activeTab === 'data-display'"
+          (click)="setActiveTab('data-display')"
         />
         <n-sidebar-item icon="settings" label="Settings" />
       </n-sidebar-section>
@@ -105,6 +113,11 @@
             label="Workflow"
             icon="activity"
             badge="3"
+          />
+          <n-tab-item
+            value="data-display"
+            label="Table &amp; DataView"
+            icon="table-2"
           />
           <n-tab-item
             value="actions"
@@ -516,6 +529,154 @@
               </n-card-content>
             </n-card>
           </div>
+        </section>
+        } @else if (activeTab === 'data-display') {
+        <section class="data-display-section" style="display: flex; flex-direction: column; gap: var(--n-space-6);">
+          
+          <!-- Table section -->
+          <n-card variant="default">
+            <n-card-header>
+              <n-card-title>Table &middot; Sortable &middot; Row Selection &middot; Paginator</n-card-title>
+              <n-card-description>Interactive data display with filtering and pagination.</n-card-description>
+            </n-card-header>
+
+            <n-card-content style="padding: 0; overflow: hidden; border-radius: var(--n-radius-xl, 14px); border: 1px solid var(--n-border-1, #1e1e38);">
+              <!-- Top bar for filtering and search -->
+              <div style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--n-border-1, #1e1e38);">
+                <div class="nn-search" style="flex: 1; max-width: 260px; position: relative; display: flex; align-items: center;">
+                  <n-icon name="search" size="sm" style="position: absolute; left: 10px; color: var(--n-text-3); opacity: 0.55;" />
+                  <input
+                    class="nn-input"
+                    type="search"
+                    placeholder="Search jobs..."
+                    style="height: 34px; font-size: 12.5px; padding-left: 32px; width: 100%; box-sizing: border-box; background: var(--n-surface-3, #141428); border: 1px solid var(--n-border-1, #1e1e38); border-radius: var(--n-radius-sm, 6px); color: var(--n-text-1, #ffffff); outline: none;"
+                    [value]="tableSearchQuery"
+                    (input)="tableSearchQuery = $any($event.target).value"
+                  />
+                </div>
+                
+                <n-select-button
+                  [options]="tableStatusOptions"
+                  [(value)]="tableStatusFilter"
+                />
+              </div>
+
+              <!-- Main Table component -->
+              <n-table
+                [columns]="interactiveTableColumns"
+                [data]="filteredTableData"
+                density="comfortable"
+                variant="surface"
+                [sortable]="true"
+                selectionMode="multiple"
+                [(selection)]="tableSelection"
+                [paginator]="true"
+                [rows]="4"
+                [first]="0"
+              >
+                <!-- Custom status badge cell template -->
+                <ng-template nTemplate="status" let-value>
+                  @if (value === 'Done') {
+                    <span class="nn-badge nb-s">Done</span>
+                  } @else if (value === 'Processing') {
+                    <span class="nn-badge nb-bv">Processing</span>
+                  } @else if (value === 'Failed') {
+                    <span class="nn-badge nb-e">Failed</span>
+                  } @else {
+                    <span class="nn-badge" style="background: rgba(255, 255, 255, 0.06); color: var(--n-text-3);">Queued</span>
+                  }
+                </ng-template>
+
+                <!-- Trailing options button -->
+                <ng-template nTemplate="eta" let-value let-row="row">
+                  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <span>{{ value }}</span>
+                    <button style="background: transparent; border: none; cursor: pointer; color: var(--n-text-3); padding: 4px; display: inline-flex; align-items: center;" (click)="$event.stopPropagation(); onSpeedDialAction(row.name)">
+                      <n-icon name="more-horizontal" size="sm" />
+                    </button>
+                  </div>
+                </ng-template>
+              </n-table>
+            </n-card-content>
+          </n-card>
+
+          <!-- DataView section -->
+          <n-card variant="default">
+            <n-card-header>
+              <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                <div>
+                  <n-card-title>DataView &middot; Grid / List Toggle</n-card-title>
+                  <n-card-description>Model inventory grid with adaptive layout.</n-card-description>
+                </div>
+                <!-- Layout switcher buttons -->
+                <div style="display: flex; gap: 4px; background: rgba(0, 0, 0, 0.2); padding: 2px; border-radius: var(--n-radius-sm, 6px);">
+                  <button
+                    (click)="dataViewLayout = 'grid'"
+                    style="width: 30px; height: 30px; border-radius: var(--n-radius-sm, 6px); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 150ms;"
+                    [style.background]="dataViewLayout === 'grid' ? 'var(--n-gradient-border-primary, linear-gradient(135deg, #1e1e38, #2a2a4e))' : 'transparent'"
+                  >
+                    <n-icon name="layout-grid" size="sm" [style.color]="dataViewLayout === 'grid' ? '#ffffff' : 'var(--n-text-3)'" />
+                  </button>
+                  <button
+                    (click)="dataViewLayout = 'list'"
+                    style="width: 30px; height: 30px; border-radius: var(--n-radius-sm, 6px); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 150ms;"
+                    [style.background]="dataViewLayout === 'list' ? 'var(--n-gradient-border-primary, linear-gradient(135deg, #1e1e38, #2a2a4e))' : 'transparent'"
+                  >
+                    <n-icon name="list" size="sm" [style.color]="dataViewLayout === 'list' ? '#ffffff' : 'var(--n-text-3)'" />
+                  </button>
+                </div>
+              </div>
+            </n-card-header>
+
+            <n-card-content style="padding: 16px var(--n-space-4);">
+              <n-data-view [data]="dataViewModels" [layout]="dataViewLayout">
+                <!-- Grid Card template -->
+                <ng-template nGridItem let-item>
+                  <div class="n-dv-card" [class.n-dv-card--active]="item.state === 'active'" [class.n-dv-card--default]="item.state === 'installed'" [class.n-dv-card--muted]="item.state === 'available'">
+                    <div style="font-size: 12.5px; font-weight: 600; margin-bottom: 4px;"
+                         [style.background]="item.state === 'active' ? 'var(--n-gradient-gemini)' : null"
+                         [style.-webkit-background-clip]="item.state === 'active' ? 'text' : null"
+                         [style.-webkit-text-fill-color]="item.state === 'active' ? 'transparent' : null">
+                      {{ item.name }}
+                    </div>
+                    <div style="font-size: 11px; color: var(--n-text-3); margin-bottom: 8px;">{{ item.detail }}</div>
+                    
+                    @if (item.state === 'active') {
+                      <span class="nn-badge nb-g">Active</span>
+                    } @else if (item.state === 'installed') {
+                      <span class="nn-badge nb-bv">Installed</span>
+                    } @else {
+                      <span class="nn-badge nb-w">Available</span>
+                    }
+                  </div>
+                </ng-template>
+
+                <!-- List Row template -->
+                <ng-template nListItem let-item>
+                  <div class="n-dv-list-item" [class.n-dv-list-item--active]="item.state === 'active'" [class.n-dv-list-item--default]="item.state === 'installed'" [class.n-dv-list-item--muted]="item.state === 'available'">
+                    <div style="flex: 1;">
+                      <div style="font-size: 13px; font-weight: 600;"
+                           [style.background]="item.state === 'active' ? 'var(--n-gradient-gemini)' : null"
+                           [style.-webkit-background-clip]="item.state === 'active' ? 'text' : null"
+                           [style.-webkit-text-fill-color]="item.state === 'active' ? 'transparent' : null">
+                        {{ item.name }}
+                      </div>
+                      <div style="font-size: 11px; color: var(--n-text-3);">{{ item.detail }} upscale · {{ item.vram }}</div>
+                    </div>
+                    
+                    @if (item.state === 'active') {
+                      <span class="nn-badge nb-g">Active</span>
+                    } @else if (item.state === 'installed') {
+                      <span class="nn-badge nb-bv">Installed</span>
+                    } @else {
+                      <span class="nn-badge nb-w">Available</span>
+                    }
+                  </div>
+                </ng-template>
+              </n-data-view>
+            </n-card-content>
+          </n-card>
+
         </section>
         }
       </section>
