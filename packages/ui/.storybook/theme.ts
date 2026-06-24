@@ -10,7 +10,8 @@ import { create } from 'storybook/theming/create';
 export const neuralTheme = create({
   base: 'dark',
 
-  brandTitle: 'Neural Angular',
+  brandTitle: 'Neural Angular UI Docs',
+  brandImage: '/brand/neural-angular-ui-logo.svg',
   brandTarget: '_self',
 
   // Gemini accents

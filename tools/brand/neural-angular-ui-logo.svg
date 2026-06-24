@@ -1,0 +1,77 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Neural Angular UI logo</title>
+  <desc id="desc">A dark neon logo mark combining an Angular-style shield with neural node paths and a modern wordmark reading Neural Angular UI.</desc>
+  <defs>
+    <linearGradient id="na-gradient" x1="68" y1="52" x2="298" y2="286" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="0.45" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#E041F4"/>
+    </linearGradient>
+    <linearGradient id="na-gradient-2" x1="350" y1="88" x2="940" y2="238" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8FAFC"/>
+      <stop offset="0.62" stop-color="#DDE6FF"/>
+      <stop offset="1" stop-color="#93A4FF"/>
+    </linearGradient>
+    <linearGradient id="na-gradient-3" x1="695" y1="107" x2="850" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4588F4"/>
+      <stop offset="0.52" stop-color="#8057F5"/>
+      <stop offset="1" stop-color="#D842E9"/>
+    </linearGradient>
+    <radialGradient id="orb-blue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(230 102) rotate(128) scale(125 92)">
+      <stop offset="0" stop-color="#3B82F6" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb-pink" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(122 224) rotate(-27) scale(108 82)">
+      <stop offset="0" stop-color="#E041F4" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#E041F4" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-80" y="-80" width="420" height="420" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.24 0 0 0 0 0.51 0 0 0 0 0.96 0 0 0 0.7 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="text-glow" x="300" y="60" width="760" height="240" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#5B5FF5" flood-opacity="0.22"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="28" flood-color="#D842E9" flood-opacity="0.12"/>
+    </filter>
+    <clipPath id="shield-clip">
+      <path d="M180 48L276 86L256 236L180 284L104 236L84 86L180 48Z"/>
+    </clipPath>
+  </defs>
+  <g transform="translate(0 6)">
+    <path d="M180 48L276 86L256 236L180 284L104 236L84 86L180 48Z" fill="#10101F" stroke="url(#na-gradient)" stroke-width="3"/>
+    <path d="M180 48L276 86L256 236L180 284L104 236L84 86L180 48Z" fill="url(#orb-blue)" opacity="0.9" clip-path="url(#shield-clip)"/>
+    <path d="M180 48L276 86L256 236L180 284L104 236L84 86L180 48Z" fill="url(#orb-pink)" opacity="0.9" clip-path="url(#shield-clip)"/>
+    <path d="M108 90L180 62L252 90" stroke="#FFFFFF" stroke-opacity="0.11"/>
+    <path d="M112 232L180 266L248 232" stroke="#FFFFFF" stroke-opacity="0.08"/>
+    <g filter="url(#soft-glow)">
+      <path d="M130 216V118L230 216V118" stroke="url(#na-gradient)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M130 216L180 84L230 216" stroke="url(#na-gradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/>
+      <path d="M151 164H209" stroke="#9CB6FF" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+      <circle cx="130" cy="216" r="9" fill="#E041F4"/>
+      <circle cx="130" cy="118" r="7" fill="#4B8BF7"/>
+      <circle cx="180" cy="84" r="8" fill="#7C5CF5"/>
+      <circle cx="230" cy="118" r="7" fill="#D842E9"/>
+      <circle cx="230" cy="216" r="9" fill="#4B8BF7"/>
+      <circle cx="180" cy="166" r="6" fill="#F8FAFC" opacity="0.88"/>
+    </g>
+    <g opacity="0.9">
+      <rect x="108" y="72" width="9" height="9" rx="2" fill="#3B82F6"/>
+      <rect x="122" y="72" width="9" height="9" rx="2" fill="#7C3AED"/>
+      <rect x="108" y="86" width="9" height="9" rx="2" fill="#E041F4"/>
+    </g>
+  </g>
+  <g filter="url(#text-glow)">
+    <text x="350" y="164" fill="url(#na-gradient-2)" font-family="Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="58" font-weight="800" letter-spacing="-2.4">Neural Angular</text>
+    <g transform="translate(847 112)">
+      <rect width="102" height="66" rx="19" fill="#16162A" stroke="url(#na-gradient-3)" stroke-width="2"/>
+      <text x="51" y="44" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="31" font-weight="800" letter-spacing="-0.8">UI</text>
+    </g>
+    <text x="354" y="210" fill="#9CA3B8" font-family="Inter, Satoshi, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" font-weight="500" letter-spacing="0.35">tokens · primitives · glow components · Angular design system</text>
+  </g>
+  <path d="M354 240H548" stroke="url(#na-gradient-3)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M566 240H650" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="3" stroke-linecap="round"/>
+</svg>

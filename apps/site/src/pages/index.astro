@@ -28,70 +28,502 @@ export const appConfig: ApplicationConfig = {
   ]
 };`;
 
-const showcaseComponents = [
+const buttonsHtmlCode = `<div class="sandbox-group">
+  <h4>Gradient Filled</h4>
+  <div class="sandbox-row">
+    <button class="nn-btn nn-btn-f">Blue &rarr; Violet</button>
+    <button class="nn-btn nn-btn-fg">✦ Gemini</button>
+    <button class="nn-btn nn-btn-fv">Violet &rarr; Pink</button>
+    <button class="nn-btn nn-btn-fd">Danger</button>
+    <button class="nn-btn nn-btn-f" disabled>Disabled</button>
+    <button class="nn-btn nn-btn-f nn-btn-load">Loading</button>
+  </div>
+</div>
+
+<div class="sandbox-group">
+  <h4>Outlined, Tonal, & Ghost</h4>
+  <div class="sandbox-row">
+    <button class="nn-btn nn-btn-o">Gradient Border</button>
+    <button class="nn-btn nn-btn-og">Gemini Border</button>
+    <button class="nn-btn nn-btn-t">Tonal Blue</button>
+    <button class="nn-btn nn-btn-tv">Tonal Violet</button>
+    <button class="nn-btn nn-btn-g">Ghost Primary</button>
+    <button class="nn-btn nn-btn-gm">Ghost Muted</button>
+  </div>
+</div>
+
+<div class="sandbox-group">
+  <h4>Sizes & Icon Buttons</h4>
+  <div class="sandbox-row">
+    <button class="nn-btn nn-btn-f nn-btn-sm">Small 32px</button>
+    <button class="nn-btn nn-btn-f">Medium 40px</button>
+    <button class="nn-btn nn-btn-f nn-btn-lg">Large 48px</button>
+    <button class="nn-btn nn-btn-f nn-btn-xl">XLarge 56px</button>
+  </div>
+  <div class="sandbox-row" style="margin-top: 14px;">
+    <button class="nn-btn nn-btn-f nn-btn-ico nn-btn-sm"><i data-lucide="plus" class="icon-sm"></i></button>
+    <button class="nn-btn nn-btn-fg nn-btn-ico"><i data-lucide="plus" class="icon-md"></i></button>
+    <button class="nn-btn nn-btn-o nn-btn-ico"><i data-lucide="info" class="icon-md"></i></button>
+    <button class="nn-btn nn-btn-tv nn-btn-ico nn-btn-lg"><i data-lucide="arrow-right" class="icon-lg"></i></button>
+  </div>
+</div>`;
+
+const inputsHtmlCode = `<div class="form-grid">
+  <div class="nn-field">
+    <label class="nn-lbl">Full Name</label>
+    <input class="nn-input" type="text" placeholder="Enter your name" />
+  </div>
+  <div class="nn-field">
+    <label class="nn-lbl">Email Address</label>
+    <input class="nn-input" type="email" placeholder="yourname@domain.com" />
+  </div>
+</div>
+
+<div class="form-grid" style="margin-top: 16px;">
+  <div class="nn-field">
+    <label class="nn-lbl">Identifier (with Hint)</label>
+    <input class="nn-input" type="text" placeholder="neural-agent-01" />
+    <div class="nn-hint">Unique identifier for the neural instance</div>
+  </div>
+  <div class="nn-field">
+    <label class="nn-lbl">Validation State (with Error)</label>
+    <input class="nn-input err" type="text" value="invalid_value" />
+    <div class="nn-err-msg">This field value is not valid</div>
+  </div>
+</div>
+
+<div class="form-grid" style="margin-top: 16px;">
+  <div class="nn-field">
+    <label class="nn-lbl">Search Component</label>
+    <div class="nn-search">
+      <i data-lucide="search" class="nn-search-ico"></i>
+      <input class="nn-input" type="search" placeholder="Search tokens, patterns..." />
+    </div>
+  </div>
+  <div class="nn-field">
+    <label class="nn-lbl">Select Option</label>
+    <select class="nn-select">
+      <option>Neural Pro 2.0 (Default)</option>
+      <option>Neural Lite 1.5</option>
+      <option>Neural Vision 3.0</option>
+    </select>
+  </div>
+</div>
+
+<div class="sandbox-group" style="margin-top: 20px;">
+  <h4>Toggles, Checkboxes & Radios</h4>
+  <div class="sandbox-row toggle-row">
+    <div class="nn-tog-wrap" onclick="this.querySelector('.nn-tog').classList.toggle('on')">
+      <div class="nn-tog on"></div>
+      <span class="nn-tog-lbl">Active Neural Engine</span>
+    </div>
+    <div class="nn-chk-wrap" onclick="this.querySelector('.nn-chk').classList.toggle('on')">
+      <div class="nn-chk on"></div>
+      <span class="nn-chk-lbl">Accept terms</span>
+    </div>
+    <div class="nn-radio-wrap" onclick="document.querySelectorAll('.rg-sb').forEach(r => r.classList.remove('on')); this.querySelector('.nn-radio').classList.add('on')">
+      <div class="nn-radio on rg-sb"></div>
+      <span class="nn-chk-lbl">Pro Engine</span>
+    </div>
+    <div class="nn-radio-wrap" onclick="document.querySelectorAll('.rg-sb').forEach(r => r.classList.remove('on')); this.querySelector('.nn-radio').classList.add('on')">
+      <div class="nn-radio rg-sb"></div>
+      <span class="nn-chk-lbl">Flash Engine</span>
+    </div>
+  </div>
+</div>`;
+
+const cardsHtmlCode = `<div class="card-grid">
+  <div class="nn-card">
+    <div class="card-icon"><i data-lucide="zap"></i></div>
+    <h3 class="nn-card-title">Neural Agent</h3>
+    <p class="nn-card-body">Extended context of 2M tokens. Real-time streaming response.</p>
+    <div class="card-meta">GEMINI FULL GRADIENT</div>
+  </div>
+  <div class="nn-card bv">
+    <div class="card-icon" style="background: var(--nn-grad-blue-v); color: #fff;"><i data-lucide="eye"></i></div>
+    <h3 class="nn-card-title">Vision Model</h3>
+    <p class="nn-card-body">Multimodal analysis of images, videos, and doc structures.</p>
+    <div class="card-meta" style="background: var(--nn-grad-blue-v); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">BLUE &rarr; VIOLET</div>
+  </div>
+  <div class="nn-card vp">
+    <div class="card-icon" style="background: var(--nn-grad-v-pink); color: #fff;"><i data-lucide="code-2"></i></div>
+    <h3 class="nn-card-title">Code Assistant</h3>
+    <p class="nn-card-body">Generation and automated refactoring in 40+ languages.</p>
+    <div class="card-meta" style="background: var(--nn-grad-v-pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">VIOLET &rarr; PINK</div>
+  </div>
+</div>
+
+<div class="card-grid" style="margin-top: 16px;">
+  <div class="stat-card">
+    <div class="stat-lbl">Active Users</div>
+    <div class="stat-val">12,480</div>
+    <div class="stat-trend stat-up">&uarr; +14.2% this week</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-lbl">Token Consumption</div>
+    <div class="stat-val" style="background: var(--nn-grad-v-pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">4.2M</div>
+    <div class="stat-trend stat-up">&uarr; +22.4% vs last day</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-lbl">Error Rate</div>
+    <div class="stat-val" style="background: var(--nn-error); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">0.04%</div>
+    <div class="stat-trend stat-dn">&darr; -0.01% since last hour</div>
+  </div>
+</div>`;
+
+const chipsHtmlCode = `<div class="sandbox-group">
+  <h4>Filter Chips</h4>
+  <div class="sandbox-row">
+    <div class="nn-chip on" onclick="this.classList.toggle('on')">All Models</div>
+    <div class="nn-chip" onclick="this.classList.toggle('on')">Neural Pro</div>
+    <div class="nn-chip" onclick="this.classList.toggle('on')">Neural Lite</div>
+    <div class="nn-chip" onclick="this.classList.toggle('on')">Vision</div>
+    <div class="nn-chip" onclick="this.classList.toggle('on')">Code</div>
+    <div class="nn-chip" onclick="this.classList.toggle('on')">● Online</div>
+  </div>
+  <div class="sandbox-row" style="margin-top: 10px;">
+    <div class="nn-chip nn-chip-sm on" onclick="this.classList.toggle('on')">Small Chip</div>
+    <div class="nn-chip nn-chip-sm" onclick="this.classList.toggle('on')">XS Parameter</div>
+  </div>
+</div>
+
+<div class="sandbox-group">
+  <h4>Status Badges</h4>
+  <div class="sandbox-row">
+    <span class="nn-badge nb-g">Gemini Gradient</span>
+    <span class="nn-badge nb-bv">Blue Tonal</span>
+    <span class="nn-badge nb-vp">Violet Tonal</span>
+    <span class="nn-badge nb-s">Success</span>
+    <span class="nn-badge nb-w">Warning</span>
+    <span class="nn-badge nb-e">Error</span>
+  </div>
+</div>`;
+
+const overlaysHtmlCode = `<div class="form-grid">
+  <div>
+    <div class="dialog-demo" style="width: 100%; max-width: 320px; margin: 0 auto;">
+      <h3 class="dialog-title">Deploy AI Instance?</h3>
+      <p class="dialog-body">Confirm deploying the active neural model to edge nodes. This will begin billing for allocated server GPU instances.</p>
+      <div class="dialog-actions">
+        <button class="nn-btn nn-btn-gm nn-btn-sm">Cancel</button>
+        <button class="nn-btn nn-btn-f nn-btn-sm">Confirm</button>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 12px; justify-content: center;">
+    <div style="width:100%; padding:12px 16px; border-radius:12px; background:var(--nn-success-10); border:1px solid rgba(52,168,83,0.18); color:var(--nn-success); font-size:12.5px; display:flex; gap:10px; align-items:center;">
+      <i data-lucide="check-circle" class="icon-md"></i>
+      <span>Imported neural network model successfully.</span>
+    </div>
+    <div style="width:100%; padding:12px 16px; border-radius:12px; background:var(--nn-error-10); border:1px solid rgba(234,67,53,0.18); color:var(--nn-error); font-size:12.5px; display:flex; gap:10px; align-items:center;">
+      <i data-lucide="x-circle" class="icon-md"></i>
+      <span>Connection lost with GPU cluster node.</span>
+    </div>
+    <div style="width:100%; padding:12px 16px; border-radius:12px; background:var(--nn-warning-10); border:1px solid rgba(251,188,5,0.18); color:var(--nn-warning); font-size:12.5px; display:flex; gap:10px; align-items:center;">
+      <i data-lucide="alert-triangle" class="icon-md"></i>
+      <span>Model context is reaching 95% threshold.</span>
+    </div>
+  </div>
+</div>`;
+
+const progressHtmlCode = `<div class="form-grid">
+  <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center;">
+    <div>
+      <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; color: var(--nn-t2);">
+        <span>Linear Progress (Determinate)</span>
+        <span>65%</span>
+      </div>
+      <div class="nn-prog-bar-bg">
+        <div class="nn-prog-bar" style="width: 65%; background: var(--nn-grad-blue-v);">
+          <div class="nn-prog-shim"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; color: var(--nn-t2);">
+        <span>Indeterminate Wave</span>
+      </div>
+      <div class="nn-prog-bar-bg nn-prog-indet">
+        <div class="nn-prog-indet-bar"></div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: center;">
+      <div class="nn-grad-ring" style="--ring-size: 64px; --ring-blur: 10px;">
+        <div class="nn-grad-ring-inner" style="width: 52px; height: 52px; font-size: 11px; font-family: var(--nn-font-m);">65%</div>
+      </div>
+      <span style="font-size: 12px; color: var(--nn-t2);">Circular progress track</span>
+    </div>
+  </div>
+  <div>
+    <div class="nn-card" style="padding: 16px;">
+      <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px;">
+        <div class="nn-skel" style="width: 40px; height: 40px; border-radius: 50%;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
+          <div class="nn-skel" style="width: 60%; height: 12px;"></div>
+          <div class="nn-skel" style="width: 40%; height: 8px;"></div>
+        </div>
+      </div>
+      <div class="nn-skel" style="width: 100%; height: 60px; margin-bottom: 12px;"></div>
+      <div style="display: flex; justify-content: space-between;">
+        <div class="nn-skel" style="width: 50px; height: 24px; border-radius: 99px;"></div>
+        <div class="nn-skel" style="width: 70px; height: 24px; border-radius: 99px;"></div>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+const layoutsHtmlCode = `<div class="form-grid">
+  <div>
+    <div class="nn-card" style="padding:0; border-radius:var(--nn-r-md); overflow:hidden; border: 1px solid var(--nn-b1);">
+      <div class="nn-app-bar" style="border: none; border-radius: 0; border-bottom: 1px solid var(--nn-b1); height: 48px; padding: 0 16px;">
+        <span class="nn-app-bar-title" style="font-size: 14px;">App Console</span>
+        <div class="nn-app-bar-spacer"></div>
+        <span class="nn-badge nb-s" style="height: 18px; font-size: 9px;">Active</span>
+      </div>
+      <div style="display: flex; height: 140px;">
+        <div class="mini-sb" style="border: none; border-radius: 0; border-right: 1px solid var(--nn-b1); width: 110px; padding: 6px 0;">
+          <div class="mini-sb-item on" style="font-size: 11px; padding: 4px 10px;">Dashboard</div>
+          <div class="mini-sb-item" style="font-size: 11px; padding: 4px 10px;">Models</div>
+          <div class="mini-sb-item" style="font-size: 11px; padding: 4px 10px;">Settings</div>
+        </div>
+        <div style="flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="width: 90%; height: 12px; background: var(--nn-surface-3); border-radius: 4px;"></div>
+          <div style="width: 75%; height: 8px; background: var(--nn-surface-3); border-radius: 4px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <div style="display:flex; flex-direction:column; width:100%; max-width:180px;">
+      <div class="pipeline-item">
+        <div class="pipeline-node done"><i data-lucide="check" style="width:10px; height:10px;"></i></div>
+        <span style="font-size:11.5px; font-weight:500; color:var(--nn-success); margin-left:10px;">Import</span>
+      </div>
+      <div class="pipeline-line done"></div>
+      <div class="pipeline-item">
+        <div class="pipeline-node active"><i data-lucide="sparkles" style="width:10px; height:10px;"></i></div>
+        <span style="font-size:11.5px; font-weight:500; color:var(--nn-blue-bright); margin-left:10px;">AI Enhance</span>
+      </div>
+      <div class="pipeline-line wait"></div>
+      <div class="pipeline-item">
+        <div class="pipeline-node wait"><i data-lucide="download" style="width:10px; height:10px;"></i></div>
+        <span style="font-size:11.5px; font-weight:500; color:var(--nn-t4); margin-left:10px;">Export</span>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+const buttonsAngularCode = `<!-- Filled Gradient Buttons -->
+<n-button variant="primary">Blue → Violet</n-button>
+<n-button variant="gemini">✦ Gemini</n-button>
+<n-button variant="accent">Violet → Pink</n-button>
+<n-button variant="danger">Danger</n-button>
+<n-button variant="primary" [disabled]="true">Disabled</n-button>
+<n-button variant="primary" [loading]="true">Loading</n-button>
+
+<!-- Outlined, Tonal & Ghost -->
+<n-button variant="outline">Gradient Border</n-button>
+<n-button variant="outline-gemini">Gemini Border</n-button>
+<n-button variant="tonal">Tonal Blue</n-button>
+<n-button variant="tonal-violet">Tonal Violet</n-button>
+<n-button variant="ghost">Ghost Primary</n-button>
+<n-button variant="secondary">Ghost Muted</n-button>
+
+<!-- Sizes and Icon Buttons -->
+<n-button variant="primary" size="sm">Small 32px</n-button>
+<n-button variant="primary" size="md">Medium 40px</n-button>
+<n-button variant="primary" size="lg">Large 48px</n-button>
+<n-button variant="primary" size="xl">XLarge 56px</n-button>
+
+<n-button variant="primary" size="sm" [iconOnly]="true" ariaLabel="Add">
+  <n-icon name="plus" size="sm" />
+</n-button>`;
+
+const formsAngularCode = `<!-- Standard Form Fields -->
+<n-input label="Full Name" placeholder="Enter your name" />
+<n-input label="Email Address" type="email" placeholder="yourname@domain.com" />
+<n-input label="Identifier" placeholder="neural-agent-01" hint="Unique identifier for the neural instance" />
+<n-input label="Validation State" value="invalid_value" error="This field value is not valid" />
+<n-input type="search" placeholder="Search tokens, patterns..." />
+
+<!-- Select dropdown menu -->
+<n-select label="Select Option" [options]="['Neural Pro 2.0 (Default)', 'Neural Lite 1.5', 'Neural Vision 3.0']" />
+
+<!-- Toggle, Checkbox & Radio Controls -->
+<n-switch label="Active Neural Engine" [checked]="true" />
+<n-checkbox label="Accept terms" [checked]="true" />
+<n-radio-group [(ngModel)]="selectedEngine">
+  <n-radio value="pro" label="Pro Engine" />
+  <n-radio value="flash" label="Flash Engine" />
+</n-radio-group>`;
+
+const cardsAngularCode = `<!-- Interactive Component Cards -->
+<div class="card-grid">
+  <n-card [interactive]="true">
+    <n-card-icon accent="gemini">
+      <n-icon name="zap" size="md" />
+    </n-card-icon>
+    <n-card-title>Neural Agent</n-card-title>
+    <n-card-content>
+      Contexto extendido de 2M tokens. Respuesta en tiempo real con streaming.
+    </n-card-content>
+    <n-card-meta accent="primary">Gemini full gradient</n-card-meta>
+  </n-card>
+
+  <n-card variant="primary" [interactive]="true">
+    <n-card-icon accent="primary">
+      <n-icon name="eye" size="md" />
+    </n-card-icon>
+    <n-card-title>Vision Model</n-card-title>
+    <n-card-content>
+      Análisis multimodal de imágenes, video y documentos.
+    </n-card-content>
+    <n-card-meta accent="primary">Blue &rarr; Violet</n-card-meta>
+  </n-card>
+</div>
+
+<!-- KPI Metrics & Status Cards -->
+<div class="card-grid">
+  <n-metric-card title="Active Users" value="12,480" trend="+14.2% this week" trendState="up" />
+  <n-metric-card title="Token Consumption" value="4.2M" trend="+22.4% vs last day" trendState="up" accent="pink" />
+  <n-metric-card title="Error Rate" value="0.04%" trend="-0.01% since last hour" trendState="down" accent="danger" />
+</div>`;
+
+const chipsAngularCode = `<!-- Filter Chips Row -->
+<n-chip [selected]="true">Todos los modelos</n-chip>
+<n-chip>Neural Pro</n-chip>
+<n-chip>Neural Lite</n-chip>
+<n-chip size="sm" [selected]="true">Pequeño</n-chip>
+
+<!-- Tag Mode & Severity Badge Indicators -->
+<n-chip mode="tag" variant="primary">Blue</n-chip>
+<n-chip mode="tag" variant="success">Success</n-chip>
+<n-chip mode="tag" variant="warning" [removable]="true">Warning</n-chip>
+
+<n-badge variant="success">Success</n-badge>
+<n-badge variant="warning">Warning</n-badge>
+<n-badge variant="danger">Error</n-badge>`;
+
+const overlaysAngularCode = `<!-- Alert message banners -->
+<n-alert variant="success" title="Import complete" description="Imported neural network model successfully." />
+<n-alert variant="warning" title="VRAM Warning" description="Model context is reaching 95% threshold." />
+<n-alert variant="danger" title="Connection lost" description="Connection lost with GPU cluster node." />
+
+<!-- Overlay Dialog modal -->
+<n-dialog title="Deploy AI Instance?">
+  <p>Confirm deploying the active neural model to edge nodes. This will begin billing for allocated server GPU instances.</p>
+  <n-dialog-actions>
+    <n-button variant="secondary" (click)="close()">Cancel</n-button>
+    <n-button variant="primary" (click)="confirm()">Confirm</n-button>
+  </n-dialog-actions>
+</n-dialog>`;
+
+const progressAngularCode = `<!-- Progress Indicators -->
+<n-progress-bar [value]="65" variant="primary" [determinate]="true" label="Determinate track" />
+<n-progress-bar variant="secondary" [determinate]="false" label="Indeterminate wave" />
+<n-progress-circle [value]="65" size="64px" />
+
+<!-- Shimmer Skeletons -->
+<n-card>
+  <div class="skeleton-header">
+    <n-skeleton shape="circle" size="40px" />
+    <div class="skeleton-text">
+      <n-skeleton width="60%" height="12px" />
+      <n-skeleton width="40%" height="8px" />
+    </div>
+  </div>
+  <n-skeleton width="100%" height="60px" />
+</n-card>`;
+
+const layoutsAngularCode = `<!-- Shell Header & Sidebar Layout -->
+<n-shell>
+  <n-app-bar title="App Console">
+    <n-badge variant="success">Active</n-badge>
+  </n-app-bar>
+  <n-sidebar>
+    <n-sidebar-item [active]="true">Dashboard</n-sidebar-item>
+    <n-sidebar-item>Models</n-sidebar-item>
+    <n-sidebar-item>Settings</n-sidebar-item>
+  </n-sidebar>
+</n-shell>
+
+<!-- Timeline pipeline -->
+<n-timeline>
+  <n-timeline-node state="done" title="Import" />
+  <n-timeline-node state="active" title="AI Enhance" />
+  <n-timeline-node state="pending" title="Export" />
+</n-timeline>`;
+
+const sandboxTabs = [
   {
-    id: 'n-button',
-    name: 'NButton',
-    selector: 'n-button',
-    description: 'A versatile button component supporting loading states, variants (primary, gemini, outline, ghost), and sizes.',
-    storybookPath: 'components-button--docs',
-    screenshot: '/screenshots/exports-actions.png'
+    id: 'buttons',
+    name: 'Buttons & CTAs',
+    icon: 'mouse-pointer-click',
+    title: 'NButton Components',
+    desc: 'Versatile buttons with gradient fills, gradient borders, loading animations, tonal backgrounds, and micro-scale active click states.',
+    sbUrl: `${siteConfig.storybookUrl}/?path=/story/components-button--docs`,
+    htmlCode: buttonsHtmlCode,
+    angularCode: buttonsAngularCode
   },
   {
-    id: 'n-card',
-    name: 'NCard',
-    selector: 'n-card',
-    description: 'Premium card panels with visual borders, hover translations, interactive states, headers, footers, and metadata slots.',
-    storybookPath: 'components-card--docs',
-    screenshot: '/screenshots/02-ov-components.png'
+    id: 'forms',
+    name: 'Inputs & Forms',
+    icon: 'sliders',
+    title: 'NInput & Form Controls',
+    desc: 'Highly styled text input fields, search components, select items, textareas, dynamic switches, checkboxes, and radio buttons.',
+    sbUrl: `${siteConfig.storybookUrl}/?path=/story/components-input--docs`,
+    htmlCode: inputsHtmlCode,
+    angularCode: formsAngularCode
   },
   {
-    id: 'n-icon',
-    name: 'NIcon',
-    selector: 'n-icon',
-    description: 'Dynamic icon wrapper linking Lucide icons directly inside standalone Angular templates.',
-    storybookPath: 'components-icon--docs',
-    screenshot: '/screenshots/03-ov-components.png'
+    id: 'cards',
+    name: 'Cards & Stats',
+    icon: 'credit-card',
+    title: 'NCard & Stat Panels',
+    desc: 'Interactive cards featuring gradient borders, background gradients on hover, elevation shadows, and data stats with KPI trend lines.',
+    sbUrl: `${siteConfig.storybookUrl}/?path=/story/components-card--docs`,
+    htmlCode: cardsHtmlCode,
+    angularCode: cardsAngularCode
   },
   {
-    id: 'n-theme-provider',
-    name: 'NThemeProvider',
-    selector: 'provideNeuralTheme()',
-    description: 'Application injector setting active stylesheets, localStorage caching, and data attributes for light/dark modes.',
-    storybookPath: 'theme-introduction--docs',
-    screenshot: '/screenshots/01-ov-components.png'
+    id: 'chips',
+    name: 'Chips & Badges',
+    icon: 'tag',
+    title: 'NChip & NBadge indicators',
+    desc: 'Filter pill chips with active gradient border states and status indicators matching design system token profiles.',
+    sbUrl: `${siteConfig.storybookUrl}/?path=/story/components-chip--docs`,
+    htmlCode: chipsHtmlCode,
+    angularCode: chipsAngularCode
   },
   {
-    id: 'n-shell',
-    name: 'NShell & Layouts',
-    selector: 'n-shell',
-    description: 'A grid-based layout scaffold combining sidebars, toolbars, and primary canvas panels.',
-    storybookPath: 'layout-shell--docs',
-    screenshot: '/screenshots/final-v3.png'
+    id: 'overlays',
+    name: 'Dialogs & Alerts',
+    icon: 'alert-circle',
+    title: 'NDialog Modals & Alert Banners',
+    desc: 'Accessible dialog containers utilizing overlay backdrops alongside status alert banners for errors, successes, and warnings.',
+    sbUrl: `${siteConfig.storybookUrl}/?path=/story/overlay-dialog--docs`,
+    htmlCode: overlaysHtmlCode,
+    angularCode: overlaysAngularCode
   },
   {
-    id: 'n-dialog',
-    name: 'NDialog',
-    selector: 'n-dialog',
-    description: 'Accessible modal panels utilizing Angular CDK overlays to provide focus trapping and screen reader compliance.',
-    storybookPath: 'overlay-dialog--docs',
-    screenshot: '/screenshots/inspector-v2.png'
+    id: 'progress',
+    name: 'Progress & Skeletons',
+    icon: 'loader',
+    title: 'NProgress Trackers & Shimmer Skeletons',
+    desc: 'Linear determinate loading tracks, SVG circular progress meters, and dynamic shimmer skeletons mimicking content loading.',
+    sbUrl: `${siteConfig.storybookUrl}/?path=/story/components-progress--docs`,
+    htmlCode: progressHtmlCode,
+    angularCode: progressAngularCode
   },
   {
-    id: 'n-alert',
-    name: 'NAlert',
-    selector: 'n-alert',
-    description: 'Status banners for messages, warnings, or anomalies, with optional dismiss buttons and action columns.',
-    storybookPath: 'components-alert--docs',
-    screenshot: '/screenshots/04-ov-components.png'
-  },
-  {
-    id: 'n-ai-pipeline',
-    name: 'NAIPipeline',
-    selector: 'n-ai-pipeline',
-    description: 'Specialized interface timelines representing AI logic grids, streaming states, and process checkpoints.',
-    storybookPath: 'ai-pipeline--docs',
-    screenshot: '/screenshots/pipeline-check.png'
+    id: 'layouts',
+    name: 'Layouts & Timelines',
+    icon: 'layout',
+    title: 'NShell Navigation & AI Timelines',
+    desc: 'App headers, mini sidebars, bottom navigation, and processing pipelines illustrating chronological node states.',
+    sbUrl: `${siteConfig.storybookUrl}/?path=/story/layout-shell--docs`,
+    htmlCode: layoutsHtmlCode,
+    angularCode: layoutsAngularCode
   }
 ];
 
@@ -126,12 +558,16 @@ const radiusTokens = [
   title="Neural Angular | Angular-first UI library"
   description={siteConfig.heroDescription}
 >
+  <!-- Highlight.js style & script CDN imports -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" is:inline></script>
+
   <div class="site-shell">
     
     <!-- Header -->
     <header class="site-header" id="main-site-header">
       <a class="brand" href="/">
-        <span class="brand-mark">N</span>
+        <img src="/favicon.svg" class="brand-logo-img" alt="Neural Angular Logo" />
         <span class="brand-copy">
           <strong>{siteConfig.brand}</strong>
           <span>Angular-first UI system</span>
@@ -170,7 +606,7 @@ const radiusTokens = [
               View Components
             </a>
             <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="btn btn-tertiary" id="hero-btn-storybook">
-              Open Storybook
+              View Documentation
             </a>
           </div>
 
@@ -228,15 +664,15 @@ const radiusTokens = [
               </div>
               <div class="code-box-panels">
                 <div class="code-panel active" data-code-panel="pnpm">
-                  <pre><code>{pnpmInstall}</code></pre>
+                  <pre><code class="language-bash">{pnpmInstall}</code></pre>
                   <button type="button" class="copy-code-btn" data-copy-text={pnpmInstall} id="btn-copy-pnpm">Copy</button>
                 </div>
                 <div class="code-panel" data-code-panel="npm">
-                  <pre><code>{npmInstall}</code></pre>
+                  <pre><code class="language-bash">{npmInstall}</code></pre>
                   <button type="button" class="copy-code-btn" data-copy-text={npmInstall} id="btn-copy-npm">Copy</button>
                 </div>
                 <div class="code-panel" data-code-panel="yarn">
-                  <pre><code>{yarnInstall}</code></pre>
+                  <pre><code class="language-bash">{yarnInstall}</code></pre>
                   <button type="button" class="copy-code-btn" data-copy-text={yarnInstall} id="btn-copy-yarn">Copy</button>
                 </div>
               </div>
@@ -249,7 +685,7 @@ const radiusTokens = [
             <h3>Configure CSS Styles</h3>
             <p>Add token overrides and theme classes into your global <code>styles.scss</code> file:</p>
             <div class="code-wrapper">
-              <pre><code>{scssImportCode}</code></pre>
+              <pre><code class="language-scss">{scssImportCode}</code></pre>
               <button type="button" class="copy-code-btn" data-copy-text={scssImportCode} id="btn-copy-scss">Copy</button>
             </div>
           </div>
@@ -260,7 +696,7 @@ const radiusTokens = [
             <h3>Provide Application Theme</h3>
             <p>Initialize the active theme configuration in your application bootstraps:</p>
             <div class="code-wrapper">
-              <pre><code>{appConfigCode}</code></pre>
+              <pre><code class="language-typescript">{appConfigCode}</code></pre>
               <button type="button" class="copy-code-btn" data-copy-text={appConfigCode} id="btn-copy-theme-provider">Copy</button>
             </div>
           </div>
@@ -271,56 +707,88 @@ const radiusTokens = [
       <!-- Component Showcase Section -->
       <section class="section-container" id="showcase-section">
         <div class="section-header">
-          <h2>Components Showcase</h2>
-          <p>Explore the visual structure of core components. Click any component to view its interactive controls in Storybook.</p>
+          <h2>Interactive Component Sandbox</h2>
+          <p>Explore the live HTML output and markup of Neural Angular components directly. Select a category to inspect visual styles, click to toggle states, and copy code snippets.</p>
         </div>
 
-        <div class="showcase-grid">
-          {showcaseComponents.map((comp) => (
-            <div class="showcase-card">
-              <div class="card-top-header">
-                <h3>{comp.name}</h3>
-                <code class="selector-badge">&lt;{comp.selector}&gt;</code>
-              </div>
-              
-              <!-- Dotted canvas placeholder for storybook screenshots -->
-              <div class="canvas-screenshot-placeholder">
-                <div class="browser-mockup-frame">
-                  <div class="mockup-header-bar">
-                    <div class="mockup-header-dots">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <span class="mockup-url-bar">localhost:6006/?path=/story/{comp.id}</span>
-                  </div>
-                  
-                  <div class="mockup-screenshot-content">
-                    {comp.screenshot ? (
-                      <img class="screenshot-img" src={comp.screenshot} alt={`${comp.name} UI screenshot`} loading="lazy" />
-                    ) : (
-                      <>
-                        <span class="preview-camera-icon">📸</span>
-                        <span class="preview-desc">Screenshot Placeholder</span>
-                        <span class="preview-help">Capture actual states in Storybook workspace</span>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              <p class="showcase-desc">{comp.description}</p>
-              
-              <a 
-                href={`${siteConfig.storybookUrl}/?path=/story/${comp.storybookPath}`} 
-                target="_blank" 
-                rel="noreferrer" 
-                class="btn-visit-storybook"
-                id={`btn-visit-storybook-${comp.id}`}
+        <div class="sandbox-container">
+          <!-- Sidebar tabs -->
+          <div class="sandbox-sidebar">
+            <h3>Component Library</h3>
+            {sandboxTabs.map((tab, idx) => (
+              <button 
+                class={`sandbox-tab-btn ${idx === 0 ? 'active' : ''}`}
+                data-sandbox-tab={tab.id}
+                data-title={tab.title}
+                data-desc={tab.desc}
+                data-sb-url={tab.sbUrl}
+                id={`sandbox-tab-${tab.id}`}
               >
-                View in Storybook &rarr;
-              </a>
+                <i data-lucide={tab.icon}></i>
+                <span>{tab.name}</span>
+              </button>
+            ))}
+          </div>
+
+          <!-- Sandbox Content -->
+          <div class="sandbox-content">
+            <!-- Preview Canvas -->
+            <div class="sandbox-canvas">
+              {sandboxTabs.map((tab, idx) => (
+                <div 
+                  class={`sandbox-canvas-panel ${idx === 0 ? 'active' : ''}`}
+                  data-sandbox-panel={tab.id}
+                >
+                  <div set:html={tab.htmlCode}></div>
+                </div>
+              ))}
             </div>
+
+            <!-- Toolbar -->
+            <div class="sandbox-toolbar">
+              <div class="sandbox-info">
+                <span class="sandbox-info-title" id="sandbox-info-title">{sandboxTabs[0].title}</span>
+                <span class="sandbox-info-desc" id="sandbox-info-desc">{sandboxTabs[0].desc}</span>
+              </div>
+              <div class="sandbox-actions">
+                <button type="button" class="sandbox-btn-toggle-code" id="sandbox-btn-toggle-code">
+                  <i data-lucide="code"></i>
+                  <span>Show Angular Code</span>
+                </button>
+                <a 
+                  href={sandboxTabs[0].sbUrl} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  class="btn btn-secondary nn-btn-sm" 
+                  id="sandbox-sb-link"
+                  style="height: 32px; padding: 0 14px; font-size: 11.5px;"
+                >
+                  View Documentation &rarr;
+                </a>
+              </div>
+            </div>
+
+            <!-- Code drawer -->
+            <div class="sandbox-code-drawer" id="sandbox-code-drawer">
+              <pre><code class="language-xml" id="sandbox-code-pre"></code></pre>
+              <button 
+                type="button" 
+                class="copy-code-btn" 
+                id="sandbox-drawer-copy-btn" 
+                data-copy-text=""
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden container for code sources, accessed by JS -->
+        <div class="sandbox-code-sources" style="display: none;">
+          {sandboxTabs.map((tab) => (
+            <pre class="sandbox-code-source-panel" data-code-panel={tab.id}>
+              {tab.angularCode}
+            </pre>
           ))}
         </div>
       </section>
@@ -435,10 +903,10 @@ const radiusTokens = [
       <section class="bottom-cta-band">
         <div class="cta-inner">
           <h2>Ready to discover the complete component catalog?</h2>
-          <p>Open the live interactive Storybook page to browse detailed parameters, states, properties tables, and playground mockups.</p>
+          <p>Explore our comprehensive documentation and interactive design system to browse detailed parameters, states, tokens, and code playground models.</p>
           <div class="cta-actions-row">
             <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="btn btn-primary large" id="cta-btn-storybook">
-              Open Storybook Documentation
+              View Full Documentation
             </a>
             <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" class="btn btn-secondary large" id="cta-btn-github">
               View Monorepo &rarr;
@@ -458,7 +926,7 @@ const radiusTokens = [
     <footer class="site-footer">
       <p>&copy; {new Date().getFullYear()} {siteConfig.brand}. Published under MIT License.</p>
       <div class="footer-links">
-        <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer">Storybook</a>
+        <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer">Documentation</a>
         <a href={siteConfig.npmUrl} target="_blank" rel="noreferrer">npm Package</a>
         <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer">GitHub</a>
       </div>
@@ -493,6 +961,85 @@ const radiusTokens = [
           panel.classList.remove('active');
         }
       });
+    });
+
+    // Tab switching for Sandbox
+    document.addEventListener('click', (e) => {
+      const sandboxTabBtn = e.target.closest('.sandbox-tab-btn');
+      if (!sandboxTabBtn) return;
+
+      const targetTab = sandboxTabBtn.getAttribute('data-sandbox-tab');
+
+      // Toggle buttons active class
+      const btns = document.querySelectorAll('.sandbox-tab-btn');
+      btns.forEach((btn) => {
+        if (btn === sandboxTabBtn) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Toggle canvas panels
+      const panels = document.querySelectorAll('.sandbox-canvas-panel');
+      panels.forEach((panel) => {
+        if (panel.getAttribute('data-sandbox-panel') === targetTab) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+
+      // Update toolbar metadata (title, description, Storybook URL)
+      const title = sandboxTabBtn.getAttribute('data-title');
+      const desc = sandboxTabBtn.getAttribute('data-desc');
+      const sbUrl = sandboxTabBtn.getAttribute('data-sb-url');
+
+      const infoTitleEl = document.getElementById('sandbox-info-title');
+      const infoDescEl = document.getElementById('sandbox-info-desc');
+      const sbLinkEl = document.getElementById('sandbox-sb-link');
+
+      if (infoTitleEl) infoTitleEl.textContent = title;
+      if (infoDescEl) infoDescEl.textContent = desc;
+      if (sbLinkEl) sbLinkEl.setAttribute('href', sbUrl);
+
+      // Hide code drawer when switching tabs
+      const codeDrawer = document.getElementById('sandbox-code-drawer');
+      const btnToggleCode = document.getElementById('sandbox-btn-toggle-code');
+      if (codeDrawer && btnToggleCode) {
+        codeDrawer.classList.remove('active');
+        btnToggleCode.classList.remove('active');
+      }
+
+      // Update the active code panel content
+      const codePre = document.getElementById('sandbox-code-pre');
+      const activeCodePanel = document.querySelector(`.sandbox-code-source-panel[data-code-panel="${targetTab}"]`);
+      if (codePre && activeCodePanel) {
+        codePre.textContent = activeCodePanel.textContent.trim();
+        // Trigger highlight.js to format this code
+        if (window.hljs) {
+          codePre.removeAttribute('data-highlighted');
+          codePre.className = 'language-xml';
+          window.hljs.highlightElement(codePre);
+        }
+        // Also update data-copy-text attribute on the drawer's copy button
+        const drawerCopyBtn = document.getElementById('sandbox-drawer-copy-btn');
+        if (drawerCopyBtn) {
+          drawerCopyBtn.setAttribute('data-copy-text', activeCodePanel.textContent.trim());
+        }
+      }
+    });
+
+    // Toggle Code Drawer button
+    document.addEventListener('click', (e) => {
+      const toggleCodeBtn = e.target.closest('#sandbox-btn-toggle-code');
+      if (!toggleCodeBtn) return;
+
+      const codeDrawer = document.getElementById('sandbox-code-drawer');
+      if (codeDrawer) {
+        const isActive = codeDrawer.classList.toggle('active');
+        toggleCodeBtn.classList.toggle('active', isActive);
+      }
     });
 
     // Tab switching for Design Tokens board
@@ -561,6 +1108,36 @@ const radiusTokens = [
         showToast(`Copied token: ${varName}`);
       } catch {
         showToast('Failed to copy token.');
+      }
+    });
+  </script>
+  <!-- Lucide icons loader -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      // Initialize highlight.js on load
+      if (window.hljs) {
+        window.hljs.highlightAll();
+      }
+
+      // Initialize Sandbox code block on load
+      const codePre = document.getElementById('sandbox-code-pre');
+      const activeCodePanel = document.querySelector('.sandbox-code-source-panel[data-code-panel="buttons"]');
+      if (codePre && activeCodePanel) {
+        codePre.textContent = activeCodePanel.textContent.trim();
+        if (window.hljs) {
+          codePre.removeAttribute('data-highlighted');
+          codePre.className = 'language-xml';
+          window.hljs.highlightElement(codePre);
+        }
+        const drawerCopyBtn = document.getElementById('sandbox-drawer-copy-btn');
+        if (drawerCopyBtn) {
+          drawerCopyBtn.setAttribute('data-copy-text', activeCodePanel.textContent.trim());
+        }
       }
     });
   </script>

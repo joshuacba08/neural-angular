@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   stories: ['../**/*.stories.@(js|jsx|ts|tsx)', '../**/*.docs.mdx'],
+  staticDirs: [{ from: '../../../tools/brand', to: '/brand' }],
   docs: {
     defaultName: 'Docs',
     docsMode: true,

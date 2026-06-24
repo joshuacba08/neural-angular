@@ -1,5 +1,6 @@
 <!-- Load the Neural Angular design system typefaces into the preview iframe.
      Mirrors the original design reference (docs/design_system/Neural Angular.html). -->
+<link rel="icon" type="image/svg+xml" href="/brand/neural-angular-ui-icon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -25,5 +26,38 @@
   .docs-story {
     background: transparent !important;
     background-color: transparent !important;
+  }
+
+  /* Surface the shared logo inside docs mode without affecting canvas stories. */
+  body.sb-show-docs .sbdocs-wrapper {
+    padding-top: 4.25rem !important;
+  }
+
+  body.sb-show-docs::before {
+    content: '';
+    position: fixed;
+    top: 1rem;
+    right: 1.25rem;
+    width: 13rem;
+    height: 2.75rem;
+    background: url('/brand/neural-angular-ui-logo.svg') no-repeat center / contain;
+    filter: drop-shadow(0 10px 24px rgba(124, 58, 237, 0.2));
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  @media (max-width: 900px) {
+    body.sb-show-docs .sbdocs-wrapper {
+      padding-top: 3.75rem !important;
+    }
+
+    body.sb-show-docs::before {
+      width: 10rem;
+      height: 2.15rem;
+      top: 0.85rem;
+      right: 0.95rem;
+      opacity: 0.88;
+    }
   }
 </style>

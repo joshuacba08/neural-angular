@@ -1,5 +1,7 @@
 <!-- Load the design system typefaces into the Storybook manager UI so the
      custom theme's fontBase/fontCode resolve (separate document from the preview iframe). -->
+<link rel="icon" type="image/svg+xml" href="/brand/neural-angular-ui-icon.svg" />
+<link rel="apple-touch-icon" href="/brand/neural-angular-ui-icon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -23,5 +25,13 @@
   /* Make sure docs pages are transparent so the gradient shows behind them */
   .sbdocs {
     background: transparent !important;
+  }
+
+  /* Keep the Storybook brand image crisp and appropriately sized. */
+  .sidebar-header img,
+  .sidebar-header svg,
+  [title="Neural Angular UI Docs"] img {
+    max-height: 30px !important;
+    width: auto !important;
   }
 </style>
