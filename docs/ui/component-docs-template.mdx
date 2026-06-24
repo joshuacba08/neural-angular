@@ -1,0 +1,259 @@
+import { ArgTypes, Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+
+import * as ComponentStories from './component.stories';
+
+<Meta of={ComponentStories} />
+
+# Component Name
+
+`NComponent` is a standalone Angular component that... _(one-line purpose)_.
+
+<div className="n-doc-tabs">
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="component-doc-tabs"
+    id="component-doc-tab-features"
+    value="features"
+    aria-label="Features"
+    defaultChecked
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="component-doc-tabs"
+    id="component-doc-tab-api"
+    value="api"
+    aria-label="API"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="component-doc-tabs"
+    id="component-doc-tab-theming"
+    value="theming"
+    aria-label="Theming"
+  />
+  <input
+    className="n-doc-tabs__input"
+    type="radio"
+    name="component-doc-tabs"
+    id="component-doc-tab-playground"
+    value="playground"
+    aria-label="Playground"
+  />
+
+  <div className="n-doc-tabs__list" aria-label="Component documentation sections">
+    <label className="n-doc-tabs__tab" data-tab="features" htmlFor="component-doc-tab-features">
+      Features
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="api" htmlFor="component-doc-tab-api">
+      API
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="theming" htmlFor="component-doc-tab-theming">
+      Theming
+    </label>
+    <label className="n-doc-tabs__tab" data-tab="playground" htmlFor="component-doc-tab-playground">
+      Playground
+    </label>
+  </div>
+
+  <section className="n-doc-tabs__panel" data-tab="features" id="features">
+
+## Features
+
+### Import
+
+```ts
+import { NComponent } from '@neural/angular-ui/component';
+```
+
+### Basic
+
+The default variant is `primary`. Content is projected via `ng-content`.
+
+<Canvas of={ComponentStories.Basic} layout="centered" sourceState="shown" />
+
+### Variants
+
+Filled, outlined, tonal and ghost treatments.
+
+<Canvas of={ComponentStories.Variants} layout="padded" sourceState="hidden" />
+
+### Sizes
+
+Four sizes: `sm`, `md`, `lg`, `xl`.
+
+<Canvas of={ComponentStories.Sizes} layout="centered" sourceState="hidden" />
+
+### States
+
+`loading` disables the control and shows a centered spinner.
+
+<Canvas of={ComponentStories.States} layout="centered" sourceState="hidden" />
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="api" id="api">
+
+## API
+
+Defines the input properties of `NComponent`.
+
+<ArgTypes of={ComponentStories} sort="requiredFirst" />
+
+### Variants
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Design reference</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>primary</code></td>
+        <td><code>.nn-component-f</code></td>
+        <td>Default filled action</td>
+      </tr>
+      <tr>
+        <td><code>secondary</code></td>
+        <td><code>.nn-component-gm</code></td>
+        <td>Muted secondary action</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Sizes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Height</th>
+        <th>Design reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sm</code></td>
+        <td>32px</td>
+        <td><code>.nn-component-sm</code></td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td>40px</td>
+        <td>default <code>.nn-component</code></td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td>48px</td>
+        <td><code>.nn-component-lg</code></td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td>56px</td>
+        <td><code>.nn-component-xl</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="theming" id="theming">
+
+## Theming
+
+### CSS Classes
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.n-component</code></td>
+        <td>Root element</td>
+      </tr>
+      <tr>
+        <td><code>.n-component__content</code></td>
+        <td>Projected content wrapper</td>
+      </tr>
+      <tr>
+        <td><code>.n-component--primary</code></td>
+        <td>Primary variant modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-component--sm</code></td>
+        <td>Small size modifier</td>
+      </tr>
+      <tr>
+        <td><code>.n-component--loading</code></td>
+        <td>Loading state modifier</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Design Tokens
+
+<div className="n-doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Used for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--n-gradient-primary-secondary</code></td>
+        <td><code>primary</code> background</td>
+      </tr>
+      <tr>
+        <td><code>--n-color-primary</code></td>
+        <td>Accent color, focus ring</td>
+      </tr>
+      <tr>
+        <td><code>--n-radius-full</code></td>
+        <td>Pill border radius</td>
+      </tr>
+      <tr>
+        <td><code>--n-font-body</code></td>
+        <td>Typeface</td>
+      </tr>
+      <tr>
+        <td><code>--n-duration-base</code></td>
+        <td>Transition duration</td>
+      </tr>
+      <tr>
+        <td><code>--n-ease-standard</code></td>
+        <td>Transition easing</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  <section className="n-doc-tabs__panel" data-tab="playground" id="playground">
+
+## Playground
+
+Interact with the component controls below to see options change in real-time. Use the **Show code** button to toggle the raw template code.
+
+<Canvas of={ComponentStories.Playground} layout="centered" sourceState="hidden" />
+<Controls of={ComponentStories.Playground} />
+
+  </section>
+</div>
