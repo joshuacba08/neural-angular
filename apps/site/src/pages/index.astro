@@ -347,15 +347,22 @@ const formsAngularCode = `<!-- Standard Form Fields -->
 <n-input type="search" placeholder="Search tokens, patterns..." />
 
 <!-- Select dropdown menu -->
-<n-select label="Select Option" [options]="['Neural Pro 2.0 (Default)', 'Neural Lite 1.5', 'Neural Vision 3.0']" />
+<n-select
+  label="Select Option"
+  [options]="[
+    { label: 'Neural Pro 2.0 (Default)', value: 'pro' },
+    { label: 'Neural Lite 1.5', value: 'lite' },
+    { label: 'Neural Vision 3.0', value: 'vision' }
+  ]"
+/>
 
-<!-- Toggle, Checkbox & Radio Controls -->
-<n-switch label="Active Neural Engine" [checked]="true" />
-<n-checkbox label="Accept terms" [checked]="true" />
-<n-radio-group [(ngModel)]="selectedEngine">
-  <n-radio value="pro" label="Pro Engine" />
-  <n-radio value="flash" label="Flash Engine" />
-</n-radio-group>`;
+<!-- Toggle Switch & Text Area -->
+<div style="display: flex; align-items: center; gap: 10px; margin: 10px 0 16px;">
+  <span style="font-size: 13px; color: var(--n-text-2);">Active Neural Engine</span>
+  <n-switch [checked]="true" />
+</div>
+
+<n-textarea label="System Prompt" placeholder="Instructions for the agent..." [rows]="3" />`;
 
 const cardsAngularCode = `<!-- Interactive Component Cards -->
 <div class="card-grid">
@@ -384,9 +391,9 @@ const cardsAngularCode = `<!-- Interactive Component Cards -->
 
 <!-- KPI Metrics & Status Cards -->
 <div class="card-grid">
-  <n-metric-card title="Active Users" value="12,480" trend="+14.2% this week" trendState="up" />
-  <n-metric-card title="Token Consumption" value="4.2M" trend="+22.4% vs last day" trendState="up" accent="pink" />
-  <n-metric-card title="Error Rate" value="0.04%" trend="-0.01% since last hour" trendState="down" accent="danger" />
+  <n-metric-card title="Active Users" value="12,480" footer="▲ +14.2% this week" icon="users" />
+  <n-metric-card title="VRAM Usage" value="95" unit="%" [progress]="95" variant="warning" />
+  <n-metric-card title="Error Rate" value="0.04" unit="%" footer="▼ -0.01% since last hour" variant="success" />
 </div>`;
 
 const chipsAngularCode = `<!-- Filter Chips Row -->
@@ -418,15 +425,17 @@ const overlaysAngularCode = `<!-- Alert message banners -->
   </n-dialog-actions>
 </n-dialog>`;
 
-const progressAngularCode = `<!-- Progress Indicators -->
-<n-progress-bar [value]="65" variant="primary" [determinate]="true" label="Determinate track" />
-<n-progress-bar variant="secondary" [determinate]="false" label="Indeterminate wave" />
-<n-progress-circle [value]="65" size="64px" />
+const progressAngularCode = `<!-- Linear Progress Indicators -->
+<n-progress [value]="65" variant="primary" label="Determinate track" [showValue]="true" />
+<n-progress [indeterminate]="true" variant="secondary" label="Indeterminate wave" />
+
+<!-- Circular Progress Rings -->
+<n-progress-ring [value]="65" size="lg" metric="GPU VRAM" />
 
 <!-- Shimmer Skeletons -->
 <n-card>
   <div class="skeleton-header">
-    <n-skeleton shape="circle" size="40px" />
+    <n-skeleton shape="circle" width="40px" height="40px" />
     <div class="skeleton-text">
       <n-skeleton width="60%" height="12px" />
       <n-skeleton width="40%" height="8px" />
@@ -437,21 +446,22 @@ const progressAngularCode = `<!-- Progress Indicators -->
 
 const layoutsAngularCode = `<!-- Shell Header & Sidebar Layout -->
 <n-shell>
-  <n-app-bar title="App Console">
-    <n-badge variant="success">Active</n-badge>
-  </n-app-bar>
+  <n-toolbar [bordered]="true">
+    <span nToolbarStart class="title">App Console</span>
+    <n-badge nToolbarEnd variant="success">Active</n-badge>
+  </n-toolbar>
   <n-sidebar>
-    <n-sidebar-item [active]="true">Dashboard</n-sidebar-item>
-    <n-sidebar-item>Models</n-sidebar-item>
-    <n-sidebar-item>Settings</n-sidebar-item>
+    <n-sidebar-item label="Dashboard" [active]="true" icon="layout" />
+    <n-sidebar-item label="Models" icon="sparkles" />
+    <n-sidebar-item label="Settings" icon="settings" />
   </n-sidebar>
 </n-shell>
 
 <!-- Timeline pipeline -->
 <n-timeline>
-  <n-timeline-node state="done" title="Import" />
-  <n-timeline-node state="active" title="AI Enhance" />
-  <n-timeline-node state="pending" title="Export" />
+  <n-timeline-item status="success" title="Import" icon="check" />
+  <n-timeline-item status="running" title="AI Enhance" icon="sparkles" [active]="true" />
+  <n-timeline-item status="pending" title="Export" icon="download" />
 </n-timeline>`;
 
 const sandboxTabs = [
@@ -578,7 +588,7 @@ const radiusTokens = [
         <a class="nav-link" href="#install-section" id="nav-btn-install">Installation</a>
         <a class="nav-link" href="#showcase-section" id="nav-btn-showcase">Showcase</a>
         <a class="nav-link" href="#tokens-section" id="nav-btn-tokens">Design Tokens</a>
-        <a class="nav-link cta" href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" id="nav-btn-docs">
+        <a class="nn-btn nn-btn-o nn-btn-sm" href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" id="nav-btn-docs">
           Documentation &rarr;
         </a>
       </nav>
@@ -599,13 +609,13 @@ const radiusTokens = [
           <p class="hero-desc">{siteConfig.heroDescription}</p>
 
           <div class="hero-actions">
-            <a href="#install-section" class="btn btn-primary" id="hero-btn-get-started">
+            <a href="#install-section" class="nn-btn nn-btn-f" id="hero-btn-get-started">
               Get Started
             </a>
-            <a href="#showcase-section" class="btn btn-secondary" id="hero-btn-view-components">
+            <a href="#showcase-section" class="nn-btn nn-btn-o" id="hero-btn-view-components">
               View Components
             </a>
-            <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="btn btn-tertiary" id="hero-btn-storybook">
+            <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="nn-btn nn-btn-gm" id="hero-btn-storybook">
               View Documentation
             </a>
           </div>
@@ -905,10 +915,10 @@ const radiusTokens = [
           <h2>Ready to discover the complete component catalog?</h2>
           <p>Explore our comprehensive documentation and interactive design system to browse detailed parameters, states, tokens, and code playground models.</p>
           <div class="cta-actions-row">
-            <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="btn btn-primary large" id="cta-btn-storybook">
+            <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="nn-btn nn-btn-f nn-btn-lg" id="cta-btn-storybook">
               View Full Documentation
             </a>
-            <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" class="btn btn-secondary large" id="cta-btn-github">
+            <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" class="nn-btn nn-btn-o nn-btn-lg" id="cta-btn-github">
               View Monorepo &rarr;
             </a>
           </div>
