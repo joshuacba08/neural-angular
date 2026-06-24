@@ -1,12 +1,12 @@
 export const siteConfig = {
   brand: 'Neural Angular',
   packageName: '@neuralangular/angular-ui',
-  domain: 'materialangular.oroyajs.com',
+  domain: 'neuralangular.oroyajs.com',
   siteUrl:
-    import.meta.env.PUBLIC_SITE_URL ?? 'https://materialangular.oroyajs.com',
+    import.meta.env.PUBLIC_SITE_URL ?? 'https://neuralangular.oroyajs.com',
   storybookUrl:
     import.meta.env.PUBLIC_STORYBOOK_URL ??
-    'https://docs.materialangular.oroyajs.com/',
+    'https://docs.neuralangular.oroyajs.com/',
   npmUrl:
     import.meta.env.PUBLIC_NPM_PACKAGE_URL ??
     'https://www.npmjs.com/package/@neuralangular/angular-ui',

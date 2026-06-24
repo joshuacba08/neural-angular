@@ -17,7 +17,7 @@ pnpm nx run site:typecheck
 
 The site is intentionally small and focused:
 
-- main landing page for `materialangular.oroyajs.com`
+- main landing page for `neuralangular.oroyajs.com`
 - direct link to the published npm package
 - direct link to the static Storybook deployment
 - clear routing into GitHub source
@@ -32,7 +32,7 @@ with its own root directory.
 
 ### 1. Main Astro site
 
-- Project domain: `materialangular.oroyajs.com`
+- Project domain: `neuralangular.oroyajs.com`
 - Framework preset: `Astro`
 - Root directory: `apps/site`
 - Install command: leave auto-detected
@@ -49,7 +49,7 @@ Optional environment variables:
 
 ### 2. Static Storybook
 
-- Project domain: `docs.materialangular.oroyajs.com`
+- Project domain: `docs.neuralangular.oroyajs.com`
 - Root directory: repository root
 - Install command: `pnpm install --frozen-lockfile`
 - Build command: `pnpm nx run @neural/angular-ui:build-storybook`
