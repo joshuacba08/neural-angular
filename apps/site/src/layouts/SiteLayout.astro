@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { description, pathname = '/', title } = Astro.props;
-const siteUrl = Astro.site ?? new URL('https://oroyajs.com');
+const siteUrl = Astro.site ?? new URL('https://materialangular.oroyajs.com');
 const canonical = new URL(pathname, siteUrl);
 const socialImage = new URL('/social-card.svg', siteUrl);
 ---
