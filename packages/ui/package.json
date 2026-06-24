@@ -1,8 +1,37 @@
 {
-  "name": "@neural/angular-ui",
-  "version": "0.0.1",
-  "description": "Angular-first UI system for Neural Angular.",
+  "name": "@neuralangular/angular-ui",
+  "version": "0.1.0",
+  "description": "Angular-first UI component library. Modern, accessible, dark-mode ready components built on Angular CDK.",
   "type": "module",
+  "license": "MIT",
+  "author": "Neural Angular Contributors",
+  "homepage": "https://github.com/joshuacba08/neural-angular",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuacba08/neural-angular.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://github.com/joshuacba08/neural-angular/issues"
+  },
+  "keywords": [
+    "angular",
+    "ui",
+    "components",
+    "design-system",
+    "angular-material",
+    "angular-cdk",
+    "dark-mode",
+    "neural"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "src/styles",
+    "README.md"
+  ],
   "sideEffects": [
     "**/*.css"
   ],
