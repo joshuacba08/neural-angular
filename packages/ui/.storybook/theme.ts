@@ -11,7 +11,7 @@ export const neuralTheme = create({
   base: 'dark',
 
   brandTitle: 'Neural Angular UI Docs',
-  brandImage: '/brand/neural-angular-ui-logo.svg',
+  brandImage: '/brand/neural-angular-ui-icon.svg',
   brandTarget: '_self',
 
   // Gemini accents
