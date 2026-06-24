@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Configuration
 
-Application-wide configuration for `@neural/angular-ui`.
+Application-wide configuration for `@neuralangular/angular-ui`.
 
 <section className="n-guide-page">
   <div className="n-guide-hero">
@@ -27,7 +27,7 @@ import {
   provideNeuralIcons,
   provideNeuralOverlay,
   provideNeuralTheme,
-} from '@neural/angular-ui';
+} from '@neuralangular/angular-ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -60,7 +60,7 @@ Switch themes dynamically by injecting `NeuralThemeService`.
 
 ```typescript
 import { Component, inject } from '@angular/core';
-import { NeuralThemeService, type NeuralThemeName } from '@neural/angular-ui/theme';
+import { NeuralThemeService, type NeuralThemeName } from '@neuralangular/angular-ui/theme';
 
 @Component({
   selector: 'app-theme-toggle',
@@ -89,7 +89,7 @@ Register the Neural icon pack once with `provideNeuralIcons()`. It uses `@lucide
 directly, without global scripts or post-render DOM replacement.
 
 ```typescript
-import { provideNeuralIcons } from '@neural/angular-ui';
+import { provideNeuralIcons } from '@neuralangular/angular-ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideNeuralIcons()],
@@ -102,7 +102,7 @@ Components such as dialogs, drawers, toasts, tooltips, and popovers rely on the 
 providers.
 
 ```typescript
-import { provideNeuralOverlay } from '@neural/angular-ui/overlay';
+import { provideNeuralOverlay } from '@neuralangular/angular-ui/overlay';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideNeuralOverlay()],

@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Installation
 
-Setting up `@neural/angular-ui` in an Angular application.
+Setting up `@neuralangular/angular-ui` in an Angular application.
 
 <section className="n-guide-page">
   <div className="n-guide-hero">
@@ -22,13 +22,13 @@ Install the package and its peer dependencies from the npm registry.
 
 ```bash
 # Using npm
-npm install @neural/angular-ui @angular/cdk @lucide/angular
+npm install @neuralangular/angular-ui @angular/cdk @lucide/angular
 
 # Using yarn
-yarn add @neural/angular-ui @angular/cdk @lucide/angular
+yarn add @neuralangular/angular-ui @angular/cdk @lucide/angular
 
 # Using pnpm
-pnpm add @neural/angular-ui @angular/cdk @lucide/angular
+pnpm add @neuralangular/angular-ui @angular/cdk @lucide/angular
 ```
 
 ## Styles
@@ -36,7 +36,7 @@ pnpm add @neural/angular-ui @angular/cdk @lucide/angular
 Import the design-system stylesheet once in your global application styles.
 
 ```css
-@import "@neural/angular-ui/styles";
+@import "@neuralangular/angular-ui/styles";
 ```
 
 The bundle includes design tokens, dark and light theme layers, and the shared base treatment
@@ -64,8 +64,8 @@ are recommended so each screen only pulls the pieces it uses.
 ```typescript
 import { Component } from '@angular/core';
 
-import { NButton } from '@neural/angular-ui/button';
-import { NCard, NCardContent, NCardHeader, NCardTitle } from '@neural/angular-ui/card';
+import { NButton } from '@neuralangular/angular-ui/button';
+import { NCard, NCardContent, NCardHeader, NCardTitle } from '@neuralangular/angular-ui/card';
 
 @Component({
   selector: 'app-root',

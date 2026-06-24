@@ -1,4 +1,4 @@
-# @neural/angular-ui
+# @neuralangular/angular-ui
 
 Angular-first UI system for Neural Angular.
 
@@ -7,7 +7,7 @@ Current status: token foundation, a minimal Angular theme provider, Lucide icon 
 ## Styles
 
 ```css
-@import "@neural/angular-ui/styles";
+@import "@neuralangular/angular-ui/styles";
 ```
 
 This bundle includes the design tokens, the dark/light theme layers, and a base
@@ -34,17 +34,17 @@ A CSS entry point is also provided for convenience (note: bundlers may inline or
 strip remote `@import` rules, so the `<link>` above is preferred):
 
 ```css
-@import "@neural/angular-ui/styles/fonts";
+@import "@neuralangular/angular-ui/styles/fonts";
 ```
 
 For offline or self-hosted setups, declare your own `@font-face` rules for the
 two families instead. The base `body` treatment is also available standalone via
-`@neural/angular-ui/styles/base`.
+`@neuralangular/angular-ui/styles/base`.
 
 ## Theme
 
 ```ts
-import { provideNeuralTheme } from '@neural/angular-ui';
+import { provideNeuralTheme } from '@neuralangular/angular-ui';
 
 export const appConfig = {
   providers: [
@@ -65,7 +65,7 @@ The provider applies `data-n-theme` to the document element in the browser. The 
 ## Icons
 
 ```ts
-import { provideNeuralIcons } from '@neural/angular-ui';
+import { provideNeuralIcons } from '@neuralangular/angular-ui';
 
 export const appConfig = {
   providers: [provideNeuralIcons()],
@@ -115,52 +115,52 @@ import {
   NTimelineItem,
   NToolbar,
   NVoiceOrb,
-} from '@neural/angular-ui';
+} from '@neuralangular/angular-ui';
 ```
 
 Secondary entry points are available in the workspace:
 
 ```ts
-import { NButton } from '@neural/angular-ui/button';
-import { NCard } from '@neural/angular-ui/card';
-import { NIcon } from '@neural/angular-ui/icon';
-import { NBadge } from '@neural/angular-ui/badge';
-import { NChip } from '@neural/angular-ui/chip';
-import { NInput } from '@neural/angular-ui/input';
-import { NTextarea } from '@neural/angular-ui/textarea';
-import { NSelect } from '@neural/angular-ui/select';
-import { NAvatar } from '@neural/angular-ui/avatar';
-import { NProgress } from '@neural/angular-ui/progress';
-import { NSpinner } from '@neural/angular-ui/spinner';
-import { NEmptyState } from '@neural/angular-ui/empty-state';
-import { NStatusDot } from '@neural/angular-ui/status-dot';
-import { NShell } from '@neural/angular-ui/shell';
-import { NSidebar } from '@neural/angular-ui/sidebar';
-import { NToolbar } from '@neural/angular-ui/toolbar';
-import { NTabs } from '@neural/angular-ui/tabs';
-import { NPageHeader } from '@neural/angular-ui/page-header';
-import { NCommandBar } from '@neural/angular-ui/command-bar';
-import { NStatCard } from '@neural/angular-ui/stat-card';
-import { NMetricCard } from '@neural/angular-ui/metric-card';
-import { NDataCard } from '@neural/angular-ui/data-card';
-import { NTimeline } from '@neural/angular-ui/timeline';
-import { NTable } from '@neural/angular-ui/table';
-import { provideNeuralOverlay } from '@neural/angular-ui/overlay';
-import { NDialogService } from '@neural/angular-ui/dialog';
-import { NDrawerService } from '@neural/angular-ui/drawer';
-import { NToastService } from '@neural/angular-ui/toast';
-import { NTooltipDirective } from '@neural/angular-ui/tooltip';
-import { NPopoverDirective } from '@neural/angular-ui/popover';
-import { NDropzone } from '@neural/angular-ui/dropzone';
-import { NFileCard } from '@neural/angular-ui/file-card';
-import { NImageCompare } from '@neural/angular-ui/image-compare';
-import { NMediaPreview } from '@neural/angular-ui/media-preview';
-import { NAIPipeline } from '@neural/angular-ui/ai-pipeline';
-import { NChat } from '@neural/angular-ui/chat';
-import { formatFileSize, type NFileLike } from '@neural/angular-ui/media';
-import { NPromptInput } from '@neural/angular-ui/prompt-input';
-import { NStreamingText } from '@neural/angular-ui/streaming-text';
-import { NVoiceOrb } from '@neural/angular-ui/voice-orb';
+import { NButton } from '@neuralangular/angular-ui/button';
+import { NCard } from '@neuralangular/angular-ui/card';
+import { NIcon } from '@neuralangular/angular-ui/icon';
+import { NBadge } from '@neuralangular/angular-ui/badge';
+import { NChip } from '@neuralangular/angular-ui/chip';
+import { NInput } from '@neuralangular/angular-ui/input';
+import { NTextarea } from '@neuralangular/angular-ui/textarea';
+import { NSelect } from '@neuralangular/angular-ui/select';
+import { NAvatar } from '@neuralangular/angular-ui/avatar';
+import { NProgress } from '@neuralangular/angular-ui/progress';
+import { NSpinner } from '@neuralangular/angular-ui/spinner';
+import { NEmptyState } from '@neuralangular/angular-ui/empty-state';
+import { NStatusDot } from '@neuralangular/angular-ui/status-dot';
+import { NShell } from '@neuralangular/angular-ui/shell';
+import { NSidebar } from '@neuralangular/angular-ui/sidebar';
+import { NToolbar } from '@neuralangular/angular-ui/toolbar';
+import { NTabs } from '@neuralangular/angular-ui/tabs';
+import { NPageHeader } from '@neuralangular/angular-ui/page-header';
+import { NCommandBar } from '@neuralangular/angular-ui/command-bar';
+import { NStatCard } from '@neuralangular/angular-ui/stat-card';
+import { NMetricCard } from '@neuralangular/angular-ui/metric-card';
+import { NDataCard } from '@neuralangular/angular-ui/data-card';
+import { NTimeline } from '@neuralangular/angular-ui/timeline';
+import { NTable } from '@neuralangular/angular-ui/table';
+import { provideNeuralOverlay } from '@neuralangular/angular-ui/overlay';
+import { NDialogService } from '@neuralangular/angular-ui/dialog';
+import { NDrawerService } from '@neuralangular/angular-ui/drawer';
+import { NToastService } from '@neuralangular/angular-ui/toast';
+import { NTooltipDirective } from '@neuralangular/angular-ui/tooltip';
+import { NPopoverDirective } from '@neuralangular/angular-ui/popover';
+import { NDropzone } from '@neuralangular/angular-ui/dropzone';
+import { NFileCard } from '@neuralangular/angular-ui/file-card';
+import { NImageCompare } from '@neuralangular/angular-ui/image-compare';
+import { NMediaPreview } from '@neuralangular/angular-ui/media-preview';
+import { NAIPipeline } from '@neuralangular/angular-ui/ai-pipeline';
+import { NChat } from '@neuralangular/angular-ui/chat';
+import { formatFileSize, type NFileLike } from '@neuralangular/angular-ui/media';
+import { NPromptInput } from '@neuralangular/angular-ui/prompt-input';
+import { NStreamingText } from '@neuralangular/angular-ui/streaming-text';
+import { NVoiceOrb } from '@neuralangular/angular-ui/voice-orb';
 ```
 
 ```html
@@ -250,7 +250,7 @@ import { NVoiceOrb } from '@neural/angular-ui/voice-orb';
 Register the CDK overlay provider once in application config:
 
 ```ts
-import { provideNeuralOverlay } from '@neural/angular-ui';
+import { provideNeuralOverlay } from '@neuralangular/angular-ui';
 
 export const appConfig = {
   providers: [provideNeuralOverlay()],
