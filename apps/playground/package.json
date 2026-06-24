@@ -1,8 +1,5 @@
 {
   "name": "@neural/playground",
   "private": true,
-  "version": "0.0.0",
-  "dependencies": {
-    "@neural/angular-ui": "workspace:*"
-  }
+  "version": "0.0.0"
 }

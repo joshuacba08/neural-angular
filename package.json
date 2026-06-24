@@ -6,6 +6,10 @@
   "packageManager": "pnpm@11.6.0",
   "scripts": {
     "dev": "nx run-many -t serve",
+    "site:dev": "nx run site:dev",
+    "site:build": "nx run site:build",
+    "site:preview": "nx run site:preview",
+    "site:typecheck": "nx run site:typecheck",
     "storybook": "nx run @neural/angular-ui:storybook",
     "build": "nx run-many -t build",
     "build:storybook": "nx run @neural/angular-ui:build-storybook",

@@ -1,0 +1,567 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { siteConfig } from '../data/site';
+import { libraryMeta } from '../lib/library-meta';
+import '../styles/global.css';
+
+const pnpmInstall = `pnpm add ${siteConfig.packageName}`;
+const npmInstall = `npm i ${siteConfig.packageName}`;
+const yarnInstall = `yarn add ${siteConfig.packageName}`;
+
+const scssImportCode = `// Import tokens, basic styles, and theme layers
+@import "@neuralangular/angular-ui/styles/tokens";
+@import "@neuralangular/angular-ui/styles/base";
+@import "@neuralangular/angular-ui/styles/dark";
+@import "@neuralangular/angular-ui/styles/light";
+@import "@neuralangular/angular-ui/styles/compat";`;
+
+const appConfigCode = `import { ApplicationConfig } from '@angular/core';
+import { provideNeuralTheme } from '@neuralangular/angular-ui/theme';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideNeuralTheme({
+      defaultTheme: 'system',
+      storage: true,
+      storageKey: 'neural-app-theme'
+    })
+  ]
+};`;
+
+const showcaseComponents = [
+  {
+    id: 'n-button',
+    name: 'NButton',
+    selector: 'n-button',
+    description: 'A versatile button component supporting loading states, variants (primary, gemini, outline, ghost), and sizes.',
+    storybookPath: 'components-button--docs',
+    screenshot: '/screenshots/exports-actions.png'
+  },
+  {
+    id: 'n-card',
+    name: 'NCard',
+    selector: 'n-card',
+    description: 'Premium card panels with visual borders, hover translations, interactive states, headers, footers, and metadata slots.',
+    storybookPath: 'components-card--docs',
+    screenshot: '/screenshots/02-ov-components.png'
+  },
+  {
+    id: 'n-icon',
+    name: 'NIcon',
+    selector: 'n-icon',
+    description: 'Dynamic icon wrapper linking Lucide icons directly inside standalone Angular templates.',
+    storybookPath: 'components-icon--docs',
+    screenshot: '/screenshots/03-ov-components.png'
+  },
+  {
+    id: 'n-theme-provider',
+    name: 'NThemeProvider',
+    selector: 'provideNeuralTheme()',
+    description: 'Application injector setting active stylesheets, localStorage caching, and data attributes for light/dark modes.',
+    storybookPath: 'theme-introduction--docs',
+    screenshot: '/screenshots/01-ov-components.png'
+  },
+  {
+    id: 'n-shell',
+    name: 'NShell & Layouts',
+    selector: 'n-shell',
+    description: 'A grid-based layout scaffold combining sidebars, toolbars, and primary canvas panels.',
+    storybookPath: 'layout-shell--docs',
+    screenshot: '/screenshots/final-v3.png'
+  },
+  {
+    id: 'n-dialog',
+    name: 'NDialog',
+    selector: 'n-dialog',
+    description: 'Accessible modal panels utilizing Angular CDK overlays to provide focus trapping and screen reader compliance.',
+    storybookPath: 'overlay-dialog--docs',
+    screenshot: '/screenshots/inspector-v2.png'
+  },
+  {
+    id: 'n-alert',
+    name: 'NAlert',
+    selector: 'n-alert',
+    description: 'Status banners for messages, warnings, or anomalies, with optional dismiss buttons and action columns.',
+    storybookPath: 'components-alert--docs',
+    screenshot: '/screenshots/04-ov-components.png'
+  },
+  {
+    id: 'n-ai-pipeline',
+    name: 'NAIPipeline',
+    selector: 'n-ai-pipeline',
+    description: 'Specialized interface timelines representing AI logic grids, streaming states, and process checkpoints.',
+    storybookPath: 'ai-pipeline--docs',
+    screenshot: '/screenshots/pipeline-check.png'
+  }
+];
+
+const colorTokens = [
+  { name: '--nn-blue-primary', value: '#4285F4', desc: 'Primary Google Blue color' },
+  { name: '--nn-violet-primary', value: '#7B5CF6', desc: 'Secondary purple accent' },
+  { name: '--nn-pink-primary', value: '#D946EF', desc: 'Tertiary violet accent' },
+  { name: '--nn-success', value: '#34A853', desc: 'Success green status indicator' },
+  { name: '--nn-warning', value: '#FBBC05', desc: 'Warning yellow status indicator' },
+  { name: '--nn-error', value: '#EA4335', desc: 'Error red status indicator' },
+];
+
+const surfaceTokens = [
+  { name: '--nn-bg-canvas', value: '#06060E', desc: 'Deep canvas background color' },
+  { name: '--nn-bg-base', value: '#0A0A15', desc: 'Primary card and base container fill' },
+  { name: '--nn-surface-1', value: '#0F0F1C', desc: 'Layer 1 surface card backgrounds' },
+  { name: '--nn-surface-2', value: '#141426', desc: 'Layer 2 surface cards and active hover state' },
+  { name: '--nn-surface-3', value: '#1A1A2E', desc: 'Layer 3 surface dropdown and menu overlays' },
+];
+
+const radiusTokens = [
+  { name: '--nn-r-xs', value: '4px', desc: 'Border-radius for input fields and text areas' },
+  { name: '--nn-r-sm', value: '8px', desc: 'Border-radius for small buttons and badges' },
+  { name: '--nn-r-md', value: '12px', desc: 'Border-radius for standard core UI widgets' },
+  { name: '--nn-r-lg', value: '16px', desc: 'Border-radius for primary content panels' },
+  { name: '--nn-r-xl', value: '20px', desc: 'Border-radius for large dialog panels' },
+  { name: '--nn-r-full', value: '9999px', desc: 'Border-radius for badges and pill-shaped elements' },
+];
+---
+
+<SiteLayout
+  title="Neural Angular | Angular-first UI library"
+  description={siteConfig.heroDescription}
+>
+  <div class="site-shell">
+    
+    <!-- Header -->
+    <header class="site-header" id="main-site-header">
+      <a class="brand" href="/">
+        <span class="brand-mark">N</span>
+        <span class="brand-copy">
+          <strong>{siteConfig.brand}</strong>
+          <span>Angular-first UI system</span>
+        </span>
+      </a>
+
+      <nav class="header-links" aria-label="Sections">
+        <a class="nav-link" href="#install-section" id="nav-btn-install">Installation</a>
+        <a class="nav-link" href="#showcase-section" id="nav-btn-showcase">Showcase</a>
+        <a class="nav-link" href="#tokens-section" id="nav-btn-tokens">Design Tokens</a>
+        <a class="nav-link cta" href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" id="nav-btn-docs">
+          Documentation &rarr;
+        </a>
+      </nav>
+    </header>
+
+    <main class="landing-main">
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="eyebrow-row">
+            <span class="eyebrow">Published on npm</span>
+            <span class="version-badge">v{libraryMeta.version}</span>
+            <span class="angular-badge">Angular {libraryMeta.angularRange}</span>
+          </div>
+
+          <h1>Angular UI built for real production apps.</h1>
+          <p class="hero-desc">{siteConfig.heroDescription}</p>
+
+          <div class="hero-actions">
+            <a href="#install-section" class="btn btn-primary" id="hero-btn-get-started">
+              Get Started
+            </a>
+            <a href="#showcase-section" class="btn btn-secondary" id="hero-btn-view-components">
+              View Components
+            </a>
+            <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="btn btn-tertiary" id="hero-btn-storybook">
+              Open Storybook
+            </a>
+          </div>
+
+          <!-- Quick Install Command Box -->
+          <div class="hero-install-box">
+            <div class="install-input-container">
+              <span class="cli-prompt">$</span>
+              <input type="text" readonly value={pnpmInstall} id="hero-install-input" aria-label="Install command" />
+            </div>
+            <button type="button" class="btn-copy" data-copy-text={pnpmInstall} id="hero-btn-copy">
+              Copy
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-stats-panel">
+          <div class="stat-card">
+            <span class="stat-label">Version</span>
+            <strong class="stat-value">v{libraryMeta.version}</strong>
+            <p>Published & ready</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Entry Points</span>
+            <strong class="stat-value">{libraryMeta.secondaryEntryPoints}+</strong>
+            <p>Focused module imports</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Style Exports</span>
+            <strong class="stat-value">{libraryMeta.styleExports}</strong>
+            <p>Stylesheets & tokens</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Getting Started / Installation Section -->
+      <section class="section-container" id="install-section">
+        <div class="section-header">
+          <h2>Getting Started</h2>
+          <p>Quick steps to integrate Neural Angular UI into your project workspaces.</p>
+        </div>
+
+        <div class="steps-grid">
+          
+          <!-- Step 1 -->
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Download Package</h3>
+            <p>Install the library package using your preferred node package manager.</p>
+            
+            <div class="tabbed-code-box">
+              <div class="code-box-tabs">
+                <button class="code-tab-btn active" data-tab-code="pnpm" id="btn-pkg-pnpm">pnpm</button>
+                <button class="code-tab-btn" data-tab-code="npm" id="btn-pkg-npm">npm</button>
+                <button class="code-tab-btn" data-tab-code="yarn" id="btn-pkg-yarn">yarn</button>
+              </div>
+              <div class="code-box-panels">
+                <div class="code-panel active" data-code-panel="pnpm">
+                  <pre><code>{pnpmInstall}</code></pre>
+                  <button type="button" class="copy-code-btn" data-copy-text={pnpmInstall} id="btn-copy-pnpm">Copy</button>
+                </div>
+                <div class="code-panel" data-code-panel="npm">
+                  <pre><code>{npmInstall}</code></pre>
+                  <button type="button" class="copy-code-btn" data-copy-text={npmInstall} id="btn-copy-npm">Copy</button>
+                </div>
+                <div class="code-panel" data-code-panel="yarn">
+                  <pre><code>{yarnInstall}</code></pre>
+                  <button type="button" class="copy-code-btn" data-copy-text={yarnInstall} id="btn-copy-yarn">Copy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Configure CSS Styles</h3>
+            <p>Add token overrides and theme classes into your global <code>styles.scss</code> file:</p>
+            <div class="code-wrapper">
+              <pre><code>{scssImportCode}</code></pre>
+              <button type="button" class="copy-code-btn" data-copy-text={scssImportCode} id="btn-copy-scss">Copy</button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Provide Application Theme</h3>
+            <p>Initialize the active theme configuration in your application bootstraps:</p>
+            <div class="code-wrapper">
+              <pre><code>{appConfigCode}</code></pre>
+              <button type="button" class="copy-code-btn" data-copy-text={appConfigCode} id="btn-copy-theme-provider">Copy</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Component Showcase Section -->
+      <section class="section-container" id="showcase-section">
+        <div class="section-header">
+          <h2>Components Showcase</h2>
+          <p>Explore the visual structure of core components. Click any component to view its interactive controls in Storybook.</p>
+        </div>
+
+        <div class="showcase-grid">
+          {showcaseComponents.map((comp) => (
+            <div class="showcase-card">
+              <div class="card-top-header">
+                <h3>{comp.name}</h3>
+                <code class="selector-badge">&lt;{comp.selector}&gt;</code>
+              </div>
+              
+              <!-- Dotted canvas placeholder for storybook screenshots -->
+              <div class="canvas-screenshot-placeholder">
+                <div class="browser-mockup-frame">
+                  <div class="mockup-header-bar">
+                    <div class="mockup-header-dots">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <span class="mockup-url-bar">localhost:6006/?path=/story/{comp.id}</span>
+                  </div>
+                  
+                  <div class="mockup-screenshot-content">
+                    {comp.screenshot ? (
+                      <img class="screenshot-img" src={comp.screenshot} alt={`${comp.name} UI screenshot`} loading="lazy" />
+                    ) : (
+                      <>
+                        <span class="preview-camera-icon">📸</span>
+                        <span class="preview-desc">Screenshot Placeholder</span>
+                        <span class="preview-help">Capture actual states in Storybook workspace</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <p class="showcase-desc">{comp.description}</p>
+              
+              <a 
+                href={`${siteConfig.storybookUrl}/?path=/story/${comp.storybookPath}`} 
+                target="_blank" 
+                rel="noreferrer" 
+                class="btn-visit-storybook"
+                id={`btn-visit-storybook-${comp.id}`}
+              >
+                View in Storybook &rarr;
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Design Tokens Section -->
+      <section class="section-container" id="tokens-section">
+        <div class="section-header">
+          <h2>Design Tokens</h2>
+          <p>Definitions of core design variable classes. Click any token row to copy the variable to your clipboard.</p>
+        </div>
+
+        <div class="tokens-layout-board">
+          
+          <div class="tokens-nav-tabs">
+            <button class="token-tab-trigger active" data-token-tab="colors" id="tab-btn-colors">Colors</button>
+            <button class="token-tab-trigger" data-token-tab="surfaces" id="tab-btn-surfaces">Surfaces</button>
+            <button class="token-tab-trigger" data-token-tab="radii" id="tab-btn-radii">Border Radius</button>
+          </div>
+
+          <div class="token-lists-container">
+            
+            <!-- Color Tokens List -->
+            <div class="token-list-panel active" data-token-panel="colors">
+              <div class="tokens-table-wrapper">
+                <table class="tokens-display-table">
+                  <thead>
+                    <tr>
+                      <th>Visual</th>
+                      <th>CSS Variable</th>
+                      <th>Default Value</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {colorTokens.map((tok) => (
+                      <tr class="token-interactive-row" data-copy-value={tok.name}>
+                        <td>
+                          <div class="visual-token-swatch" style={`background-color: ${tok.value};`}></div>
+                        </td>
+                        <td><code class="token-name-label">{tok.name}</code></td>
+                        <td><code class="token-value-label">{tok.value}</code></td>
+                        <td>{tok.desc}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Surface Tokens List -->
+            <div class="token-list-panel" data-token-panel="surfaces">
+              <div class="tokens-table-wrapper">
+                <table class="tokens-display-table">
+                  <thead>
+                    <tr>
+                      <th>Visual</th>
+                      <th>CSS Variable</th>
+                      <th>Default Value</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {surfaceTokens.map((tok) => (
+                      <tr class="token-interactive-row" data-copy-value={tok.name}>
+                        <td>
+                          <div class="visual-token-surface" style={`background-color: ${tok.value};`}></div>
+                        </td>
+                        <td><code class="token-name-label">{tok.name}</code></td>
+                        <td><code class="token-value-label">{tok.value}</code></td>
+                        <td>{tok.desc}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Border Radius Tokens List -->
+            <div class="token-list-panel" data-token-panel="radii">
+              <div class="tokens-table-wrapper">
+                <table class="tokens-display-table">
+                  <thead>
+                    <tr>
+                      <th>Visual</th>
+                      <th>CSS Variable</th>
+                      <th>Default Value</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {radiusTokens.map((tok) => (
+                      <tr class="token-interactive-row" data-copy-value={tok.name}>
+                        <td>
+                          <div class="visual-token-radius" style={`border-radius: ${tok.value};`}></div>
+                        </td>
+                        <td><code class="token-name-label">{tok.name}</code></td>
+                        <td><code class="token-value-label">{tok.value}</code></td>
+                        <td>{tok.desc}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Bottom CTA Band -->
+      <section class="bottom-cta-band">
+        <div class="cta-inner">
+          <h2>Ready to discover the complete component catalog?</h2>
+          <p>Open the live interactive Storybook page to browse detailed parameters, states, properties tables, and playground mockups.</p>
+          <div class="cta-actions-row">
+            <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer" class="btn btn-primary large" id="cta-btn-storybook">
+              Open Storybook Documentation
+            </a>
+            <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" class="btn btn-secondary large" id="cta-btn-github">
+              View Monorepo &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="feedback-toast" class="toast-notification" aria-live="polite">
+      Copied to clipboard!
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; {new Date().getFullYear()} {siteConfig.brand}. Published under MIT License.</p>
+      <div class="footer-links">
+        <a href={siteConfig.storybookUrl} target="_blank" rel="noreferrer">Storybook</a>
+        <a href={siteConfig.npmUrl} target="_blank" rel="noreferrer">npm Package</a>
+        <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Client-side tab switcher & copy utility script -->
+  <script is:inline>
+    // Tab switching for installation steps code block
+    document.addEventListener('click', (e) => {
+      const codeTabBtn = e.target.closest('.code-tab-btn');
+      if (!codeTabBtn) return;
+
+      const targetCode = codeTabBtn.getAttribute('data-tab-code');
+
+      // Set active button styles
+      const tabBtns = document.querySelectorAll('.code-tab-btn');
+      tabBtns.forEach((btn) => {
+        if (btn === codeTabBtn) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Toggle panels
+      const panels = document.querySelectorAll('.code-panel');
+      panels.forEach((panel) => {
+        if (panel.getAttribute('data-code-panel') === targetCode) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    });
+
+    // Tab switching for Design Tokens board
+    document.addEventListener('click', (e) => {
+      const tabBtn = e.target.closest('.token-tab-trigger');
+      if (!tabBtn) return;
+
+      const targetTab = tabBtn.getAttribute('data-token-tab');
+
+      // Toggle buttons active class
+      const btns = document.querySelectorAll('.token-tab-trigger');
+      btns.forEach((btn) => {
+        if (btn === tabBtn) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Toggle table panels
+      const panels = document.querySelectorAll('.token-list-panel');
+      panels.forEach((panel) => {
+        if (panel.getAttribute('data-token-panel') === targetTab) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    });
+
+    // Clipboard Copy feedback toast utility
+    const toast = document.getElementById('feedback-toast');
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('active');
+      window.setTimeout(() => {
+        toast.classList.remove('active');
+      }, 2000);
+    }
+
+    // Dynamic click to copy handler for copy buttons
+    document.addEventListener('click', async (e) => {
+      const copyBtn = e.target.closest('[data-copy-text]');
+      if (!copyBtn) return;
+
+      const text = copyBtn.getAttribute('data-copy-text');
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Copied code snippet to clipboard!');
+      } catch {
+        showToast('Failed to copy.');
+      }
+    });
+
+    // Copy Token Variables on row click
+    document.addEventListener('click', async (e) => {
+      const tokenRow = e.target.closest('.token-interactive-row');
+      if (!tokenRow) return;
+
+      const varName = tokenRow.getAttribute('data-copy-value');
+      if (!varName) return;
+
+      try {
+        await navigator.clipboard.writeText(varName);
+        showToast(`Copied token: ${varName}`);
+      } catch {
+        showToast('Failed to copy token.');
+      }
+    });
+  </script>
+</SiteLayout>

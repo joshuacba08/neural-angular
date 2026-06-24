@@ -1,0 +1,46 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "site",
+  "projectType": "application",
+  "root": "apps/site",
+  "sourceRoot": "apps/site/src",
+  "tags": ["type:app", "scope:marketing", "npm:private"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/site",
+        "command": "pnpm dev"
+      },
+      "continuous": true,
+      "parallelism": true
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/site",
+        "command": "pnpm build"
+      },
+      "outputs": ["{projectRoot}/dist"],
+      "parallelism": true
+    },
+    "preview": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/site",
+        "command": "pnpm preview"
+      },
+      "dependsOn": ["build"],
+      "continuous": true,
+      "parallelism": true
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/site",
+        "command": "pnpm astro check"
+      },
+      "parallelism": true
+    }
+  }
+}
