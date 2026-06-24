@@ -1,0 +1,90 @@
+name: Publish @neuralangular/angular-ui
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (does not publish, just builds and checks)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: read
+  id-token: write   # needed for npm provenance
+
+jobs:
+  publish:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ── Setup pnpm ────────────────────────────────────────────────────────
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.6.0
+
+      # ── Setup Node (registry-url enables NODE_AUTH_TOKEN for npm publish) ──
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Get pnpm store path
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      # ── Install dependencies ───────────────────────────────────────────────
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # ── Build ─────────────────────────────────────────────────────────────
+      - name: Build @neural/angular-ui
+        run: pnpm nx run @neural/angular-ui:build
+
+      # ── Verify dist output ────────────────────────────────────────────────
+      - name: Verify build output
+        run: |
+          echo "=== Build artifacts ==="
+          ls -la packages/ui/dist/
+          echo "=== Package contents (dry-run) ==="
+          cd packages/ui && npm pack --dry-run
+
+      # ── Publish ───────────────────────────────────────────────────────────
+      - name: Publish to npm
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: npm publish --access public
+        working-directory: packages/ui
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # ── Summary ───────────────────────────────────────────────────────────
+      - name: Print publish summary
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          VERSION=$(node -p "require('./packages/ui/package.json').version")
+          echo "### ✅ Published @neuralangular/angular-ui@$VERSION" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📦 https://www.npmjs.com/package/@neuralangular/angular-ui" >> $GITHUB_STEP_SUMMARY
