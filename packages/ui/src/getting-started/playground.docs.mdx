@@ -77,14 +77,20 @@ The workspace playground is the right place for:
 ## Useful Entry Points
 
 ```typescript
-import { NButton } from '@neuralangular/angular-ui/button';
-import { NCard } from '@neuralangular/angular-ui/card';
-import { NEmptyState } from '@neuralangular/angular-ui/empty-state';
-import { NChip } from '@neuralangular/angular-ui/chip';
-import { NAvatar } from '@neuralangular/angular-ui/avatar';
+// v0.1.x — import everything from the root entry
+import {
+  NButton,
+  NCard, NCardHeader, NCardContent, NCardFooter,
+  NEmptyState,
+  NChip,
+  NAvatar,
+  NInput,
+  NDialog,
+  NToast,
+} from '@neuralangular/angular-ui';
 ```
 
-Keep secondary entry points as the default import style in application code. They make examples
-clearer and support tighter bundle composition.
+> **v0.1.x note** — All components are available from the single root entry.
+> Per-component entry points (`/button`, `/card`, etc.) are planned for a future minor release.
 
 </section>

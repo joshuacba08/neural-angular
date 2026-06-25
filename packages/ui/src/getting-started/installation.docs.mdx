@@ -58,14 +58,18 @@ your app shell for the intended appearance.
 
 ## Verify
 
-Verify your setup by importing a component such as `NButton` or `NCard`. Secondary entry points
-are recommended so each screen only pulls the pieces it uses.
+Verify your setup by importing components from the root entry point.
 
 ```typescript
 import { Component } from '@angular/core';
 
-import { NButton } from '@neuralangular/angular-ui/button';
-import { NCard, NCardContent, NCardHeader, NCardTitle } from '@neuralangular/angular-ui/card';
+import {
+  NButton,
+  NCard,
+  NCardContent,
+  NCardHeader,
+  NCardTitle,
+} from '@neuralangular/angular-ui';
 
 @Component({
   selector: 'app-root',
@@ -85,6 +89,9 @@ import { NCard, NCardContent, NCardHeader, NCardTitle } from '@neuralangular/ang
 })
 export class AppComponent {}
 ```
+
+> **v0.1.x note** — All components are exported from the single root entry `@neuralangular/angular-ui`.
+> Granular per-component entry points (`/button`, `/card`, etc.) are planned for a future minor release.
 
 ## Next Steps
 

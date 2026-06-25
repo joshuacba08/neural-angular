@@ -60,7 +60,7 @@ Switch themes dynamically by injecting `NeuralThemeService`.
 
 ```typescript
 import { Component, inject } from '@angular/core';
-import { NeuralThemeService, type NeuralThemeName } from '@neuralangular/angular-ui/theme';
+import { NeuralThemeService, type NeuralThemeName } from '@neuralangular/angular-ui';
 
 @Component({
   selector: 'app-theme-toggle',
@@ -102,7 +102,7 @@ Components such as dialogs, drawers, toasts, tooltips, and popovers rely on the 
 providers.
 
 ```typescript
-import { provideNeuralOverlay } from '@neuralangular/angular-ui/overlay';
+import { provideNeuralOverlay } from '@neuralangular/angular-ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideNeuralOverlay()],
