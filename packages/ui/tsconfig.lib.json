@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "lib": ["es2022", "dom"],
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "experimentalDecorators": true,
+    "inlineSources": true,
+    "sourceRoot": ".",
+    "composite": false,
+    "isolatedModules": false,
+    "stripInternal": true
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "partial",
+    "strictTemplates": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.js",
+    "src/stories"
+  ]
+}
